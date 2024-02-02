@@ -1,0 +1,68 @@
+# Dependencias
+node_modules/
+
+# Archivos generados en el entorno de desarrollo
+.DS_Store
+*.log
+npm-debug.log*
+
+# Entorno de construcción
+build/
+dist/
+
+# Archivos de configuración
+.env
+
+# Dependencias locales
+/.pnp
+.pnp.js
+
+# Archivos de caché y archivos temporales
+.cache/
+*.pnp
+*.pnp.js
+*.zip
+/jest-preprocess-cache/
+
+# Cobertura de código
+coverage/
+
+# Archivos generados en el entorno de desarrollo
+*.css.map
+*.js.map
+
+# IDEs y editores
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs y bases de datos
+*.sqlite
+*.log
+
+# Ficheros de construcción
+*.pid
+*.seed
+*.pid.lock
+
+# Acciones GitHub
+/.github
+
+# Yarn
+yarn-error.log
+.pnp.*
+!pnp.js
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# macOS
+.DS_Store
+
+# Linux
+*.swp
