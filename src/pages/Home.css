@@ -1,0 +1,13 @@
+.home {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../images/logo.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    justify-content: right;
+    font-size: 3rem;
+}
