@@ -12,7 +12,11 @@
 .amigos,
 .mensajes,
 .soporte,
-.socials {
+.socials,
+.clubs,
+.colecciones,
+.perfil,
+.config {
     display: flex;
     height: 90vh;
     align-items: center;

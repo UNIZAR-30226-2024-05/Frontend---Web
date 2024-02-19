@@ -56,12 +56,6 @@ const InicioSesion = () => {
             <span className='span-signup'>Registrate aquí.</span>
           </Link>
         </div>
-        <div>
-        <span className='span-signup'>¿Quieres cambiar tu contraseña?</span>
-          <Link className='link-changepwd' to='/changepwd'>
-            <span className='span-signup'>Pincha aquí.</span>
-          </Link>
-        </div>
       </form>
     </div>
   );

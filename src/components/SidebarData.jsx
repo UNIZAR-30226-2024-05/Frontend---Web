@@ -35,6 +35,12 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
+        title: 'Sobre Nosotros',
+        path: '/aboutus',
+        icon: <IoIcons.IoMdPaper />,
+        cName: 'nav-text'
+    },
+    {
         title: 'Soporte',
         path: '/soporte',
         icon: <IoIcons.IoMdHelpCircle />,

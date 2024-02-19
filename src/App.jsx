@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { SidebarData } from './components/SidebarData';
 import Home from './pages/Home';
 import Biblioteca from './pages/Biblioteca';
 import Tienda from './pages/Tienda';
@@ -13,6 +12,10 @@ import InicioSesion from './pages/InicioSesion';
 import RedesSociales from './pages/RedesSociales';
 import SobreNosotros from './pages/SobreNosotros'; 
 import Registrar from './pages/Registrar';
+import Clubs from './pages/Clubs';
+import Colecciones from './pages/Colecciones';
+import Perfil from './pages/Perfil';
+import Configuracion from './pages/Configuracion';
 
 function App() {
   return (
@@ -30,6 +33,10 @@ function App() {
       <Route path='/socials' Component={RedesSociales}/>
       <Route path='/aboutus' Component={SobreNosotros}/>
       <Route path='/register' Component={Registrar}/>
+      <Route path='/clubs' Component={Clubs}/>
+      <Route path='/colecciones' Component={Colecciones}/>
+      <Route path='/perfil' Component={Perfil}/>
+      <Route path='/config' Component={Configuracion}/>
      </Routes>
     </Router>
     </>
