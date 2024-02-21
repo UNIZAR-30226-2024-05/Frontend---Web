@@ -11,7 +11,7 @@
 .tienda,
 .amigos,
 .mensajes,
-.soporte,
+.configuracion,
 .socials {
     display: flex;
     height: 90vh;

@@ -8,7 +8,7 @@ import Biblioteca from './pages/Biblioteca';
 import Tienda from './pages/Tienda';
 import Amigos from './pages/Amigos';
 import Mensajes from './pages/Mensajes';
-import Soporte from './pages/Soporte';
+import Configuracion from './pages/Configuracion';
 import InicioSesion from './pages/InicioSesion';
 import RedesSociales from './pages/RedesSociales';
 import SobreNosotros from './pages/SobreNosotros'; 
@@ -25,7 +25,7 @@ function App() {
       <Route path='/tienda' Component={Tienda}/>
       <Route path='/amigos' Component={Amigos}/>
       <Route path='/mensajes' Component={Mensajes}/>
-      <Route path='/soporte' Component={Soporte}/>
+      <Route path='/config' Component={Configuracion}/>
       <Route path='/login' Component={InicioSesion}/>
       <Route path='/socials' Component={RedesSociales}/>
       <Route path='/aboutus' Component={SobreNosotros}/>
