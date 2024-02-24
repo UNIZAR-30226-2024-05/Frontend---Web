@@ -13,6 +13,9 @@ import InicioSesion from './pages/InicioSesion';
 import RedesSociales from './pages/RedesSociales';
 import SobreNosotros from './pages/SobreNosotros'; 
 import Registrar from './pages/Registrar';
+import miPerfil from './pages/miPerfil';
+import Changepwd from './pages/changepwd';
+
 
 function App() {
   return (
@@ -30,6 +33,8 @@ function App() {
       <Route path='/socials' Component={RedesSociales}/>
       <Route path='/aboutus' Component={SobreNosotros}/>
       <Route path='/register' Component={Registrar}/>
+      <Route path='/miperfil' Component={miPerfil}/>
+      <Route path='/changepwd' Component={Changepwd}/>
      </Routes>
     </Router>
     </>

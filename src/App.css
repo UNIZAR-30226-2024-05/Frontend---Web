@@ -12,7 +12,9 @@
 .amigos,
 .mensajes,
 .configuracion,
-.socials {
+.socials,
+.miperfil,
+.changepwd {
     display: flex;
     height: 90vh;
     align-items: center;

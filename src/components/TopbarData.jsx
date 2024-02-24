@@ -15,6 +15,11 @@ export const TopbarData = [
         title: 'Iniciar Sesión',
         path: '/login',
         cName: 'menu-text'
+    },
+    {
+        title: 'Mi Perfil',
+        path: '/miperfil',
+        cName: 'menu-text'
     }
     
 ]
