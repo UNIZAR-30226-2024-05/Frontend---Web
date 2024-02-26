@@ -14,7 +14,10 @@
 .configuracion,
 .socials,
 .miperfil,
-.changepwd {
+.changepwd,
+.changecorreo,
+.changenomnbre,
+.changefoto {
     display: flex;
     height: 90vh;
     align-items: center;

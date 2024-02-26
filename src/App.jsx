@@ -15,7 +15,9 @@ import SobreNosotros from './pages/SobreNosotros';
 import Registrar from './pages/Registrar';
 import miPerfil from './pages/miPerfil';
 import Changepwd from './pages/changepwd';
-
+import Changecorreo from './pages/ChangeCorreo';
+import Changefoto from './pages/ChangeFoto';
+import Changenombre from './pages/ChangeNombre';
 
 function App() {
   return (
@@ -35,6 +37,9 @@ function App() {
       <Route path='/register' Component={Registrar}/>
       <Route path='/miperfil' Component={miPerfil}/>
       <Route path='/changepwd' Component={Changepwd}/>
+      <Route path='/changecorreo' Component={Changecorreo}/>
+      <Route path='/changefoto' Component={Changefoto}/>
+      <Route path='/changenombre' Component={Changenombre}/>
      </Routes>
     </Router>
     </>

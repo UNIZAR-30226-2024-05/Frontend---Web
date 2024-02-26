@@ -11,13 +11,13 @@ const miPerfil = () => {
     return (
       <div className='miperfil'>
         <div className='Foto'>
-            <button className='BotonFoto' type='button'>Foto de Perfil</button>
+            <button className='BotonFoto' type='button' onClick={() => {navigate("/changefoto")}}>Foto de Perfil</button>
         </div>
         <div className='Nombre'>
-            <button className='BotonNombre' type='button'>Nombre de Usuario</button>
+            <button className='BotonNombre' type='button' onClick={() => {navigate("/changenombre")}}>Nombre de Usuario</button>
         </div>
         <div className='Correo'>
-            <button className='BotonCorreo' type='button'>Correo</button>
+            <button className='BotonCorreo' type='button' onClick={() => {navigate("/changecorreo")}}>Correo</button>
         </div>
         <div className='Contrasegna'>
             <button className='BotonContrasegna' type='button' onClick={() => {navigate("/changepwd")}}>Cambiar la contraseña</button>

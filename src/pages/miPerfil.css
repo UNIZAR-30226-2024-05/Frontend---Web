@@ -1,9 +1,43 @@
-.BotonFoto .BotonNombre{
-    margin-top: 50px;
-    margin-left: 10px;
-    margin-right: 0px;
-    margin-bottom: 50px;
-    margin-right: 0;
-    padding: 1000px;
+.miperfil {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 30px;
+    margin-left: 15px;
 }
 
+.BotonFoto{
+    height: 80px;
+    width: 400px;
+    text-align: left;
+    font-size: 20px;
+    background-color: #A4CEF4;
+    border-radius: 10px;
+}
+
+.BotonNombre{
+    height: 80px;
+    width: 400px;
+    text-align: left;
+    font-size: 20px;
+    background-color: #A4CEF4;
+    border-radius: 10px;
+}
+
+.BotonCorreo{
+    height: 80px;
+    width: 400px;
+    text-align: left;
+    font-size: 20px;
+    background-color: #A4CEF4;
+    border-radius: 10px;
+}
+
+.BotonContrasegna{
+    height: 80px;
+    width: 400px;
+    text-align: left;
+    font-size: 20px;
+    background-color:#A4CEF4;
+    border-radius: 10px;
+}
