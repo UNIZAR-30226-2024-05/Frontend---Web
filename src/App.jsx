@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Biblioteca from './pages/Biblioteca';
-import Tienda from './pages/Tienda';
 import Amigos from './pages/Amigos';
 import Mensajes from './pages/Mensajes';
 import Soporte from './pages/Soporte';
@@ -25,7 +24,6 @@ function App() {
      <Routes>
       <Route path='/' Component={Home}/>
       <Route path='/biblioteca' Component={Biblioteca}/>
-      <Route path='/tienda' Component={Tienda}/>
       <Route path='/amigos' Component={Amigos}/>
       <Route path='/mensajes' Component={Mensajes}/>
       <Route path='/soporte' Component={Soporte}/>

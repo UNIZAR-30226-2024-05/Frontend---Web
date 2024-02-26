@@ -18,7 +18,7 @@
   align-items: center; /* No hace nada */
   border: 1px solid #ccc;
   border-radius: 15px;
-  background-color: #2f9d3fd5;
+  background-color: #0ec3a5da;
 }
   
 .login-box {
@@ -44,7 +44,7 @@
   margin-left: 40%;
   width: 20%;
   font-size: 1.2rem;
-  background-color: #8fd79a;
+  background-color: #0fa7b2;
   border-radius: 10px;
   padding: 2px 5px;
   justify-self: center;
@@ -53,10 +53,10 @@
 
 .link-signup {
   text-decoration: underline;
-    color: #f5f5f5;
+    color: #000000;
 }
 
 .span-signup {
   font-size: 1.2rem;
-  color: #f5f5f5;
+  color: #000000;
 }

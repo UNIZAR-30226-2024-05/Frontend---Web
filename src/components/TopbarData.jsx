@@ -38,5 +38,10 @@ export const TopbarOutData = [
         title: 'Iniciar Sesion',
         path: '/login',
         cName: 'menu-text'
+    },
+    {
+        title: 'Registrarse',
+        path: '/register',
+        cName: 'menu-text'
     }
 ]
