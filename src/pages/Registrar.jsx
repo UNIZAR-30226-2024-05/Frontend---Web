@@ -7,6 +7,8 @@ const Registrar = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repassword, setRePassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [rePasswordError, setRePasswordError] = useState('');
 
   const handleMailChange = (event) => {
     setMail(event.target.value);
@@ -18,10 +20,23 @@ const Registrar = () => {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    // Aquí puedes realizar la validación de la contraseña
+    // Por ejemplo, longitud mínima de la contraseña
+    if (event.target.value.length < 8) {
+      setPasswordError('La contraseña debe tener al menos 8 caracteres.');
+    } else {
+      setPasswordError('');
+    }
   };
 
   const handleRePasswordChange = (event) => {
     setRePassword(event.target.value);
+
+    if (event.target.value !== password) {
+      setRePasswordError('Ambas contraseñas deben ser iguales');
+    } else {
+      setRePasswordError('');
+    }
   };
 
   const handleSubmit = (event) => {
@@ -62,17 +77,19 @@ const Registrar = () => {
             value={password}
             onChange={handlePasswordChange}
           />
+          {passwordError && <p className="error-message">{passwordError}</p>}
         </div>
         <div classname='signup-box'>
           <label className='form-label' htmlFor="password">Repita la contraseña: </label>
           <input
             className='input-box'
             type="password"
-            id="password"
+            id="repassword"
             placeholder='Password'
-            value={password}
-            onChange={handlePasswordChange}
+            value={repassword}
+            onChange={handleRePasswordChange}
           />
+          {rePasswordError && <p className="error-message">{rePasswordError}</p>}
         </div>
         <div classname='signup-box'>
           <label className='form-label' htmlFor="mail">Correo electrónico: </label>
