@@ -22,8 +22,18 @@ const Registrar = () => {
     setPassword(event.target.value);
     // Aquí puedes realizar la validación de la contraseña
     // Por ejemplo, longitud mínima de la contraseña
+    // expresiones regulares para verificar requisitos de contraseña
+    const hasNumber = /\d/.test(event.target.value);
+    const hasUpperCases = /[A-Z]/.test(event.target.value);;
+    const hasLowerCases = /[a-z]/.test(event.target.value);;
     if (event.target.value.length < 8) {
       setPasswordError('La contraseña debe tener al menos 8 caracteres.');
+    } else if (!hasNumber) {
+      setPasswordError('La contraseña debe tener al menos un número.');
+    } else if (!hasUpperCases) {
+      setPasswordError('La contraseña debe tener al menos una mayúscula.');
+    } else if (!hasLowerCases) {
+      setPasswordError('La contraseña debe tener al menos una minúscula.');
     } else {
       setPasswordError('');
     }
