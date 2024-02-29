@@ -1,0 +1,54 @@
+/* Agrega estilos para el botón submit */
+.submit {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 40%;
+    width: 20%;
+    font-size: 1.2rem;
+    background-color: #0fa7b2;
+    border-radius: 10px;
+    padding: 2px 5px;
+    justify-self: center;
+    align-self: center;
+    display: block;
+}
+
+.form { /* Ancho del formulario */
+    width: auto;
+    height: auto;
+    padding: 20px;
+    justify-content: center; /* No hace nada */
+    align-items: center; /* No hace nada */
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #0ec3a5da;
+}
+
+.change {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    margin-top: 250px;
+    margin-left: 650px;
+    margin-right: 650px;
+}
+
+.actual {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    margin-left: 30px;
+}
+
+.nuevo {
+    margin-left: 100px;
+}
