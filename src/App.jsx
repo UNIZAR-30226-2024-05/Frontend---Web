@@ -15,6 +15,10 @@ import Clubs from './pages/Clubs';
 import Colecciones from './pages/Colecciones';
 import Perfil from './pages/Perfil';
 import Configuracion from './pages/Configuracion';
+import Changecorreo from './pages/ChangeCorreo';
+import Changefoto from './pages/ChangeFoto';
+import Changenombre from './pages/ChangeNombre';
+import Changepwd from './pages/Changepwd';
 
 function App() {
   return (
@@ -34,6 +38,10 @@ function App() {
       <Route path='/colecciones' Component={Colecciones}/>
       <Route path='/perfil' Component={Perfil}/>
       <Route path='/config' Component={Configuracion}/>
+      <Route path='/changepwd' Component={Changepwd}/>
+      <Route path='/changecorreo' Component={Changecorreo}/>
+      <Route path='/changefoto' Component={Changefoto}/>
+      <Route path='/changenombre' Component={Changenombre}/>
      </Routes>
      <Navbar />
     </Router>

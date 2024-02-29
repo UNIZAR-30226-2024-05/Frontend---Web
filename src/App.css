@@ -15,7 +15,11 @@
 .clubs,
 .colecciones,
 .perfil,
-.config {
+.config,
+.changepwd,
+.changefoto,
+.changefoto,
+.changecorreo {
     display: flex;
     height: 90vh;
     align-items: center;
