@@ -1,110 +1,18 @@
 .home {
     margin-top: 80px;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('../images/logo.png');
-    background-color: rgb(230, 152, 36);
+    height: auto;
+    background-color: #0ec3a4;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     font-size: 2rem;
 }
 
-
-.portadas{
-    width: 100px;
-    height: 150px;
-}
-
-/*----- Contenedor Titulo -----*/
-.contenedor-titulo-controles {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-}
-
-.contenedor-titulo-controles .paginas button {
-    background: #fff;
-    font-size: 30px;
-    height: 4px;
-    width: 12px;
-    cursor: pointer;
-    border: none;
-    margin-right: 3px;
-}
-
-.contenedor-titulo-controles .paginas button:hover,
-.contenedor-titulo-controles .paginas button.activo {
-    background: red;
-}
-
-/*----- Contenedor Carrousell -----*/
-
-.libros-recomendados {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 90%;
-}
-
-.libros-recomendados .contenedor-principal {
-    display: flex;
-    align-items: center;
-    position: relative;
-
-}
-
-.libros-recomendados .contenedor-principal .flecha-izq,
-.libros-recomendados .contenedor-principal .flecha-dch {
-    position: absolute;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.4);
-    font-size: 40px;
-    color: white;
-    height: 50%;
-    width: 50px;
-}
-
-.libros-recomendados .contenedor-principal .flecha-izq:hover,
-.libros-recomendados .contenedor-principal .flecha-dch:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.libros-recomendados .contenedor-principal .flecha-izq {
-    left: 0;
-}
-
-.libros-recomendados .contenedor-principal .flecha-dch {
-    right: 0;
-}
-
-/*----- Carroussell -----*/
-.libros-recomendados .contenedor-carrusell {
-    width: 100%;
-    padding: 20px 0;
-    overflow: hidden;
-    scroll-behavior: smooth;
-}
-
-.libros-recomendados .contenedor-carrusell .carrusell {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-.libros-recomendados .contenedor-carrusell .carrusell .libro {
-    min-width: 25%;
-    width: 25%;
-    height: 200px;
-}
-
-.libros-recomendados .contenedor-carrusell .carrusell .libro.hover {
-    transform: scale(1.2);
-    transform-origin: center;
-}
-
-.libros-recomendados .contenedor-carrusell .carrusell .libro .portadas {
-    width: 100%;
-    height: auto;
-    vertical-align: top;
+.container{
+    margin-left: 5%;
+    margin-right: 5%;
 }

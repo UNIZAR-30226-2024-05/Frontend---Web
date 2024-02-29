@@ -1,0 +1,98 @@
+
+/*----- Contenedor Titulo -----*/
+.contenedor-titulo-controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.contenedor-titulo-controles .paginas button {
+    background: #fff;
+    font-size: 30px;
+    height: 4px;
+    width: 12px;
+    cursor: pointer;
+    border: none;
+    margin-right: 3px;
+}
+
+.contenedor-titulo-controles .paginas button:hover,
+.contenedor-titulo-controles .paginas button.activo {
+    background: red;
+}
+
+/*----- Contenedor Carrusel -----*/
+
+.carrusel-libros {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 90%;
+}
+
+.carrusel-libros .contenedor-principal {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+}
+
+.carrusel-libros .contenedor-principal .flecha-izq,
+.carrusel-libros .contenedor-principal .flecha-dch {
+    position: absolute;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    font-size: 40px;
+    color: white;
+    height: 50%;
+    width: 50px;
+}
+
+.carrusel-libros .contenedor-principal .flecha-izq:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.2);
+    transform-origin: left;
+}
+
+.carrusel-libros .contenedor-principal .flecha-dch:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.2);
+    transform-origin: right;
+}
+
+.carrusel-libros .contenedor-principal .flecha-izq {
+    left: 0;
+}
+
+.carrusel-libros .contenedor-principal .flecha-dch {
+    right: 0;
+}
+
+/*----- Carroussell -----*/
+.carrusel-libros .contenedor-carrusel {
+    width: 100%;
+    padding: 20px 0;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.carrusel-libros .contenedor-carrusel .carrusel {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.carrusel-libros .contenedor-carrusel .carrusel .libro {
+    min-width: 25%;
+    width: 25%;
+    height: 200px;
+}
+
+.carrusel-libros .contenedor-carrusel .carrusel .libro.hover {
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+.carrusel-libros .contenedor-carrusel .carrusel .libro .portadas {
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+}

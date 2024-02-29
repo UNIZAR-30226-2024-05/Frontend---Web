@@ -20,7 +20,6 @@ function App() {
   return (
     <>
     <Router>
-     <Navbar />
      <Routes>
       <Route path='/' Component={Home}/>
       <Route path='/biblioteca' Component={Biblioteca}/>
@@ -36,6 +35,7 @@ function App() {
       <Route path='/perfil' Component={Perfil}/>
       <Route path='/config' Component={Configuracion}/>
      </Routes>
+     <Navbar />
     </Router>
     </>
   );
