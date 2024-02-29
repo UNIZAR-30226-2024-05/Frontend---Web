@@ -18,7 +18,7 @@ import Configuracion from './pages/Configuracion';
 import Changecorreo from './pages/ChangeCorreo';
 import Changefoto from './pages/ChangeFoto';
 import Changenombre from './pages/ChangeNombre';
-import Changepwd from './pages/Changepwd';
+import Changepwd from './pages/ChangePwd';
 
 function App() {
   return (
