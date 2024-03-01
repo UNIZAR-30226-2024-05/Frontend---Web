@@ -32,25 +32,25 @@ const Carrusel = ({title}) => {
 /*----- Botones laterales -----*/
 
   const handleFlechaIzq = () => {
-    const newScrollLeft = scrollLeft - filaRef.current.offsetWidth;
-    setScrollLeft(newScrollLeft);
-    filaRef.current.scrollTo({
-      left: newScrollLeft,
-      behavior: 'smooth'
-    });
-    if (paginaActiva > 0) {
+    if (paginaActiva > 0){
+      const newScrollLeft = scrollLeft - filaRef.current.offsetWidth;
+      setScrollLeft(newScrollLeft);
+      filaRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
       setPaginaActiva(paginaActiva - 1);
     }
   };
 
   const handleFlechaDch = () => {
-    const newScrollLeft = scrollLeft + filaRef.current.offsetWidth;
-    setScrollLeft(newScrollLeft);
-    filaRef.current.scrollTo({
-      left: newScrollLeft,
-      behavior: 'smooth'
-    });
     if (paginaActiva < numPaginas - 1) {
+      const newScrollLeft = scrollLeft + filaRef.current.offsetWidth;
+      setScrollLeft(newScrollLeft);
+      filaRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
       setPaginaActiva(paginaActiva + 1);
     }
   };
