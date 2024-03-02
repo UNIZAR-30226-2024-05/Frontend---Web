@@ -1,31 +1,11 @@
 import React, { useRef, useState } from 'react';
 import * as BsIcons from "react-icons/bs";
 import './Carrusel.css';
-import foto1 from '../images/1.png';
-import foto2 from '../images/2.jpg';
-import foto3 from '../images/3.jpg';
-import foto4 from '../images/4.jpg';
-import foto5 from '../images/5.jpg';
-import foto6 from '../images/6.jpg';
-import foto7 from '../images/7.jpg';
 
-const Carrusel = ({title}) => {
+const Carrusel = ({title, libros}) => {
   const filaRef = useRef(null);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [paginaActiva, setPaginaActiva] = useState(0);
-
-  const libros = [
-    {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal'},
-    {portada: foto2, titulo: 'Harry Potter y la Cámara Secreta'},
-    {portada: foto3, titulo: 'Harry Potter y la el Prisionero de Azkaban'},
-    {portada: foto4, titulo: 'Harry Potter y el Cáliz de Fuego'},
-    {portada: foto5, titulo: 'Harry Potter y la Orden del Fénix'},
-    {portada: foto6, titulo: 'Harry Potter y el Misterio del Príncipe'},
-    {portada: foto7, titulo: 'Harry Potter y las Reliquias de la Muerte'},
-    {portada: foto1, titulo: 'Libro 8'},
-    {portada: foto2, titulo: 'Libro 9'},
-    {portada: foto3, titulo: 'Libro 10'}
-  ]
 
   const numPaginas = Math.ceil(libros.length / 4);
 
@@ -36,8 +16,7 @@ const Carrusel = ({title}) => {
       const newScrollLeft = scrollLeft - filaRef.current.offsetWidth;
       setScrollLeft(newScrollLeft);
       filaRef.current.scrollTo({
-        left: newScrollLeft,
-        behavior: 'smooth'
+        left: newScrollLeft
       });
       setPaginaActiva(paginaActiva - 1);
     }
@@ -48,8 +27,7 @@ const Carrusel = ({title}) => {
       const newScrollLeft = scrollLeft + filaRef.current.offsetWidth;
       setScrollLeft(newScrollLeft);
       filaRef.current.scrollTo({
-        left: newScrollLeft,
-        behavior: 'smooth'
+        left: newScrollLeft
       });
       setPaginaActiva(paginaActiva + 1);
     }
@@ -62,13 +40,13 @@ const Carrusel = ({title}) => {
   const ampliar = (i) => {
     setTimeout(() => {
       setHoveredIndex(i);
-    }, 300);
+    }, 1);
   };
   
   const reducir = () => {
     setTimeout(() => {
       setHoveredIndex(null);
-    }, 500);
+    }, 400);
   };
 
 /*----- Paginación -----*/

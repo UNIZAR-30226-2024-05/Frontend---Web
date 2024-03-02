@@ -27,7 +27,7 @@ const InicioSesion = () => {
   return (
     <div className='login'>
       <form className='form' onSubmit={handleSubmit}>
-        <div classname='login-box'>
+        <div className='login-box'>
           <label className='form-label' htmlFor="username">Usuario: </label>
           <input
             className='input-box'
