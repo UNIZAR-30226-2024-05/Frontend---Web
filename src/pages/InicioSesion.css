@@ -10,7 +10,7 @@
   background-repeat: no-repeat;
 }
 
-.form {
+.login .form {
   width: auto; /* Ancho del formulario */
   height: auto;
   padding: 20px;
@@ -21,7 +21,7 @@
   background-color: #0ec3a5da;
 }
   
-.login-box {
+.login .form .login-box {
   padding: 10px;
 }
 
@@ -33,9 +33,9 @@
 
 .form-label {
   font-size: 1.5rem;
-    padding: 15px 10px;
-    width: 150px;
-    display: inline-block;
+  padding: 15px 10px;
+  width: 150px;
+  display: inline-block;
 }
 
 .submit-button {

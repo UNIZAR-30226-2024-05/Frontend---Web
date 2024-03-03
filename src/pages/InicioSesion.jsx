@@ -50,7 +50,7 @@ const InicioSesion = () => {
           />
         </div>
         <button className='submit-button' type="submit">Log In</button>
-        <div>
+        <div className='link-to-signup'>
         <span className='span-signup'>¿No tienes cuenta?</span>
           <Link className='link-signup' to='/register'>
             <span className='span-signup'>Registrate aquí.</span>

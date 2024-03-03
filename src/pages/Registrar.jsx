@@ -113,8 +113,8 @@ const Registrar = () => {
           />
         </div>
         <button className='submit-button' type="submit">Log In</button>
-        <div>
-          <span className='span-signup'>¿Ya tienes cuenta?</span>
+        <div className='link-to-login'>
+          <span className='span-login'>¿Ya tienes cuenta?</span>
           <Link className='link-login' to='/login'>
             <span className='span-login'>Inicia sesión aquí.</span>
           </Link>
