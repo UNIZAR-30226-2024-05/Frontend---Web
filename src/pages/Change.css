@@ -1,9 +1,29 @@
+.h1{
+    text-align: center;
+}
+
+
+.change{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 500px;
+    height: 400px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    margin-left: 350px;
+    margin-top: 175px;
+}
+
 /* Agrega estilos para el botón submit */
 .submit {
     margin-top: 30px;
     margin-bottom: 10px;
-    margin-left: 40%;
-    width: 20%;
+    margin-left: 55px;
+    width: 150px;
     font-size: 1.2rem;
     background-color: #0fa7b2;
     border-radius: 10px;
@@ -14,8 +34,8 @@
 }
 
 .form { /* Ancho del formulario */
-    width: auto;
-    height: auto;
+    width: 300px;
+    height: 200px;
     padding: 20px;
     justify-content: center; /* No hace nada */
     align-items: center; /* No hace nada */
@@ -24,14 +44,6 @@
     background-color: #0ec3a5da;
 }
 
-.change {
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #ccc;
-    margin-top: 250px;
-    margin-left: 650px;
-    margin-right: 650px;
-}
 
 .actual {
     margin-top: 50px;
@@ -46,9 +58,9 @@
     padding: 10px;
     border-radius: 10px;
     border: 2px solid #ccc;
-    margin-left: 30px;
+    margin-left: 45px;
 }
 
 .nuevo {
-    margin-left: 100px;
+    margin-left: 75px;
 }

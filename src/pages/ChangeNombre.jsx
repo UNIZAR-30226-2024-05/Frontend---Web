@@ -19,7 +19,7 @@ export const Changenombre = () => {
   }
 
   return (
-    <div className='change' style={{  }}>
+    <div className='change'>
       <h1>Cambiar el nombre</h1>
       <div>
         <p className="actual">Nombre actual: UsuarioPrueba</p>
