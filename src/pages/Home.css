@@ -6,8 +6,8 @@
     align-items: flex-start;
     justify-content: center;
     height: auto;
-    background: #0ec3a4;
-    background: linear-gradient(#88d5c8, #0ec3a4);
+    /*background: #0ec3a4;*/
+    background: linear-gradient(#7f9894, #21ad96);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -38,4 +38,9 @@
     grid-column: span 2;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.home .footer {
+    grid-row: span 1;
+    grid-column: span 2;
 }
