@@ -25,7 +25,7 @@ export const Changenombre = () => {
         <div>
           <p className="actual">Nombre actual: UsuarioPrueba</p>
         </div>
-        <form className='form' onSubmit={handleGuardarNuevoNombre}>
+        <form className='change-form' onSubmit={handleGuardarNuevoNombre}>
           <label className='nuevo' htmlFor="nuevoNombre">Nuevo nombre: </label>
           <input
             type="text"
