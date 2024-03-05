@@ -96,8 +96,8 @@ const Registrar = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // Aquí puedes implementar la lógica de autenticación, como enviar los datos al servidor, etc.
-    const v1 = emailRegex.test(mail);
-    const v2 = nameRegex.test(username);
+    const v1 = nameRegex.test(username);
+    const v2 = emailRegex.test(mail);
     const v3 = pwdRegex.test(password);
     if (!v1 || !v2 || !v3){
       setErrMsg("Invalid Entry");
@@ -106,7 +106,7 @@ const Registrar = () => {
 
     try {
       const respuesta = await axios.post(URL_REGISTRAR, 
-        JSON.stringify({mail, username, password}),
+        JSON.stringify({username, mail, password}),
         {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true
@@ -127,7 +127,7 @@ const Registrar = () => {
       if (!err?.respuesta) {
         setErrMsg ('No hay respuesta del servidor');
       } else if (!err.response?.status === 409) {
-        setErrMsg ('Nombre de usuario en uso');
+        setErrMsg ('Nombre de usuario o mail en uso');
       } else {
         setErrMsg ('Fallo en el registro');
       }

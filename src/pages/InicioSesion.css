@@ -60,3 +60,41 @@
   font-size: 1.2rem;
   color: #000000;
 }
+
+.error-message {
+  margin-left: 10px;
+}
+
+.sign-error-message {
+  background: #ff0000d1;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+}
+
+.log-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #21802fa2;
+  border: 3px solid #1a881f;
+  border-radius: 25px;
+  height: 150px;
+}
+
+.log-success .login-success {
+  margin: 0px 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.log-success .home-success {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-style: italic;
+}
