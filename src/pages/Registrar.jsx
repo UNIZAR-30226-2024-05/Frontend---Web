@@ -4,7 +4,7 @@ import './Registrar.css';
 import axios from '../api/axios';
 
 const Registrar = () => {
-  const URL_REGISTRAR = '/register';
+  const URL_REGISTRAR = '/users/register';
 
   const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
   const nameRegex = /^[A-Za-z0-9]{4,}$/;
@@ -108,13 +108,12 @@ const Registrar = () => {
       const respuesta = await axios.post(URL_REGISTRAR, 
         JSON.stringify({username, mail, password}),
         {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
+          headers: { 'Content-Type': 'application/json' }
         }
       );
-      console.log(respuesta.data);
-      console.log(respuesta.accessToken);
-      console.log(JSON.stringify(respuesta));
+      console.log(response.data);
+      console.log(response.accessToken);
+      console.log(JSON.stringify(response));
       setSuccess(true);
       // Reestablecer los campos del formulario
       setMail('');
@@ -124,9 +123,9 @@ const Registrar = () => {
       setErrMsg('');
 
     } catch (err) {
-      if (!err?.respuesta) {
+      if (!err.response) {
         setErrMsg ('No hay respuesta del servidor');
-      } else if (!err.response?.status === 409) {
+      } else if (err.response.status === 409) {
         setErrMsg ('Nombre de usuario o mail en uso');
       } else {
         setErrMsg ('Fallo en el registro');
@@ -202,7 +201,7 @@ const Registrar = () => {
           </div>
           <button className='submit-button' type="submit" 
             disabled={!validMail || !validName || !validPwd || !validRePwd ? true : false}>
-            Sign In
+            Sign Up
           </button>
             {errMsg && <div className="sign-error-message"><p>{errMsg}</p></div>}
           <div className='link-to-login'>

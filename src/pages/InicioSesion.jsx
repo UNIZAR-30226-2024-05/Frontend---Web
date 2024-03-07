@@ -4,7 +4,7 @@ import './InicioSesion.css';
 import AuthContext from '../context/AuthProvider';
 import axios from '../api/axios';
 
-const URL_LOGIN = '/login';
+const URL_LOGIN = '/users/login';
 
 const InicioSesion = () => {
   const [username, setUsername] = useState('');
@@ -29,26 +29,24 @@ const InicioSesion = () => {
       const respuesta = await axios.post(URL_LOGIN, 
         JSON.stringify({username, password}),
         {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
+          headers: { 'Content-Type': 'application/json' }
         }
       );
       console.log(JSON.stringify(respuesta?.data));
 
       // Reestablecer los campos del formulario
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
-      setAuth({ username, password, roles, accessToken });
+      const roles = respuesta?.data?.roles;
+      setAuth({ username, password, roles });
       setUsername('');
       setPassword('');
       setSuccess(true);
 
     } catch (err) {
-      if (!err?.respuesta) {
+      if (!err.response) {
         setErrMsg ('No hay respuesta del servidor');
-      } else if (!err.response?.status === 401) {
+      } else if (err.response.status === 404) {
         setErrMsg ('Usuario no encontrado');
-      } else if (!err.response?.status === 404) {
+      } else if (err.response.status === 401) {
         setErrMsg ('Contraseña incorrecta');
       } else {
         setErrMsg ('Fallo en el inicio de sesion');
