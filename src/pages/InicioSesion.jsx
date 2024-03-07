@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './InicioSesion.css';
 import AuthContext from '../context/AuthProvider';
@@ -53,15 +53,7 @@ const InicioSesion = () => {
       } else {
         setErrMsg ('Fallo en el inicio de sesion');
       }
-      errRef.current.focus();
     }
-    
-    // Aquí puedes implementar la lógica de autenticación, como enviar los datos al servidor, etc.
-    
-    // También puedes restablecer los campos del formulario después de enviarlos
-    setUsername('');
-    setPassword('');
-    setSuccess(true);
   };
 
   return (

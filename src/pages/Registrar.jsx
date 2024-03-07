@@ -131,7 +131,6 @@ const Registrar = () => {
       } else {
         setErrMsg ('Fallo en el registro');
       }
-      errRef.current.focus();
     }
   };
 
