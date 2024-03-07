@@ -149,7 +149,7 @@ const Registrar = () => {
       ) : (
       <div className='register'>
         <form className='form' onSubmit={handleSubmit}>
-          <div classname='signup-box'>
+          <div className='signup-box'>
             <label className='form-label' htmlFor="username">Usuario: </label>
             <input
               className='input-box'
@@ -162,7 +162,7 @@ const Registrar = () => {
             />
             {nameError && <p className="error-message">{nameError}</p>}
           </div>
-          <div classname='signup-box'>
+          <div className='signup-box'>
             <label className='form-label' htmlFor="password">Contraseña: </label>
             <input
               className='input-box'
@@ -175,7 +175,7 @@ const Registrar = () => {
             />
             {passwordError && <p className="error-message">{passwordError}</p>}
           </div>
-          <div classname='signup-box'>
+          <div className='signup-box'>
             <label className='form-label' htmlFor="password">Repita la contraseña: </label>
             <input
               className='input-box'
@@ -188,7 +188,7 @@ const Registrar = () => {
             />
             {rePasswordError && <p className="error-message">{rePasswordError}</p>}
           </div>
-          <div classname='signup-box'>
+          <div className='signup-box'>
             <label className='form-label' htmlFor="mail">Correo electrónico: </label>
             <input
               className='input-box'

@@ -11,6 +11,17 @@ const Carrusel = ({title, libros}) => {
 
 /*----- Botones laterales -----*/
 
+  const flechas = () => {
+    const elementosBotones = [];
+  if(libros.length > 4){
+    elementosBotones.push( <>
+      <button role='button' className='flecha-izq' onClick={handleFlechaIzq}><BsIcons.BsCaretLeftFill /></button>
+      <button role='button' className='flecha-dch' onClick={handleFlechaDch}><BsIcons.BsCaretRightFill /></button>
+    </>);
+  }
+  return elementosBotones;
+  };
+
   const handleFlechaIzq = () => {
     if (paginaActiva > 0){
       const newScrollLeft = scrollLeft - filaRef.current.offsetWidth;
@@ -53,10 +64,12 @@ const Carrusel = ({title, libros}) => {
 
 const botones = () => {
   const elementosBotones = [];
-  for(let i = 0; i < numPaginas; i++){
-    elementosBotones.push(
-    <button key={i} onClick={() => handlePaginaClick(i)} className={paginaActiva === i ? 'activo' : ''}></button>
-    );
+  if (libros.length > 4){
+    for(let i = 0; i < numPaginas; i++){
+      elementosBotones.push(
+      <button key={i} onClick={() => handlePaginaClick(i)} className={paginaActiva === i ? 'activo' : ''}></button>
+      );
+    }
   }
   return elementosBotones;
 }
@@ -96,8 +109,7 @@ return (
 
             </div>
           </div>
-          <button role='button' className='flecha-izq' onClick={handleFlechaIzq}><BsIcons.BsCaretLeftFill /></button>
-          <button role='button' className='flecha-dch' onClick={handleFlechaDch}><BsIcons.BsCaretRightFill /></button>
+          {flechas()}
         </div>
       
       </div>
