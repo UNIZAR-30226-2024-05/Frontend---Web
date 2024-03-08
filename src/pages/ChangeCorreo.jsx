@@ -4,6 +4,9 @@ import './Change.css';
 export const Changecorreo = () => {
   const [correoActual, setCorreoActual] = useState('usuarioprueba@gmail.com');
   const [nuevoCorreo, setNuevoCorreo] = useState('');
+  const [errorCorreo, setErrorCorreo] = useState('');
+
+  const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
 
   const handleNuevoCorreoChange = (event) => {
     setNuevoCorreo(event.target.value);
@@ -11,10 +14,21 @@ export const Changecorreo = () => {
 
   const handleGuardarNuevoCorreo = (event) => {
     event.preventDefault();
-    
+
+    // Validar el nuevo correo
+    if (!emailRegex.test(nuevoCorreo)) {
+      setErrorCorreo('Por favor, introduce un correo electrónico válido.');
+      return;
+    }
+
     console.log('Correo actual:', correoActual);
     console.log('Nuevo correo:', nuevoCorreo);
-    
+
+    // Limpiar el estado del error
+    setErrorCorreo('');
+
+    // Resto del código aquí...
+
     setNuevoCorreo('');
   }
 
@@ -31,13 +45,14 @@ export const Changecorreo = () => {
             type="text"
             className='input'
             id="nuevoCorreo"
-            placeholder='Introduce el nuevo correo'
+            placeholder='mail@gmail.com'
             value={nuevoCorreo}
             onChange={handleNuevoCorreoChange}
           />
           <button type="submit" className='submit'>
             Actualizar correo
           </button>
+          {errorCorreo && <p className='error'>{errorCorreo}</p>}
         </form>
       </div>
     </div>
