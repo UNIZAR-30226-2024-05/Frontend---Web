@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from 'react-router-dom';
@@ -7,22 +7,19 @@ import { TopbarInData, TopbarOutData } from './TopbarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import logo from '../../images/logo.png';
+import AuthContext from '../../context/AuthProvider';
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);
 
-    const [usuarioLogueado, setUsuarioLogueado] = useState(null);
-    const [mostrarMenu, setMostrarMenu] = useState(false);
+    const { auth , setAuth } = useContext(AuthContext);
+    const { username } = auth;
     
-    const handleInicioSesion = () => {
-        // Simulando la lógica de inicio de sesión
-        const nombreUsuario = 'UsuarioEjemplo';
-        setUsuarioLogueado(nombreUsuario);
-    };
+    const [mostrarMenu, setMostrarMenu] = useState(false);
   
     const handleCerrarSesion = () => {
         // Simulando la lógica de cierre de sesión
-        setUsuarioLogueado(null);
+        setAuth({});
         setMostrarMenu(false); // Cerrar el menú desplegable al cerrar sesión
         window.location.href = "/login";
     };
@@ -43,10 +40,10 @@ function Navbar() {
                 {/* ESTO ES TEMPORAL*/} 
 
                 <div className='menu-text'>
-        {usuarioLogueado ? (
+        {username ? (
           <>
             <button onClick={toggleMenu} className='usuario-logueado'>
-              Bienvenido, {usuarioLogueado}!
+              Bienvenido, {username}!
             </button>
             {mostrarMenu && (
               <div className='menu-desplegable'>
@@ -57,16 +54,13 @@ function Navbar() {
               </div>
             )}
           </>
-        ) : (
-          <button onClick={handleInicioSesion} className='menu-items' id='signoutButton'>
-            Iniciar sesión
-          </button>
+        ) : ( null
         )}
         </div>
                 
 
                 <div className='menu'>
-                    { usuarioLogueado ? (
+                    { username ? (
                         <>
                             <ul className='menu-items'>
                                 {TopbarInData.map((item, index) => {
