@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Carrusel from '../components/Carrusel/Carrusel';
 import './Home.css';
 import logo from '../images/logo.png';
 import Footer from '../components/Footer/Footer';
+import AuthContext from '../context/AuthProvider';
 
 import foto1 from '../images/1.png';
 import foto2 from '../images/2.jpg';
@@ -67,15 +68,24 @@ const Home = () => {
     {portada: LOTR3, titulo: 'LOTR: El retorno del rey'},
     {portada: Silmaril, titulo: 'El silmarillion'}
   ]);
+  
+  // Variables para conocer el contexto (Usuario conectado o no)
+  const { auth } = useContext(AuthContext);
+  const { username } = auth;
 
   return (
     <div className='home'>
-      <img className='foto-presentacion' src={logo} alt={'Foto presentación'}></img>
-      <div className="texto-presentacion">
-        <h2>¡Hola, somos Narratives!</h2>
-        <span>Aqui encontrarás tus libros favoritos del presente, del pasado y del futuro.</span>
-        <span>Aunque de momento contentate con Harry Potter. No se que mas poner aquí, ya veremos xD.</span>
-        </div>
+      {!username ? (
+        <>
+          {/* Cabecera si no está logueado */}
+          <img className='foto-presentacion' src={logo} alt={'Foto presentación'}></img>
+          <div className="texto-presentacion">
+            <h2>¡Hola, somos Narratives!</h2>
+            <span>Aqui encontrarás tus libros favoritos del presente, del pasado y del futuro.</span>
+            <span>Aunque de momento contentate con Harry Potter. No se que mas poner aquí, ya veremos xD.</span>
+          </div>
+        </>
+      ) : (null)}
       <Carrusel title={'Los más vendidos'} libros={libros2}/>
       <Carrusel title={'Tus recomendaciones'} libros={libros}/>
       <Carrusel title={'Saga Harry Potter'} libros={harry}/>

@@ -10,18 +10,20 @@ import logo from '../../images/logo.png';
 import AuthContext from '../../context/AuthProvider';
 
 function Navbar() {
+    // Controla el despliegue de la sidebar
     const [sidebar, setSidebar] = useState(false);
 
+    // Variables para conocer el contexto (Usuario conectado o no)
     const { auth , setAuth } = useContext(AuthContext);
     const { username } = auth;
     
+    // Controla el despliegue del menú del usuario
     const [mostrarMenu, setMostrarMenu] = useState(false);
   
     const handleCerrarSesion = () => {
-        // Simulando la lógica de cierre de sesión
-        setAuth({});
-        setMostrarMenu(false); // Cerrar el menú desplegable al cerrar sesión
-        window.location.href = "/login";
+        setAuth({}); // Lógica de cierre de sesión
+        setMostrarMenu(false); // Cierra el menú desplegable al cerrar sesión
+        window.location.href = "/login"; // Te lleva directo a iniciar sesión
     };
   
     const toggleMenu = () => setMostrarMenu(!mostrarMenu);

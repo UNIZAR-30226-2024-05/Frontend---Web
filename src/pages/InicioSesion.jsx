@@ -7,11 +7,17 @@ import axios from '../api/axios';
 const URL_LOGIN = '/users/login';
 
 const InicioSesion = () => {
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
+  // Variables para conocer el contexto (Usuario conectado o no)
   const { setAuth } = useContext(AuthContext);
+  
+  // Inicio de sesión aceptado
   const [success, setSuccess] = useState(false);
+  
+  // Gestiona los mensajes de error
   const [errMsg, setErrMsg] = useState('');
 
   const handleUsernameChange = (event) => {

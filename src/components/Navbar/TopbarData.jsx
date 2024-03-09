@@ -1,5 +1,7 @@
 import React from "react";
 
+// Datos de la barra superior logueado
+
 export const TopbarInData = [
     {
         title: 'Home',
@@ -27,6 +29,8 @@ export const TopbarInData = [
         cName: 'menu-text'
     } 
 ]
+
+// Datos de la barra superior deslogueado
 
 export const TopbarOutData = [
     {
