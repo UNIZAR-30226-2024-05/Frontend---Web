@@ -1,0 +1,10 @@
+.player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.portada{
+    width: max-content;
+    height: 50%;
+}
