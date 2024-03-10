@@ -2,9 +2,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    row-gap: 10px;
 }
+
+.volumen{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
 
 .portada{
     width: max-content;
-    height: 50%;
+    height: 40%;
+}
+
+.barraVol{
+    margin-top: 30px;
 }
