@@ -2,7 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 10px;
+}
+
+.boton{
+    margin-top: 40px;
 }
 
 .volumen{
@@ -11,6 +14,7 @@
     margin-top: 0px;
     margin-right: 5px;
     margin-left: 5px;
+    margin-bottom: 40px;
 }
 
 

@@ -18,6 +18,7 @@ const Reproductor = () => {
   const MAX = 20;
   const sonidoRef = useRef<HTMLAudioElement>(null)
 
+  //Función para cambiar el icono de play y pause además del estado del audio
   function toggleAudio(){
     if (play) {
         soundInstance.pause()
@@ -35,6 +36,7 @@ const Reproductor = () => {
     }
   }
 
+  //Función para subir o bajar el volumen
   function handleVolume(e){
     const { value } = e.target
     const volume = Number(value) / MAX
@@ -48,11 +50,12 @@ const Reproductor = () => {
         <button className='boton' type='button'
         onClick={toggleAudio}>
             {!play ? (
-                <Play  margin-top='10px' size={24}/>
+                <Play  margin-top='10px' size={40}/>
             ) : (
-                <Pause margin-top='10px' size={24}/>
+                <Pause margin-top='10px' size={40}/>
             )}
         </button>
+        {/*Barra e icono para cambiar el volumen */}
         <div className='volumen'>
           <input className='barraVol' type='range' min={0} max={MAX} onChange={(e) => handleVolume(e)}/>
           <SpeakerWaveIcon className='altavoz' color='grey' height="20px"/>
