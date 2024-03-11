@@ -8,8 +8,11 @@ import './Navbar.css';
 import { IconContext } from 'react-icons';
 import logo from '../../images/logo.png';
 import AuthContext from '../../context/AuthProvider';
+import axios from '../../api/axios';
 
 function Navbar() {
+    const URL_LOGOUT = '/users/logout';
+    
     // Controla el despliegue de la sidebar
     const [sidebar, setSidebar] = useState(false);
 
@@ -20,10 +23,33 @@ function Navbar() {
     // Controla el despliegue del menú del usuario
     const [mostrarMenu, setMostrarMenu] = useState(false);
   
-    const handleCerrarSesion = () => {
-        setAuth({}); // Lógica de cierre de sesión
-        setMostrarMenu(false); // Cierra el menú desplegable al cerrar sesión
-        window.location.href = "/login"; // Te lleva directo a iniciar sesión
+    const handleCerrarSesion = async (event) => {
+        event.preventDefault();
+    
+    try {
+      const respuesta = await axios.post(URL_LOGOUT,null);
+      console.log(JSON.stringify(respuesta?.data));
+
+      if (response.status === 200) {
+        // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
+        setAuth({});
+        setMostrarMenu(false);
+        window.location.href = '/'; // Redirige a la página de inicio
+        } else {
+        // Manejar errores de cierre de sesión
+        console.error('Error al cerrar sesión:', response.statusText);
+        }
+
+
+    } catch (err) {
+      if (!err.response) {
+        console.log('No hay respuesta del servidor');
+      } else if (err.response.status === 409) {
+        console.log('No hay sesión iniciada');
+      } else {
+        console.log('Fallo en el logout');
+      }
+    }
     };
   
     const toggleMenu = () => setMostrarMenu(!mostrarMenu);
