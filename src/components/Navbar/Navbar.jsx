@@ -27,24 +27,19 @@ function Navbar() {
         event.preventDefault();
     
     try {
-      const respuesta = await axios.post(URL_LOGOUT,null);
+      const respuesta = await axios.post(URL_LOGOUT,null,{withCredentials: true});
       console.log(JSON.stringify(respuesta?.data));
 
-      if (response.status === 200) {
-        // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
-        setAuth({});
-        setMostrarMenu(false);
-        window.location.href = '/'; // Redirige a la página de inicio
-        } else {
-        // Manejar errores de cierre de sesión
-        console.error('Error al cerrar sesión:', response.statusText);
-        }
-
+      // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
+      setAuth({});
+      setMostrarMenu(false);
+      window.location.href = '/'; // Redirige a la página de inicio
+        
 
     } catch (err) {
       if (!err.response) {
         console.log('No hay respuesta del servidor');
-      } else if (err.response.status === 409) {
+      } else if (err.response.status === 401) {
         console.log('No hay sesión iniciada');
       } else {
         console.log('Fallo en el logout');

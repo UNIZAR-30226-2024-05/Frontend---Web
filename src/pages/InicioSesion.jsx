@@ -11,7 +11,7 @@ const InicioSesion = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
-  // Variables para conocer el contexto (Usuario conectado o no)
+  // Obtener la función setAuth del contexto
   const { setAuth } = useContext(AuthContext);
   
   // Inicio de sesión aceptado
@@ -35,7 +35,8 @@ const InicioSesion = () => {
       const respuesta = await axios.post(URL_LOGIN, 
         JSON.stringify({username, password}),
         {
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true
         }
       );
       console.log(JSON.stringify(respuesta?.data));
@@ -43,6 +44,7 @@ const InicioSesion = () => {
       // Reestablecer los campos del formulario
       const roles = respuesta?.data?.roles;
       setAuth({ username, password, roles });
+
       setUsername('');
       setPassword('');
       setSuccess(true);

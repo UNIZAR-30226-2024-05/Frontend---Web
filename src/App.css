@@ -19,7 +19,8 @@
 .changepwd,
 .changenombre,
 .changefoto,
-.changecorreo {
+.changecorreo,
+.notfound {
     display: flex;
     height: 90vh;
     align-items: center;
