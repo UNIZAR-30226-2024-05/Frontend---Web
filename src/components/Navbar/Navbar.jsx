@@ -33,7 +33,7 @@ function Navbar() {
       // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
       setAuth({});
       setMostrarMenu(false);
-      window.location.href = '/'; // Redirige a la página de inicio
+      window.location.href = '/login'; // Redirige a la página de inicio
         
 
     } catch (err) {
