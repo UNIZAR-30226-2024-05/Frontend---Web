@@ -1,0 +1,28 @@
+.player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boton{
+    margin-top: 40px;
+}
+
+.volumen{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 40px;
+}
+
+
+.portada{
+    width: max-content;
+    height: 40%;
+}
+
+.barraVol{
+    margin-top: 30px;
+}
