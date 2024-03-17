@@ -1,0 +1,33 @@
+.contenedor-lista {
+    /* Estilos para el contenedor de la lista */
+    padding: 20px;
+}
+
+.contenedor-lista .lista {
+    /* Estilos para la lista de libros */
+    display: flex; /* Utiliza flexbox para alinear los libros horizontalmente */
+    flex-direction: column;
+
+}
+
+.contenedor-lista .lista .libro {
+    /* Estilos para cada libro */
+    margin-right: 20px; /* Espacio entre los libros */
+    margin-bottom: 20px; /* Espacio debajo de los libros */
+    display: flex; /* Utiliza flexbox para alinear imagen y título */
+    flex-direction: row;
+   
+}
+
+.contenedor-lista .lista .libro .portadas img{
+    /* Estilos para las imágenes de portada */
+    width: 100px; /* Ancho de la imagen */
+    height: auto; /* Altura automática para mantener la proporción */
+    margin-right: 10px; /* Espacio a la derecha de la imagen */
+}
+
+.contenedor-lista .lista .libro .titulo {
+    /* Estilos para los títulos de los libros */
+    margin: 0; /* Elimina el margen predeterminado */
+    align-self: center;
+}
