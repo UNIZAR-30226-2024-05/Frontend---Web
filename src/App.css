@@ -19,7 +19,8 @@
 .changenombre,
 .changefoto,
 .changecorreo,
-.player {
+.player
+.notfound {
     display: flex;
     margin-top: 80px;
     height: 90vh;
