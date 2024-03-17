@@ -19,7 +19,7 @@ import Changecorreo from './pages/ChangeCorreo';
 import Changefoto from './pages/ChangeFoto';
 import Changenombre from './pages/ChangeNombre';
 import Changepwd from './pages/ChangePwd';
-import NotFound from './pages/NotFound';
+import Reproductor from './pages/Reproductor';
 
 function App() {
   return (
@@ -43,7 +43,7 @@ function App() {
       <Route path='/changecorreo' Component={Changecorreo}/>
       <Route path='/changefoto' Component={Changefoto}/>
       <Route path='/changenombre' Component={Changenombre}/>
-      <Route path='*' Component={NotFound}/>
+      <Route path='/player' Component={Reproductor}/>
      </Routes>
      <Navbar />
     </Router>
