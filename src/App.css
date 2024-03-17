@@ -7,7 +7,6 @@
     font-family: 'Lato', sans-serif;
 }
 
-.biblioteca,
 .amigos,
 .mensajes,
 .soporte,
@@ -22,6 +21,7 @@
 .changecorreo,
 .notfound {
     display: flex;
+    margin-top: 80px;
     height: 90vh;
     align-items: center;
     justify-content: center;
