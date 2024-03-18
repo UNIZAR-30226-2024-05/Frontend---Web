@@ -15,26 +15,42 @@ const sound = {
 const Reproductor = () => {
   const [play, setPlay] = useState(false)
   const [soundInstance, setSoundInstance] = useState(null)
+  const [currentTime, setCurrentTime] = useState(null);
   const MAX = 20;
   const sonidoRef = useRef<HTMLAudioElement>(null)
 
   //Función para cambiar el icono de play y pause además del estado del audio
   function toggleAudio(){
     if (play) {
-        soundInstance.pause()
-        setPlay(false)
-    } else{
-      const newSoundInstance = new Howl({
-        src: [sound.waveType],
-        autoplay: true,
-        onend: () => {
-          setPlay(false);
-        }
-      });
-      setSoundInstance(newSoundInstance);
+      // Pausa el audio y almacena la posición de reproducción actual
+      soundInstance.pause();
+      setCurrentTime(soundInstance.seek());
+      setPlay(false);
+    } else {
+      // Comprueba si hay una posición de reproducción almacenada
+      if (currentTime !== null) {
+        // Si hay una posición almacenada, reanuda la reproducción desde esa posición
+        soundInstance.play();
+        soundInstance.seek(currentTime);
+      } else {
+        // Si no hay una posición almacenada, inicia la reproducción desde el principio
+        const newSoundInstance = new Howl({
+          src: [sound.waveType],
+          autoplay: true,
+          onend: () => {
+            setPlay(false);
+          }
+        });
+        setSoundInstance(newSoundInstance); // Establece la nueva instancia de sonido
+      }
+      // Restablece la posición de reproducción almacenada a null
+      setCurrentTime(null);
       setPlay(true);
     }
   }
+  
+  
+  
 
   //Función para subir o bajar el volumen
   function handleVolume(e){
