@@ -18,22 +18,22 @@ import Silmaril from '../images/Silmarillion.jpg';
 const Biblioteca = () => {
 
   const [libros, setLibros] = useState([
-    {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal'},
-    {portada: foto2, titulo: 'Harry Potter y la Cámara Secreta'},
-    {portada: foto3, titulo: 'Harry Potter y la el Prisionero de Azkaban'},
-    {portada: foto4, titulo: 'Harry Potter y el Cáliz de Fuego'},
-    {portada: foto5, titulo: 'Harry Potter y la Orden del Fénix'},
-    {portada: foto6, titulo: 'Harry Potter y el Misterio del Príncipe'},
-    {portada: foto7, titulo: 'Harry Potter y las Reliquias de la Muerte'},
-    {portada: LOTR1, titulo: 'LOTR: La comunidad del anillo'},
-    {portada: LOTR2, titulo: 'LOTR: Las dos torres'},
-    {portada: LOTR3, titulo: 'LOTR: El retorno del rey'},
-    {portada: Silmaril, titulo: 'El silmarillion'},
-    {portada: foto5, titulo: 'Libro 12'},
-    {portada: foto6, titulo: 'Libro 13'},
-    {portada: foto7, titulo: 'Libro 14'},
-    {portada: foto1, titulo: 'Libro 15'},
-    {portada: foto2, titulo: 'Libro 16'}
+    {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal', autor: 'JK Rowling'},
+    {portada: foto2, titulo: 'Harry Potter y la Cámara Secreta', autor: 'JK Rowling'},
+    {portada: foto3, titulo: 'Harry Potter y la el Prisionero de Azkaban', autor: 'JK Rowling'},
+    {portada: foto4, titulo: 'Harry Potter y el Cáliz de Fuego', autor: 'JK Rowling'},
+    {portada: foto5, titulo: 'Harry Potter y la Orden del Fénix', autor: 'JK Rowling'},
+    {portada: foto6, titulo: 'Harry Potter y el Misterio del Príncipe', autor: 'JK Rowling'},
+    {portada: foto7, titulo: 'Harry Potter y las Reliquias de la Muerte', autor: 'JK Rowling'},
+    {portada: LOTR1, titulo: 'LOTR: La comunidad del anillo', autor: 'JRR Tolkien'},
+    {portada: LOTR2, titulo: 'LOTR: Las dos torres', autor: 'JRR Tolkien'},
+    {portada: LOTR3, titulo: 'LOTR: El retorno del rey', autor: 'JRR Tolkien'},
+    {portada: Silmaril, titulo: 'El silmarillion', autor: 'JRR Tolkien'},
+    {portada: foto5, titulo: 'Libro 12', autor: 'Elpe Pino'},
+    {portada: foto6, titulo: 'Libro 13', autor: 'Elpe Pino'},
+    {portada: foto7, titulo: 'Libro 14', autor: 'Elpe Pino'},
+    {portada: foto1, titulo: 'Libro 15', autor: 'Elpe Pino'},
+    {portada: foto2, titulo: 'Libro 16', autor: 'Elpe Pino'}
   ]);
 
   return (

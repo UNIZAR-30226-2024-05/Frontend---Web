@@ -6,6 +6,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Lista = ({libros}) => {
     
+    const [listaLibros, setListaLibros] = useState(libros)
     const [busqueda, setBusqueda] = useState('');
     /*
     URL_CONSULTA = '/audiolibros/genre/:genero'
@@ -23,16 +24,26 @@ const Lista = ({libros}) => {
         getPeticion();
     },[])
     */
+
     const handleChangeBusqueda = event => {
         setBusqueda(event.target.value);
-        console.log('Busqueda: ' + event.target.value);
+        filtrar(event.target.value);
     } 
+
+    const filtrar = (terminoBusqueda) => {
+        var resultado = libros.filter((elemento) => {
+            if (elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+            || elemento.autor.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+            {return elemento;}
+        });
+        setListaLibros(resultado);
+    }
 
     return (
     <div className='contenedor-lista'>
         <div className='buscador-container'>
             <input className='buscador'
-                placeholder='Búsqueda por nombre de la obra'
+                placeholder='Búsqueda por nombre de la obra o del autor'
                 value={busqueda}
                 onChange={handleChangeBusqueda}
             />
@@ -43,7 +54,7 @@ const Lista = ({libros}) => {
         </div>
 
         <div className='lista'>
-            {libros.map((libro, i) => (
+            {listaLibros.map((libro, i) => (
                 <div key={i}
                 className='libro'>
                     <a className='portadas' href='#'>
