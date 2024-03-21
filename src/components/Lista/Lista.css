@@ -1,7 +1,7 @@
 .contenedor-lista {
     /* Estilos para el contenedor de la lista */
     text-align: center;
-    padding: 40px 30px;
+    padding: 40px 100px;
     max-width: 100% !important;
 }
 
@@ -34,17 +34,26 @@
     align-self: center;
 }
 
-  
-  .buscador{
-    width: 50% !important;
-  }
-  
   .buscador-container{
     align-items: end;
     right: 0;
     display: flex;
     justify-content: center;
     padding-bottom: 25px;
+  }
+
+  .buscador{
+    width: 50% !important;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .button-search{
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
   }
   
   @media (max-width: 988px){

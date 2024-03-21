@@ -20,7 +20,7 @@ const Biblioteca = () => {
   const [libros, setLibros] = useState([
     {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal', autor: 'JK Rowling'},
     {portada: foto2, titulo: 'Harry Potter y la Cámara Secreta', autor: 'JK Rowling'},
-    {portada: foto3, titulo: 'Harry Potter y la el Prisionero de Azkaban', autor: 'JK Rowling'},
+    {portada: foto3, titulo: 'Harry Potter y el Prisionero de Azkaban', autor: 'JK Rowling'},
     {portada: foto4, titulo: 'Harry Potter y el Cáliz de Fuego', autor: 'JK Rowling'},
     {portada: foto5, titulo: 'Harry Potter y la Orden del Fénix', autor: 'JK Rowling'},
     {portada: foto6, titulo: 'Harry Potter y el Misterio del Príncipe', autor: 'JK Rowling'},

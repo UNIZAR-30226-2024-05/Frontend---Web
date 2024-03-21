@@ -47,7 +47,7 @@ const Lista = ({libros}) => {
                 value={busqueda}
                 onChange={handleChangeBusqueda}
             />
-            <button className='buttonSearch'>
+            <button className='button-search'>
                 <FontAwesomeIcon icon={faSearch} />
             </button>
 
