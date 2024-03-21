@@ -1,0 +1,18 @@
+.biblioteca {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    /*background: #0ec3a4;*/
+    background: linear-gradient(#7f9894, #21ad96);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 1.5rem;
+}
+
+.biblioteca .lista, .biblioteca .footer {
+    width: 100%;
+}

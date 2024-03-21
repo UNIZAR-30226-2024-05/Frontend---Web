@@ -1,0 +1,68 @@
+.contenedor-lista {
+    /* Estilos para el contenedor de la lista */
+    text-align: center;
+    padding: 40px 100px;
+    max-width: 100% !important;
+}
+
+.contenedor-lista .lista {
+    /* Estilos para la lista de libros */
+    display: flex; /* Utiliza flexbox para alinear los libros horizontalmente */
+    flex-direction: column;
+
+}
+
+.contenedor-lista .lista .libro {
+    /* Estilos para cada libro */
+    margin-right: 20px; /* Espacio entre los libros */
+    margin-bottom: 20px; /* Espacio debajo de los libros */
+    display: flex; /* Utiliza flexbox para alinear imagen y título */
+    flex-direction: row;
+   
+}
+
+.contenedor-lista .lista .libro .portadas img{
+    /* Estilos para las imágenes de portada */
+    width: 100px; /* Ancho de la imagen */
+    height: auto; /* Altura automática para mantener la proporción */
+    margin-right: 10px; /* Espacio a la derecha de la imagen */
+}
+
+.contenedor-lista .lista .libro .titulo {
+    /* Estilos para los títulos de los libros */
+    margin: 0; /* Elimina el margen predeterminado */
+    align-self: center;
+}
+
+  .buscador-container{
+    align-items: end;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+  }
+
+  .buscador{
+    width: 50% !important;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .button-search{
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 988px){
+    
+    .buscador{
+        width: 100% !important;
+    }
+    
+    .buscador-container{
+        padding-bottom: 15px;
+    }
+}
