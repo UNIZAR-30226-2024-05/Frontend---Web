@@ -87,7 +87,7 @@ const Home = () => {
         </>
       ) : (null)}
       <Carrusel title={'Los más vendidos'} libros={libros2}/>
-      <Carrusel title={'Tus recomendaciones'} libros={libros}/>
+      <Carrusel title={`Recomendaciones para ${username}`} libros={libros}/>
       <Carrusel title={'Saga Harry Potter'} libros={harry}/>
       <Carrusel title={'Mundo del Señor de los Anillos'} libros={lotr}/>
       <Footer />

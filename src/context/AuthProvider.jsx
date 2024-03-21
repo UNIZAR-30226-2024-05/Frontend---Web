@@ -30,8 +30,15 @@ export const AuthProvider = ({ children }) => {
         });
     }
 
+    const updateMail = (newEmail) => {
+        setAuth({
+            ...auth,
+            correo: newEmail
+        });
+    }
+
     return(
-        <AuthContext.Provider value={{ auth, setAuth, updateUsername }}>
+        <AuthContext.Provider value={{ auth, setAuth, updateUsername, updateMail}}>
             {children}
         </AuthContext.Provider>
     )
