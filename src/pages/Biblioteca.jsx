@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Biblioteca.css';
-import Lista from '../components/Lista/Lista';
+import ListaLibros from '../components/ListaLibros/ListaLibros';
 import Footer from '../components/Footer/Footer';
 
 import foto1 from '../images/1.png';
@@ -38,7 +38,7 @@ const Biblioteca = () => {
 
   return (
     <div className='biblioteca'>
-        <Lista className='list' libros={libros}></Lista>
+        <ListaLibros className='list' libros={libros}></ListaLibros>
         <Footer className='footer' />
     </div>
   );

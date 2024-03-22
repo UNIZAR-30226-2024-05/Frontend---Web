@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../api/axios';
-import './Lista.css';
+import './ListaColecciones.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -39,6 +39,8 @@ const Lista = ({libros}) => {
         setListaLibros(resultado);
     }
 
+    {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
+
     return (
     <div className='contenedor-lista'>
         <div className='buscador-container'>
@@ -57,10 +59,10 @@ const Lista = ({libros}) => {
             {listaLibros.map((libro, i) => (
                 <div key={i}
                 className='libro'>
-                    <a className='portadas' href='#'>
+                    <a className='portadas' href='/player'>
                         <img src={libro.portada} alt={libro.titulo}></img>
                     </a>
-                    <a className='titulo' href='#'>
+                    <a className='titulo' href='/player'>
                         <h1>{libro.titulo}</h1>
                     </a>
                 </div>

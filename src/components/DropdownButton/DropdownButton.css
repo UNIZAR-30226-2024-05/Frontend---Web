@@ -1,0 +1,26 @@
+.dropdown {
+    position: relative;
+}
+
+.dropdown .dropdown-button {
+    color:white;
+    background: none;
+    border:none;
+    border-radius: 5px;
+    scale: 2;
+}
+
+.dropdown .dropdown-button:hover {
+    border: 1px solid white;
+}
+
+
+.dropdown .dropdown-menu {
+    position: absolute; /* Hace que el menú desplegable sea absoluto */
+    top: 100%; /* Lo posiciona debajo del botón */
+    left: 0; /* Lo alinea con el borde izquierdo del botón */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    /* Agrega estilos adicionales según sea necesario */
+    
+
+}
