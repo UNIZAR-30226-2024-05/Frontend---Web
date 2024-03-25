@@ -6,32 +6,62 @@
 }
 
 .contenedor-lista .lista {
-    /* Estilos para la lista de libros */
-    display: flex; /* Utiliza flexbox para alinear los libros horizontalmente */
+    /* Estilos para la lista de colecs */
+    display: flex; /* Utiliza flexbox para alinear los colecs horizontalmente */
     flex-direction: column;
 
 }
 
-.contenedor-lista .lista .libro {
-    /* Estilos para cada libro */
-    margin-right: 20px; /* Espacio entre los libros */
-    margin-bottom: 20px; /* Espacio debajo de los libros */
-    display: flex; /* Utiliza flexbox para alinear imagen y título */
-    flex-direction: row;
-   
+.contenedor-lista .lista .coleccion {
+    /* Estilos para cada coleccion */
+    margin-right: 20px; /* Espacio entre las colecciones */
+    margin-bottom: 20px; /* Espacio debajo de las colecciones */ 
+    background-color: #0000006e;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 80% 20%;
 }
 
-.contenedor-lista .lista .libro .portadas img{
+.contenedor-lista .lista .coleccion .contenido-colec {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  grid-column: span 1;
+}
+
+.contenedor-lista .lista .coleccion .contenido-colec .portadas{
+  margin: 10px;
+}
+
+.contenedor-lista .lista .coleccion .contenido-colec .portadas img{
     /* Estilos para las imágenes de portada */
     width: 100px; /* Ancho de la imagen */
     height: auto; /* Altura automática para mantener la proporción */
-    margin-right: 10px; /* Espacio a la derecha de la imagen */
+    margin: 10px;
 }
 
-.contenedor-lista .lista .libro .titulo {
-    /* Estilos para los títulos de los libros */
+.contenedor-lista .lista .coleccion .contenido-colec .nombre {
+    /* Estilos para los títulos de las colecciones */
     margin: 0; /* Elimina el margen predeterminado */
-    align-self: center;
+    color: white;
+    text-decoration: none;
+}
+
+.contenedor-lista .lista .coleccion .boton-container {
+  margin-right: 50px;
+  margin-left: auto;
+  position: relative;
+  align-self: center;
+  justify-self: flex-end;
+  grid-column: span 1;
+}
+
+.contenedor-lista .lista .coleccion .boton-container .boton-opciones{
+  position: absolute; /* Establece el posicionamiento absoluto */
+  top: calc(100% + 5px); /* Coloca el menú debajo del botón */
+  right: 0; /* Lo alinea con el borde derecho del contenedor del botón */
+  background-color: black;
+  z-index: 1; /* Asegura que esté por encima de otros elementos */
 }
 
   .buscador-container{
@@ -42,15 +72,16 @@
     padding-bottom: 25px;
   }
 
-  .buscador{
+  .buscador-container .buscador{
     width: 50% !important;
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-right: 5px;
   }
   
-  .button-search{
+  .buscador-container .button-search{
     height: 30px;
     width: 30px;
     border-radius: 10px;
@@ -58,7 +89,7 @@
   
   @media (max-width: 988px){
     
-    .buscador{
+    .buscador-container .buscador{
         width: 100% !important;
     }
     

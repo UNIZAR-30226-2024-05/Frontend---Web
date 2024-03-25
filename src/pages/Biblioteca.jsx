@@ -36,9 +36,17 @@ const Biblioteca = () => {
     {portada: foto2, titulo: 'Libro 16', autor: 'Elpe Pino'}
   ]);
 
+  const [generos, setGeneros] = useState([
+    {clave: 'fantasia', label: 'Fantasía'},
+    {clave: 'terror', label: 'Terror'},
+    {clave: 'romance', label: 'Romance'},
+    {clave: 'scifi', label: 'Ciencia Ficción'},
+    {clave: 'autoayuda', label: 'Autoayuda'}
+  ]);
+
   return (
     <div className='biblioteca'>
-        <ListaLibros className='list' libros={libros}></ListaLibros>
+        <ListaLibros className='list' libros={libros} generos={generos}></ListaLibros>
         <Footer className='footer' />
     </div>
   );

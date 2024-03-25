@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../api/axios';
 import './ListaColecciones.css';
+import DropdownButton from '../DropdownButton/DropdownButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const Lista = ({libros}) => {
+const Lista = ({colecciones}) => {
     
-    const [listaLibros, setListaLibros] = useState(libros)
+    const [listaColecciones, setListaColecciones] = useState(colecciones)
     const [busqueda, setBusqueda] = useState('');
+
+    const [opciones, setOpciones] = useState([
+        'Eliminar coleccion',
+    ]);
+
     /*
-    URL_CONSULTA = '/audiolibros/genre/:genero'
+    URL_CONSULTA = '/audiolirbos/genre/:genero'
 
     const getPeticion = async () => {
         await axios.get(URL_CONSULTA)
@@ -25,27 +31,26 @@ const Lista = ({libros}) => {
     },[])
     */
 
-    const handleChangeBusqueda = event => {
+    const handleChangeBusqueda = (event) => {
         setBusqueda(event.target.value);
         filtrar(event.target.value);
     } 
 
     const filtrar = (terminoBusqueda) => {
-        var resultado = libros.filter((elemento) => {
-            if (elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-            || elemento.autor.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+        var resultado = colecciones.filter((elemento) => {
+            if (elemento.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
             {return elemento;}
         });
-        setListaLibros(resultado);
+        setListaColecciones(resultado);
     }
 
-    {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
+    {/* En que se pueda, cambiar todo lo de colecciones por una consulta al servidor. */}
 
     return (
     <div className='contenedor-lista'>
         <div className='buscador-container'>
             <input className='buscador'
-                placeholder='Búsqueda por nombre de la obra o del autor'
+                placeholder='Búsqueda por nombre de la colección'
                 value={busqueda}
                 onChange={handleChangeBusqueda}
             />
@@ -56,15 +61,20 @@ const Lista = ({libros}) => {
         </div>
 
         <div className='lista'>
-            {listaLibros.map((libro, i) => (
+            {listaColecciones.map((coleccion, i) => (
                 <div key={i}
-                className='libro'>
-                    <a className='portadas' href='/player'>
-                        <img src={libro.portada} alt={libro.titulo}></img>
-                    </a>
-                    <a className='titulo' href='/player'>
-                        <h1>{libro.titulo}</h1>
-                    </a>
+                className='coleccion'>
+                    <div className='contenido-colec'>
+                        <a className='portadas' href='/player'>
+                            <img src={coleccion.portada} alt={coleccion.nombre}></img>
+                        </a>
+                        <a className='nombre' href='/player'>
+                            <h1>{coleccion.nombre}</h1>
+                        </a>
+                    </div>
+                    <div className='boton-container'>
+                        <DropdownButton className='boton-opciones' options={opciones} />
+                    </div>
                 </div>
               ))}
         </div>

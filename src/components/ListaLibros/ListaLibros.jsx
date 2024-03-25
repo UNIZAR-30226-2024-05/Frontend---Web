@@ -6,10 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaLibros = ({libros}) => {
+const ListaLibros = ({libros, generos}) => {
     
     const [listaLibros, setListaLibros] = useState(libros)
     const [busqueda, setBusqueda] = useState('');
+    const [generoSeleccionado, setGeneroSeleccionado] = useState('');
 
     const [opciones, setOpciones] = useState([
         'Añadir a favoritos',
@@ -20,7 +21,7 @@ const ListaLibros = ({libros}) => {
     /*
     URL_CONSULTA = '/audiolibros/genre/:genero'
 
-    const getPeticion = async () => {
+    const handleBusqueda = async () => {
         await axios.get(URL_CONSULTA)
         .then(response=>{
             console.log(response.data);
@@ -48,17 +49,32 @@ const ListaLibros = ({libros}) => {
         setListaLibros(resultado);
     }
 
+    const handleGeneroChange = (event) => {
+        setGeneroSeleccionado(event.target.value);
+    };
+
+    const handleBusqueda = () => {
+        console.log(generoSeleccionado);
+    };
+
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
 
     return (
     <div className='contenedor-lista'>
         <div className='buscador-container'>
+            <select className="selector-generos" onChange={handleGeneroChange} value={generoSeleccionado}>
+                <option value="">Todos los géneros</option>
+                {generos.map((genero) => (
+                        <option key={genero.clave} value={genero.clave}>{genero.label}</option>
+                ))}
+                {/* Agrega más opciones de géneros según sea necesario */}
+  </select>
             <input className='buscador'
                 placeholder='Búsqueda por nombre de la obra o del autor'
                 value={busqueda}
                 onChange={handleChangeBusqueda}
             />
-            <button className='button-search'>
+            <button className='button-search' onClick={handleBusqueda}>
                 <FontAwesomeIcon icon={faSearch} />
             </button>
 
