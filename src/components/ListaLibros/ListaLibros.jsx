@@ -4,6 +4,7 @@ import './ListaLibros.css';
 import DropdownButton from '../DropdownButton/DropdownButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import Cookie from 'js-cookie';
 
 const ListaLibros = ({libros}) => {
     
@@ -12,8 +13,8 @@ const ListaLibros = ({libros}) => {
 
     const [opciones, setOpciones] = useState([
         'Añadir a favoritos',
-        'Añadir a colecciones',
-        'Ver al artista'
+        'Añadir a escuchar mas tarde',
+        'Añadir a colecciones'
     ]);
 
     /*

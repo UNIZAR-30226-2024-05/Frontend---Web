@@ -26,6 +26,7 @@
   display: flex;
   align-items: center;
   flex: 1;
+  grid-column: span1;
 }
 
 .contenedor-lista .lista .libro .contenido-libro .portadas{
@@ -47,14 +48,20 @@
 }
 
 .contenedor-lista .lista .libro .boton-container {
-  align-self: center;
-  justify-self: center;
   margin-right: 50px;
-  
+  margin-left: auto;
+  position: relative;
+  align-self: center;
+  justify-self: flex-end;
+  grid-column: span1;
 }
 
 .contenedor-lista .lista .libro .boton-container .boton-opciones{
-
+  position: absolute; /* Establece el posicionamiento absoluto */
+  top: calc(100% + 5px); /* Coloca el menú debajo del botón */
+  right: 0; /* Lo alinea con el borde derecho del contenedor del botón */
+  background-color: black;
+  z-index: 1; /* Asegura que esté por encima de otros elementos */
 }
 
   .buscador-container{

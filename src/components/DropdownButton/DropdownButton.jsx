@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MdMoreVert } from 'react-icons/md'; // Importa el ícono de tres puntos
 import './DropdownButton.css';
 
 const DropdownButton = ({ options }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleToggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -15,21 +16,32 @@ const DropdownButton = ({ options }) => {
     // Por ejemplo, cerrar el menú desplegable, ejecutar una función, etc.
   };
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+    }
+};
+
+useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+    };
+}, []);
+
   return (
-    <div>
-        <div className="dropdown">
-            <button className="dropdown-button" onClick={handleToggleDropdown}>
-                <MdMoreVert /> {/* Icono de tres puntos */}
-            </button>
-        </div>
+    <div className="dropdown-container" ref={dropdownRef}>
+        <button className="dropdown-button" onClick={handleToggleDropdown}>
+            <MdMoreVert /> {/* Icono de tres puntos */}
+        </button>
         {isOpen && (
-            <ul className="dropdown-menu">
+            <div className="dropdown-menu">
                 {options.map((option, index) => (
-                    <li key={index} onClick={() => handleOptionClick(option)}>
-                        {option}
-                    </li>
+                    <div key={index}>
+                        <button onClick={() => handleOptionClick(option)}>{option}</button>
+                    </div>
                 ))}
-            </ul>
+            </div>
         )}
     </div>
   );

@@ -1,26 +1,41 @@
-.dropdown {
+.dropdown-container {
     position: relative;
+
 }
 
-.dropdown .dropdown-button {
-    color:white;
+.dropdown-button {
+    display: inline-block;
     background: none;
-    border:none;
-    border-radius: 5px;
-    scale: 2;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
 }
-
-.dropdown .dropdown-button:hover {
+.dropdown-button:hover {
     border: 1px solid white;
 }
 
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px); /* Alinea el menú justo debajo del botón principal */
+    left: 0;
+    background: none;
+    min-width: 160px;
+    z-index: 100;
 
-.dropdown .dropdown-menu {
-    position: absolute; /* Hace que el menú desplegable sea absoluto */
-    top: 100%; /* Lo posiciona debajo del botón */
-    left: 0; /* Lo alinea con el borde izquierdo del botón */
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-    /* Agrega estilos adicionales según sea necesario */
-    
+} 
 
+.dropdown-menu .dropdown-menu-button {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
+
+  
+.dropdown-menu .dropdown-menu-button:hover {
+    background-color: #ddd;
+  }
