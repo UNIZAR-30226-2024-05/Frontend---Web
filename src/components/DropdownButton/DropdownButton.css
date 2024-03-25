@@ -13,7 +13,7 @@
     border-radius: 10px;
 }
 .dropdown-button:hover {
-    border: 1px solid white;
+    background-color: #0ec3a587;
 }
 
 .dropdown-menu {
@@ -26,16 +26,17 @@
 
 } 
 
-.dropdown-menu .dropdown-menu-button {
+.dropdown-menu button{
     width: 100%;
     padding: 10px;
-    text-align: left;
-    border: none;
-    background: none;
+    text-align: center;
+    border-radius: 10px;
+    background: #0ec3a5;
+    color: white;
     cursor: pointer;
 }
 
   
-.dropdown-menu .dropdown-menu-button:hover {
-    background-color: #ddd;
+.dropdown-menu button:hover {
+    background-color: #08b094;
   }
