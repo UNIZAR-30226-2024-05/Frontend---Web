@@ -7,13 +7,13 @@ const Carrusel = ({title, libros}) => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [paginaActiva, setPaginaActiva] = useState(0);
 
-  const numPaginas = Math.ceil(libros.length / 4);
+  const numPaginas = Math.ceil(libros.length / 6);
 
 /*----- Botones laterales -----*/
 
   const flechas = () => {
     const elementosBotones = [];
-  if(libros.length > 4){
+  if(libros.length > 6){
     elementosBotones.push( <>
       <button role='button' className='flecha-izq' onClick={handleFlechaIzq}><BsIcons.BsCaretLeftFill /></button>
       <button role='button' className='flecha-dch' onClick={handleFlechaDch}><BsIcons.BsCaretRightFill /></button>
@@ -64,7 +64,7 @@ const Carrusel = ({title, libros}) => {
 
 const botones = () => {
   const elementosBotones = [];
-  if (libros.length > 4){
+  if (libros.length > 6){
     for(let i = 0; i < numPaginas; i++){
       elementosBotones.push(
       <button key={i} onClick={() => handlePaginaClick(i)} className={paginaActiva === i ? 'activo' : ''}></button>
