@@ -1,9 +1,11 @@
+/*
 .libro {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
   }
   
   .portada {
+    justify-content: left;
     width: 45%;
     margin-top: 150px;
     margin-left: 100px;
@@ -44,21 +46,21 @@
   }
 
   .star {
-    color: transparent; /* Color transparente por defecto */
+    color: transparent; // Color transparente por defecto 
   }
   
   .filled {
-    color: gold; /* Color dorado para las estrellas llenas */
+    color: gold; // Color dorado para las estrellas llenas 
   }
   
   .half {
     position: relative;
-    color: gold; /* Color dorado para las estrellas medias */
+    color: gold; // Color dorado para las estrellas medias 
   }
   
   .half::before {
     position: absolute;
-    content: '\00bd'; /* Representa media estrella */
+    content: '\00bd'; // Representa media estrella 
     left: 0;
     width: 50%;
     overflow: hidden;
@@ -66,7 +68,7 @@
   }
   
   .empty {
-    color: #ccc; /* Color gris para las estrellas vacías */
+    color: #ccc; // Color gris para las estrellas vacías 
   }
 
   .reproducir {
@@ -100,7 +102,7 @@
     width: 30%;
     height: 50px;
     background-color: #0fa7b2;
-    border: none; /* Elimina el borde */
+    border: none; // Elimina el borde 
     border-radius: 10px;
     padding: 2px 5px;
     justify-self: center;
@@ -109,13 +111,13 @@
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    cursor: pointer; /* Agrega un cursor al botón */
-    color: #000; /* Cambia el color del texto */
+    cursor: pointer; // Agrega un cursor al botón 
+    color: #000; // Cambia el color del texto 
 }
 
 .btnFavoritos {
     text-decoration: none;
-    color: inherit; /* Hereda el color del texto del botón */
+    color: inherit; // Hereda el color del texto del botón 
     background-color: inherit;
     display: flex;
     justify-content: center;
@@ -132,6 +134,7 @@
 
  
 .detalles {
+    justify-content: right;
     margin-top: 150px;
     width: 55%;
   }
@@ -160,7 +163,7 @@
     margin-top: 30px;
     font-size: 1.7rem;
     background-color: #f2f2f2;
-    border: none; /* Elimina el borde */
+    border: none; // Elimina el borde 
     border-radius: 10px;
     padding: 2px 5px;
     justify-self: center;
@@ -177,4 +180,156 @@
     margin-right: 200px;
 }
 
+*/
 
+
+
+.libro {
+  display: flex;
+  flex-direction: row;
+}
+
+.portada{
+    justify-content: center;
+    width: 30%;
+    margin-top: 6%;
+    margin-left: 6%;  
+}
+
+.portada img {
+  width: 50%;
+  height: 50%;
+}
+
+.star {
+  color: transparent; 
+}
+
+.filled {
+  color: gold;
+}
+
+.half {
+  position: relative;
+  color: gold; 
+}
+
+.half::before {
+  position: absolute;
+  content: '\00bd'; 
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+  color: transparent;
+}
+
+.empty {
+  color: #ccc; 
+}
+
+.enlace-amazon {
+  margin-top: 30px;
+  width: 30%;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: #0fa7b2;
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
+}
+
+.reproducir {
+  margin-top: 30px;
+  width: 30%;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: #0fa7b2;
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+}
+
+.añadir-favoritos {
+  margin-top: 30px;
+  width: 30%;
+  height: 50px;
+  background-color: #0fa7b2;
+  border: none; 
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer; 
+  color: #000; 
+}
+
+.btnFavoritos {
+  text-decoration: none;
+  color: inherit; 
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.btnFavoritos svg {
+  margin-right: 10px;
+}
+
+.detalles {
+  justify-content: center;
+  width: 55%;
+  margin-top: 6%; 
+}
+
+.titulo {
+  font-size: 1.8rem;
+  margin-bottom: 2%;
+}
+
+.descripcion {
+  font-size: 1.3rem;
+  margin-bottom: 2%;
+}
+
+.autor {
+  margin-top: 5%;
+  font-size: 1.7rem;
+  margin-bottom: 2%;
+}
+
+.genero {
+  margin-bottom: 5%;
+  font-size: 1.7rem;
+}
+
+.capitulos {
+  margin-top: 5%;
+  font-size: 1.7rem;
+  background-color: #f2f2f2;
+  border: none; 
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
+}
+
+.tituloCap {
+  font-size: 1.7rem;
+  margin-bottom: 2%;
+}
+
+.comentarios{
+  margin-top: 5%;
+}

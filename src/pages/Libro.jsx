@@ -127,12 +127,12 @@ const Libro = () => {
                         ))}
                     </div>
                 </div>
+                {/* Comentarios de los oyentes al final*/}
+                <div className="comentarios">
+                    <h2>Comentarios de los oyentes</h2>
+                </div>
             </div>
             
-            {/* Comentarios de los oyentes al final*/}
-            <div className="comentarios">
-                <h2>Comentarios de los oyentes</h2>
-            </div>
         </div>  
     );
 }
