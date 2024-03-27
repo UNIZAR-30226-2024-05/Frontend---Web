@@ -4,6 +4,7 @@ import './Home.css';
 import logo from '../images/logo.png';
 import Footer from '../components/Footer/Footer';
 import AuthContext from '../context/AuthProvider';
+import { Link } from 'react-router-dom';
 
 import foto1 from '../images/1.png';
 import foto2 from '../images/2.jpg';
@@ -84,6 +85,11 @@ const Home = () => {
             <span>Aqui encontrarás tus libros favoritos del presente, del pasado y del futuro.</span>
             <span>Aunque de momento contentate con Harry Potter. No se que mas poner aquí, ya veremos xD.</span>
           </div>
+          <Link to="/libro">
+            <button className='libro'>
+              Libro
+            </button>
+          </Link>
         </>
       ) : (null)}
       <Carrusel title={'Los más vendidos'} libros={libros2}/>
