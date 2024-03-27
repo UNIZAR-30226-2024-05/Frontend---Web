@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Biblioteca.css';
-import Lista from '../components/Lista/Lista';
+import ListaLibros from '../components/ListaLibros/ListaLibros';
 import Footer from '../components/Footer/Footer';
 
 import foto1 from '../images/1.png';
@@ -36,9 +36,17 @@ const Biblioteca = () => {
     {portada: foto2, titulo: 'Libro 16', autor: 'Elpe Pino'}
   ]);
 
+  const [generos, setGeneros] = useState([
+    {clave: 'fantasia', label: 'Fantasía'},
+    {clave: 'terror', label: 'Terror'},
+    {clave: 'romance', label: 'Romance'},
+    {clave: 'scifi', label: 'Ciencia Ficción'},
+    {clave: 'autoayuda', label: 'Autoayuda'}
+  ]);
+
   return (
     <div className='biblioteca'>
-        <Lista className='list' libros={libros}></Lista>
+        <ListaLibros className='list' libros={libros} generos={generos}></ListaLibros>
         <Footer className='footer' />
     </div>
   );
