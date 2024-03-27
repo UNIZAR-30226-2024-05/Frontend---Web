@@ -4,6 +4,7 @@ import './Home.css';
 import logo from '../images/logo.png';
 import Footer from '../components/Footer/Footer';
 import AuthContext from '../context/AuthProvider';
+import { Link } from 'react-router-dom';
 
 import foto1 from '../images/1.png';
 import foto2 from '../images/2.jpg';
@@ -76,8 +77,7 @@ const Home = () => {
   return (
     <div className='home'>
       {!username ? (
-        <>
-          {/* Cabecera si no está logueado */}
+        <>{/* Cabecera si no está logueado */}
           <img className='foto-presentacion' src={logo} alt={'Foto presentación'}></img>
           <div className="texto-presentacion">
             <h2>¡Hola, somos Narratives!</h2>
@@ -85,7 +85,15 @@ const Home = () => {
             <span>Aunque de momento contentate con Harry Potter. No se que mas poner aquí, ya veremos xD.</span>
           </div>
         </>
-      ) : (null)}
+      ) : (<> {/* Cabecera si está logueado */}
+          <Link to='/player' className='foto-presentacion'>
+            <img className='foto-presentacion' src={foto1} alt={'Portada-ultimo-leido'}></img>
+          </Link>
+          <div className="texto-presentacion">
+            <h2>Continua tu lectura</h2>
+            <span>Pincha en la portada para continuar por donde lo dejaste.</span>
+          </div>
+        </>)}
       <Carrusel title={'Los más vendidos'} libros={libros2}/>
       <Carrusel title={`Recomendaciones para ${username}`} libros={libros}/>
       <Carrusel title={'Saga Harry Potter'} libros={harry}/>
