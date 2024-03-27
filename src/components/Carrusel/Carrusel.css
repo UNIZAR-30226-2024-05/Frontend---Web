@@ -80,11 +80,8 @@
 }
 
 .carrusel-libros .contenedor-carrusel .carrusel .libro {
-<<<<<<< HEAD
     min-width: 16.666%;
-=======
-    min-width: 16.666%;
->>>>>>> Colecciones
+    max-width: min-content;
     height: auto;
     transition-duration: 100ms;
 }
