@@ -22,6 +22,7 @@ import Changenombre from './pages/ChangeNombre';
 import Changepwd from './pages/ChangePwd';
 import Reproductor from './pages/Reproductor';
 import NotFound from './pages/NotFound';
+import Libro from './pages/Libro';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
       <Route path='/changenombre' element={<ProtectedRoute element={Changenombre} />}/>
       <Route path='/player' element={<ProtectedRoute element={Reproductor} />}/>
       <Route path='*' element={<NotFound />}/>
+      <Route path='/libro' element={<Libro />}/>
      </Routes>
      <Navbar />
     </Router>
