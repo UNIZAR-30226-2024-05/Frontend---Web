@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './InicioSesion.css';
 import AuthContext from '../context/AuthProvider';
@@ -12,7 +12,7 @@ const InicioSesion = () => {
   const [password, setPassword] = useState('');
   
   // Obtener la función setAuth del contexto
-  const { setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   
   // Inicio de sesión aceptado
   const [success, setSuccess] = useState(false);
@@ -27,6 +27,13 @@ const InicioSesion = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
+  useEffect(() => {
+    // Verifica si auth tiene algo y establece success en true
+    if (Object.keys(auth).length !== 0) {
+      setSuccess(true);
+    }
+  }, [auth]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,7 +54,6 @@ const InicioSesion = () => {
 
       setUsername('');
       setPassword('');
-      setSuccess(true);
 
     } catch (err) {
       if (!err.response) {

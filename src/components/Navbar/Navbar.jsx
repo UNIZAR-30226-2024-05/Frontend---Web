@@ -27,6 +27,7 @@ function Navbar() {
         event.preventDefault();
     
     try {
+        setAuth({}); /* MIENTRAS NO FUNCIONE LA SESIÓN */
       const respuesta = await axios.post(URL_LOGOUT,null,{withCredentials: true});
       console.log(JSON.stringify(respuesta?.data));
 

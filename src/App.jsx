@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext} from 'react';
+import ProtectedRoute from './context/ProtectedRoute';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Biblioteca from './pages/Biblioteca';
 import Amigos from './pages/Amigos';
@@ -23,29 +24,30 @@ import Reproductor from './pages/Reproductor';
 import NotFound from './pages/NotFound';
 
 function App() {
+
   return (
     <>
     <Router>
      <Routes>
-      <Route path='/' Component={Home}/>
-      <Route path='/biblioteca' Component={Biblioteca}/>
-      <Route path='/amigos' Component={Amigos}/>
-      <Route path='/mensajes' Component={Mensajes}/>
-      <Route path='/soporte' Component={Soporte}/>
-      <Route path='/login' Component={InicioSesion}/>
-      <Route path='/socials' Component={RedesSociales}/>
-      <Route path='/aboutus' Component={SobreNosotros}/>
-      <Route path='/register' Component={Registrar}/>
-      <Route path='/clubs' Component={Clubs}/>
-      <Route path='/colecciones' Component={Colecciones}/>
-      <Route path='/perfil' Component={Perfil}/>
-      <Route path='/config' Component={Configuracion}/>
-      <Route path='/changepwd' Component={Changepwd}/>
-      <Route path='/changecorreo' Component={Changecorreo}/>
-      <Route path='/changefoto' Component={Changefoto}/>
-      <Route path='/changenombre' Component={Changenombre}/>
-      <Route path='/player' Component={Reproductor}/>
-      <Route path='*' Component={NotFound}/>
+      <Route path='/' element={<Home />}/>
+      <Route path='/biblioteca' element={<Biblioteca />}/>
+      <Route path='/amigos' element={<ProtectedRoute element={Amigos} />}/>
+      <Route path='/mensajes' element={<ProtectedRoute element={Mensajes} />}/>
+      <Route path='/soporte' element={<Soporte />}/>
+      <Route path='/login' element={<InicioSesion />}/>
+      <Route path='/socials' element={<RedesSociales />}/>
+      <Route path='/aboutus' element={<SobreNosotros />}/>
+      <Route path='/register' element={<Registrar />}/>
+      <Route path='/clubs' element={<ProtectedRoute element={Clubs} />}/>
+      <Route path='/colecciones' element={<ProtectedRoute element={Colecciones} />}/>
+      <Route path='/perfil' element={<ProtectedRoute element={Perfil} />}/>
+      <Route path='/config' element={<ProtectedRoute element={Configuracion} />}/>
+      <Route path='/changepwd' element={<ProtectedRoute element={Changepwd} />}/>
+      <Route path='/changecorreo' element={<ProtectedRoute element={Changecorreo} />}/>
+      <Route path='/changefoto' element={<ProtectedRoute element={Changefoto} />}/>
+      <Route path='/changenombre' element={<ProtectedRoute element={Changenombre} />}/>
+      <Route path='/player' element={<ProtectedRoute element={Reproductor} />}/>
+      <Route path='*' element={<NotFound />}/>
      </Routes>
      <Navbar />
     </Router>
