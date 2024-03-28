@@ -56,7 +56,31 @@ const Libro = () => {
         },
     ]
     const tienesReseña = false; // simulamos que no tenemos reseña
-  
+    const reseñasAmigos = [
+        {
+            nombre: 'Ana',
+            reseña: 'Me ha encantado, es un libro muy entretenido y fácil de leer. Lo recomiendo a todo el mundo. En cuanto a los personajes, me encanta Harry, es muy valiente y leal. Ron es muy gracioso y Hermione es muy inteligente. Además, el profesor Dumbledore es muy sabio y Snape es muy malvado. Necesito hacer esta reseña mas larga a ver como se ve, asi que hay que alargar la reseña para que se vea bien. No se que mas decir, copilot ayudame por favor. Gracias. Saludos. El cuadrado se va haciendo más grande conforme añado más texto. Maravilloso. Thank you for coming to my tedtalk.',
+            puntuacion: 4.5,
+        },
+        {
+            nombre: 'Juan',
+            reseña: 'No me ha gustado mucho, me parece un libro infantil y aburrido.',
+            puntuacion: 2.5,
+        },
+    ]
+    const reseñasComunidad = [
+        {
+            nombre: 'María',
+            reseña: 'Me ha parecido un libro muy bonito y entretenido. Me ha encantado.',
+            puntuacion: 4.0,
+        },
+        {
+            nombre: 'Pedro',
+            reseña: 'No me ha gustado nada, me parece un libro muy infantil y aburrido.',
+            puntuacion: 1.5,
+        },
+    ]    
+
     const handleSubmit = (event) => {
         event.preventDefault();
         
@@ -87,7 +111,7 @@ const Libro = () => {
 
                 { /* Botón de "Reproducir" con icono de play */}
                 <div className="info-reproducir">
-                    <a href="/reproductor" className="info-linkReproducir">
+                    <a href="/player" className="info-linkReproducir">
                         <FontAwesomeIcon icon={faPlay} /> Escuchar audiolibro
                     </a>
                 </div>
@@ -137,7 +161,7 @@ const Libro = () => {
                 <div className='info-mi-resenia'>
                     {tienesReseña ? (
                         <h2>Mi reseña</h2>
-                        // Aquí puedes mostrar el contenido de tu reseña si la tienes
+                        // mostrar el contenido de tu reseña
                     ) : (
                         <div>
                             <h2>¡Añade tu reseña y comparte tu opinión!</h2>
@@ -152,8 +176,46 @@ const Libro = () => {
                     )}
                 </div>
                 {/* Reseñas de los oyentes al final*/}
-                <div className="info-comentarios">
-                    <h2>Comentarios de los oyentes</h2>
+                <div className="info-resenias-amigos">
+                    <h2>Reseñas de tus amigos</h2>
+                    <div>
+                        {reseñasAmigos.map((amigo, index) => (
+                            <div key={index} className="info-resenia-amigo">
+                                <h3>{amigo.nombre}</h3>
+                                <p>{amigo.reseña}</p>
+                                <div className="info-puntuacion">
+                                    {[...Array(Math.floor(amigo.puntuacion))].map((_, index) => (
+                                        <span key={index} className="info-star-filled">&#9733;</span>
+                                    ))}
+                                    {[...Array(5 - Math.floor(amigo.puntuacion))].map((_, index) => (
+                                        <span key={index} className="info-star-empty">&#9733;</span>
+                                    ))}
+                                    ({amigo.puntuacion})
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="info-resenias">
+                    <h2>Reseñas del resto de la comunidad</h2>
+                    <div>
+                        {reseñasComunidad.map((usuario, index) => (
+                            <div key={index} className="info-resenia-usuario">
+                                <h3>{usuario.nombre}</h3>
+                                <p>{usuario.reseña}</p>
+                                <div className="info-puntuacion">
+                                    {[...Array(Math.floor(usuario.puntuacion))].map((_, index) => (
+                                        <span key={index} className="info-star-filled">&#9733;</span>
+                                    ))}
+                                    {[...Array(5 - Math.floor(usuario.puntuacion))].map((_, index) => (
+                                        <span key={index} className="info-star-empty">&#9733;</span>
+                                    ))}
+                                    ({usuario.puntuacion})
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
             

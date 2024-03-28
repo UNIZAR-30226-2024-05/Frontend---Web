@@ -1,188 +1,3 @@
-/*
-.libro {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .portada {
-    justify-content: left;
-    width: 45%;
-    margin-top: 150px;
-    margin-left: 100px;
-    margin-right: -400px;
-  }
-  
-  .portada img {
-    width: 25%;
-    height: auto;
-  }
- 
-  .puntuacion {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 50px;
-    width: 30%;
-  }
-
-  .enlace-amazon {
-    margin-top: 30px;
-    width: 30%;
-    height: 50px;
-    font-size: 1.2rem;
-    background-color: #0fa7b2;
-    border-radius: 10px;
-    padding: 2px 5px;
-    justify-self: center;
-    align-self: center;
-  }
-
-  .linkCompra {
-    text-decoration: none;
-    color: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-
-  .star {
-    color: transparent; // Color transparente por defecto 
-  }
-  
-  .filled {
-    color: gold; // Color dorado para las estrellas llenas 
-  }
-  
-  .half {
-    position: relative;
-    color: gold; // Color dorado para las estrellas medias 
-  }
-  
-  .half::before {
-    position: absolute;
-    content: '\00bd'; // Representa media estrella 
-    left: 0;
-    width: 50%;
-    overflow: hidden;
-    color: transparent;
-  }
-  
-  .empty {
-    color: #ccc; // Color gris para las estrellas vacías 
-  }
-
-  .reproducir {
-    margin-top: 30px;
-    width: 30%;
-    height: 50px;
-    font-size: 1.2rem;
-    background-color: #0fa7b2;
-    border-radius: 10px;
-    padding: 2px 5px;
-    justify-self: center;
-    align-self: center;
-    justify-content: center;
-  }
-
-  .linkReproducir {
-    text-decoration: none;
-    color: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-
-  .linkReproducir svg {
-    margin-right: 10px;
-  }
-
-  .añadir-favoritos {
-    margin-top: 30px;
-    width: 30%;
-    height: 50px;
-    background-color: #0fa7b2;
-    border: none; // Elimina el borde 
-    border-radius: 10px;
-    padding: 2px 5px;
-    justify-self: center;
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    cursor: pointer; // Agrega un cursor al botón 
-    color: #000; // Cambia el color del texto 
-}
-
-.btnFavoritos {
-    text-decoration: none;
-    color: inherit; // Hereda el color del texto del botón 
-    background-color: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 0 20px;
-    border: none;
-    font-size: 1.2rem;
-}
-
-.btnFavoritos svg {
-    margin-right: 10px;
-}
-
- 
-.detalles {
-    justify-content: right;
-    margin-top: 150px;
-    width: 55%;
-  }
-
-.titulo {
-    font-size: 1.8rem;
-    margin-bottom: 50px;
-}
-
-.descripcion {
-    font-size: 1.3rem;
-    margin-bottom: 50px;
-}
-
-.autor {
-    margin-top: 30px;
-    font-size: 1.7rem;
-}
-
-.genero {
-    margin-top: 30px;
-    font-size: 1.7rem;
-}
-
-.capitulos {
-    margin-top: 30px;
-    font-size: 1.7rem;
-    background-color: #f2f2f2;
-    border: none; // Elimina el borde 
-    border-radius: 10px;
-    padding: 2px 5px;
-    justify-self: center;
-    align-self: center;
-}
-
-.tituloCap {
-    font-size: 1.7rem;
-    margin-bottom: 20px;
-}
-
-.comentarios{
-    margin-top: 2000px;
-    margin-right: 200px;
-}
-
-*/
-
-
 
 .info-libro {
   display: flex;
@@ -191,6 +6,7 @@
 
 .info-portada{
     justify-content: center;
+    height: 30%;
     width: 30%;
     margin-top: 6%;
     margin-left: 6%;  
@@ -348,6 +164,7 @@
   font-size: 1.7rem;
 }
 
+/* Bloqie con todos los capitulos del libro*/
 .info-capitulos {
   margin-top: 5%;
   font-size: 1.7rem;
@@ -359,15 +176,17 @@
   align-self: center;
 }
 
+/* Palabra Capítulos*/
 .info-tituloCap {
   font-size: 1.7rem;
   margin-bottom: 2%;
 }
 
+/* Parte donde se escribe mi reseña*/
 .info-mi-resenia {
   margin-top: 5%;
   width: 100%;
-  height: 18%; /* Ajusta la altura según tus preferencias */
+  height: 11%; /* Ajusta la altura según tus preferencias */
   resize: vertical; /* Permite redimensionar verticalmente */
   padding: 10px; /* Añade algo de relleno para que se vea mejor */
   font-size: 1rem; /* Tamaño de la fuente */
@@ -375,11 +194,13 @@
   border-radius: 5px;
 }
 
+/* Form para añadir reseña*/
 .info-anadir-mia {
   margin-top: 2%;
 
 }
 
+/* Cuadro de texto*/
 .info-texto-resenia {
   width: 100%;
   height: 150%; 
@@ -390,6 +211,7 @@
   border-radius: 5px;
 }
 
+/* Boton de subir reseña*/
 .info-subir-resenia {
   margin-top: 2%;
   margin-left: 80%;
@@ -403,6 +225,35 @@
   align-self: center;
 }
 
-.info-comentarios{
+/* Las segundas que aparecen son las reseñas de los amigos*/
+.info-resenias-amigos{
   margin-top: 5%;
+}
+
+/* Caja de cada reseña*/
+.info-resenia-amigo {
+  margin-top: 5%;
+  width: 100%;
+  height: 18%; 
+  resize: vertical; 
+  padding: 10px; 
+  font-size: 1rem; 
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+
+}
+
+.info-resenias {
+  margin-top: 5%;
+}
+
+.info-resenia-usuario {
+  margin-top: 5%;
+  width: 100%;
+  height: 18%; 
+  resize: vertical; 
+  padding: 10px; 
+  font-size: 1rem; 
+  border: 1px solid #ccc; 
+  border-radius: 5px;
 }
