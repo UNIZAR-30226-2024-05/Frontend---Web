@@ -23,6 +23,7 @@
   justify-content: flex-start;
   margin-top: 5%;
   width: 30%;
+  font-size: 2.0rem;
 }
 
 .info-star {
@@ -182,6 +183,20 @@
   margin-bottom: 2%;
 }
 
+/* Mi puntuacion */
+.info-mi-puntuacion {
+  margin-top: 5%;
+  font-size: 1.7rem;
+}
+
+.info-mis-estrellas {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 4%;
+  width: 30%;
+  cursor: pointer;
+}
+
 /* Parte donde se escribe mi reseña*/
 .info-mi-resenia {
   margin-top: 5%;
@@ -257,3 +272,4 @@
   border: 1px solid #ccc; 
   border-radius: 5px;
 }
+

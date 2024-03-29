@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Libro.css'; 
 import foto1 from '../images/1.png';
 
@@ -81,10 +81,27 @@ const Libro = () => {
         },
     ]    
 
+    const [puntuacionUsuario, setPuntuacionUsuario] = useState(0);
+    const [puntuacionGuardada, setPuntuacionGuardada] = useState(0);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         
     }
+
+    const handleClick = (index) => {
+        const nuevaPuntuacion = index + 1;
+        setPuntuacionUsuario(nuevaPuntuacion);
+        setPuntuacionGuardada(nuevaPuntuacion);
+    };
+    
+    const handleMouseEnter = (index) => {
+        setPuntuacionUsuario(index + 1);
+    };
+    
+    const handleMouseLeave = () => {
+        setPuntuacionUsuario(puntuacionGuardada);
+    };
 
     return (
         <div className='info-libro'>
@@ -154,6 +171,20 @@ const Libro = () => {
                                 <span>{capitulo.titulo}</span>
                                 <span>{capitulo.duracion}</span>
                             </li>
+                        ))}
+                    </div>
+                </div>
+                {/* Mi puntuación */}
+                <div className='info-mi-puntuacion'>
+                    <h2>Mi puntuación</h2>
+                    <div className='info-mis-estrellas'>
+                        {[...Array(5)].map((_, index) => (
+                            <span key={index}
+                                className={(index < puntuacionUsuario) ? "info-star-filled" : "info-star-empty"}
+                                onClick={() => handleClick(index)}
+                                onMouseEnter={() => handleMouseEnter(index)}
+                                onMouseLeave={handleMouseLeave}
+                            >&#9733;</span>
                         ))}
                     </div>
                 </div>
