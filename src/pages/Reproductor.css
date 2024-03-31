@@ -2,12 +2,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #0fa7b2;
+}
+.botones{
+    display: flex;
+    flex-direction: row;
 }
 
-.boton{
+.boton, .siguienteCancion, .anteriorCancion{
     margin-top: 40px;
 }
 
+.progressbar{
+    margin-top: 2%;
+    width: 450px;
+    height: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: stretch;
+
+    border-radius: 60px;
+    background-color: #494b52;
+    box-shadow: 0px 0px 20px #111;
+
+    overflow: hidden;
+}
+
+.bar{
+    
+
+    background-color: rgb(255, 174, 105);
+}
 .volumen{
     display: inline-block;
     vertical-align: middle;
