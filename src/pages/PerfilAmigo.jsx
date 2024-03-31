@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './PerfilAmigo.css';
-import fotoPerfil from '../images/foto1.jpg';
+import { Link } from 'react-router-dom';
 
+
+import fotoPerfil from '../images/foto1.jpg';
 import foto1 from '../images/1.png';
 import foto2 from '../images/2.jpg';
 import foto3 from '../images/3.jpg';
@@ -23,12 +25,19 @@ const PerfilAmigo = () => {
         {portada: foto5, nombre: 'Otra coleccion más'}
     ]);
 
+    const ultimaActividad = {
+        tipo: 'Libro escuchado',
+        portada: foto1,
+        titulo: 'El principito',
+        hora: 'Hace 2 horas'
+    };
+
     const [solicitudEnviada, setSolicitudEnviada] = useState(false);
 
     const enviarSolicitud = () => {
         setSolicitudEnviada(prevState => !prevState);
         console.log('Solicitud enviada');
-    }
+    };
 
     return (
         <div className="amigo-perfil-usuario">
@@ -45,13 +54,29 @@ const PerfilAmigo = () => {
                     </button>
                 )}
                 {esAmigo && (
-                    <div className="amigo-colecciones-libros">
-                        <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
+                    <div className="amigo-colecciones-y-actividad">
+                        <div className="amigo-colecciones">
+                            <h3 className="colecciones-usuario">Colecciones de {usuario.nombre}</h3>
+                            <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
+                        </div>
+                        <div className="amigo-ultima-actividad">
+                            <h3>Última actividad</h3>
+                            <div className="amigo-actividad">
+                                <Link to="/libro" className="amigo-foto-link-libro">
+                                    <img src={ultimaActividad.portada} alt="Portada" />
+                                </Link>
+                                <div className="amigo-actividad-info">
+                                    <p>{ultimaActividad.tipo}</p>
+                                    <p><Link to="/libro" className="amigo-link-libro">{ultimaActividad.titulo}</Link></p>
+                                    <p>{ultimaActividad.hora}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default PerfilAmigo
+export default PerfilAmigo;

@@ -1,7 +1,8 @@
 .amigo-perfil-usuario {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 10%;
-    margin-left: 10%;
 }
 
 .amigo-foto-perfil {
@@ -9,6 +10,7 @@
     height: 20%;
     overflow: hidden;
     border-radius: 8px;
+    border: 2px solid #000;
 }
 
 .amigo-foto-perfil img {
@@ -17,12 +19,13 @@
 }
 
 .amigo-info-usuario {
-    margin-left: 5%;
+    margin-top: 2%;
+    text-align: center;
 }
 
 .amigo-somos-amigos {
-    margin-top: 10%;
-    width: 30%;
+    margin-top: 2%;
+    width: 15%;
     height: 5%;
     font-size: 1.2rem;
     background-color: #0fa7b2;
@@ -44,6 +47,47 @@
     align-self: center;
 }
 
-.amigo-colecciones-libros {
+.amigo-colecciones-y-actividad {
+    display: flex;
+    margin-top: 10%;
+    justify-content: center;
+}
+
+.amigo-colecciones {
+    width: 60%; 
+}
+
+.colecciones-usuario {
+    text-align: center;
+}
+
+.amigo-ultima-actividad {
+    width: 40%; 
+    margin-left: 10%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.amigo-ultima-actividad h3 {
+    text-align: center;
+}
+
+.amigo-actividad {
+    align-items: center;
+    margin-top: 10%;
+}
+
+.amigo-actividad img {
+    width: 50%; 
+    height: 50%; 
+}
+
+.amigo-actividad-info {
+    text-align: center;
     margin-top: 5%;
+}
+
+.amigo-link-libro {
+    text-decoration: none;
+    color: #000;
 }
