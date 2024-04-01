@@ -15,6 +15,7 @@
     "@heroicons/react": "^2.1.1",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
+    "framer-motion": "^11.0.24",
     "heroicons-react": "^1.4.1",
     "howler": "^2.2.4",
     "js-cookie": "^3.0.5",

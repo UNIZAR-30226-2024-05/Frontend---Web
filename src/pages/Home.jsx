@@ -84,11 +84,6 @@ const Home = () => {
             <span>Aqui encontrarás tus libros favoritos del presente, del pasado y del futuro.</span>
             <span>Aunque de momento contentate con Harry Potter. No se que mas poner aquí, ya veremos xD.</span>
           </div>
-          <Link to="/libro">
-            <button className='libro'>
-              Libro
-            </button>
-          </Link>
         </>
       ) : (<> {/* Cabecera si está logueado */}
           <Link to='/player' className='foto-presentacion'>
