@@ -1,24 +1,19 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './InicioSesion.css';
 import AuthContext from '../context/AuthProvider';
 import axios from '../api/axios';
+import io from 'socket.io-client'; // Importa socket.io-client
 
 const URL_LOGIN = '/users/login';
 
 const InicioSesion = () => {
-  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  
-  // Obtener la función setAuth del contexto
   const { auth, setAuth } = useContext(AuthContext);
-  
-  // Inicio de sesión aceptado
   const [success, setSuccess] = useState(false);
-  
-  // Gestiona los mensajes de error
   const [errMsg, setErrMsg] = useState('');
+  const [socket, setSocket] = useState(null); // Estado para el socket
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -29,11 +24,32 @@ const InicioSesion = () => {
   };
 
   useEffect(() => {
-    // Verifica si auth tiene algo y establece success en true
     if (Object.keys(auth).length !== 0) {
       setSuccess(true);
     }
   }, [auth]);
+
+  const connectToSocket = () => {
+    // Establecer la conexión con el servidor de Socket.io
+    const socket = io("http://localhost:8000", {
+      withCredentials: true,
+      extraHeaders: {
+        "my-custom-header": "abcd"
+      }
+    });
+    setSocket(socket);
+    console.log('Prueba');
+
+    socket.on('peticionReceived', (data) => {
+      // Actualiza la interfaz de usuario con la notificación recibida
+      console.log(data);
+    });
+
+    // Escuchar eventos desde el servidor de Socket.io
+    /*socket.on('message', (data) => {
+      console.log('Mensaje recibido desde el servidor:', data);
+    });*/
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,14 +62,15 @@ const InicioSesion = () => {
           withCredentials: true
         }
       );
-      console.log(JSON.stringify(respuesta?.data));
-
-      // Reestablecer los campos del formulario
+      
       const roles = respuesta?.data?.roles;
       setAuth({ username, password, roles });
 
       setUsername('');
       setPassword('');
+
+      // Conexión al socket después del inicio de sesión exitoso
+      connectToSocket();
 
     } catch (err) {
       if (!err.response) {
