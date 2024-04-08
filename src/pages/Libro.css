@@ -2,6 +2,7 @@
 .info-libro {
   display: flex;
   flex-direction: row;
+  background: linear-gradient(#7f9894, #21ad96);
 }
 
 .info-portada{
