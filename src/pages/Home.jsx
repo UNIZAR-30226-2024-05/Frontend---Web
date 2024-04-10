@@ -25,6 +25,7 @@ const Home = () => {
   
   const URL_AUDIOLIBROS = '/audiolibros';
   const URL_TERROR = '/audiolibros/Terror';
+  const URL_AVENTURAS = 'audiolibros/Aventuras';
 
   const [libros, setLibros] = useState([
     {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal'},
@@ -104,6 +105,18 @@ const Home = () => {
     });
   }, [])
 
+  const [aventuras, setAventuras] = useState([]);
+
+  useEffect(() => {
+    axios.get(URL_AVENTURAS)
+    .then(response => {
+      setAventuras(response.data);
+      console.log(response.data);
+    }).catch(err => {
+      console.log(err)
+    });
+  }, [])
+
   // Variables para conocer el contexto (Usuario conectado o no)
   const { auth } = useContext(AuthContext);
   const { username } = auth;
@@ -134,6 +147,7 @@ const Home = () => {
       <Carrusel title={'Mundo del Señor de los Anillos'} libros={lotr}/>
       <Carrusel2 title={'Todos'} libros={books}/>
       <Carrusel2 title={'Terror'} libros={terror}/>
+      <Carrusel2 title={'Aventuras'} libros={aventuras}/>
       <Footer />
     </div>
   );
