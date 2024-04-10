@@ -14,6 +14,8 @@ const Libro = () => {
     const estrellasMedias = puntuacion - estrellasLlenas >= 0.5 ? 1 : 0;
     const estrellasVacias = 5 - estrellasLlenas - estrellasMedias;
     const enlaceAmazon = 'https://www.amazon.es/Harry-Potter-Piedra-Filosofal-Rowling/dp/8478884459';
+    const colecciones = ['Harry Potter', 'Fantasia', 'Aventuras'];
+    const [mostrarColecciones, setMostrarColecciones] = useState(false);
     const autor = 'J.K. Rowling';
     const genero = 'Fantasía';
     const portada = foto1;
@@ -134,10 +136,33 @@ const Libro = () => {
                 </div>
 
                 { /* Botón de "Añadir a favoritos" */}
-                <div className="info-añadir-favoritos">
+                <div className="info-anyadir-favoritos">
                     <button className="info-btnFavoritos">
                         <FontAwesomeIcon icon={faPlus} /> Añadir a favoritos
                     </button>
+                </div>
+
+                { /* Botón de "Añadir a ver más tarde" */}
+                <div className="info-anyadir-ver-mas-tarde">
+                    <button className="info-btnVerMasTarde">
+                        <FontAwesomeIcon icon={faPlus} /> Añadir a ver más tarde
+                    </button>
+                </div>
+
+                { /* Botón de añadir a colecciones */}
+                <div className="info-anyadir-a-colecciones">
+                    <button className='info-btnAnyadirColecciones' onClick={() => setMostrarColecciones(!mostrarColecciones)}>
+                        <FontAwesomeIcon icon={faPlus} /> Añadir a colecciones
+                    </button>
+                    {mostrarColecciones && (
+                        <div className="info-desplegable-colecciones">
+                            {colecciones.map((coleccion, index) => (
+                                <div key={index}>
+                                    <a href="#" className='info-colecciones-item'>{coleccion}</a>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
 

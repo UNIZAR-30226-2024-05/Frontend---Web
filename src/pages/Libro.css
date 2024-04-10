@@ -59,7 +59,7 @@
   width: 50%;
   height: 50px;
   font-size: 1.2rem;
-  background-color: #0fa7b2;
+  background-color: beige;
   border-radius: 10px;
   padding: 2px 5px;
   justify-self: center;
@@ -81,7 +81,7 @@
   width: 50%;
   height: 50px;
   font-size: 1.2rem;
-  background-color: #0fa7b2;
+  background-color: beige;
   border-radius: 10px;
   padding: 2px 5px;
   justify-self: center;
@@ -103,11 +103,11 @@
 }
 
 /* Para añadir a favoritos*/
-.info-añadir-favoritos {
+.info-anyadir-favoritos {
   margin-top: 30px;
   width: 50%;
   height: 50px;
-  background-color: #0fa7b2;
+  background-color: beige;
   border: none; 
   border-radius: 10px;
   padding: 2px 5px;
@@ -136,6 +136,101 @@
 
 .info-btnFavoritos svg {
   margin-right: 10px;
+}
+
+.info-anyadir-ver-mas-tarde {
+  margin-top: 30px;
+  width: 50%;
+  height: 50px;
+  background-color: beige;
+  border: none; 
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer; 
+  color: #000; 
+}
+
+.info-btnVerMasTarde {
+  text-decoration: none;
+  color: inherit; 
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.info-btnVerMasTarde svg {
+  margin-right: 10px;
+}
+
+.info-anyadir-a-colecciones {
+  margin-top: 30px;
+  width: 50%;
+  height: 50px;
+  background-color: beige;
+  border: none; 
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer; 
+  color: #000; 
+  position: relative;
+}
+
+.info-btnAnyadirColecciones {
+  text-decoration: none;
+  color: inherit; 
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.info-btnAnyadirColecciones svg {
+  margin-right: 10px;
+}
+
+.info-desplegable-colecciones {
+  position: absolute;
+  margin-left: 130%;
+  margin-top: 50px;
+  width: 50%;
+  border: 3px solid black;
+  white-space: nowrap;
+  background-color: beige;
+}
+
+.info-desplegable-colecciones a {
+  display: block;
+}
+
+.info-colecciones-item {
+  padding: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+  border: 1px solid black;
 }
 
 /* Parte de la derecha de la pagina, resumen y mas informacion*/
@@ -170,7 +265,7 @@
 .info-capitulos {
   margin-top: 5%;
   font-size: 1.7rem;
-  background-color: #f2f2f2;
+  background-color: beige;
   border: none; 
   border-radius: 10px;
   padding: 2px 5px;
@@ -188,6 +283,9 @@
 .info-mi-puntuacion {
   margin-top: 5%;
   font-size: 1.7rem;
+  padding: 10px;
+  border: 3px solid beige; /* Añade un borde para mejorar la apariencia */
+  border-radius: 5px;
 }
 
 .info-mis-estrellas {
@@ -196,6 +294,7 @@
   margin-top: 4%;
   width: 30%;
   cursor: pointer;
+  font-size: 2.0rem;
 }
 
 /* Parte donde se escribe mi reseña*/
@@ -206,7 +305,7 @@
   resize: vertical; /* Permite redimensionar verticalmente */
   padding: 10px; /* Añade algo de relleno para que se vea mejor */
   font-size: 1rem; /* Tamaño de la fuente */
-  border: 1px solid #ccc; /* Añade un borde para mejorar la apariencia */
+  border: 3px solid beige; /* Añade un borde para mejorar la apariencia */
   border-radius: 5px;
 }
 
@@ -222,7 +321,7 @@
   height: 150%; 
   resize: vertical; 
   padding: 10px; 
-  font-size: 1rem; 
+  font-size: 1.3rem; 
   border: 1px solid #ccc; 
   border-radius: 5px;
 }
@@ -234,7 +333,7 @@
   width: 20%;
   height: 50px;
   font-size: 1.2rem;
-  background-color: #0fa7b2;
+  background-color: beige;
   border-radius: 10px;
   padding: 2px 5px;
   justify-self: center;
@@ -253,8 +352,8 @@
   height: 18%; 
   resize: vertical; 
   padding: 10px; 
-  font-size: 1rem; 
-  border: 1px solid #ccc; 
+  font-size: 1.3rem; 
+  border: 3px solid beige; 
   border-radius: 5px;
 
 }
@@ -269,8 +368,8 @@
   height: 18%; 
   resize: vertical; 
   padding: 10px; 
-  font-size: 1rem; 
-  border: 1px solid #ccc; 
+  font-size: 1.3rem; 
+  border: 3px solid beige; 
   border-radius: 5px;
 }
 
