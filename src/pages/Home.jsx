@@ -24,6 +24,7 @@ import Silmaril from '../images/Silmarillion.jpg';
 const Home = () => {
   
   const URL_AUDIOLIBROS = '/audiolibros';
+  const URL_INFANTILES = '/audiolibros/Infantiles';
 
   const [libros, setLibros] = useState([
     {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal'},
@@ -90,6 +91,18 @@ const Home = () => {
       });
   }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
 
+  
+  const [infantiles, setInfantiles] = useState([]);
+
+  const getInfantiles = () => {
+    axios.get(URL_INFANTILES)
+    .then(res => {
+      setInfantiles(res)
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
 
   // Variables para conocer el contexto (Usuario conectado o no)
   const { auth } = useContext(AuthContext);
@@ -120,6 +133,7 @@ const Home = () => {
       <Carrusel title={'Saga Harry Potter'} libros={harry}/>
       <Carrusel title={'Mundo del Señor de los Anillos'} libros={lotr}/>
       <Carrusel2 title={'Todos'} libros={books}/>
+      <Carrusel2 title={'Infantiles'} libros={infantiles}/>
       <Footer />
     </div>
   );
