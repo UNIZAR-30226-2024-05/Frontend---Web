@@ -9,12 +9,12 @@ export const TopbarInData = [
         cName: 'menu-text'
     },
     {
-        title: 'Mis libros',
+        title: 'Biblioteca',
         path: '/biblioteca',
         cName: 'menu-text'
     },
     {
-        title: 'Mis colecciones',
+        title: 'Colecciones',
         path: '/colecciones',
         cName: 'menu-text'
     },
