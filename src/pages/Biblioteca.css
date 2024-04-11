@@ -1,10 +1,14 @@
 .biblioteca {
     margin-top: 80px;
+}
+
+.biblioteca .biblioteca-container {
     display: grid;
     grid-template-columns: 1fr;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     height: auto;
+    min-height:calc(100vh - 80px);
     /*background: #0ec3a4;*/
     background: linear-gradient(#7f9894, #21ad96);
     background-position: center;
@@ -13,6 +17,17 @@
     font-size: 1.5rem;
 }
 
-.biblioteca .lista, .biblioteca .footer {
+.biblioteca .biblioteca-footer {
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.biblioteca .biblioteca-container .lista {
     width: 100%;
+}
+
+.biblioteca .biblioteca-footer .footer{
+    width: 100%;
+    align-self: flex-end;
 }

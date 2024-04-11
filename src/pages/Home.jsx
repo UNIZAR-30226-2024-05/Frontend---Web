@@ -25,7 +25,7 @@ const Home = () => {
   
   const URL_AUDIOLIBROS = '/audiolibros';
   const URL_TERROR = '/audiolibros/Terror';
-  const URL_AVENTURAS = 'audiolibros/Aventuras';
+  const URL_AVENTURAS = '/audiolibros/Aventuras';
 
   const [libros, setLibros] = useState([
     {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal'},
