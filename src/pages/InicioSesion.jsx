@@ -31,7 +31,7 @@ const InicioSesion = () => {
 
   const connectToSocket = () => {
     // Establecer la conexión con el servidor de Socket.io
-    const socket = io("https://narratives-backend.azurewebsites.net", {
+    const socket = io("https://server.narratives.es:8000", {
       withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd"
