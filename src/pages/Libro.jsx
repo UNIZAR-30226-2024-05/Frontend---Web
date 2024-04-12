@@ -13,7 +13,16 @@ const Libro = () => {
     const estrellasLlenas = Math.floor(puntuacion);
     const estrellasMedias = puntuacion - estrellasLlenas >= 0.5 ? 1 : 0;
     const estrellasVacias = 5 - estrellasLlenas - estrellasMedias;
-    const enlaceAmazon = 'https://www.amazon.es/Harry-Potter-Piedra-Filosofal-Rowling/dp/8478884459';
+
+    const generarEnlaceAmazon = (titulo) => {
+        // Reemplazar espacios en blanco con "+" para la URL
+        const tituloFormateado = titulo.replace(/\s/g, '+');
+        // URL base de búsqueda en Amazon
+        const urlBase = 'https://www.amazon.com/s?k=';
+        // Generar el enlace completo
+        const enlaceAmazon = `${urlBase}${tituloFormateado}`;
+        return enlaceAmazon;
+    };
     const colecciones = ['Harry Potter', 'Fantasia', 'Aventuras'];
     const [mostrarColecciones, setMostrarColecciones] = useState(false);
     const autor = 'J.K. Rowling';
@@ -125,7 +134,7 @@ const Libro = () => {
 
                 {/* Enlace a Amazon debajo de la portada */}
                 <div className="info-enlace-amazon">
-                    <a href={enlaceAmazon} className="info-linkCompra" target="_blank" rel="noopener noreferrer">Comprar en Amazon</a>
+                    <a href={generarEnlaceAmazon(titulo)} className="info-linkCompra" target="_blank" rel="noopener noreferrer">Comprar en Amazon</a>
                 </div>
 
                 { /* Botón de "Reproducir" con icono de play */}
