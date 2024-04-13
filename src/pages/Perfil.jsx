@@ -1,12 +1,17 @@
 import React from 'react'
 import "./Perfil.css"
 import { useNavigate } from 'react-router-dom'
-import perro from "../images/fotos-perfil/perro.jpg"
+//import perro from "../images/fotos-perfil/perro.jpg"
 import axios from '../api/axios';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react'
 
 export const Perfil = () => {
   const URL_PERFIL = 'users/profile';
+  const location = useLocation();
+  const nuevaFotoPerfil = location.state?.nuevaFotoPerfil;
 
+  /*
   const [perfil, setPerfil] = useState([]);
 
   useEffect(() => {
@@ -17,7 +22,7 @@ export const Perfil = () => {
     }).catch(err => {
       console.log(err)
     });
-  }, [])
+  }, [])*/
 
   const navigate = useNavigate()
   return (
@@ -37,10 +42,10 @@ export const Perfil = () => {
           </div>
         </div>
         <div className='Imagen'>
-          <img className='Img' src={perro}/>
+          <img className='Img' src={nuevaFotoPerfil}/>
         </div>
-        <div className='Nomnbre'>
-          <text src={response.data.username}/>
+        <div className='Nombre'>
+          {/*<text src={response.data.username}/>*/}
         </div>
     </div>
   )
