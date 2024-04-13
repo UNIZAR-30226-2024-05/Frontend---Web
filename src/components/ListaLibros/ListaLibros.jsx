@@ -6,9 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaLibros = ({libros, generos}) => {
+const ListaLibros = ({books, generos}) => {
     
-    const [listaLibros, setListaLibros] = useState(libros)
+    const [libros, setLibros] = useState(books);
+    const [listaLibros, setListaLibros] = useState(libros);
     const [busqueda, setBusqueda] = useState('');
     const [generoSeleccionado, setGeneroSeleccionado] = useState('');
 
@@ -19,16 +20,6 @@ const ListaLibros = ({libros, generos}) => {
     ]);
 
     /*
-    URL_CONSULTA = '/audiolibros/genre/:genero'
-
-    const handleBusqueda = async () => {
-        await axios.get(URL_CONSULTA)
-        .then(response=>{
-            console.log(response.data);
-        }).catch(error=>{
-            console.log(error);
-        })
-    }
 
     useEffect( () => {
         getPeticion();
@@ -51,11 +42,35 @@ const ListaLibros = ({libros, generos}) => {
 
     const handleGeneroChange = (event) => {
         setGeneroSeleccionado(event.target.value);
+        console.log(libros);
+        console.log(listaLibros);
     };
 
-    const handleBusqueda = () => {
-        console.log(generoSeleccionado);
-    };
+    const URL_CONSULTA = '/audiolibros/';
+
+    const handleBusqueda = async () => {
+        if (generoSeleccionado != ''){
+            await axios.get(URL_CONSULTA + generoSeleccionado)
+            .then(response=>{
+                setLibros(response.data);
+                setListaLibros(response.data);
+                setBusqueda('');
+                console.log(response.data);
+            }).catch(error=>{
+                console.log(error);
+            })}
+        else {
+            await axios.get(URL_CONSULTA)
+            .then(response=>{
+                setLibros(response.data.audiolibros);
+                setListaLibros(response.data.audiolibros);
+                setBusqueda('');
+                console.log(response.data);
+            }).catch(error=>{
+                console.log(error);
+            })
+        }
+    }
 
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
 
@@ -86,7 +101,7 @@ const ListaLibros = ({libros, generos}) => {
                 className='libro'>
                     <div className='contenido-libro'>
                         <a className='portadas' href='/player'>
-                            <img src={libro.portada} alt={libro.titulo}></img>
+                            <img src={libro.img} alt={libro.titulo}></img>
                         </a>
                         <a className='titulo' href='/player'>
                             <h1>{libro.titulo}</h1>

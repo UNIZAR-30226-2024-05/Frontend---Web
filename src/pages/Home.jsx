@@ -1,10 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Carrusel from '../components/Carrusel/Carrusel';
+import Carrusel2 from '../components/Carrusel/Carrusel2';
 import './Home.css';
 import logo from '../images/logo.png';
 import Footer from '../components/Footer/Footer';
 import AuthContext from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
+import axios from '../api/axios';
+
 
 import foto1 from '../images/1.png';
 import foto2 from '../images/2.jpg';
@@ -20,6 +23,10 @@ import Silmaril from '../images/Silmarillion.jpg';
 
 const Home = () => {
   
+  const URL_AUDIOLIBROS = '/audiolibros';
+  const URL_TERROR = '/audiolibros/Terror';
+  const URL_AVENTURAS = '/audiolibros/Aventuras';
+
   const [libros, setLibros] = useState([
     {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal'},
     {portada: foto2, titulo: 'Harry Potter y la Cámara Secreta'},
@@ -69,7 +76,47 @@ const Home = () => {
     {portada: LOTR3, titulo: 'LOTR: El retorno del rey'},
     {portada: Silmaril, titulo: 'El silmarillion'}
   ]);
+
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    axios.get(URL_AUDIOLIBROS)
+      .then(response => {
+        // Actualiza el estado de los libros con los datos de los audiolibros recibidos
+        setBooks(response.data.audiolibros);
+        console.log(response.data.audiolibros);
+      })
+      .catch(error => {
+        // Maneja los errores si ocurrieron
+        console.error('Hubo un error al obtener los audiolibros:', error);
+      });
+  }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
+
   
+  const [terror, setTerror] = useState([]);
+
+  useEffect(() => {
+    axios.get(URL_TERROR)
+    .then(response => {
+      setTerror(response.data);
+      console.log(response.data);
+    }).catch(err => {
+      console.log(err)
+    });
+  }, [])
+
+  const [aventuras, setAventuras] = useState([]);
+
+  useEffect(() => {
+    axios.get(URL_AVENTURAS)
+    .then(response => {
+      setAventuras(response.data);
+      console.log(response.data);
+    }).catch(err => {
+      console.log(err)
+    });
+  }, [])
+
   // Variables para conocer el contexto (Usuario conectado o no)
   const { auth } = useContext(AuthContext);
   const { username } = auth;
@@ -98,6 +145,9 @@ const Home = () => {
       <Carrusel title={`Recomendaciones para ${username}`} libros={libros}/>
       <Carrusel title={'Saga Harry Potter'} libros={harry}/>
       <Carrusel title={'Mundo del Señor de los Anillos'} libros={lotr}/>
+      <Carrusel2 title={'Todos'} libros={books}/>
+      <Carrusel2 title={'Terror'} libros={terror}/>
+      <Carrusel2 title={'Aventuras'} libros={aventuras}/>
       <Footer />
     </div>
   );

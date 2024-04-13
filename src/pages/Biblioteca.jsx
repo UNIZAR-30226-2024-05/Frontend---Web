@@ -18,36 +18,39 @@ import Silmaril from '../images/Silmarillion.jpg';
 const Biblioteca = () => {
 
   const [libros, setLibros] = useState([
-    {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal', autor: 'JK Rowling'},
-    {portada: foto2, titulo: 'Harry Potter y la Cámara Secreta', autor: 'JK Rowling'},
-    {portada: foto3, titulo: 'Harry Potter y el Prisionero de Azkaban', autor: 'JK Rowling'},
-    {portada: foto4, titulo: 'Harry Potter y el Cáliz de Fuego', autor: 'JK Rowling'},
-    {portada: foto5, titulo: 'Harry Potter y la Orden del Fénix', autor: 'JK Rowling'},
-    {portada: foto6, titulo: 'Harry Potter y el Misterio del Príncipe', autor: 'JK Rowling'},
-    {portada: foto7, titulo: 'Harry Potter y las Reliquias de la Muerte', autor: 'JK Rowling'},
-    {portada: LOTR1, titulo: 'LOTR: La comunidad del anillo', autor: 'JRR Tolkien'},
-    {portada: LOTR2, titulo: 'LOTR: Las dos torres', autor: 'JRR Tolkien'},
-    {portada: LOTR3, titulo: 'LOTR: El retorno del rey', autor: 'JRR Tolkien'},
-    {portada: Silmaril, titulo: 'El silmarillion', autor: 'JRR Tolkien'},
-    {portada: foto5, titulo: 'Libro 12', autor: 'Elpe Pino'},
-    {portada: foto6, titulo: 'Libro 13', autor: 'Elpe Pino'},
-    {portada: foto7, titulo: 'Libro 14', autor: 'Elpe Pino'},
-    {portada: foto1, titulo: 'Libro 15', autor: 'Elpe Pino'},
-    {portada: foto2, titulo: 'Libro 16', autor: 'Elpe Pino'}
+    {img: foto1, titulo: 'Harry Potter y la Piedra Filosofal', autor: 'JK Rowling'},
+    {img: foto2, titulo: 'Harry Potter y la Cámara Secreta', autor: 'JK Rowling'},
+    {img: foto3, titulo: 'Harry Potter y el Prisionero de Azkaban', autor: 'JK Rowling'},
+    {img: foto4, titulo: 'Harry Potter y el Cáliz de Fuego', autor: 'JK Rowling'},
+    {img: foto5, titulo: 'Harry Potter y la Orden del Fénix', autor: 'JK Rowling'},
+    {img: foto6, titulo: 'Harry Potter y el Misterio del Príncipe', autor: 'JK Rowling'},
+    {img: foto7, titulo: 'Harry Potter y las Reliquias de la Muerte', autor: 'JK Rowling'},
+    {img: LOTR1, titulo: 'LOTR: La comunidad del anillo', autor: 'JRR Tolkien'},
+    {img: LOTR2, titulo: 'LOTR: Las dos torres', autor: 'JRR Tolkien'},
+    {img: LOTR3, titulo: 'LOTR: El retorno del rey', autor: 'JRR Tolkien'},
+    {img: Silmaril, titulo: 'El silmarillion', autor: 'JRR Tolkien'},
+    {img: foto5, titulo: 'Libro 12', autor: 'Elpe Pino'},
+    {img: foto6, titulo: 'Libro 13', autor: 'Elpe Pino'},
+    {img: foto7, titulo: 'Libro 14', autor: 'Elpe Pino'},
+    {img: foto1, titulo: 'Libro 15', autor: 'Elpe Pino'},
+    {img: foto2, titulo: 'Libro 16', autor: 'Elpe Pino'}
   ]);
 
   const [generos, setGeneros] = useState([
-    {clave: 'fantasia', label: 'Fantasía'},
-    {clave: 'terror', label: 'Terror'},
-    {clave: 'romance', label: 'Romance'},
-    {clave: 'scifi', label: 'Ciencia Ficción'},
-    {clave: 'autoayuda', label: 'Autoayuda'}
+    {clave: '/Fantasia', label: 'Fantasía'},
+    {clave: '/Terror', label: 'Terror'},
+    {clave: '/Romance', label: 'Romance'},
+    {clave: '/Aventuras', label: 'Aventuras'}
   ]);
 
   return (
     <div className='biblioteca'>
-        <ListaLibros className='list' libros={libros} generos={generos}></ListaLibros>
+      <div className='biblioteca-container'>
+        <ListaLibros className='list' books={libros} generos={generos}></ListaLibros>
+      </div>
+      <div className='biblioteca-footer'>
         <Footer className='footer' />
+        </div>
     </div>
   );
 }
