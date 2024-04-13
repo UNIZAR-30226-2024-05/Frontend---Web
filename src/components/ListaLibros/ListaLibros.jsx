@@ -100,10 +100,10 @@ const ListaLibros = ({books, generos}) => {
                 <div key={i}
                 className='libro'>
                     <div className='contenido-libro'>
-                        <a className='portadas' href='/player'>
+                        <a className='portadas' href='/libro'>
                             <img src={libro.img} alt={libro.titulo}></img>
                         </a>
-                        <a className='titulo' href='/player'>
+                        <a className='titulo' href='/libro'>
                             <h1>{libro.titulo}</h1>
                         </a>
                     </div>
