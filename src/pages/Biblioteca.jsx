@@ -16,7 +16,7 @@ import LOTR3 from '../images/LOTR3.jpg';
 import Silmaril from '../images/Silmarillion.jpg';
 
 const Biblioteca = () => {
-
+  /*
   const [libros, setLibros] = useState([
     {img: foto1, titulo: 'Harry Potter y la Piedra Filosofal', autor: 'JK Rowling'},
     {img: foto2, titulo: 'Harry Potter y la Cámara Secreta', autor: 'JK Rowling'},
@@ -35,18 +35,25 @@ const Biblioteca = () => {
     {img: foto1, titulo: 'Libro 15', autor: 'Elpe Pino'},
     {img: foto2, titulo: 'Libro 16', autor: 'Elpe Pino'}
   ]);
-
+  */
   const [generos, setGeneros] = useState([
-    {clave: '/Fantasia', label: 'Fantasía'},
-    {clave: '/Terror', label: 'Terror'},
-    {clave: '/Romance', label: 'Romance'},
-    {clave: '/Aventuras', label: 'Aventuras'}
-  ]);
+    'Misterio',
+    'Fantasía',
+    'Romance',
+    'Terror',
+    'Ciencia ficción',
+    'Historico',
+    'Infantil',
+    'Mitología',
+    'Humor',
+    'Autoayuda',
+    'Poesía',
+    'Aventuras']);
 
   return (
     <div className='biblioteca'>
       <div className='biblioteca-container'>
-        <ListaLibros className='list' books={libros} generos={generos}></ListaLibros>
+        <ListaLibros className='list' generos={generos}></ListaLibros>
       </div>
       <div className='biblioteca-footer'>
         <Footer className='footer' />

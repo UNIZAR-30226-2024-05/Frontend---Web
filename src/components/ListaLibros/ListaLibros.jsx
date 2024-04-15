@@ -6,10 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaLibros = ({books, generos}) => {
+const ListaLibros = ({generos}) => {
     
-    const [libros, setLibros] = useState(books);
+    const URL_CONSULTA = '/audiolibros';
+
+    const [libros, setLibros] = useState([]);
     const [listaLibros, setListaLibros] = useState(libros);
+    const [listaShow, setListaShow] = useState(libros);
     const [busqueda, setBusqueda] = useState('');
     const [generoSeleccionado, setGeneroSeleccionado] = useState('');
 
@@ -19,12 +22,20 @@ const ListaLibros = ({books, generos}) => {
         'Añadir a colecciones'
     ]);
 
-    /*
-
     useEffect( () => {
-        getPeticion();
-    },[])
-    */
+        async function fetchLibros(){
+            await axios.get(URL_CONSULTA)
+            .then(response=>{
+                setLibros(response.data.audiolibros);
+                setListaLibros(response.data.audiolibros);
+                setListaShow(response.data.audiolibros);
+                console.log(response.data);
+            }).catch(error=>{
+                console.log(error);
+            })
+        }
+        fetchLibros();
+    }, []);
 
     const handleChangeBusqueda = event => {
         setBusqueda(event.target.value);
@@ -32,43 +43,35 @@ const ListaLibros = ({books, generos}) => {
     } 
 
     const filtrar = (terminoBusqueda) => {
-        var resultado = libros.filter((elemento) => {
+        var resultado = listaLibros.filter((elemento) => {
             if (elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
             || elemento.autor.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
             {return elemento;}
         });
-        setListaLibros(resultado);
+        setListaShow(resultado);
     }
 
     const handleGeneroChange = (event) => {
         setGeneroSeleccionado(event.target.value);
+        /* Solo para desarrollo, quitar mas adelante */
         console.log(libros);
         console.log(listaLibros);
     };
 
-    const URL_CONSULTA = '/audiolibros/';
-
     const handleBusqueda = async () => {
-        if (generoSeleccionado != ''){
-            await axios.get(URL_CONSULTA + generoSeleccionado)
-            .then(response=>{
-                setLibros(response.data);
-                setListaLibros(response.data);
-                setBusqueda('');
-                console.log(response.data);
-            }).catch(error=>{
-                console.log(error);
-            })}
-        else {
-            await axios.get(URL_CONSULTA)
-            .then(response=>{
-                setLibros(response.data.audiolibros);
-                setListaLibros(response.data.audiolibros);
-                setBusqueda('');
-                console.log(response.data);
-            }).catch(error=>{
-                console.log(error);
-            })
+        if (generoSeleccionado === ''){
+            setListaLibros(libros);
+            setListaShow(libros);
+            setBusqueda('');
+        }
+        else{
+            var resultado = libros.filter((elemento) => {
+                if (elemento.genero === generoSeleccionado)
+                {return elemento;}
+            });
+            setListaLibros(resultado);
+            setListaShow(resultado);
+            setBusqueda('');
         }
     }
 
@@ -80,7 +83,7 @@ const ListaLibros = ({books, generos}) => {
             <select className="selector-generos" onChange={handleGeneroChange} value={generoSeleccionado}>
                 <option value="">Todos los géneros</option>
                 {generos.map((genero) => (
-                        <option key={genero.clave} value={genero.clave}>{genero.label}</option>
+                        <option key={genero} value={genero}>{genero}</option>
                 ))}
                 {/* Agrega más opciones de géneros según sea necesario */}
   </select>
@@ -96,7 +99,7 @@ const ListaLibros = ({books, generos}) => {
         </div>
 
         <div className='lista'>
-            {listaLibros.map((libro, i) => (
+            {listaShow.map((libro, i) => (
                 <div key={i}
                 className='libro'>
                     <div className='contenido-libro'>
