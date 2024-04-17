@@ -24,6 +24,7 @@ import Reproductor from './pages/Reproductor';
 import NotFound from './pages/NotFound';
 import Libro from './pages/Libro';
 import PerfilAmigo from './pages/PerfilAmigo';
+import Autor from './pages/Autor';
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
       <Route path='*' element={<NotFound />}/>
       <Route path='/libro' element={<Libro />}/>
       <Route path='/perfilamigo' element={<ProtectedRoute element={PerfilAmigo} />}/>
+      <Route path='/autor' element={<Autor />}/>
      </Routes>
      <Navbar />
     </Router>

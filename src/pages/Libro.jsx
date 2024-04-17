@@ -189,7 +189,7 @@ const Libro = () => {
                 
                 {/* Autor del libro */}
                 <div className="info-autor">
-                    <p>Autor: {autor}</p>
+                    <p>Autor: <a href="/autor" className='info-linkAutor'>{autor}</a></p>
                 </div>
 
                 {/* Género del libro */}
