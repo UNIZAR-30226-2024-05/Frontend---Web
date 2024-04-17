@@ -103,7 +103,7 @@ return (
                 <div key={i}
                 className={`libro ${i === hoveredIndex ? 'hover' : ''}`}
                 onMouseEnter={() => ampliar(i)}>
-                  <a href='#'><img className='portadas' src={libro.portada} alt={libro.titulo}></img></a>
+                  <a href='#'><img className='portadas' src={libro.img} alt={libro.titulo}></img></a>
                 </div>
               ))}
 

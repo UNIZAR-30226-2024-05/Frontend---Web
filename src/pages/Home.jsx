@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Carrusel from '../components/Carrusel/Carrusel';
-import Carrusel2 from '../components/Carrusel/Carrusel2';
 import './Home.css';
 import logo from '../images/logo.png';
 import Footer from '../components/Footer/Footer';
@@ -10,72 +9,10 @@ import axios from '../api/axios';
 
 
 import foto1 from '../images/1.png';
-import foto2 from '../images/2.jpg';
-import foto3 from '../images/3.jpg';
-import foto4 from '../images/4.jpg';
-import foto5 from '../images/5.jpg';
-import foto6 from '../images/6.jpg';
-import foto7 from '../images/7.jpg';
-import LOTR1 from '../images/LOTR1.jpg';
-import LOTR2 from '../images/LOTR2.jpg';
-import LOTR3 from '../images/LOTR3.jpg';
-import Silmaril from '../images/Silmarillion.jpg';
 
 const Home = () => {
   
   const URL_AUDIOLIBROS = '/audiolibros';
-  const URL_TERROR = '/audiolibros/Terror';
-  const URL_AVENTURAS = '/audiolibros/Aventuras';
-
-  const [libros, setLibros] = useState([
-    {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal'},
-    {portada: foto2, titulo: 'Harry Potter y la Cámara Secreta'},
-    {portada: foto3, titulo: 'Harry Potter y la el Prisionero de Azkaban'},
-    {portada: foto4, titulo: 'Harry Potter y el Cáliz de Fuego'},
-    {portada: foto5, titulo: 'Harry Potter y la Orden del Fénix'},
-    {portada: foto6, titulo: 'Harry Potter y el Misterio del Príncipe'},
-    {portada: foto7, titulo: 'Harry Potter y las Reliquias de la Muerte'},
-    {portada: LOTR1, titulo: 'LOTR: La comunidad del anillo'},
-    {portada: LOTR2, titulo: 'LOTR: Las dos torres'},
-    {portada: LOTR3, titulo: 'LOTR: El retorno del rey'},
-    {portada: Silmaril, titulo: 'El silmarillion'},
-    {portada: foto5, titulo: 'Libro 12'},
-    {portada: foto6, titulo: 'Libro 13'},
-    {portada: foto7, titulo: 'Libro 14'},
-    {portada: foto1, titulo: 'Libro 15'},
-    {portada: foto2, titulo: 'Libro 16'}
-  ]);
-
-  const [libros2, setLibros2] = useState([
-    {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal'},
-    {portada: foto2, titulo: 'Harry Potter y la Cámara Secreta'},
-    {portada: foto3, titulo: 'Harry Potter y la el Prisionero de Azkaban'},
-    {portada: foto4, titulo: 'Harry Potter y el Cáliz de Fuego'},
-    {portada: foto5, titulo: 'Harry Potter y la Orden del Fénix'},
-    {portada: foto6, titulo: 'Harry Potter y el Misterio del Príncipe'},
-    {portada: foto7, titulo: 'Harry Potter y las Reliquias de la Muerte'},
-    {portada: LOTR1, titulo: 'LOTR: La comunidad del anillo'},
-    {portada: LOTR2, titulo: 'LOTR: Las dos torres'},
-    {portada: LOTR3, titulo: 'LOTR: El retorno del rey'},
-    {portada: Silmaril, titulo: 'El silmarillion'}
-  ]);
-
-  const [harry, setHarry] = useState([
-    {portada: foto1, titulo: 'Harry Potter y la Piedra Filosofal'},
-    {portada: foto2, titulo: 'Harry Potter y la Cámara Secreta'},
-    {portada: foto3, titulo: 'Harry Potter y la el Prisionero de Azkaban'},
-    {portada: foto4, titulo: 'Harry Potter y el Cáliz de Fuego'},
-    {portada: foto5, titulo: 'Harry Potter y la Orden del Fénix'},
-    {portada: foto6, titulo: 'Harry Potter y el Misterio del Príncipe'},
-    {portada: foto7, titulo: 'Harry Potter y las Reliquias de la Muerte'}
-  ]);
-
-  const [lotr, setLotr] = useState([
-    {portada: LOTR1, titulo: 'LOTR: La comunidad del anillo'},
-    {portada: LOTR2, titulo: 'LOTR: Las dos torres'},
-    {portada: LOTR3, titulo: 'LOTR: El retorno del rey'},
-    {portada: Silmaril, titulo: 'El silmarillion'}
-  ]);
 
   const [books, setBooks] = useState([]);
 
@@ -93,29 +30,30 @@ const Home = () => {
   }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
 
   
-  const [terror, setTerror] = useState([]);
+  const [carr1, setCarr1] = useState([]);
+  const [carr2, setCarr2] = useState([]);
+  const [carr3, setCarr3] = useState([]);
+  const genero1 = 'Terror';
+  const genero2 = 'Poesía';
+  const genero3 = 'Romance';
 
   useEffect(() => {
-    axios.get(URL_TERROR)
-    .then(response => {
-      setTerror(response.data);
-      console.log(response.data);
-    }).catch(err => {
-      console.log(err)
+    var car1 = books.filter((elemento) => {
+      if (elemento.genero === genero1)
+        {return elemento;}
     });
-  }, [])
-
-  const [aventuras, setAventuras] = useState([]);
-
-  useEffect(() => {
-    axios.get(URL_AVENTURAS)
-    .then(response => {
-      setAventuras(response.data);
-      console.log(response.data);
-    }).catch(err => {
-      console.log(err)
+    setCarr1(car1);
+    var car2 = books.filter((elemento) => {
+      if (elemento.genero === genero2)
+        {return elemento;}
     });
-  }, [])
+    setCarr2(car2);
+    var car3 = books.filter((elemento) => {
+      if (elemento.genero === genero3)
+        {return elemento;}
+    });
+    setCarr3(car3);
+  }, [books])
 
   // Variables para conocer el contexto (Usuario conectado o no)
   const { auth } = useContext(AuthContext);
@@ -141,13 +79,10 @@ const Home = () => {
             <span>Pincha en la portada para continuar por donde lo dejaste.</span>
           </div>
         </>)}
-      <Carrusel title={'Los más vendidos'} libros={libros2}/>
-      <Carrusel title={`Recomendaciones para ${username}`} libros={libros}/>
-      <Carrusel title={'Saga Harry Potter'} libros={harry}/>
-      <Carrusel title={'Mundo del Señor de los Anillos'} libros={lotr}/>
-      <Carrusel2 title={'Todos'} libros={books}/>
-      <Carrusel2 title={'Terror'} libros={terror}/>
-      <Carrusel2 title={'Aventuras'} libros={aventuras}/>
+      <Carrusel title={'Todos'} libros={books}/>
+      <Carrusel title={genero1} libros={carr1}/>
+      <Carrusel title={genero2} libros={carr2}/>
+      <Carrusel title={genero3} libros={carr3}/>
       <Footer />
     </div>
   );

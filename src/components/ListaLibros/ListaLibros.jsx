@@ -58,7 +58,7 @@ const ListaLibros = ({generos}) => {
         console.log(listaLibros);
     };
 
-    const handleBusqueda = async () => {
+    const handleBusqueda = () => {
         if (generoSeleccionado === ''){
             setListaLibros(libros);
             setListaShow(libros);
