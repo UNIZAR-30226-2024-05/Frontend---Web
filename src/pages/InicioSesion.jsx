@@ -62,9 +62,11 @@ const InicioSesion = () => {
           withCredentials: true
         }
       );
-      
-      const roles = respuesta?.data?.roles;
-      setAuth({ username, password, roles });
+      console.log(respuesta); /* Solo desarrollo */
+      const user_id = respuesta?.data?.user?.user_id;
+      const img = respuesta?.data?.user?.img;
+      const role = respuesta?.data?.user?.role;
+      setAuth({ username, user_id, img, role });
 
       setUsername('');
       setPassword('');
