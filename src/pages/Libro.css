@@ -257,6 +257,16 @@
   margin-bottom: 2%;
 }
 
+.info-autor a:hover {
+  text-decoration: underline;
+}
+
+.info-linkAutor {
+  text-decoration: none;
+  color: #000000;
+}
+
+
 .info-genero {
   margin-bottom: 5%;
   font-size: 1.7rem;

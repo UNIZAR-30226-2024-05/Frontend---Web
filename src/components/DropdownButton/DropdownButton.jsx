@@ -14,6 +14,18 @@ const DropdownButton = ({ options }) => {
     console.log(`Opción seleccionada: ${option}`);
     // Aquí puedes agregar la lógica para manejar la opción seleccionada
     // Por ejemplo, cerrar el menú desplegable, ejecutar una función, etc.
+    switch (option) {
+      case 'Reproducir':
+          console.log('Reproducir');
+          window.location.href = '/player';
+          break;
+      case 'Añadir a favoritos':
+          console.log('Añadir a favoritos');
+          break;
+      case 'Añadir a escuchar más tarde':
+          console.log('Añadir a escuchar más tarde');
+          break;
+    }
   };
 
   const handleClickOutside = (event) => {

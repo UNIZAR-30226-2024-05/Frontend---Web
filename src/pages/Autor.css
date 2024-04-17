@@ -1,0 +1,223 @@
+.autor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(#7f9894, #21ad96);
+}
+
+.autor-arriba {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-left: 7%;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.autor-arriba-izquierda {
+    margin-top: 10%;
+    width: 60%;
+    margin-right: -20%;
+    margin-bottom: 5%;
+}
+
+
+.autor-foto {
+    width: 28%;
+    height: 55%;
+}
+
+.autor-foto img {
+    width: 100%;
+    height: 100%;
+    border: 3px solid #000;
+}
+
+/* Para las estrellas de la puntuacion*/
+
+.autor-puntuacion{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2%;
+    width: 30%;
+    font-size: 1.5rem;
+
+}
+
+.autor-estrellas {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2%;
+    width: 30%;
+    font-size: 2.0rem;
+  }
+  
+  .autor-star {
+    color: transparent; 
+  }
+  
+  .autor-star-filled {
+    color: gold;
+  }
+  
+  .autor-star-half {
+    position: relative;
+    color: gold; 
+  }
+  
+  .autor-star-half::before {
+    position: absolute;
+    content: '\00bd'; 
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: transparent;
+  }
+  
+  .autor-star-empty {
+    color: #ccc; 
+  }
+
+  /* Para el genero mas escrito*/
+
+  .autor-genero-mas-publicado {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2%;
+    width: 30%;
+    font-size: 1.5rem;
+  }
+
+  .autor-genero {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2%;
+    width: 30%;
+    font-size: 1.5rem;
+  }
+
+  .autor-genero a:hover {
+    text-decoration: underline;
+  }
+  
+  .autor-linkGenero {
+    text-decoration: none;
+    color: #000000;
+  }
+
+  /* Zona de la derecha */
+  .autor-arriba-derecha {
+    margin-top: 10%;
+    width: 50%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+  }
+
+  .autor-nombre {
+    font-size: 2.0rem;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+  }
+
+  .autor-informacion {
+    margin-top: 5%;
+    font-size: 1.5rem;
+  }
+
+  .autor-ciudad-nacimiento {
+    margin-top: 2%;
+    font-size: 1.5rem;
+  }
+
+  .autor-abajo {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 3%;
+  }
+
+  .autor-publicaciones {
+    font-size: 1.0rem;
+    margin-bottom: 2%;
+    border-bottom: 1px solid #000;
+    width: 60%;
+    margin-left: 10%;
+  }
+
+  .autor-audiolibros {
+    width: 60%;
+    margin-left: 10%;
+  }
+
+  .autor-audiolibro-concreto {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-bottom: 1px solid #000;
+  }
+
+  .autor-audiolibro-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+  }
+  
+  .autor-audiolibro-portada {
+    width: 15%;
+    height: 15%;
+    margin-bottom: 3%;
+  }
+
+  .autor-audiolibro-titulo {
+    font-size: 1.5rem;
+  }
+
+  .autor-audiolibro-titulo a:hover {
+    text-decoration: underline;
+  }
+
+  .autor-audiolibro-tituloLink {
+    text-decoration: none;
+    color: #000000;
+  }
+
+  .autor-audiolibro-autor {
+    font-size: 1.1rem;
+  }
+
+  .autor-linkAutor {
+    text-decoration: none;
+    color: #000000;
+  }
+
+  .autor-audiolibro-autor a:hover {
+    text-decoration: underline;
+  }
+
+  .autor-audiolibro-estrellas {
+    margin-top: 5%;
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  .autor-audiolibro-puntuacion-numerito {
+    font-size: 1.5rem;
+    margin-top: 5%;
+  }
+
+  .autor-audiolibro-dropdown {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 40%;
+    margin-bottom: 40%;
+  }
+
+    .autor-audiolibro-dropdown button {
+        font-size: 1.5rem;
+    }
+
+    .autor-audiolibro-dropdown button:hover {
+        text-decoration: underline;
+    }
