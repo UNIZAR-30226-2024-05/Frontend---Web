@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';
 import './ListaLibros.css';
 import DropdownButton from '../DropdownButton/DropdownButton';
@@ -75,6 +76,14 @@ const ListaLibros = ({generos}) => {
         }
     }
 
+    const navigate = useNavigate();
+
+    const handleLibroClick = (libro) => {
+        console.log(libro);
+        navigate('/libro', {state: {libro}})
+    }
+
+
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
 
     return (
@@ -101,7 +110,8 @@ const ListaLibros = ({generos}) => {
         <div className='lista'>
             {listaShow.map((libro, i) => (
                 <div key={i}
-                className='libro'>
+                className='libro'
+                onClick={() => handleLibroClick(libro)}>
                     <div className='contenido-libro'>
                         <a className='portadas' href='/libro'>
                             <img src={libro.img} alt={libro.titulo}></img>
