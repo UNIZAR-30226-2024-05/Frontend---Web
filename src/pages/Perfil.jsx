@@ -11,18 +11,18 @@ export const Perfil = () => {
   const location = useLocation();
   const nuevaFotoPerfil = location.state?.nuevaFotoPerfil;
 
-  /*
+  
   const [perfil, setPerfil] = useState([]);
 
   useEffect(() => {
-    axios.get(URL_AVENTURAS)
+    axios.get(URL_PERFIL)
     .then(response => {
       setPerfil(response.data);
       console.log(response.data);
     }).catch(err => {
       console.log(err)
     });
-  }, [])*/
+  }, [])
 
   const navigate = useNavigate()
   return (
@@ -42,7 +42,7 @@ export const Perfil = () => {
           </div>
         </div>
         <div className='Imagen'>
-          <img className='Img' src={nuevaFotoPerfil}/>
+          <img className='Img' src={perfil.img}/>
         </div>
         <div className='Nombre'>
           {/*<text src={response.data.username}/>*/}

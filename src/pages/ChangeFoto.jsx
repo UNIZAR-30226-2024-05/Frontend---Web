@@ -11,6 +11,7 @@ import perezoso from "../images/fotos-perfil/perezoso.jpg"
 import doraemon from "../images/fotos-perfil/doraemon.jpg"
 import pikachu from "../images/fotos-perfil/pikachu.jpg"
 import { useNavigate } from 'react-router-dom';
+import axios from '../api/axios';
 
 
 
@@ -19,8 +20,9 @@ export const Changefoto = () => {
 
   const navigate = useNavigate();
 
-  const handleClick = (url) => {
-    navigate('/perfil', { state: { nuevaFotoPerfil: url } });
+
+  const handleClick = () => {
+    navigate('/perfil');
   };
 
   return (
@@ -29,34 +31,34 @@ export const Changefoto = () => {
           <h1>Elija la foto de perfil</h1>
         </div>
         <div className='rectangulo'>
-            <button className='boton1' onClick={() => handleClick(perro)}>
+            <button className='boton1' onClick={() => handleClick()}>
               <img className='foto1'src={perro}/>
             </button>
-            <button className='boton2' onClick={() => handleClick(gato)}>
+            <button className='boton2' onClick={() => handleClick()}>
               <img className='foto2'src={gato}/>
             </button>
-            <button className='boton3' onClick={() => handleClick(rana)}>
+            <button className='boton3' onClick={() => handleClick()}>
               <img className='foto3'src={rana}/>
             </button>
-            <button className='boton4' onClick={() => handleClick(leon)}>
+            <button className='boton4' onClick={() => handleClick()}>
               <img className='foto4'src={leon}/>
             </button>
-            <button className='boton5' onClick={() => handleClick(pollo)}>
+            <button className='boton5' onClick={() => handleClick()}>
               <img className='foto5'src={pollo}/>
             </button>
-            <button className='boton6' onClick={() => handleClick(vaca)}>
+            <button className='boton6' onClick={() => handleClick()}>
               <img className='foto6'src={vaca}/>
             </button>
-            <button className='boton7' onClick={() => handleClick(buho)}>
+            <button className='boton7' onClick={() => handleClick()}>
               <img className='foto7'src={buho}/>
             </button>
-            <button className='boton8' onClick={() => handleClick(perezoso)}>
+            <button className='boton8' onClick={() => handleClick()}>
               <img className='foto8'src={perezoso}/>
             </button>
-            <button className='boton9' onClick={() => handleClick(doraemon)}>
+            <button className='boton9' onClick={() => handleClick()}>
               <img className='foto9'src={doraemon}/>
             </button>
-            <button className='boton10' onClick={() => handleClick(pikachu)}>
+            <button className='boton10' onClick={() => handleClick()}>
               <img className='foto10'src={pikachu}/>
             </button>
         </div>
