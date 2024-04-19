@@ -6,18 +6,18 @@ export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState(() => {
         // Inicializar el estado 'auth' con el valor guardado en el localStorage si existe,
         // de lo contrario, inicializarlo como un objeto vacío.
-        const savedAuth = sessionStorage.getItem('auth');
+        const savedAuth = localStorage.getItem('auth');
         return savedAuth ? JSON.parse(savedAuth) : {};
     });
 
     // Almacenar la sesión en el almacenamiento local al cambiar
     useEffect(() => {
-        sessionStorage.setItem('auth', JSON.stringify(auth));
+        localStorage.setItem('auth', JSON.stringify(auth));
     }, [auth]);
 
     // Comprobar si hay una sesión almacenada en el almacenamiento local al cargar la página
     useEffect(() => {
-        const savedAuth = sessionStorage.getItem('auth');
+        const savedAuth = localStorage.getItem('auth');
         if (savedAuth) {
             setAuth(JSON.parse(savedAuth));
         }
