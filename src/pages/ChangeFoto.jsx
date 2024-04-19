@@ -25,34 +25,34 @@ export const Changefoto = () => {
     var respuesta;
     switch (param){
       case "perro":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('0'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('0'), {withCredentials: true});
         break;
       case "gato":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('1'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('1'), {withCredentials: true});
         break;
       case "rana":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('2'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('2'), {withCredentials: true});
         break;
       case "leon":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('3'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('3'), {withCredentials: true});
         break;
       case "pollo":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('4'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('4'), {withCredentials: true});
         break;
       case "vaca":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('5'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('5'), {withCredentials: true});
         break;
       case "buho":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('6'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('6'), {withCredentials: true});
         break;
       case "perezoso":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('7'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('7'), {withCredentials: true});
         break;
       case "doraemon":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('8'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('8'), {withCredentials: true});
         break;
       case "pikachu":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('9'));
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('9'), {withCredentials: true});
         break;
     }
     
