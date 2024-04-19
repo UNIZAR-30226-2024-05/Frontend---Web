@@ -4,9 +4,11 @@ import portada2 from "../images/LOTR2.jpg"
 import { Play, Pause, ChevronDoubleLeft, ChevronDoubleRight } from "heroicons-react"
 import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
 import { useState, useRef, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import "./Reproductor.css"
 import { Howl } from "howler"
 import {motion} from "framer-motion"
+
 
 const sound = {
     title: "Capitulo",
@@ -26,6 +28,13 @@ const Reproductor = () => {
   const [currentTime, setCurrentTime] = useState(null);
   const MAX = 20;
   const sonidoRef = useRef<HTMLAudioElement>(null)
+
+  const location = useLocation();
+
+  const capitulo = location.state?.capitulo;
+  const portada = location.state?.portada;
+  console.log(capitulo);
+  console.log(portada);
 
   //Función para cambiar el icono de play y pause además del estado del audio
   function toggleAudio(){
@@ -90,7 +99,7 @@ const Reproductor = () => {
   return (
     <main>
       <div className='player'>
-        <img className='portada'src={sound.imageUrl} />
+        <img className='portada'src={portada} />
         {/*Botones para el control de la cancion*/}
         <div className='botones'>
           <button className='anteriorCancion' type='button'>

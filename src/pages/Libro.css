@@ -1,5 +1,6 @@
 
 .info-libro {
+  margin-top: 80px;
   display: flex;
   flex-direction: row;
   background: linear-gradient(#7f9894, #21ad96);
@@ -282,6 +283,10 @@
   padding: 2px 5px;
   justify-self: center;
   align-self: center;
+}
+
+.info-capitulos .capitulo{
+  cursor: pointer;
 }
 
 /* Palabra Capítulos*/

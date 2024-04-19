@@ -51,7 +51,7 @@ function App() {
       <Route path='/changenombre' element={<ProtectedRoute element={Changenombre} />}/>
       <Route path='/player' element={<ProtectedRoute element={Reproductor} />}/>
       <Route path='*' element={<NotFound />}/>
-      <Route path='/libro' element={<Libro />}/>
+      <Route path='/libro' element={<ProtectedRoute element={Libro} />}/>
       <Route path='/perfilamigo' element={<ProtectedRoute element={PerfilAmigo} />}/>
       <Route path='/autor' element={<Autor />}/>
      </Routes>

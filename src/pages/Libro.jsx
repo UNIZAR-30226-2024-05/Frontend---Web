@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Libro.css'; 
 import foto1 from '../images/1.png';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
@@ -117,6 +117,12 @@ const Libro = () => {
     const handleMouseLeave = () => {
         setPuntuacionUsuario(puntuacionGuardada);
     };
+    
+    const navigate = useNavigate();
+
+    const handleCapituloClick = (capitulo, portada) => {
+        navigate('/player', {state: {capitulo, portada}});
+    };
 
     return (
         <div className='info-libro'>
@@ -203,12 +209,13 @@ const Libro = () => {
 
                 <div className="info-capitulos">
                     <h2 className="tituloCap"> Capítulos</h2>
-                    <div>
+                    <div className='capitulo'>
                         {capitulos.map((capitulo, index) => (
-                            <li key={index}>
+                            <div key={index}
+                            onClick={() => handleCapituloClick(capitulo, portada)}>
                                 <span>{capitulo.titulo}</span>
                                 <span>{capitulo.duracion}</span>
-                            </li>
+                            </div>
                         ))}
                     </div>
                 </div>
