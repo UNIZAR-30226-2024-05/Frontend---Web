@@ -55,7 +55,7 @@ export const Changefoto = () => {
         valor = '9'
         break;
     }
-    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg: valor}), {withCredentials: true});
+    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({'newImg': valor}), {withCredentials: true});
     navigate('/perfil');
   };
 
