@@ -25,7 +25,7 @@ export const Changefoto = () => {
     var respuesta;
     switch (param){
       case "perro":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg: '0'}), {withCredentials: true});
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg: 0}), {withCredentials: true});
         break;
       case "gato":
         respuesta = await axios.post(URL_PERFIL, JSON.stringify('1'), {withCredentials: true});
