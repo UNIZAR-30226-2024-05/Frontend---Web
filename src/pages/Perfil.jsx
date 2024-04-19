@@ -25,7 +25,7 @@ export const Perfil = () => {
   const [perfil, setPerfil] = useState([]);
 
   useEffect(() => {
-    axios.get(URL_PERFIL)
+    axios.get(URL_PERFIL, {withCredentials: true})
     .then(response => {
       setPerfil(response.data);
       console.log(response.data);
