@@ -19,9 +19,43 @@ import axios from '../api/axios';
 export const Changefoto = () => {
 
   const navigate = useNavigate();
+  const URL_PERFIL = '/users/change_img'
 
-
-  const handleClick = () => {
+  const handleClick = async (param) => {
+    var respuesta;
+    switch (param){
+      case "perro":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('0'));
+        break;
+      case "gato":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('1'));
+        break;
+      case "rana":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('2'));
+        break;
+      case "leon":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('3'));
+        break;
+      case "pollo":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('4'));
+        break;
+      case "vaca":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('5'));
+        break;
+      case "buho":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('6'));
+        break;
+      case "perezoso":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('7'));
+        break;
+      case "doraemon":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('8'));
+        break;
+      case "pikachu":
+        respuesta = await axios.post(URL_PERFIL, JSON.stringify('9'));
+        break;
+    }
+    
     navigate('/perfil');
   };
 
