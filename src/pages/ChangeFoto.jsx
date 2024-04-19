@@ -22,40 +22,40 @@ export const Changefoto = () => {
   const URL_PERFIL = '/users/change_img'
 
   const handleClick = async (param) => {
-    var respuesta;
+    var valor;
     switch (param){
       case "perro":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg: 0}), {withCredentials: true});
+        valor = '0'
         break;
       case "gato":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('1'), {withCredentials: true});
+        valor = '1'
         break;
       case "rana":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('2'), {withCredentials: true});
+        valor = '2'
         break;
       case "leon":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('3'), {withCredentials: true});
+        valor = '3'
         break;
       case "pollo":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('4'), {withCredentials: true});
+        valor = '4'
         break;
       case "vaca":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('5'), {withCredentials: true});
+        valor = '5'
         break;
       case "buho":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('6'), {withCredentials: true});
+        valor = '6'
         break;
       case "perezoso":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('7'), {withCredentials: true});
+        valor = '7'
         break;
       case "doraemon":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('8'), {withCredentials: true});
+        valor = '8'
         break;
       case "pikachu":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('9'), {withCredentials: true});
+        valor = '9'
         break;
     }
-    
+    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg: valor}), {withCredentials: true});
     navigate('/perfil');
   };
 
