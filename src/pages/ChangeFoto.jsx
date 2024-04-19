@@ -22,40 +22,40 @@ export const Changefoto = () => {
   const URL_PERFIL = '/users/change_img'
 
   const handleClick = async (param) => {
-    var valor;
+    var newImg;
     switch (param){
       case "perro":
-        valor = '0'
+        newImg = '0'
         break;
       case "gato":
-        valor = '1'
+        newImg = '1'
         break;
       case "rana":
-        valor = '2'
+        newImg = '2'
         break;
       case "leon":
-        valor = '3'
+        newImg = '3'
         break;
       case "pollo":
-        valor = '4'
+        newImg = '4'
         break;
       case "vaca":
-        valor = '5'
+        newImg = '5'
         break;
       case "buho":
-        valor = '6'
+        newImg = '6'
         break;
       case "perezoso":
-        valor = '7'
+        newImg = '7'
         break;
       case "doraemon":
-        valor = '8'
+        newImg = '8'
         break;
       case "pikachu":
-        valor = '9'
+        newImg = '9'
         break;
     }
-    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({'newImg': valor}), {withCredentials: true});
+    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg}), {withCredentials: true});
     navigate('/perfil');
   };
 
