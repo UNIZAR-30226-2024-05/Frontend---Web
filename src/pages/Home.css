@@ -25,11 +25,11 @@
 .texto-presentacion {
     grid-row: span 1;
     grid-column: span 1;
-    background-color: #00bc297d;
     align-self: center;
     justify-self: center;
     display: inline-block;
     justify-content: center;
+    align-content: center;
     width: 75%;
     height: 75%;
 }

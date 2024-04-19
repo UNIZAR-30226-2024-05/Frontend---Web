@@ -65,9 +65,7 @@ const Home = () => {
         <>{/* Cabecera si no está logueado */}
           <img className='foto-presentacion' src={logo} alt={'Foto presentación'}></img>
           <div className="texto-presentacion">
-            <h2>¡Hola, somos Narratives!</h2>
-            <span>Aqui encontrarás tus libros favoritos del presente, del pasado y del futuro.</span>
-            <span>Aunque de momento contentate con Harry Potter. No se que mas poner aquí, ya veremos xD.</span>
+            <h2>¡Bienvenido a Narratives!</h2>
           </div>
         </>
       ) : (<> {/* Cabecera si está logueado */}

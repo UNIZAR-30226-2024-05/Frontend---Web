@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as BsIcons from "react-icons/bs";
 import './Carrusel.css';
 
@@ -84,6 +85,13 @@ const handlePaginaClick = (i) => {
   setPaginaActiva(i);
 }
 
+const navigate = useNavigate();
+
+const handleLibroClick = (libro) => {
+  console.log(libro);
+  navigate('/libro', {state: {libro}})
+}
+
 
 return (
     <div className='carrusel-libros container'>
@@ -95,15 +103,16 @@ return (
         </div>
 
         <div className='contenedor-principal'>
-          
 
           <div className='contenedor-carrusel' ref={filaRef}>
             <div className='carrusel' onMouseLeave={reducir}>
               {libros.map((libro, i) => (
-                <div key={i}
+                <div key={`${title}-${i}`}
                 className={`libro ${i === hoveredIndex ? 'hover' : ''}`}
-                onMouseEnter={() => ampliar(i)}>
-                  <a href='#'><img className='portadas' src={libro.img} alt={libro.titulo}></img></a>
+                onMouseEnter={() => ampliar(i)}
+                onClick={() => handleLibroClick(libro)}
+                >
+                  <img className='portadas' src={libro.img} alt={libro.titulo}></img>
                 </div>
               ))}
 
