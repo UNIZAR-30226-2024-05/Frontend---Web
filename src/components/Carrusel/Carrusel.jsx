@@ -87,9 +87,9 @@ const handlePaginaClick = (i) => {
 
 const navigate = useNavigate();
 
-const handleLibroClick = (libro) => {
-  console.log(libro);
-  navigate('/libro', {state: {libro}})
+const handleLibroClick = (id_libro) => {
+  console.log(id_libro);
+  navigate('/libro', {state: {id_libro}})
 }
 
 
@@ -110,7 +110,7 @@ return (
                 <div key={`${title}-${i}`}
                 className={`libro ${i === hoveredIndex ? 'hover' : ''}`}
                 onMouseEnter={() => ampliar(i)}
-                onClick={() => handleLibroClick(libro)}
+                onClick={() => handleLibroClick(libro.id)}
                 >
                   <img className='portadas' src={libro.img} alt={libro.titulo}></img>
                 </div>
