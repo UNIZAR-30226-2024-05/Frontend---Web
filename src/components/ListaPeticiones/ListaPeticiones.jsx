@@ -7,13 +7,13 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Importa el icon
 
 
 const ListaPeticiones = ({ tipos }) => {
-    const peticionesFicticias = [
+    /*const peticionesFicticias = [
         { username: 'Juan', tipo: 'recibidas' },
         { username: 'María', tipo: 'enviadas' },
         { username: 'Pedro', tipo: 'aceptadas' },
         { username: 'Ana', tipo: 'rechazadas' },
         { username: 'Carlos', tipo: 'recibidas' }
-    ];
+    ];*/
 
     const [peticiones, setPeticiones] = useState([]);
     const [listaPeticiones, setListaPeticiones] = useState([]);
@@ -22,9 +22,18 @@ const ListaPeticiones = ({ tipos }) => {
     const [tipoSeleccionado, setTipoSeleccionado] = useState('');
 
     useEffect(() => {
-        setPeticiones(peticionesFicticias);
-        setListaPeticiones(peticionesFicticias);
-        setListaShow(peticionesFicticias);
+        async function fetchPeticiones() {
+            await axios.get(URL_CONSULTA, { withCredentials: true })
+                 .then(response => {
+                     setPeticiones(response.data.peticiones);
+                     setListaPeticiones(response.data.peticiones);
+                     setListaShow(response.data.peticiones);
+                     console.log(response.data);
+                 }).catch(error => {
+                     console.log(error);
+                 })
+        }
+        fetchPeticiones();
     }, []);
 
     const handleChangeBusqueda = event => {

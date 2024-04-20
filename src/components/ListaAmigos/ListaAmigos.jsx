@@ -25,7 +25,7 @@ const ListaAmigos = () => {
     
         useEffect( () => {
             async function fetchAmigos(){
-                await axios.get(URL_CONSULTA)
+                await axios.get(URL_CONSULTA, { withCredentials: true })
                 .then(response=>{
                     setAmigos(response.data.amigos);
                     setListaAmigos(response.data.amigos);
