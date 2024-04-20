@@ -62,6 +62,7 @@ const InicioSesion = () => {
           withCredentials: true
         }
       );
+      console.log(username)
       console.log(respuesta); /* Solo desarrollo */
       const user_id = respuesta?.data?.user?.user_id;
       const img = respuesta?.data?.user?.img;

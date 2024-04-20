@@ -22,40 +22,40 @@ export const Changefoto = () => {
   const URL_PERFIL = '/users/change_img'
 
   const handleClick = async (param) => {
-    var respuesta;
+    var newImg;
     switch (param){
       case "perro":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('0'), {withCredentials: true});
+        newImg = '0'
         break;
       case "gato":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('1'), {withCredentials: true});
+        newImg = '1'
         break;
       case "rana":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('2'), {withCredentials: true});
+        newImg = '2'
         break;
       case "leon":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('3'), {withCredentials: true});
+        newImg = '3'
         break;
       case "pollo":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('4'), {withCredentials: true});
+        newImg = '4'
         break;
       case "vaca":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('5'), {withCredentials: true});
+        newImg = '5'
         break;
       case "buho":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('6'), {withCredentials: true});
+        newImg = '6'
         break;
       case "perezoso":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('7'), {withCredentials: true});
+        newImg = '7'
         break;
       case "doraemon":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('8'), {withCredentials: true});
+        newImg = '8'
         break;
       case "pikachu":
-        respuesta = await axios.post(URL_PERFIL, JSON.stringify('9'), {withCredentials: true});
+        newImg = '9'
         break;
     }
-    
+    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg}), {withCredentials: true});
     navigate('/perfil');
   };
 
@@ -65,34 +65,34 @@ export const Changefoto = () => {
           <h1>Elija la foto de perfil</h1>
         </div>
         <div className='rectangulo'>
-            <button className='boton1' onClick={() => handleClick()}>
+            <button className='boton1' onClick={() => handleClick("perro")}>
               <img className='foto1'src={perro}/>
             </button>
-            <button className='boton2' onClick={() => handleClick()}>
+            <button className='boton2' onClick={() => handleClick("gato")}>
               <img className='foto2'src={gato}/>
             </button>
-            <button className='boton3' onClick={() => handleClick()}>
+            <button className='boton3' onClick={() => handleClick("rana")}>
               <img className='foto3'src={rana}/>
             </button>
-            <button className='boton4' onClick={() => handleClick()}>
+            <button className='boton4' onClick={() => handleClick("leon")}>
               <img className='foto4'src={leon}/>
             </button>
-            <button className='boton5' onClick={() => handleClick()}>
+            <button className='boton5' onClick={() => handleClick("pollo")}>
               <img className='foto5'src={pollo}/>
             </button>
-            <button className='boton6' onClick={() => handleClick()}>
+            <button className='boton6' onClick={() => handleClick("vaca")}>
               <img className='foto6'src={vaca}/>
             </button>
-            <button className='boton7' onClick={() => handleClick()}>
+            <button className='boton7' onClick={() => handleClick("buho")}>
               <img className='foto7'src={buho}/>
             </button>
-            <button className='boton8' onClick={() => handleClick()}>
+            <button className='boton8' onClick={() => handleClick("perezoso")}>
               <img className='foto8'src={perezoso}/>
             </button>
-            <button className='boton9' onClick={() => handleClick()}>
+            <button className='boton9' onClick={() => handleClick("doraemon")}>
               <img className='foto9'src={doraemon}/>
             </button>
-            <button className='boton10' onClick={() => handleClick()}>
+            <button className='boton10' onClick={() => handleClick("pikachu")}>
               <img className='foto10'src={pikachu}/>
             </button>
         </div>
