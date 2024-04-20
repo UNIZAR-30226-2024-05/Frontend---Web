@@ -11,7 +11,6 @@ import DropdownButton from '../components/DropdownButton/DropdownButton';
 
 
 const Autor = () => {
-    const imagenAutor = 'https://images.gr-assets.com/authors/1596216614p5/1077326.jpg'
     const puntuacionMedia = 3.5
     const estrellasLlenas = Math.floor(puntuacionMedia);
     const estrellasMedias = puntuacionMedia - estrellasLlenas >= 0.5 ? 1 : 0;
@@ -68,9 +67,15 @@ const Autor = () => {
     return (
         <div className="autor-container">
             <div className="autor-arriba">
-                <div className="autor-arriba-izquierda">
-                    <div className='autor-foto'>
-                        <img src={imagenAutor} alt="Portada del libro" />
+                <div className="autor-arriba-derecha">
+                    <div className='autor-nombre'>
+                        <h1>{nombreAutor}</h1>
+                    </div>
+                    <div className='autor-informacion'>
+                        <p>{textoInformacionAutor}</p>
+                    </div>
+                    <div className='autor-ciudad-nacimiento'>
+                        <p>Ciudad de nacimiento: {ciudadNacimientoAutor}</p>
                     </div>
 
                     {/* Estrellas de puntuación */}
@@ -91,18 +96,7 @@ const Autor = () => {
                     <div>
                         <p className='autor-genero-mas-publicado'>Género más publicado:</p>
                         <p className='autor-genero'> <a href='/Biblioteca' className='autor-linkGenero'>{generoMasPublicado}</a></p> {/* añadir el enlace a la busqueda con filtro fantasia*/}
-                    </div>            
-                </div>
-                <div className="autor-arriba-derecha">
-                    <div className='autor-nombre'>
-                        <h1>{nombreAutor}</h1>
-                    </div>
-                    <div className='autor-informacion'>
-                        <p>{textoInformacionAutor}</p>
-                    </div>
-                    <div className='autor-ciudad-nacimiento'>
-                        <p>Ciudad de nacimiento: {ciudadNacimientoAutor}</p>
-                    </div>
+                    </div> 
                 </div>
             </div>
             <div className='autor-abajo'>
