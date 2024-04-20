@@ -1,0 +1,80 @@
+.contenedor-lista {
+    /* Estilos para el contenedor de la lista */
+    text-align: center;
+    padding: 40px 100px;
+    width: 100%;
+  }
+  
+  .contenedor-lista .lista {
+    /* Estilos para la lista de libros */
+    display: flex; /* Utiliza flexbox para alinear los libros horizontalmente */
+    flex-direction: column;
+  }
+
+  .listaPeticiones-tipo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .contenedor-lista .lista .peticion {
+    /* Estilos para cada peticion */
+    margin-bottom: 20px; /* Espacio debajo de las peticiones */
+    background-color: #FAF3E0;
+    border-radius: 20px;
+  }
+  
+  .contenedor-lista .lista .peticion .contenido-peticion {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .contenedor-lista .lista .peticion .contenido-peticion .peticion-username {
+    /* Estilos para los nombres de usuario */
+    margin: 10px; /* Margen alrededor del nombre de usuario */
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  .peticion-username:hover {
+        cursor: pointer;
+    }
+
+.peticion-usernameLink {
+    text-decoration: none;
+    color: black;
+}
+  
+  .buscador-listaPeticiones-container {
+    align-items: end;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+  }
+  
+  
+  .buscador-listaPeticiones-container .buscador {
+    width: 80%;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+  }
+  
+  .buscador-listaPeticiones-container-button-search {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+  }
+  
+.accion-peticion {
+    display: flex;
+    align-items: center;
+}
+
+.icono-aceptar, .icono-rechazar {
+    margin-left: 10px; /* Ajusta el margen entre los iconos y el nombre de usuario */
+}
+  

@@ -1,0 +1,84 @@
+.lista-amigos {
+    /* Estilos para el contenedor de la lista de amigos */
+    text-align: center;
+    padding: 40px 100px;
+    max-width: 100% !important;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.lista-amigos .lista {
+    /* Estilos para la lista de amigos */
+    display: flex; /* Utiliza flexbox para alinear los amigos horizontalmente */
+    flex-direction: column;
+}
+
+.lista-amigos .lista .amigo {
+    /* Estilos para cada amigo */
+    width: 240%; /* Ancho relativo para los contenedores de amigos */
+    margin-bottom: 20px; /* Espacio debajo de los amigos */ 
+    margin-left: -70%;
+    background-color: #FAF3E0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+.lista-amigos .lista .amigo .amigo-info {
+    /* Estilos para la información de cada amigo */
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.lista-amigos .lista .amigo .amigo-info .nombre-amigo {
+    /* Estilos para los nombres de los amigos */
+    margin: 10px; /* Margen alrededor del nombre de usuario */
+    color: black;
+    text-decoration: none;
+    font-size: 2.0rem;
+}
+
+.lista-amigos .lista .amigo .amigo-info .link-amigo{
+    text-decoration: none;
+    color: #000000;
+}
+
+.lista-amigos .lista .amigo .amigo-info .eliminar-amigo {
+    margin-left: auto; /* Mueve el botón de eliminar a la derecha del todo */
+    margin-right: 10%;
+}
+
+
+
+
+.buscador-listaAmigos-container {
+    width: 200%;
+    align-items: end;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+
+.buscador-listaAmigos-container-buscador {
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+}
+
+.buscador-listaAmigos-container-button-search {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+}
+
+
+
