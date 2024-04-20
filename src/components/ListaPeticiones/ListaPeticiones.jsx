@@ -8,13 +8,13 @@ import axios from 'axios';
 
 
 const ListaPeticiones = ({ tipos }) => {
-    /*const peticionesFicticias = [
+    const peticionesFicticias = [
         { username: 'Juan', tipo: 'recibidas' },
         { username: 'María', tipo: 'enviadas' },
         { username: 'Pedro', tipo: 'aceptadas' },
         { username: 'Ana', tipo: 'rechazadas' },
         { username: 'Carlos', tipo: 'recibidas' }
-    ];*/
+    ];
 
     const [peticiones, setPeticiones] = useState([]);
     const [listaPeticiones, setListaPeticiones] = useState([]);
@@ -23,7 +23,7 @@ const ListaPeticiones = ({ tipos }) => {
     const [tipoSeleccionado, setTipoSeleccionado] = useState('');
 
     useEffect(() => {
-        async function fetchPeticiones() {
+        /*async function fetchPeticiones() {
             await axios.get(URL_CONSULTA, { withCredentials: true })
                  .then(response => {
                      setPeticiones(response.data.peticiones);
@@ -34,7 +34,10 @@ const ListaPeticiones = ({ tipos }) => {
                      console.log(error);
                  })
         }
-        fetchPeticiones();
+        fetchPeticiones();*/
+        setPeticiones(peticionesFicticias);
+        setListaPeticiones(peticionesFicticias);
+        setListaShow(peticionesFicticias);
     }, []);
 
     const handleChangeBusqueda = event => {
