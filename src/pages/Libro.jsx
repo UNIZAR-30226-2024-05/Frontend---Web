@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Libro.css'; 
 import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -9,12 +9,56 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import axios from '../api/axios';
 
 const Libro = () => {
+
+    const navigate = useNavigate();
+
     const location = useLocation();
-    const libro = location.state?.libro;
+    const id_libro = location.state?.id_libro;
+    const [libro, setLibro] = useState();
+
+    const [titulo, setTitulo] = useState('Titulo');
+    const [descripcion, setDescripcion] = useState('Aquí está la descripción.');
+    const [puntuacion, setPuntuacion] = useState(0);
+    const [autor, setAutor] = useState('Autor');
+    const [generos, setGeneros] = useState([]);
+    const [portada, setPortada] = useState(foto1);
+
+    const [capitulos, setCapitulos] = useState([]);
+
+    useEffect(() => {
+
+        if (id_libro) {
+            const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
+
+            axios.get(URL_AUDIOLIBRO)
+            .then(response => {
+                // Actualiza el estado de los libros con los datos de los audiolibros recibidos
+                setLibro(response.data);
+                setTitulo(response.data.audiolibro.titulo);
+                setDescripcion(response.data.audiolibro.descripcion);
+                setPuntuacion(3); /* La consulta no lo devuelve */
+                setAutor('Autor'); /* La consulta no lo devuelve */
+                setGeneros(response.data.generos);
+                setPortada(response.data.audiolibro.img);
+                setCapitulos(response.data.capitulos);
+                console.log(response.data);
+            })
+            .catch(error => {
+                // Maneja los errores si ocurrieron
+                console.error('Hubo un error al obtener el audiolibro:', error);
+            });
+        }
+        else {
+            console.log('No se ha pasado ningún libro');
+            navigate('/');
+        }
+    }, [id_libro]); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
+
+    const handleCapituloClick = (capitulo, portada) => {
+        navigate('/player', {state: {capitulo, portada}});
+    };
+
     console.log(libro);
-    const titulo = libro.titulo;
-    const descripcion = libro.descripcion;
-    const puntuacion = libro.puntuacion;
     const estrellasLlenas = Math.floor(puntuacion);
     const estrellasMedias = puntuacion - estrellasLlenas >= 0.5 ? 1 : 0;
     const estrellasVacias = 5 - estrellasLlenas - estrellasMedias;
@@ -30,11 +74,8 @@ const Libro = () => {
     };
     const colecciones = ['Harry Potter', 'Fantasia', 'Aventuras'];
     const [mostrarColecciones, setMostrarColecciones] = useState(false);
-    const autor = libro.autor;
-    const genero = libro.genero;
-    const portada = libro.img;
 
-    
+    /*
     const capitulos = [
         {
             titulo: 'Capítulo 1: El niño que vivió',
@@ -72,7 +113,8 @@ const Libro = () => {
             titulo: 'Capítulo 9: La piedra filosofal',
             duracion: '1:45:00',
         },
-    ]
+    ];
+    */
     const tienesReseña = false; // simulamos que no tenemos reseña
     const reseñasAmigos = [
         {
@@ -119,12 +161,6 @@ const Libro = () => {
     
     const handleMouseLeave = () => {
         setPuntuacionUsuario(puntuacionGuardada);
-    };
-    
-    const navigate = useNavigate();
-
-    const handleCapituloClick = (capitulo, portada) => {
-        navigate('/player', {state: {capitulo, portada}});
     };
 
     return (
@@ -207,7 +243,10 @@ const Libro = () => {
 
                 {/* Género del libro */}
                 <div className="info-genero">
-                    <p>Género: {genero}</p>
+                    <p>{generos.length <= 1 ? 'Género: ' : 'Géneros: '}
+                    {generos.map((genero, i) => 
+                    <span key={i}>{genero.nombre}{i !== generos.length - 1 ? ', ' : ''}</span>
+                    )}</p>
                 </div>
 
                 <div className="info-capitulos">

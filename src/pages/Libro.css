@@ -15,8 +15,8 @@
 }
 
 .info-portada img {
-  width: 50%;
-  height: 50%;
+
+  height: 50vh;
   border: 4px solid black;
 }
 /* Para las estrellas de la puntuacion*/
