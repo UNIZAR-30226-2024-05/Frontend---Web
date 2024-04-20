@@ -10,13 +10,13 @@ const ListaAmigos = () => {
         
         const URL_CONSULTA = '/amistad/amigos';
 
-        const listaAmigosFicticia = [
+        /*const listaAmigosFicticia = [
             { username: 'Juan' },
             { username: 'María' },
             { username: 'Pedro' },
             { username: 'Ana' },
             { username: 'Carlos' }
-        ];
+        ];*/
     
         const [amigos, setAmigos] = useState([]);
         const [listaAmigos, setListaAmigos] = useState(amigos);
@@ -24,12 +24,6 @@ const ListaAmigos = () => {
         const [busqueda, setBusqueda] = useState('');
     
         useEffect( () => {
-            setTimeout(() => {
-                setAmigos(listaAmigosFicticia);
-                setListaAmigos(listaAmigosFicticia);
-                setListaShow(listaAmigosFicticia);
-            });
-            /*
             async function fetchAmigos(){
                 await axios.get(URL_CONSULTA)
                 .then(response=>{
@@ -41,7 +35,7 @@ const ListaAmigos = () => {
                     console.log(error);
                 })
             }
-            fetchAmigos();*/
+            fetchAmigos();
         }, []);
     
         const handleChangeBusqueda = event => {
