@@ -24,7 +24,7 @@ const ListaPeticiones = ({ tipos }) => {
 
     useEffect(() => {
         /*async function fetchPeticiones() {
-            await axios.get(URL_CONSULTA, { withCredentials: true })
+            await axios.get(/amistad/peticiones, { withCredentials: true })
                  .then(response => {
                      setPeticiones(response.data.peticiones);
                      setListaPeticiones(response.data.peticiones);
