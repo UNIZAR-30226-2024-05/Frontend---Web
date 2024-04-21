@@ -2,13 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Autor.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
-import harry1 from '../images/1.png';
-import harry2 from '../images/2.jpg';
-import harry3 from '../images/3.jpg';
-import harry4 from '../images/4.jpg';
-import harry5 from '../images/5.jpg';
-import harry6 from '../images/6.jpg';
-import harry7 from '../images/7.jpg';
 import DropdownButton from '../components/DropdownButton/DropdownButton';
 
 
@@ -18,7 +11,12 @@ const Autor = () => {
     const navigate = useNavigate();
     const id_autor = location.state?.id_autor;
     const [autor, setAutor] = useState([]);
-
+    const [nombreAutor, setNombreAutor] = useState('Autor');
+    const [textoInformacionAutor, setTextoInformacionAutor] = useState('Información del autor');
+    const [ciudadNacimientoAutor, setCiudadNacimientoAutor] = useState('Tombuktu');
+    const [puntuacionMedia, setPuntuacionMedia] = useState(3.5);
+    const [generoMasPublicado, setGeneroMasPublicado] = useState('');
+    const [audiolibros, setAudiolibros] = useState([]);
     useEffect(() => {
 
         if (id_autor) {
@@ -27,8 +25,15 @@ const Autor = () => {
             axios.get(URL_AUTOR)
             .then(response => {
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
-                setAutor(response.data);
-                console.log(response.data);
+                const data = response.data;
+                setAutor(data);
+                setNombreAutor(data.autor.nombre);
+                setTextoInformacionAutor(data.autor.informacion);
+                setCiudadNacimientoAutor(data.autor.ciudadnacimiento);
+                setPuntuacionMedia(data.NotaMedia);
+                setGeneroMasPublicado(data.generoMasEscrito);
+                setAudiolibros(data.audiolibros);
+                console.log(data);
             })
             .catch(error => {
                 // Maneja los errores si ocurrieron
@@ -41,58 +46,9 @@ const Autor = () => {
         }
     }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
 
-    const puntuacionMedia = 3.5;
     const estrellasLlenas = Math.floor(puntuacionMedia);
     const estrellasMedias = puntuacionMedia - estrellasLlenas >= 0.5 ? 1 : 0;
     const estrellasVacias = 5 - estrellasLlenas - estrellasMedias;
-    const generoMasPublicado = 'Fantasía'
-    const nombreAutor = 'J.K. Rowling'
-    const textoInformacionAutor = 'J.K. Rowling es una aclamada autora británica conocida por su serie de libros Harry Potter. Nacida el 31 de julio de 1965 en Yate, Gloucestershire, Rowling alcanzó la fama mundial con la publicación del primer libro de la serie, Harry Potter y la piedra filosofal, en 1997. Desde entonces, ha escrito varios libros adicionales en la serie, convirtiéndola en una de las sagas literarias más populares de todos los tiempos. Además de su trabajo en la serie Harry Potter, Rowling ha escrito novelas para adultos y ha participado en varios proyectos filantrópicos. Su influencia en la literatura contemporánea es innegable, y su legado perdurará por generaciones.'
-    const ciudadNacimientoAutor = 'Yate, Gloucestershire, Reino Unido'
-    const audiolibros = [
-        {
-            id: 1,
-            titulo: 'Harry Potter y la piedra filosofal',
-            portada: harry1,
-            puntuacion: 4.5
-        },
-        {
-            id: 2,
-            titulo: 'Harry Potter y la cámara secreta',
-            portada: harry2,
-            puntuacion: 4.0
-        },
-        {
-            id: 3,
-            titulo: 'Harry Potter y el prisionero de Azkaban',
-            portada: harry3,
-            puntuacion: 4.0
-        },
-        {
-            id: 4,
-            titulo: 'Harry Potter y el cáliz de fuego',
-            portada: harry4,
-            puntuacion: 4.5
-        },
-        {
-            id: 5,
-            titulo: 'Harry Potter y la orden del fénix',
-            portada: harry5,
-            puntuacion: 4.0
-        },
-        {
-            id: 6,
-            titulo: 'Harry Potter y el misterio del príncipe',
-            portada: harry6,
-            puntuacion: 4.0
-        },
-        {
-            id: 7,
-            titulo: 'Harry Potter y las reliquias de la muerte',
-            portada: harry7,
-            puntuacion: 4.5
-        }
-    ]
 
     return (
         <div className="autor-container">
@@ -136,7 +92,7 @@ const Autor = () => {
                 <div className='autor-audiolibros'>
                     {audiolibros.map((audiolibro) => (
                         <div key={audiolibro.id} className='autor-audiolibro-concreto'>
-                            <img className='autor-audiolibro-portada' src={audiolibro.portada} alt={audiolibro.titulo} />
+                            <img className='autor-audiolibro-portada' src={audiolibro.img} alt={audiolibro.titulo} />
                             <div className='autor-audiolibro-info'>
                                 <p className='autor-audiolibro-titulo'><a className='autor-audiolibro-tituloLink' href='/libro'>{audiolibro.titulo}</a></p>
                                 <p className='autor-audiolibro-autor'>por <a href='/autor' className='autor-linkAutor'>{nombreAutor}</a></p>
