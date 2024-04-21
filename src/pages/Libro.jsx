@@ -37,7 +37,7 @@ const Libro = () => {
                 setTitulo(response.data.audiolibro.titulo);
                 setDescripcion(response.data.audiolibro.descripcion);
                 setPuntuacion(3); /* La consulta no lo devuelve */
-                setAutor('Autor'); /* La consulta no lo devuelve */
+                setAutor(response.data.autor); /* La consulta no lo devuelve */
                 setGeneros(response.data.generos);
                 setPortada(response.data.audiolibro.img);
                 setCapitulos(response.data.capitulos);
@@ -52,7 +52,7 @@ const Libro = () => {
             console.log('No se ha pasado ningún libro');
             navigate('/');
         }
-    }, [id_libro]); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
+    }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
 
     const handleCapituloClick = (capitulo, portada) => {
         navigate('/player', {state: {capitulo, portada}});
@@ -154,6 +154,10 @@ const Libro = () => {
         setPuntuacionUsuario(nuevaPuntuacion);
         setPuntuacionGuardada(nuevaPuntuacion);
     };
+
+    const handleAutorClick = (id_autor) => {
+        navigate('/autor', {state: {id_autor}});
+    }
     
     const handleMouseEnter = (index) => {
         setPuntuacionUsuario(index + 1);
@@ -238,7 +242,7 @@ const Libro = () => {
                 
                 {/* Autor del libro */}
                 <div className="info-autor">
-                    <p>Autor: <a href="/autor" className='info-linkAutor'>{autor}</a></p>
+                    <p>Autor: <span onClick={() => handleAutorClick(autor.id)} className='info-linkAutor'>{autor.nombre}</span></p>
                 </div>
 
                 {/* Género del libro */}
@@ -251,12 +255,13 @@ const Libro = () => {
 
                 <div className="info-capitulos">
                     <h2 className="tituloCap"> Capítulos</h2>
-                    <div className='capitulo'>
-                        {capitulos.map((capitulo, index) => (
-                            <div key={index}
+                    <div className='capitulos'>
+                        {capitulos.map((capitulo, i) => (
+                            <div key={i}
+                            className='capitulo'
                             onClick={() => handleCapituloClick(capitulo, portada)}>
-                                <span>{capitulo.titulo}</span>
-                                <span>{capitulo.duracion}</span>
+                                <span>{capitulo.numero}</span>
+                                <span>{capitulo.nombre}</span>
                             </div>
                         ))}
                     </div>

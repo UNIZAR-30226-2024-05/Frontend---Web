@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Autor.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from '../api/axios';
 import harry1 from '../images/1.png';
 import harry2 from '../images/2.jpg';
 import harry3 from '../images/3.jpg';
@@ -11,7 +13,35 @@ import DropdownButton from '../components/DropdownButton/DropdownButton';
 
 
 const Autor = () => {
-    const puntuacionMedia = 3.5
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const id_autor = location.state?.id_autor;
+    const [autor, setAutor] = useState([]);
+
+    useEffect(() => {
+
+        if (id_autor) {
+            const URL_AUTOR = `/autores/${id_autor}`;
+            console.log(URL_AUTOR);
+            axios.get(URL_AUTOR)
+            .then(response => {
+                // Actualiza el estado de los libros con los datos de los audiolibros recibidos
+                setAutor(response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                // Maneja los errores si ocurrieron
+                console.error('Hubo un error al obtener los datos del autor:', error);
+            });
+        }
+        else {
+            console.log('No se ha pasado ningún autor'); /* Habrá que mirarselo bien */
+            navigate('/');
+        }
+    }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
+
+    const puntuacionMedia = 3.5;
     const estrellasLlenas = Math.floor(puntuacionMedia);
     const estrellasMedias = puntuacionMedia - estrellasLlenas >= 0.5 ? 1 : 0;
     const estrellasVacias = 5 - estrellasLlenas - estrellasMedias;

@@ -31,6 +31,7 @@
 
 .contenedor-lista .lista .libro .contenido-libro .portadas{
   margin: 10px;
+  cursor: pointer;
 }
 
 .contenedor-lista .lista .libro .contenido-libro .portadas img{
@@ -45,6 +46,11 @@
     margin: 0; /* Elimina el margen predeterminado */
     color: white;
     text-decoration: none;
+}
+
+.contenedor-lista .lista .libro .contenido-libro .titulo:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .contenedor-lista .lista .libro .boton-container {

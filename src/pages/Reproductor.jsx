@@ -23,18 +23,18 @@ const sound2 = {
 }
 
 const Reproductor = () => {
+
+  const location = useLocation();  
+
+  const capitulo = location.state?.capitulo;
+  const portada = location.state?.portada;
+
   const [play, setPlay] = useState(false)
   const [soundInstance, setSoundInstance] = useState(null)
   const [currentTime, setCurrentTime] = useState(null);
   const MAX = 20;
   const sonidoRef = useRef<HTMLAudioElement>(null)
 
-  const location = useLocation();
-
-  const capitulo = location.state?.capitulo;
-  const portada = location.state?.portada;
-  console.log(capitulo);
-  console.log(portada);
 
   //Función para cambiar el icono de play y pause además del estado del audio
   function toggleAudio(){
@@ -52,7 +52,7 @@ const Reproductor = () => {
       } else {
         // Si no hay una posición almacenada, inicia la reproducción desde el principio
         const newSoundInstance = new Howl({
-          src: [sound.waveType],
+          src: [capitulo.audio],
           autoplay: true,
           onend: () => {
             setPlay(false);

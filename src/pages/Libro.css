@@ -258,15 +258,15 @@
   margin-bottom: 2%;
 }
 
-.info-autor a:hover {
-  text-decoration: underline;
-}
-
 .info-linkAutor {
   text-decoration: none;
   color: #000000;
 }
 
+.info-linkAutor:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 .info-genero {
   margin-bottom: 5%;
@@ -284,9 +284,9 @@
   justify-self: center;
   align-self: center;
 }
-
-.info-capitulos .capitulo{
+.info-capitulos .capitulos .capitulo:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 
 /* Palabra Capítulos*/

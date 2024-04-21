@@ -79,7 +79,6 @@ const ListaLibros = ({generos}) => {
     const navigate = useNavigate();
 
     const handleLibroClick = (id_libro) => {
-        console.log(id_libro);
         navigate('/libro', {state: {id_libro}})
     }
 
@@ -110,15 +109,14 @@ const ListaLibros = ({generos}) => {
         <div className='lista'>
             {listaShow.map((libro, i) => (
                 <div key={i}
-                className='libro'
-                onClick={() => handleLibroClick(libro.id)}>
+                className='libro'>
                     <div className='contenido-libro'>
-                        <a className='portadas' href='/libro'>
+                        <div className='portadas' onClick={() => handleLibroClick(libro.id)}>
                             <img src={libro.img} alt={libro.titulo}></img>
-                        </a>
-                        <a className='titulo' href='/libro'>
+                        </div>
+                        <div className='titulo' onClick={() => handleLibroClick(libro.id)}>
                             <h1>{libro.titulo}</h1>
-                        </a>
+                        </div>
                     </div>
                     <div className='boton-container'>
                         <DropdownButton className='boton-opciones' options={opciones} />
