@@ -9,6 +9,7 @@ import { IconContext } from 'react-icons';
 import logo from '../../images/logo.png';
 import AuthContext from '../../context/AuthProvider';
 import axios from '../../api/axios';
+import ListaAmigosSidebar from '../ListaAmigosSidebar/ListaAmigosSidebar';
 import vaca from '../../images/fotos-perfil/vaca.jpg';
 
 function Navbar() {
@@ -109,23 +110,14 @@ function Navbar() {
                 </Link>
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                <ul className='nav-menu-items' onClick={showSidebar}>
-                    <li className="navbar-toggle">
-                        <Link to='#' className='menu-bars'>
+                <div className='nav-menu-items'>
+                    <div className="navbar-toggle">
+                        <div className='menu-bars' onClick={showSidebar}>
                         <AiIcons.AiOutlineClose />
-                        </Link>
-                    </li>
-                    {SidebarData.map((item, index) => {
-                        return(
-                            <li key={index} className={item.cName}>
-                                <Link to={item.path}>
-                                    {item.icon}
-                                    <span>{item.title}</span>
-                                </Link>
-                            </li>
-                        );
-                    })}
-                </ul>
+                        </div>
+                    </div>
+                    <div className='sidebar-list'> <ListaAmigosSidebar /> </div>
+                </div>
             </nav>
         </IconContext.Provider>
     </>

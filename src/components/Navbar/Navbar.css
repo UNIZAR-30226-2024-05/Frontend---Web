@@ -165,7 +165,11 @@
     justify-content: start;
     align-items: center;
   }
-  
+
+  .sidebar-list {
+    width: 100%;
+  }
+
   span {
     margin-left: 16px;
   }
@@ -183,12 +187,4 @@
 
   .top-menu-items {
     width: 50%;
-  }
-
-  usuario-logueado {
-    display: inline-flex;
-    justify-content: right;
-    position: fixed;
-    top: 0;
-    right: 6rem;  
   }
