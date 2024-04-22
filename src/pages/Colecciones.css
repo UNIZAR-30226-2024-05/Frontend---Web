@@ -1,10 +1,14 @@
 .colecciones {
     margin-top: 80px;
+}
+
+.colecciones .colecciones-container {
     display: grid;
     grid-template-columns: 1fr;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     height: auto;
+    min-height:calc(100vh - 80px);
     /*background: #0ec3a4;*/
     background: linear-gradient(#7f9894, #21ad96);
     background-position: center;
@@ -13,6 +17,17 @@
     font-size: 1.5rem;
 }
 
-.colecciones .lista, .colecciones .footer {
+.colecciones .colecciones-footer {
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.colecciones .colecciones-container .list {
     width: 100%;
+}
+
+.colecciones .colecciones-footer .footer{
+    width: 100%;
+    align-self: flex-end;
 }

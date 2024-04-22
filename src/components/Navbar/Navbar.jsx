@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import * as FaIcons from "react-icons/fa";
+import * as IoIcons from "react-icons/io";
 import * as AiIcons from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData'
@@ -9,6 +9,7 @@ import { IconContext } from 'react-icons';
 import logo from '../../images/logo.png';
 import AuthContext from '../../context/AuthProvider';
 import axios from '../../api/axios';
+import vaca from '../../images/fotos-perfil/vaca.jpg';
 
 function Navbar() {
     const URL_LOGOUT = '/users/logout';
@@ -56,32 +57,21 @@ function Navbar() {
     <>
         <IconContext.Provider value={{color:    '#fff'}}>
             <div className='navbar'>
-                <Link to='#' className='menu-bars'>
-                    <FaIcons.FaBars onClick={showSidebar} />
-                </Link>
-                
+                {username ? (
+                <>
+                    <Link to='/perfil' className='profile-picture'>
+                        <img src={vaca}/>
+                    </Link>
+                    <div className='menu-bars'>
+                        <IoIcons.IoMdPeople onClick={showSidebar} />
+                    </div>
+                    <div className='menu-text'>
+                        <Link to='/' onClick={handleCerrarSesion} className='boton-cerrar-sesion'>Cerrar Sesión</Link>
+                    </div>
+                </>) : (null)
+                }
 
                 {/* ESTO ES TEMPORAL*/} 
-
-                <div className='menu-text'>
-        {username ? (
-          <>
-            <button onClick={toggleMenu} className='usuario-logueado'>
-              Bienvenido, {username}!
-            </button>
-            {mostrarMenu && (
-              <div className='menu-desplegable'>
-                {/* Contenido del menú desplegable */}
-                <Link to='/perfil'>Perfil</Link>
-                <Link to='/config'>Configuración</Link>
-                <button onClick={handleCerrarSesion} className='menu-items'>Cerrar Sesión</button>
-              </div>
-            )}
-          </>
-        ) : ( null
-        )}
-        </div>
-                
 
                 <div className='menu'>
                     { username ? (

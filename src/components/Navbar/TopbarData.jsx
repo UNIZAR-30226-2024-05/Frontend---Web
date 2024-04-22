@@ -39,6 +39,11 @@ export const TopbarOutData = [
         cName: 'menu-text'
     },
     {
+        title: 'Biblioteca',
+        path: '/biblioteca',
+        cName: 'menu-text'
+    },
+    {
         title: 'Iniciar Sesion',
         path: '/login',
         cName: 'menu-text'

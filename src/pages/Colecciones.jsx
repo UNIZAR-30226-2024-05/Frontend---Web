@@ -21,8 +21,12 @@ const Colecciones = () => {
 
   return (
     <div className='colecciones'>
+      <div className='colecciones-container'>
         <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
+      </div>
+      <div className='colecciones-footer'>
         <Footer className='footer' />
+      </div>
     </div>
   );
 }
