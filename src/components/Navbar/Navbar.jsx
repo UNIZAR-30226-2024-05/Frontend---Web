@@ -11,8 +11,66 @@ import AuthContext from '../../context/AuthProvider';
 import axios from '../../api/axios';
 import ListaAmigosSidebar from '../ListaAmigosSidebar/ListaAmigosSidebar';
 import vaca from '../../images/fotos-perfil/vaca.jpg';
+import perro from "../../images/fotos-perfil/perro.jpg"
+import gato from "../../images/fotos-perfil/gato.jpg"
+import rana from "../../images/fotos-perfil/rana.jpg"
+import leon from "../../images/fotos-perfil/leon.jpg"
+import pollo from "../../images/fotos-perfil/pollo.jpg"
+import buho from "../../images/fotos-perfil/buho.jpg"
+import perezoso from "../../images/fotos-perfil/perezoso.jpg"
+import doraemon from "../../images/fotos-perfil/doraemon.jpg"
+import pikachu from "../../images/fotos-perfil/pikachu.jpg"
 
 function Navbar() {
+    const URL_PERFIL = 'users/profile';
+    
+    const [perfil, setPerfil] = useState([]);
+
+    useEffect(() => {
+        axios.get(URL_PERFIL, {withCredentials: true})
+        .then(response => {
+        setPerfil(response.data);
+        console.log(response.data);
+        }).catch(err => {
+        console.log(err)
+        });
+    }, [])
+
+    const obtenerPerfil = () => {
+        switch(perfil.img){
+        case '0':
+            return perro
+            break;
+        case '1':
+            return gato
+            break;
+        case '2':
+            return rana
+            break;
+        case '3':
+            return leon;
+            break;
+        case '4':
+            return pollo
+            break;
+        case '5':
+            return vaca
+            break;
+        case '6':
+            return buho
+            break;
+        case '7':
+            return perezoso
+            break;
+        case '8':
+            return doraemon
+            break;
+        case '9':
+            return pikachu
+            break;
+        }
+    }
+  
     const URL_LOGOUT = '/users/logout';
     
     // Controla el despliegue de la sidebar
@@ -61,7 +119,7 @@ function Navbar() {
                 {username ? (
                 <>
                     <Link to='/perfil' className='profile-picture'>
-                        <img src={vaca}/>
+                        <img className='fotoPerfil' src={obtenerPerfil()}/>
                     </Link>
                     <div className='menu-bars'>
                         <IoIcons.IoMdPeople onClick={showSidebar} />
