@@ -34,7 +34,7 @@ function Navbar() {
         }).catch(err => {
         console.log(err)
         });
-    }, [])
+    })
 
     const obtenerPerfil = () => {
         switch(perfil.img){
