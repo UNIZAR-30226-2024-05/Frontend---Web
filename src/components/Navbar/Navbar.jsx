@@ -22,21 +22,6 @@ import doraemon from "../../images/fotos-perfil/doraemon.jpg"
 import pikachu from "../../images/fotos-perfil/pikachu.jpg"
 
 function Navbar() {
-    /*
-    const URL_PERFIL = 'users/profile';
-    
-    const [perfil, setPerfil] = useState([]);
-
-    useEffect(() => {
-        axios.get(URL_PERFIL, {withCredentials: true})
-        .then(response => {
-        setPerfil(response.data);
-        console.log(response.data);
-        }).catch(err => {
-        console.log(err)
-        });
-    })*/
-
     const URL_LOGOUT = '/users/logout';
     
     // Controla el despliegue de la sidebar
