@@ -22,6 +22,7 @@ import doraemon from "../../images/fotos-perfil/doraemon.jpg"
 import pikachu from "../../images/fotos-perfil/pikachu.jpg"
 
 function Navbar() {
+    /*
     const URL_PERFIL = 'users/profile';
     
     const [perfil, setPerfil] = useState([]);
@@ -34,10 +35,21 @@ function Navbar() {
         }).catch(err => {
         console.log(err)
         });
-    })
+    })*/
 
+    const URL_LOGOUT = '/users/logout';
+    
+    // Controla el despliegue de la sidebar
+    const [sidebar, setSidebar] = useState(false);
+
+    // Variables para conocer el contexto (Usuario conectado o no)
+    const { auth , setAuth } = useContext(AuthContext);
+    const { username } = auth;
+    const { img } = auth;
+
+    //Poner la foto de perfil correcta
     const obtenerPerfil = () => {
-        switch(perfil.img){
+        switch(img){
         case '0':
             return perro
             break;
@@ -70,15 +82,6 @@ function Navbar() {
             break;
         }
     }
-  
-    const URL_LOGOUT = '/users/logout';
-    
-    // Controla el despliegue de la sidebar
-    const [sidebar, setSidebar] = useState(false);
-
-    // Variables para conocer el contexto (Usuario conectado o no)
-    const { auth , setAuth } = useContext(AuthContext);
-    const { username } = auth;
     
     // Controla el despliegue del menú del usuario
     const [mostrarMenu, setMostrarMenu] = useState(false);
