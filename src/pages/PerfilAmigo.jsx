@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './PerfilAmigo.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 import fotoPerfil from '../images/foto1.jpg';
@@ -12,6 +12,36 @@ import foto5 from '../images/5.jpg';
 import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
 
 const PerfilAmigo = () => {
+
+    /*
+    const location = useLocation();
+    const id_user = location.state?.id_user
+
+    const [usuario, setUsuario] = useState();
+
+    useEffect(() => {
+
+        if (id_user) {
+            const URL_PERFIL = `/audiolibros/${id_user}`; /* AJUSTAR *//*
+
+            axios.get(URL_PERFIL)
+            .then(response => {
+                // Actualiza el estado de los libros con los datos de los audiolibros recibidos
+                setUsuario(response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                // Maneja los errores si ocurrieron
+                console.error('Hubo un error al obtener los datos del perfil:', error);
+            });
+        }
+        else {
+            console.log('No se ha pasado ningún usuario');
+            navigate('/');
+        }
+    }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
+    */
+
     const usuario = {
         nombre: 'Juan',
         foto: fotoPerfil,

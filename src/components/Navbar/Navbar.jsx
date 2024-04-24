@@ -67,9 +67,6 @@ function Navbar() {
             break;
         }
     }
-    
-    // Controla el despliegue del menú del usuario
-    const [mostrarMenu, setMostrarMenu] = useState(false);
   
     const handleCerrarSesion = async (event) => {
         event.preventDefault();
@@ -95,8 +92,6 @@ function Navbar() {
       setAuth({});
     }
     };
-  
-    const toggleMenu = () => setMostrarMenu(!mostrarMenu);
 
     const showSidebar = () => setSidebar(!sidebar);
 
@@ -160,6 +155,9 @@ function Navbar() {
                     <div className="navbar-toggle">
                         <div className='menu-bars' onClick={showSidebar}>
                         <AiIcons.AiOutlineClose />
+                        </div>
+                        <div className='nav-text'>
+                        <span>Bienvenido, {username}</span>
                         </div>
                     </div>
                     <div className='sidebar-list'> <ListaAmigosSidebar /> </div>
