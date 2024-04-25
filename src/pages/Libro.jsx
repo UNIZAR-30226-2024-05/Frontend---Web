@@ -212,8 +212,8 @@ const Libro = () => {
                 <div className="info-anyadir-favoritos" >
                     <button className="info-btnFavoritos"
                         onClick={handleClickFavoritos}>
-                        <FontAwesomeIcon icon={faPlus} /> {!(colecciones?.[0].pertenece) ? 
-                        <span>Añadir a favoritos</span> : <span>Eliminar de favoritos</span>}
+                        <FontAwesomeIcon icon={faPlus} /> {colecciones?.[0].pertenece ? 
+                        <span>Eliminar de favoritos</span> : <span>Añadir a favoritos</span>}
                     </button>
                 </div>
 
