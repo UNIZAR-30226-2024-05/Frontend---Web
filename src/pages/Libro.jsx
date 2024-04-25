@@ -127,11 +127,11 @@ const Libro = () => {
         setPuntuacionUsuario(puntuacionGuardada);
     };
 
-    const handleClickFavoritos = async () => {
+    const handleClickFavoritos = async (event) => {
         const audiolibroId = libro.audiolibro.id;
         const coleccionId = libro.coleccion?.[0].id;
         const URL_ADDFAV = '/colecciones/añadirAudiolibro';
-        const URL_RMFAV = '/colecciones/añadirAudiolibro';
+        const URL_RMFAV = '/colecciones/eliminarAudiolibro';
         console.log(libro.colecciones?.[0].pertenece);
         if (libro.colecciones?.[0].pertenece === false) {
             try {
@@ -207,7 +207,7 @@ const Libro = () => {
                 </div>
 
                 { /* Botón de "Añadir a favoritos" */}
-                <div className="info-anyadir-favoritos">
+                <div className="info-anyadir-favoritos" >
                     <button className="info-btnFavoritos"
                         onClick={handleClickFavoritos}>
                         <FontAwesomeIcon icon={faPlus} /> {!(libro.colecciones?.[0].pertenece) ? 
