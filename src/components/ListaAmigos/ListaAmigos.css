@@ -17,7 +17,7 @@
 
 .lista-amigos .lista .amigo {
     /* Estilos para cada amigo */
-    width: 240%; /* Ancho relativo para los contenedores de amigos */
+    width: 100%; /* Ancho relativo para los contenedores de amigos */
     margin-bottom: 20px; /* Espacio debajo de los amigos */ 
     margin-left: -70%;
     background-color: #FAF3E0;

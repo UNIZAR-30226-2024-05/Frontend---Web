@@ -120,7 +120,7 @@ const ListaAmigos = ({usuarios}) => {
                             <div className='amigo-info'>
                                 <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil' /></a>
                                 <h2 className='nombre-amigo'><a href='/perfilamigo' className='link-amigo'>{usuario.username}</a></h2>
-                                <button> obtenerEstado(usuario.estado) </button>
+                                <button> {obtenerEstado(usuario.estado)} </button>
                             </div>
                         </div>
                     ))}
