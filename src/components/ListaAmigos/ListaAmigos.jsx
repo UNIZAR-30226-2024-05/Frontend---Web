@@ -69,7 +69,7 @@ const ListaAmigos = ({amigos}) => {
                         className='buscador-listaAmigos-container-buscador'
                         placeholder='Buscar'
                         value={busqueda}
-                        //onChange={handleChangeBusqueda}
+                        onChange={handleChangeBusqueda}
                         onKeyDown={(event) => {
                             if (event.key === 'Enter') {
                                 handleBusqueda();
