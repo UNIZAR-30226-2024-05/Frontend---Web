@@ -6,40 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaAmigos = () => {
+const ListaAmigos = ({amigos}) => {
         
         const URL_CONSULTA = '/amistad/amigos';
 
-        /*const listaAmigosFicticia = [
-            { username: 'Juan' },
-            { username: 'María' },
-            { username: 'Pedro' },
-            { username: 'Ana' },
-            { username: 'Carlos' }
-        ];*/
+        
     
-        const [amigos, setAmigos] = useState([]);
         const [listaAmigos, setListaAmigos] = useState(amigos);
         const [listaShow, setListaShow] = useState(amigos);
         const [busqueda, setBusqueda] = useState('');
     
-        useEffect( () => {
-            async function fetchAmigos(){
-                await axios.get(URL_CONSULTA, { withCredentials: true })
-                .then(response=>{
-                    setAmigos(response.data.amigos);
-                    setListaAmigos(response.data.amigos);
-                    setListaShow(response.data.amigos);
-                    console.log(response.data);
-                }).catch(error=>{
-                    console.log(error);
-                })
-            }
-            fetchAmigos();
-            /*setAmigos(listaAmigosFicticia);
-            setListaAmigos(listaAmigosFicticia);
-            setListaShow(listaAmigosFicticia);*/
-        }, []);
     
         const handleChangeBusqueda = event => {
             setBusqueda(event.target.value);
