@@ -132,6 +132,7 @@ const Libro = () => {
         const coleccionId = libro.coleccion?.[0].id;
         const URL_ADDFAV = '/colecciones/añadirAudiolibro';
         const URL_RMFAV = '/colecciones/añadirAudiolibro';
+        console.log(libro.colecciones?.[0].pertenece);
         if (libro.colecciones?.[0].pertenece === false) {
             try {
                 const respuesta = await axios.post(URL_ADDFAV, 
@@ -210,7 +211,7 @@ const Libro = () => {
                     <button className="info-btnFavoritos"
                         onClick={handleClickFavoritos}>
                         <FontAwesomeIcon icon={faPlus} /> {!(libro.colecciones?.[0].pertenece) ? 
-                        'Añadir a favoritos' : 'Eliminar de favoritos'}
+                        <span>Añadir a favoritos</span> : <span>Eliminar de favoritos</span>}
                     </button>
                 </div>
 
