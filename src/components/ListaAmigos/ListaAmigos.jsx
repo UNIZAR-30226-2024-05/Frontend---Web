@@ -58,7 +58,7 @@ const ListaAmigos = ({amigos}) => {
                         value={busqueda}
                         onChange={handleChangeBusqueda}
                     />
-                    <button className='buscador-listaAmigos-container-button-search' onClick={handleBusqueda}>
+                    <button className='buscador-listaAmigos-container-button-search'>
                         <FontAwesomeIcon icon={faSearch} />
                     </button>
                 </div>
