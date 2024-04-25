@@ -173,6 +173,26 @@ const ListaAmigos = ({usuarios}) => {
                 }
             }
         }
+
+        const rechazarSolicitud = async index => {
+            try {
+                const response = await axios.post(
+                    '/amistad/reject',
+                    { other_id: usuarios[index].id },
+                    { withCredentials: true }
+                );
+                console.log(response.data.message); // Mensaje de éxito
+                // Actualizar la lista después de rechazar una solicitud
+                const updatedAmigos = usuarios.filter((amigo, i) => i !== index);
+                setListaUsuarios(updatedAmigos);
+            } catch (error) {
+                if (error.response) {
+                    console.error(error.response.data.error); // Manejar errores específicos del servidor
+                } else {
+                    console.error('Error del servidor:', error.message); // Manejar otros errores
+                }
+            }
+        }
     
         return (
             <div className='lista-amigos'>
@@ -215,7 +235,7 @@ const ListaAmigos = ({usuarios}) => {
                 </div>
             </div>
 
-            
+
         );
         
     }
