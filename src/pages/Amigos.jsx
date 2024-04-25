@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Amigos.css';
 import ListaAmigos from '../components/ListaAmigos/ListaAmigos.jsx';
 import ListaPeticiones from '../components/ListaPeticiones/ListaPeticiones.jsx';
