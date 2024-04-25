@@ -26,7 +26,7 @@ const Colecciones = () => {
 
   
     useEffect( () => {
-        URL_CONSULTA = '/collections'
+        const URL_CONSULTA = '/collections';
 
         async function fetchColecciones(){
             await axios.get(URL_CONSULTA)
