@@ -24,8 +24,9 @@ const ListaAmigos = () => {
         const [busqueda, setBusqueda] = useState('');
     
         useEffect( () => {
+            const token = Cookie.get('token');
             async function fetchAmigos(){
-                await axios.get(URL_CONSULTA, { withCredentials: true })
+                await axios.get(URL_CONSULTA, { withCredentials: true }, { headers: { 'Authorization': `Bearer ${token}` } })
                 .then(response=>{
                     setAmigos(response.data.amigos);
                     setListaAmigos(response.data.amigos);
@@ -59,7 +60,7 @@ const ListaAmigos = () => {
             }
         }
 
-        const eliminarAmigo = (index) => {
+        const eliminarAmigo = async (index) => {
             try {
                 const token = Cookie.get('token');
                 const response = axios.post('/amistad/remove', { other_id: amigos[index].id }, { headers: { 'Authorization': `Bearer ${token}` } });
@@ -91,6 +92,7 @@ const ListaAmigos = () => {
                     {listaShow.map((amigo, index) => (
                         <div className='amigo' key={index}>
                             <div className='amigo-info'>
+                                <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={amigo.img} alt='Foto de perfil'/></a>
                                 <h2 className='nombre-amigo' ><a href='/perfilamigo' className='link-amigo'>{amigo.username}</a></h2>
                                 <button className='eliminar-amigo' onClick={() => eliminarAmigo(index)}>
                                     <FontAwesomeIcon icon={faTimes}/>
