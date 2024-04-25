@@ -14,10 +14,10 @@ const ListaAmigos = () => {
     const [busqueda, setBusqueda] = useState('');
 
     useEffect(() => {
-        fetchAmigos();
+        fetchUsuarios();
     }, []);
 
-    const fetchAmigos = async () => {
+    const fetchUsuarios = async () => {
         try {
             const response = await axios.get(URL_CONSULTA, { withCredentials: true });
             setAmigos(response.data.amigos);
@@ -59,7 +59,7 @@ const ListaAmigos = () => {
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             console.log(response.data.message);
-            fetchAmigos(); // Actualizar la lista después de eliminar un amigo
+            fetchUsuarios(); // Actualizar la lista después de eliminar un amigo
         } catch (error) {
             if (error.response) {
                 console.error('Error del servidor:', error.response.data.error);
@@ -85,7 +85,8 @@ const ListaAmigos = () => {
             </div>
 
             <div className="lista">
-                {listaShow.map((amigo, index) => (
+                {listaShow.length === 0 && <p>No se encontraron amigos</p>}
+                {listaShow.length > 0 && listaShow.map((amigo, index) => (
                     <div className="amigo" key={index}>
                         <div className="amigo-info">
                             <a href="/perfilamigo" className="link-amigo">
