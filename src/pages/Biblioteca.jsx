@@ -26,7 +26,7 @@ const Biblioteca = () => {
 
     useEffect( () => {
       async function fetchLibros(){
-          await axios.get(URL_CONSULTA)
+          await axios.get(URL_CONSULTA, {withCredentials: true})
           .then(response=>{
               setLibros(response.data.audiolibros);
               setLoading(false);

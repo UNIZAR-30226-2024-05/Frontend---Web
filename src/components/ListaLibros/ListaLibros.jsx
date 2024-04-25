@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ListaLibros.css';
-import DropdownButton from '../DropdownButton/DropdownButton';
+import DropdownButtonBiblioteca from './DropdownButtonBiblioteca';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
@@ -12,12 +12,6 @@ const ListaLibros = ({generos, libros}) => {
     const [listaShow, setListaShow] = useState(libros);
     const [busqueda, setBusqueda] = useState('');
     const [generoSeleccionado, setGeneroSeleccionado] = useState('');
-
-    const [opciones, setOpciones] = useState([
-        'Añadir a favoritos',
-        'Añadir a escuchar mas tarde',
-        'Añadir a colecciones'
-    ]);
 
     const handleChangeBusqueda = event => {
         setBusqueda(event.target.value);
@@ -100,7 +94,7 @@ const ListaLibros = ({generos, libros}) => {
                         </div>
                     </div>
                     <div className='boton-container'>
-                        <DropdownButton className='boton-opciones' options={opciones} />
+                        <DropdownButtonBiblioteca className='boton-opciones' />
                     </div>
                 </div>
               ))}

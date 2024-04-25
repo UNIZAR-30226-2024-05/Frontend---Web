@@ -30,7 +30,7 @@ const Libro = () => {
         if (id_libro) {
             const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
 
-            axios.get(URL_AUDIOLIBRO)
+            axios.get(URL_AUDIOLIBRO, {withCredentials: true})
             .then(response => {
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
                 setLibro(response.data);
