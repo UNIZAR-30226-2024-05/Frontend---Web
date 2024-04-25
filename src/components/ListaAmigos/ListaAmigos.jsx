@@ -214,6 +214,8 @@ const ListaAmigos = ({usuarios}) => {
                     ))}
                 </div>
             </div>
+
+            
         );
         
     }
