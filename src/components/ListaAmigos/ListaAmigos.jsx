@@ -15,30 +15,17 @@ const ListaAmigos = ({amigos}) => {
     
         const handleChangeBusqueda = event => {
             setBusqueda(event.target.value);
+            filtrar(event.target.value);
         } 
 
-        const handleBusqueda = () => {
-            /*if (amigos && amigos.length > 0) {
-                const resultado = amigos.filter(amigo => {
-                    return amigo.username.toString().toLowerCase().includes(busqueda.toLowerCase());
-                });
-                setListaShow(resultado);
-            }*/
-            if (busqueda === '') {
-                setListaShow(amigos);
-            }
-            else {
-                var resultado = amigos.filter((amigo) => {
-                    return amigo;
-                });
-                setListaShow(resultado);
-            }
-        }
+        
 
-        const handleKeyPress = (event) => {
-            if (event.key === 'Enter') {
-                handleBusqueda();
-            }
+        const filtrar = (terminoBusqueda) => {
+            var resultado = amigos.filter((elemento) => {
+                if (elemento.username.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+                {return elemento;}
+            });
+            setListaShow(resultado);
         }
 
         const eliminarAmigo = async index => {
