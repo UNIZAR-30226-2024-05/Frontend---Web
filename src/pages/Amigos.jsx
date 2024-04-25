@@ -13,7 +13,7 @@ const Amigos = () => {
       async function fetchUsuarios(){
           await axios.get(URL_CONSULTA, { withCredentials: true })
           .then(response=>{
-              setUsuarios(response.data.amigos);
+              setUsuarios(response.data.users);
               setLoading(false);
               console.log(response.data);
           }).catch(error=>{
