@@ -24,11 +24,10 @@ const ListaAmigos = () => {
         const [busqueda, setBusqueda] = useState('');
     
         useEffect( () => {
-            const token = Cookie.get('token');
             async function fetchAmigos(){
-                await axios.get(URL_CONSULTA, { withCredentials: true }, { headers: { 'Authorization': `Bearer ${token}` } })
+                await axios.get(URL_CONSULTA, { withCredentials: true })
                 .then(response=>{
-                    setAmigos(response.data.amigos);
+                    //setAmigos(response.data.amigos);
                     setListaAmigos(response.data.amigos);
                     setListaShow(response.data.amigos);
                     console.log(response.data);
