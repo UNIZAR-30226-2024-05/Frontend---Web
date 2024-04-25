@@ -23,9 +23,8 @@ const ListaAmigos = ({usuarios}) => {
         
 
         const filtrar = (terminoBusqueda) => {
-            var resultado = listaUsuarios.filter((elemento) => {
-                if (elemento.username.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
-                {return elemento;}
+            var resultado = listaUsuarios.filter((usuario) => {
+                return usuario.username.toString().toLowerCase().includes(terminoBusqueda.toLowerCase());
             });
             setListaUsuarios(resultado);
         }
@@ -69,8 +68,8 @@ const ListaAmigos = ({usuarios}) => {
                     {listaUsuarios.map((amigo, index) => (
                         <div className='amigo' key={index}>
                             <div className='amigo-info'>
-                                <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={amigo.img} alt='Foto de perfil' /></a>
-                                <h2 className='nombre-amigo'><a href='/perfilamigo' className='link-amigo'>{amigo.username}</a></h2>
+                                <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={usuario.img} alt='Foto de perfil' /></a>
+                                <h2 className='nombre-amigo'><a href='/perfilamigo' className='link-amigo'>{usuario.username}</a></h2>
                                 <button className='eliminar-amigo' onClick={() => eliminarAmigo(index)}>
                                     <FontAwesomeIcon icon={faTimes} />
                                 </button>
