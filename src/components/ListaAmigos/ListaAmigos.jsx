@@ -15,8 +15,10 @@ const ListaAmigos = ({amigos}) => {
         const [busqueda, setBusqueda] = useState('');
     
         useEffect( () => {
-            setListaAmigos(amigos);
-            setListaShow(amigos);
+            if (amigos) {
+                setListaAmigos(amigos);
+                setListaShow(amigos);
+            }
         }, [amigos]);
     
         const handleChangeBusqueda = event => {
