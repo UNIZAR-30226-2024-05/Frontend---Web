@@ -27,6 +27,13 @@
     width: 100%;
 }
 
+.biblioteca .biblioteca-container .loading-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
 .biblioteca .biblioteca-footer .footer{
     width: 100%;
     align-self: flex-end;

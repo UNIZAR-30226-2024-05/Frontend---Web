@@ -6,41 +6,54 @@
 }
 
 .contenedor-lista .lista {
-    /* Estilos para la lista de colecs */
-    display: flex; /* Utiliza flexbox para alinear los colecs horizontalmente */
+    /* Estilos para la lista de libros */
+    display: flex; /* Utiliza flexbox para alinear los libros horizontalmente */
     flex-direction: column;
 
 }
 
-.contenedor-lista .lista .coleccion {
-    /* Estilos para cada coleccion */
-    margin-right: 20px; /* Espacio entre las colecciones */
-    margin-bottom: 20px; /* Espacio debajo de las colecciones */ 
+.contenedor-lista .lista .libro {
+    /* Estilos para cada libro */
+    margin-right: 20px; /* Espacio entre los libros */
+    margin-bottom: 20px; /* Espacio debajo de los libros */ 
     background-color: #0000006e;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 80% 20%;
 }
 
-.contenedor-lista .lista .coleccion .contenido-colec {
+.contenedor-lista .lista .libro .contenido-libro {
   display: flex;
   align-items: center;
   flex: 1;
   grid-column: span 1;
 }
 
-.contenedor-lista .lista .coleccion .contenido-colec .nombre {
-    /* Estilos para los títulos de las colecciones */
+.contenedor-lista .lista .libro .contenido-libro .portadas{
+  margin: 10px;
+  cursor: pointer;
+}
+
+.contenedor-lista .lista .libro .contenido-libro .portadas img{
+    /* Estilos para las imágenes de portada */
+    width: 100px; /* Ancho de la imagen */
+    height: auto; /* Altura automática para mantener la proporción */
+    margin: 10px;
+}
+
+.contenedor-lista .lista .libro .contenido-libro .titulo {
+    /* Estilos para los títulos de los libros */
     margin: 0; /* Elimina el margen predeterminado */
     color: white;
     text-decoration: none;
-    cursor: pointer;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 10%;
 }
 
-.contenedor-lista .lista .coleccion .boton-container {
+.contenedor-lista .lista .libro .contenido-libro .titulo:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.contenedor-lista .lista .libro .boton-container {
   margin-right: 50px;
   margin-left: auto;
   position: relative;
@@ -49,7 +62,7 @@
   grid-column: span 1;
 }
 
-.contenedor-lista .lista .coleccion .boton-container .boton-opciones{
+.contenedor-lista .lista .libro .boton-container .boton-opciones{
   position: absolute; /* Establece el posicionamiento absoluto */
   top: calc(100% + 5px); /* Coloca el menú debajo del botón */
   right: 0; /* Lo alinea con el borde derecho del contenedor del botón */

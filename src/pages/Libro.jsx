@@ -19,7 +19,7 @@ const Libro = () => {
     const [titulo, setTitulo] = useState('Titulo');
     const [descripcion, setDescripcion] = useState('Aquí está la descripción.');
     const [puntuacion, setPuntuacion] = useState(0);
-    const [autor, setAutor] = useState('Autor');
+    const [autor, setAutor] = useState({nombre: 'Anónimo', id: 1});
     const [generos, setGeneros] = useState([]);
     const [portada, setPortada] = useState(foto1);
 
@@ -37,7 +37,7 @@ const Libro = () => {
                 setTitulo(response.data.audiolibro.titulo);
                 setDescripcion(response.data.audiolibro.descripcion);
                 setPuntuacion(3); /* La consulta no lo devuelve */
-                setAutor(response.data.autor); /* La consulta no lo devuelve */
+                /*setAutor(response.data.autor); /* La consulta no lo devuelve, aunque sale en el excel que sí */
                 setGeneros(response.data.generos);
                 setPortada(response.data.audiolibro.img);
                 setCapitulos(response.data.capitulos);

@@ -1,8 +1,8 @@
-.colecciones {
+.coleccion {
     margin-top: 80px;
 }
 
-.colecciones .colecciones-container {
+.coleccion .coleccion-container {
     display: grid;
     grid-template-columns: 1fr;
     align-items: flex-start;
@@ -17,24 +17,24 @@
     font-size: 1.5rem;
 }
 
-.colecciones .colecciones-footer {
+.coleccion .coleccion-footer {
     align-items: center;
     justify-content: center;
     height: auto;
 }
 
-.colecciones .colecciones-container .list {
+.coleccion .coleccion-container .list {
     width: 100%;
 }
 
-.colecciones .colecciones-container .loading-container {
+.coleccion .coleccion-container .loading-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
-.colecciones .colecciones-footer .footer{
+.coleccion .coleccion-footer .footer{
     width: 100%;
     align-self: flex-end;
 }

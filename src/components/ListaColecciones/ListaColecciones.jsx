@@ -1,35 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import axios from '../../api/axios';
+import React, { useState, useContext } from 'react';
 import './ListaColecciones.css';
+import { useNavigate } from 'react-router-dom';
 import DropdownButton from '../DropdownButton/DropdownButton';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import AuthContext from '../../context/AuthProvider';
 
-const Lista = ({colecciones}) => {
+const ListaColecciones = ({colecciones}) => {
+
+    const navigate = useNavigate();
+
+    const { auth } = useContext(AuthContext);
+    const { user_id } = auth;
     
-    const [listaColecciones, setListaColecciones] = useState(colecciones)
+    const [listaColecciones, setListaColecciones] = useState(colecciones);
     const [busqueda, setBusqueda] = useState('');
 
-    const [opciones, setOpciones] = useState([
-        'Eliminar coleccion',
-    ]);
+    const opciones_col_propia = [
+        'Eliminar coleccion'
+    ];
 
-    /*
-    URL_CONSULTA = '/audiolirbos/genre/:genero'
-
-    const getPeticion = async () => {
-        await axios.get(URL_CONSULTA)
-        .then(response=>{
-            console.log(response.data);
-        }).catch(error=>{
-            console.log(error);
-        })
-    }
-
-    useEffect( () => {
-        getPeticion();
-    },[])
-    */
+    const opciones_col_ajena = [
+        'Dejar de seguir coleccion'
+    ];
 
     const handleChangeBusqueda = (event) => {
         setBusqueda(event.target.value);
@@ -44,6 +35,10 @@ const Lista = ({colecciones}) => {
         setListaColecciones(resultado);
     }
 
+    const handleColeccionClick = (id_coleccion) => {
+        navigate('/coleccion', {state: {id_coleccion}})
+    }
+
     {/* En que se pueda, cambiar todo lo de colecciones por una consulta al servidor. */}
 
     return (
@@ -54,10 +49,6 @@ const Lista = ({colecciones}) => {
                 value={busqueda}
                 onChange={handleChangeBusqueda}
             />
-            <button className='button-search'>
-                <FontAwesomeIcon icon={faSearch} />
-            </button>
-
         </div>
 
         <div className='lista'>
@@ -65,16 +56,17 @@ const Lista = ({colecciones}) => {
                 <div key={i}
                 className='coleccion'>
                     <div className='contenido-colec'>
-                        <a className='portadas' href='/player'>
-                            <img src={coleccion.portada} alt={coleccion.nombre}></img>
-                        </a>
-                        <a className='nombre' href='/player'>
+                    <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
                             <h1>{coleccion.nombre}</h1>
-                        </a>
+                        </div>
                     </div>
-                    <div className='boton-container'>
-                        <DropdownButton className='boton-opciones' options={opciones} />
-                    </div>
+                    {user_id === coleccion.propietario ? 
+                        <div className='boton-container'>
+                            <DropdownButton className='boton-opciones' options={opciones_col_propia} />
+                        </div> : 
+                        <div className='boton-container'>
+                            <DropdownButton className='boton-opciones' options={opciones_col_ajena} />
+                    </div>}
                 </div>
               ))}
         </div>
@@ -83,4 +75,4 @@ const Lista = ({colecciones}) => {
   )
 }
 
-export default Lista
+export default ListaColecciones;

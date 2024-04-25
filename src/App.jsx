@@ -14,6 +14,7 @@ import SobreNosotros from './pages/SobreNosotros';
 import Registrar from './pages/Registrar';
 import Clubs from './pages/Clubs';
 import Colecciones from './pages/Colecciones';
+import Coleccion from './pages/Coleccion';
 import Perfil from './pages/Perfil';
 import Configuracion from './pages/Configuracion';
 import Changecorreo from './pages/ChangeCorreo';
@@ -43,6 +44,7 @@ function App() {
       <Route path='/register' element={<Registrar />}/>
       <Route path='/clubs' element={<ProtectedRoute element={Clubs} />}/>
       <Route path='/colecciones' element={<ProtectedRoute element={Colecciones} />}/>
+      <Route path='/coleccion' element={<ProtectedRoute element={Coleccion} />}/>
       <Route path='/perfil' element={<ProtectedRoute element={Perfil} />}/>
       <Route path='/config' element={<ProtectedRoute element={Configuracion} />}/>
       <Route path='/changepwd' element={<ProtectedRoute element={Changepwd} />}/>

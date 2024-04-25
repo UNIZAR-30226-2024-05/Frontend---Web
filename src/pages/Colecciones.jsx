@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Colecciones.css';
+import axios from '../api/axios';
 import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
 import Footer from '../components/Footer/Footer';
 
@@ -10,7 +11,7 @@ import foto4 from '../images/4.jpg';
 import foto5 from '../images/5.jpg';
 
 const Colecciones = () => {
-
+ /*
   const [colecciones, setColecciones] = useState([
     {portada: foto1, nombre: 'Favoritos'},
     {portada: foto2, nombre: 'Escuchalo más tarde'},
@@ -18,11 +19,40 @@ const Colecciones = () => {
     {portada: foto4, nombre: 'Versos Perversos'},
     {portada: foto5, nombre: 'Otra coleccion más'}
   ]);
+  */
+
+  const [colecciones, setColecciones] = useState([]);
+  const [loading, setLoading] = useState(true); /* Poner TRUE en que descomente consulta */
+
+  
+    useEffect( () => {
+        URL_CONSULTA = '/collections'
+
+        async function fetchColecciones(){
+            await axios.get(URL_CONSULTA)
+            .then(response=>{
+                setColecciones(response.data.collections);
+                setLoading(false);
+                console.log(response.data);
+            }).catch(error=>{
+                console.log(error);
+                setLoading(false);
+            })
+        }
+        fetchColecciones();
+    }, []);
+
 
   return (
     <div className='colecciones'>
       <div className='colecciones-container'>
-        <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
+      {loading ? (
+          <div className='loading-container'>
+            <p>Loading...</p>
+          </div>
+          ) : (
+            <ListaColecciones className='lista' colecciones={colecciones} />
+          )}
       </div>
       <div className='colecciones-footer'>
         <Footer className='footer' />

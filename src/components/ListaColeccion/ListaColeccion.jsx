@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './ListaLibros.css';
+import './ListaColeccion.css';
 import DropdownButton from '../DropdownButton/DropdownButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaLibros = ({generos, libros}) => {
+const ListaColeccion = ({ coleccion }) => {
 
-    const [listaLibros, setListaLibros] = useState(libros);
-    const [listaShow, setListaShow] = useState(libros);
+    const [listaLibros, setListaLibros] = useState(coleccion.audiolibros);
+    const [listaShow, setListaShow] = useState(coleccion.audiolibros);
     const [busqueda, setBusqueda] = useState('');
-    const [generoSeleccionado, setGeneroSeleccionado] = useState('');
 
     const [opciones, setOpciones] = useState([
         'Añadir a favoritos',
@@ -32,13 +31,6 @@ const ListaLibros = ({generos, libros}) => {
         });
         setListaShow(resultado);
     }
-
-    const handleGeneroChange = (event) => {
-        setGeneroSeleccionado(event.target.value);
-        /* Solo para desarrollo, quitar mas adelante */
-        console.log(libros);
-        console.log(listaLibros);
-    };
 
     const handleBusqueda = () => {
         if (generoSeleccionado === ''){
@@ -69,13 +61,7 @@ const ListaLibros = ({generos, libros}) => {
     return (
     <div className='contenedor-lista'>
         <div className='buscador-container'>
-            <select className="selector-generos" onChange={handleGeneroChange} value={generoSeleccionado}>
-                <option value="">Todos los géneros</option>
-                {generos.map((genero) => (
-                        <option key={genero} value={genero}>{genero}</option>
-                ))}
-                {/* Agrega más opciones de géneros según sea necesario */}
-  </select>
+            
             <input className='buscador'
                 placeholder='Búsqueda por nombre de la obra o del autor'
                 value={busqueda}
@@ -110,4 +96,4 @@ const ListaLibros = ({generos, libros}) => {
   )
 }
 
-export default ListaLibros
+export default ListaColeccion
