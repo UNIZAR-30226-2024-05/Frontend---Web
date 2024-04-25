@@ -8,12 +8,14 @@ import Cookie from 'js-cookie';
 
 const ListaAmigos = ({amigos}) => {
     
-        //const [listaAmigos, setListaAmigos] = useState([]);
-        const [listaShow, setListaShow] = useState(amigos);
+        const navigate = useNavigate();
+
+
+        const [listaUsuarios, setListaUsuarios] = useState(amigos);
         const [busqueda, setBusqueda] = useState('');
     
     
-        const handleChangeBusqueda = event => {
+        const handleChangeBusqueda = (event) => {
             setBusqueda(event.target.value);
             filtrar(event.target.value);
         } 
@@ -21,11 +23,11 @@ const ListaAmigos = ({amigos}) => {
         
 
         const filtrar = (terminoBusqueda) => {
-            var resultado = amigos.filter((elemento) => {
+            var resultado = listaUsuarios.filter((elemento) => {
                 if (elemento.username.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
                 {return elemento;}
             });
-            setListaShow(resultado);
+            setListaUsuarios(resultado);
         }
 
         const eliminarAmigo = async index => {
@@ -64,7 +66,7 @@ const ListaAmigos = ({amigos}) => {
                 </div>
     
                 <div className='lista'>
-                    {listaShow.map((amigo, index) => (
+                    {listaUsuarios.map((amigo, index) => (
                         <div className='amigo' key={index}>
                             <div className='amigo-info'>
                                 <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={amigo.img} alt='Foto de perfil' /></a>

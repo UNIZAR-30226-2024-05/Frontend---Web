@@ -23,16 +23,7 @@ const Amigos = () => {
       }
       fetchAmigos();
     }, []);
-
-
-    const [tipos, setTipos] = useState([
-        'recibidas',
-        'enviadas',
-        'aceptadas',
-        'rechazadas'
-    ]);
-
-
+    
     return (
         <div className='amigos'>
             <div className='amigos-lista'>
