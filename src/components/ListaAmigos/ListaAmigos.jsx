@@ -85,8 +85,8 @@ const ListaAmigos = () => {
             </div>
 
             <div className="lista">
-                {listaShow.length === 0 && <p>No se encontraron amigos</p>}
-                {listaShow.length > 0 && listaShow.map((amigo, index) => (
+                {listaShow && listaShow.length === 0 && <p>No se encontraron amigos</p>}
+                {listaShow && listaShow.length > 0 && listaShow.map((amigo, index) => (
                     <div className="amigo" key={index}>
                         <div className="amigo-info">
                             <a href="/perfilamigo" className="link-amigo">
