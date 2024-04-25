@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Coleccion.css';
 import { useLocation } from 'react-router-dom';
-/*import axios from '../api/axios';*/
+import axios from '../api/axios';
 import Footer from '../components/Footer/Footer';
 import ListaColeccion from '../components/ListaColeccion/ListaColeccion';
 
