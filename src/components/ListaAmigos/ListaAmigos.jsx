@@ -95,7 +95,7 @@ const ListaAmigos = ({usuarios}) => {
                     }
                     return amigo;
                 });
-                setListaShow(updatedAmigos);
+                setListaUsuarios(updatedAmigos);
             } catch (error) {
                 if (error.response) {
                     console.error(error.response.data.error); // Manejar errores específicos del servidor

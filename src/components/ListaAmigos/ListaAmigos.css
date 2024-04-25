@@ -14,7 +14,7 @@
     display: flex; /* Utiliza flexbox para alinear los amigos horizontalmente */
     flex-direction: column;
     background-color: gray;
-    border-radius: 20px;
+    border-radius: 30px;
     padding: 20px;
 }
 
