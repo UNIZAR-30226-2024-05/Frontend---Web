@@ -55,9 +55,7 @@ const Amigos = () => {
                 ) : (
                 <>
                   <h1 className='amigos-titulo'>Tus amigos</h1>
-                  {amigos.length > 0 && (
-                    <ListaAmigos className='list' amigos={amigos} />
-                  )}
+                  <ListaAmigos className='list'></ListaAmigos>
                 </>)}
               </div>
             </div>
