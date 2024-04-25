@@ -12,19 +12,22 @@ const ListaAmigos = ({amigos}) => {
         const [listaShow, setListaShow] = useState([]);
         const [busqueda, setBusqueda] = useState('');
     
-        useEffect( () => {
-            if (amigos) {
-                //setListaAmigos(amigos);
-                setListaShow(amigos);
-            }
-        }, [amigos]);
     
         const handleChangeBusqueda = event => {
             setBusqueda(event.target.value);
         } 
 
         const handleBusqueda = () => {
-            if (amigos && amigos.length > 0) {
+            /*if (amigos && amigos.length > 0) {
+                const resultado = amigos.filter(amigo => {
+                    return amigo.username.toString().toLowerCase().includes(busqueda.toLowerCase());
+                });
+                setListaShow(resultado);
+            }*/
+            if (busqueda === '') {
+                setListaShow(amigos);
+            }
+            else {
                 const resultado = amigos.filter(amigo => {
                     return amigo.username.toString().toLowerCase().includes(busqueda.toLowerCase());
                 });
