@@ -7,16 +7,16 @@ import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
 
-import perro from '../../images/perro.jpg';
-import gato from '../../images/gato.jpg';
-import rana from '../../images/rana.jpg';
-import leon from '../../images/leon.jpg';
-import pollo from '../../images/pollo.jpg';
-import vaca from '../../images/vaca.jpg';
-import buho from '../../images/buho.jpg';
-import perezoso from '../../images/perezoso.jpg';
-import doraemon from '../../images/doraemon.jpg';
-import pikachu from '../../images/pikachu.jpg';
+import perro from '../../images/fotos-perfil/perro.jpg';
+import gato from '../../images/fotos-perfil/gato.jpg';
+import rana from '../../images/fotos-perfil/rana.jpg';
+import leon from '../../images/fotos-perfil/leon.jpg';
+import pollo from '../../images/fotos-perfil/pollo.jpg';
+import vaca from '../../images/fotos-perfil/vaca.jpg';
+import buho from '../../images/fotos-perfil/buho.jpg';
+import perezoso from '../../images/fotos-perfil/perezoso.jpg';
+import doraemon from '../../images/fotos-perfil/doraemon.jpg';
+import pikachu from '../../images/fotos-perfil/pikachu.jpg';
 
 const ListaAmigos = ({usuarios}) => {
     
