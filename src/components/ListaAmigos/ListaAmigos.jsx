@@ -69,8 +69,12 @@ const ListaAmigos = ({amigos}) => {
                         className='buscador-listaAmigos-container-buscador'
                         placeholder='Buscar'
                         value={busqueda}
-                        onChange={handleChangeBusqueda}
-                        onKeyDown={handleKeyPress}
+                        //onChange={handleChangeBusqueda}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                handleBusqueda();
+                            }
+                        }}
                     />
                     <button className='buscador-listaAmigos-container-button-search' onClick={handleBusqueda}>
                         <FontAwesomeIcon icon={faSearch} />
