@@ -35,12 +35,12 @@ const ListaAmigos = ({usuarios}) => {
                 const token = Cookie.get('token');
                 const response = await axios.post(
                     '/amistad/remove',
-                    { other_id: amigos[index].id },
+                    { other_id: usuarios[index].id },
                     { headers: { 'Authorization': `Bearer ${token}` } }
                 );
                 console.log(response.data.message); // Mensaje de éxito
                 // Actualizar la lista después de eliminar un amigo
-                const updatedAmigos = amigos.filter((amigo, i) => i !== index);
+                const updatedAmigos = usuarios.filter((amigo, i) => i !== index);
                 setListaShow(updatedAmigos);
             } catch (error) {
                 if (error.response) {
