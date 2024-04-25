@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Amigos.css';
 import ListaAmigos from '../components/ListaAmigos/ListaAmigos.jsx';
 import ListaPeticiones from '../components/ListaPeticiones/ListaPeticiones.jsx';
+import axios from '../api/axios';
 
 const Amigos = () => {
     const URL_CONSULTA = '/amistad/amigos';
