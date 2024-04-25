@@ -81,7 +81,6 @@ const ListaAmigos = ({usuarios}) => {
 
         const enviarSolicitud = async index => {
             try {
-                const token = Cookie.get('token');
                 const response = await axios.post(
                     '/amistad/send',
                     { other_id: usuarios[index].id },
@@ -107,11 +106,10 @@ const ListaAmigos = ({usuarios}) => {
 
         const eliminarAmigo = async index => {
             try {
-                const token = Cookie.get('token');
                 const response = await axios.post(
                     '/amistad/remove',
                     { other_id: usuarios[index].id },
-                    { headers: { 'Authorization': `Bearer ${token}` } }
+                    { withCredentials: true }
                 );
                 console.log(response.data.message); // Mensaje de éxito
                 // Actualizar la lista después de eliminar un amigo
@@ -125,6 +123,56 @@ const ListaAmigos = ({usuarios}) => {
                 }
             }
         };
+
+        const cancelarSolicitud = async index => {
+            try {
+                const response = await axios.post(
+                    '/amistad/cancel',
+                    { other_id: usuarios[index].id },
+                    { withCredentials: true }
+                );
+                console.log(response.data.message); // Mensaje de éxito
+                // Actualizar la lista después de cancelar una solicitud
+                const updatedAmigos = usuarios.map((amigo, i) => {
+                    if (i === index) {
+                        return { ...amigo, estado: 1 };
+                    }
+                    return amigo;
+                });
+                setListaUsuarios(updatedAmigos);
+            } catch (error) {
+                if (error.response) {
+                    console.error(error.response.data.error); // Manejar errores específicos del servidor
+                } else {
+                    console.error('Error del servidor:', error.message); // Manejar otros errores
+                }
+            }
+        }
+
+        const aceptarSolicitud = async index => {
+            try {
+                const response = await axios.post(
+                    '/amistad/accept',
+                    { other_id: usuarios[index].id },
+                    { withCredentials: true }
+                );
+                console.log(response.data.message); // Mensaje de éxito
+                // Actualizar la lista después de aceptar una solicitud
+                const updatedAmigos = usuarios.map((amigo, i) => {
+                    if (i === index) {
+                        return { ...amigo, estado: 0 };
+                    }
+                    return amigo;
+                });
+                setListaUsuarios(updatedAmigos);
+            } catch (error) {
+                if (error.response) {
+                    console.error(error.response.data.error); // Manejar errores específicos del servidor
+                } else {
+                    console.error('Error del servidor:', error.message); // Manejar otros errores
+                }
+            }
+        }
     
         return (
             <div className='lista-amigos'>
@@ -146,7 +194,15 @@ const ListaAmigos = ({usuarios}) => {
                             <div className='amigo-info'>
                                 <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil' /></a>
                                 <h2 className='nombre-amigo'><a href='/perfilamigo' className='link-amigo'>{usuario.username}</a></h2>
-                                <button onClick={() => {if (usuario.estado === 1) enviarSolicitud(index)}}> {obtenerEstado(usuario.estado)} </button>
+                                {usuario.estado === 0 ? 
+                                    <button onClick={() => eliminarAmigo(index)}>Eliminar amigo</button> : null}
+                                {usuario.estado === 1} ?
+                                    <button onClick={() => enviarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
+                                {usuario.estado === 2} ?
+                                    <button onClick={() => cancelarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
+                                {usuario.estado === 3}
+                                    <button onClick={() => aceptarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
+                                    <button onClick={() => rechazarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
                             </div>
                         </div>
                     ))}
