@@ -132,7 +132,7 @@ const Libro = () => {
     const handleClickFavoritos = async (event) => {
         const audiolibroId = libro.audiolibro.id;
         const coleccionId = colecciones[0]?.id;
-        const URL_ADDFAV = '/colecciones/añadirAudiolibro';
+        const URL_ADDFAV = '/colecciones/anadirAudiolibro';
         const URL_RMFAV = '/colecciones/eliminarAudiolibro';
         console.log(colecciones[0]?.pertenece);
         if (colecciones[0]?.pertenece === false) {
