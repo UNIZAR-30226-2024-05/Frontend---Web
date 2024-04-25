@@ -144,7 +144,8 @@ const Libro = () => {
                     withCredentials: true
                   }
                 );
-                console.log(respuesta); /* Solo desarrollo */         
+                console.log(respuesta); /* Solo desarrollo */
+                colecciones[0]?.pertenece = true;
             } catch (err) {
                 if (!err.response) {
                   setErrMsg ('No hay respuesta del servidor');
@@ -164,7 +165,8 @@ const Libro = () => {
                     withCredentials: true
                   }
                 );
-                console.log(respuesta); /* Solo desarrollo */         
+                console.log(respuesta); /* Solo desarrollo */      
+                colecciones[0]?.pertenece = false;   
             } catch (err) {
                 if (!err.response) {
                   setErrMsg ('No hay respuesta del servidor');
