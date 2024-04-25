@@ -55,7 +55,7 @@ const Amigos = () => {
                 ) : (
                 <>
                   <h1 className='amigos-titulo'>Tus amigos</h1>
-                  <ListaAmigos className='list'></ListaAmigos>
+                  <ListaAmigos amigos={amigos} className='list'></ListaAmigos>
                 </>)}
               </div>
             </div>
