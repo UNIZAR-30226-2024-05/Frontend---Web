@@ -5,7 +5,7 @@ import ListaPeticiones from '../components/ListaPeticiones/ListaPeticiones.jsx';
 import axios from '../api/axios';
 
 const Amigos = () => {
-    const URL_CONSULTA = '/amistad/amigos';
+    const URL_CONSULTA = '/amistad/lista';
     const [amigos, setAmigos] = useState([]);
     const [loading, setLoading] = useState(true);
 
