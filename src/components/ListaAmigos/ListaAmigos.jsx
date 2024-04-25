@@ -187,28 +187,35 @@ const ListaAmigos = ({usuarios}) => {
                         <FontAwesomeIcon icon={faSearch} />
                     </button>
                 </div>
-    
+        
                 <div className='lista'>
                     {listaUsuarios.map((usuario, index) => (
                         <div className='amigo' key={index}>
                             <div className='amigo-info'>
                                 <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil' /></a>
                                 <h2 className='nombre-amigo'><a href='/perfilamigo' className='link-amigo'>{usuario.username}</a></h2>
-                                {usuario.estado === 0 ? 
-                                    <button onClick={() => eliminarAmigo(index)}>Eliminar amigo</button> : null}
-                                {usuario.estado === 1} ?
+                                {usuario.estado === 0 ? (
+                                    <button onClick={() => eliminarAmigo(index)}>Eliminar amigo</button>
+                                ) : null}
+                                {usuario.estado === 1 ? (
                                     <button onClick={() => enviarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
-                                {usuario.estado === 2} ?
+                                ) : null}
+                                {usuario.estado === 2 ? (
                                     <button onClick={() => cancelarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
-                                {usuario.estado === 3}
-                                    <button onClick={() => aceptarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
-                                    <button onClick={() => rechazarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
+                                ) : null}
+                                {usuario.estado === 3 ? (
+                                    <div>
+                                        <button onClick={() => aceptarSolicitud(index)}>Aceptar solicitud</button>
+                                        <button onClick={() => rechazarSolicitud(index)}>Rechazar solicitud</button>
+                                    </div>
+                                ) : null}
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
         );
+        
     }
 
 export default ListaAmigos;
