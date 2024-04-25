@@ -28,8 +28,8 @@ const ListaAmigos = ({amigos}) => {
                 setListaShow(amigos);
             }
             else {
-                const resultado = amigos.filter(amigo => {
-                    return amigo.username.toString().toLowerCase().includes(busqueda.toLowerCase());
+                var resultado = amigos.filter((amigo) => {
+                    return amigo;
                 });
                 setListaShow(resultado);
             }
