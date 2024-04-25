@@ -114,7 +114,7 @@ const ListaAmigos = ({usuarios}) => {
                 console.log(response.data.message); // Mensaje de éxito
                 // Actualizar la lista después de eliminar un amigo
                 const updatedAmigos = usuarios.filter((amigo, i) => i !== index);
-                setListaShow(updatedAmigos);
+                setListaUsuarios(updatedAmigos);
             } catch (error) {
                 if (error.response) {
                     console.error(error.response.data.error); // Manejar errores específicos del servidor
