@@ -9,13 +9,15 @@ import Cookie from 'js-cookie';
 const ListaAmigos = ({amigos}) => {
         
         const URL_CONSULTA = '/amistad/amigos';
-
-        
     
         const [listaAmigos, setListaAmigos] = useState(amigos);
         const [listaShow, setListaShow] = useState(amigos);
         const [busqueda, setBusqueda] = useState('');
     
+        useEffect( () => {
+            setListaAmigos(amigos);
+            setListaShow(amigos);
+        }, [amigos]);
     
         const handleChangeBusqueda = event => {
             setBusqueda(event.target.value);
