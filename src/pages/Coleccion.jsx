@@ -17,7 +17,7 @@ const Coleccion = () => {
         const URL_COLECCION = `/colecciones/${id_coleccion}`
 
       async function fetchLibros(){
-          await axios.get(URL_COLECCION, null, {withCredentials: true})
+          await axios.get(URL_COLECCION, {withCredentials: true})
           .then(response=>{
               setColeccion(response.data);
               setLoading(false);
