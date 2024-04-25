@@ -22,6 +22,7 @@ const Libro = () => {
     const [autor, setAutor] = useState({nombre: 'Anónimo', id: 1});
     const [generos, setGeneros] = useState([]);
     const [portada, setPortada] = useState(foto1);
+    const [colecciones, setColecciones] = useState([]);
 
     const [capitulos, setCapitulos] = useState([]);
 
@@ -41,6 +42,7 @@ const Libro = () => {
                 setGeneros(response.data.generos);
                 setPortada(response.data.audiolibro.img);
                 setCapitulos(response.data.capitulos);
+                setColecciones(response.data.colecciones);
                 console.log(response.data);
             })
             .catch(error => {
@@ -72,7 +74,7 @@ const Libro = () => {
         const enlaceAmazon = `${urlBase}${tituloFormateado}`;
         return enlaceAmazon;
     };
-    const colecciones = ['Harry Potter', 'Fantasia', 'Aventuras'];
+
     const [mostrarColecciones, setMostrarColecciones] = useState(false);
 
     const tienesReseña = false; // simulamos que no tenemos reseña
@@ -132,8 +134,8 @@ const Libro = () => {
         const coleccionId = libro.coleccion?.[0].id;
         const URL_ADDFAV = '/colecciones/añadirAudiolibro';
         const URL_RMFAV = '/colecciones/eliminarAudiolibro';
-        console.log(libro.colecciones?.[0].pertenece);
-        if (libro.colecciones?.[0].pertenece === false) {
+        console.log(colecciones?.[0].pertenece);
+        if (colecciones?.[0].pertenece === false) {
             try {
                 const respuesta = await axios.post(URL_ADDFAV, 
                   JSON.stringify({audiolibroId, coleccionId}),
@@ -210,7 +212,7 @@ const Libro = () => {
                 <div className="info-anyadir-favoritos" >
                     <button className="info-btnFavoritos"
                         onClick={handleClickFavoritos}>
-                        <FontAwesomeIcon icon={faPlus} /> {!(libro.colecciones?.[0].pertenece) ? 
+                        <FontAwesomeIcon icon={faPlus} /> {!(colecciones?.[0].pertenece) ? 
                         <span>Añadir a favoritos</span> : <span>Eliminar de favoritos</span>}
                     </button>
                 </div>
