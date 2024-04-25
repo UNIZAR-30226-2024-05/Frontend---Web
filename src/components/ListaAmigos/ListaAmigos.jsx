@@ -32,11 +32,17 @@ const ListaAmigos = () => {
     };
 
     const handleBusqueda = () => {
-        const resultado = amigos.filter(amigo => {
-            return amigo.username.toLowerCase().includes(busqueda.toLowerCase());
-        });
-        setListaShow(resultado);
+        if (amigos.length === 0) {
+            setListaShow([]);
+        } else {
+            const resultado = amigos.filter(amigo => {
+                return amigo.username.toLowerCase().includes(busqueda.toLowerCase());
+            });
+            setListaShow(resultado);
+        }
     };
+    
+    
 
     const handleKeyPress = event => {
         if (event.key === 'Enter') {
