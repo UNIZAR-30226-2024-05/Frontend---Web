@@ -79,6 +79,32 @@ const ListaAmigos = ({usuarios}) => {
             }
         }
 
+        const enviarSolicitud = async index => {
+            try {
+                const token = Cookie.get('token');
+                const response = await axios.post(
+                    '/amistad/send',
+                    { other_id: usuarios[index].id },
+                    { headers: { 'Authorization': `Bearer ${token}` } }
+                );
+                console.log(response.data.message); // Mensaje de éxito
+                // Actualizar la lista después de enviar una solicitud
+                const updatedAmigos = usuarios.map((amigo, i) => {
+                    if (i === index) {
+                        return { ...amigo, estado: 2 };
+                    }
+                    return amigo;
+                });
+                setListaShow(updatedAmigos);
+            } catch (error) {
+                if (error.response) {
+                    console.error(error.response.data.error); // Manejar errores específicos del servidor
+                } else {
+                    console.error('Error del servidor:', error.message); // Manejar otros errores
+                }
+            }
+        };
+
         const eliminarAmigo = async index => {
             try {
                 const token = Cookie.get('token');
@@ -120,7 +146,7 @@ const ListaAmigos = ({usuarios}) => {
                             <div className='amigo-info'>
                                 <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil' /></a>
                                 <h2 className='nombre-amigo'><a href='/perfilamigo' className='link-amigo'>{usuario.username}</a></h2>
-                                <button> {obtenerEstado(usuario.estado)} </button>
+                                <button onClick={() => {if (usuario.estado === 1) enviarSolicitud(index)}}> {obtenerEstado(usuario.estado)} </button>
                             </div>
                         </div>
                     ))}

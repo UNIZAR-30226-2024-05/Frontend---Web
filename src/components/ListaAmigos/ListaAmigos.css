@@ -13,13 +13,16 @@
     /* Estilos para la lista de amigos */
     display: flex; /* Utiliza flexbox para alinear los amigos horizontalmente */
     flex-direction: column;
+    background-color: gray;
+    border-radius: 20px;
+    padding: 20px;
 }
 
 .lista-amigos .lista .amigo {
     /* Estilos para cada amigo */
     width: 100%; /* Ancho relativo para los contenedores de amigos */
     margin-bottom: 20px; /* Espacio debajo de los amigos */ 
-    margin-left: -70%;
+
     background-color: #FAF3E0;
     border-radius: 20px;
     display: flex;
