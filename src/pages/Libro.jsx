@@ -29,32 +29,36 @@ const Libro = () => {
     useEffect(() => {
 
         if (id_libro) {
-            const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
-
-            axios.get(URL_AUDIOLIBRO, {withCredentials: true})
-            .then(response => {
-                // Actualiza el estado de los libros con los datos de los audiolibros recibidos
-                setLibro(response.data);
-                setTitulo(response.data.audiolibro.titulo);
-                setDescripcion(response.data.audiolibro.descripcion);
-                setPuntuacion(3); /* La consulta no lo devuelve */
-                setAutor(response.data.autor);
-                setGeneros(response.data.generos);
-                setPortada(response.data.audiolibro.img);
-                setCapitulos(response.data.capitulos);
-                setColecciones(response.data.colecciones);
-                console.log(response.data);
-            })
-            .catch(error => {
-                // Maneja los errores si ocurrieron
-                console.error('Hubo un error al obtener el audiolibro:', error);
-            });
+            obtenerDatosLibro();
         }
         else {
             console.log('No se ha pasado ningún libro');
             navigate('/');
         }
     }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
+
+    const obtenerDatosLibro = () => {
+        const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
+
+        axios.get(URL_AUDIOLIBRO, {withCredentials: true})
+        .then(response => {
+            // Actualiza el estado de los libros con los datos de los audiolibros recibidos
+            setLibro(response.data);
+            setTitulo(response.data.audiolibro.titulo);
+            setDescripcion(response.data.audiolibro.descripcion);
+            setPuntuacion(3); /* La consulta no lo devuelve */
+            setAutor(response.data.autor);
+            setGeneros(response.data.generos);
+            setPortada(response.data.audiolibro.img);
+            setCapitulos(response.data.capitulos);
+            setColecciones(response.data.colecciones);
+            console.log(response.data);
+        })
+        .catch(error => {
+            // Maneja los errores si ocurrieron
+            console.error('Hubo un error al obtener el audiolibro:', error);
+        });
+    };
 
     const handleCapituloClick = (capitulos, portada) => {
         navigate('/player', {state: {capitulos, portada}});
@@ -145,6 +149,7 @@ const Libro = () => {
                   }
                 );
                 console.log(respuesta); /* Solo desarrollo */
+                obtenerDatosLibro();
             } catch (err) {
                 if (!err.response) {
                   setErrMsg ('No hay respuesta del servidor');
@@ -164,7 +169,8 @@ const Libro = () => {
                     withCredentials: true
                   }
                 );
-                console.log(respuesta); /* Solo desarrollo */       
+                console.log(respuesta); /* Solo desarrollo */
+                obtenerDatosLibro();
             } catch (err) {
                 if (!err.response) {
                   setErrMsg ('No hay respuesta del servidor');
