@@ -65,7 +65,7 @@ const ListaAmigos = ({usuarios}) => {
                 </div>
     
                 <div className='lista'>
-                    {listaUsuarios.map((amigo, index) => (
+                    {listaUsuarios.map((usuario, index) => (
                         <div className='amigo' key={index}>
                             <div className='amigo-info'>
                                 <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={usuario.img} alt='Foto de perfil' /></a>
