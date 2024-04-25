@@ -54,8 +54,8 @@ const Libro = () => {
         }
     }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
 
-    const handleCapituloClick = (capitulo, portada) => {
-        navigate('/player', {state: {capitulo, portada}});
+    const handleCapituloClick = (capitulos, portada) => {
+        navigate('/player', {state: {capitulos, portada}});
     };
 
     console.log(libro);
@@ -75,46 +75,6 @@ const Libro = () => {
     const colecciones = ['Harry Potter', 'Fantasia', 'Aventuras'];
     const [mostrarColecciones, setMostrarColecciones] = useState(false);
 
-    /*
-    const capitulos = [
-        {
-            titulo: 'Capítulo 1: El niño que vivió',
-            duracion: '1:30:00',
-        },
-        {
-            titulo: 'Capítulo 2: El andén 9 y 3/4',
-            duracion: '1:45:00',
-        },
-        {
-            titulo: 'Capítulo 3: El sombrero seleccionador',
-            duracion: '1:20:00',
-        },
-        {
-            titulo: 'Capítulo 4: La piedra filosofal',
-            duracion: '1:35:00',
-        },
-        {
-            titulo: 'Capítulo 5: El espejo de Oesed',
-            duracion: '1:40:00',
-        },
-        {
-            titulo: 'Capítulo 6: Norberto el dragón',
-            duracion: '1:25:00',
-        },
-        {
-            titulo: 'Capítulo 7: El bosque prohibido',
-            duracion: '1:50:00',
-        },
-        {
-            titulo: 'Capítulo 8: El partido de quidditch',
-            duracion: '1:30:00',
-        },
-        {
-            titulo: 'Capítulo 9: La piedra filosofal',
-            duracion: '1:45:00',
-        },
-    ];
-    */
     const tienesReseña = false; // simulamos que no tenemos reseña
     const reseñasAmigos = [
         {
@@ -259,7 +219,7 @@ const Libro = () => {
                         {capitulos.map((capitulo, i) => (
                             <div key={i}
                             className='capitulo'
-                            onClick={() => handleCapituloClick(capitulo, portada)}>
+                            onClick={() => handleCapituloClick(capitulos, portada)}>
                                 <span>{capitulo.numero}</span>
                                 <span>{capitulo.nombre}</span>
                             </div>
