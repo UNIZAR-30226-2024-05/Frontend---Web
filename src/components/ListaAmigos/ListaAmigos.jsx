@@ -9,7 +9,7 @@ import Cookie from 'js-cookie';
 const ListaAmigos = ({amigos}) => {
     
         //const [listaAmigos, setListaAmigos] = useState([]);
-        const [listaShow, setListaShow] = useState([]);
+        const [listaShow, setListaShow] = useState(amigos);
         const [busqueda, setBusqueda] = useState('');
     
     
@@ -70,11 +70,7 @@ const ListaAmigos = ({amigos}) => {
                         placeholder='Buscar'
                         value={busqueda}
                         onChange={handleChangeBusqueda}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter') {
-                                handleBusqueda();
-                            }
-                        }}
+                        onKeyDown={handleKeyPress}
                     />
                     <button className='buscador-listaAmigos-container-button-search' onClick={handleBusqueda}>
                         <FontAwesomeIcon icon={faSearch} />
