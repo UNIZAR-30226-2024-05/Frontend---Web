@@ -6,14 +6,14 @@ import axios from '../api/axios';
 
 const Amigos = () => {
     const URL_CONSULTA = '/amistad/lista';
-    const [amigos, setAmigos] = useState([]);
+    const [usuarios, setUsuarios] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect( () => {
-      async function fetchAmigos(){
+      async function fetchUsuarios(){
           await axios.get(URL_CONSULTA, { withCredentials: true })
           .then(response=>{
-              setAmigos(response.data.amigos);
+              setUsuarios(response.data.amigos);
               setLoading(false);
               console.log(response.data);
           }).catch(error=>{
@@ -21,7 +21,7 @@ const Amigos = () => {
               setLoading(false);
           })
       }
-      fetchAmigos();
+      fetchUsuarios();
     }, []);
 
 
@@ -44,7 +44,7 @@ const Amigos = () => {
                 ) : (
                 <>
                   <h1 className='amigos-titulo'>Tus amigos</h1>
-                  <ListaAmigos amigos={amigos} className='list'></ListaAmigos>
+                  <ListaAmigos usuarios={usuarios} className='list'></ListaAmigos>
                 </>)}
               </div>
             </div>

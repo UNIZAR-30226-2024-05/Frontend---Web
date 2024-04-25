@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaAmigos = ({amigos}) => {
+const ListaAmigos = ({usuarios}) => {
     
         const navigate = useNavigate();
 
 
-        const [listaUsuarios, setListaUsuarios] = useState(amigos);
+        const [listaUsuarios, setListaUsuarios] = useState(usuarios);
         const [busqueda, setBusqueda] = useState('');
     
     
