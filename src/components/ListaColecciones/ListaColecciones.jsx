@@ -57,7 +57,7 @@ const ListaColecciones = ({colecciones}) => {
                 className='coleccion'>
                     <div className='contenido-colec'>
                     <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
-                            <h1>{coleccion.nombre}</h1>
+                            <h1>{coleccion.titulo}</h1>
                         </div>
                     </div>
                     {user_id === coleccion.propietario ? 
