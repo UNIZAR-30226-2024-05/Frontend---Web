@@ -7,8 +7,6 @@ import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
 const ListaAmigos = ({amigos}) => {
-        
-        const URL_CONSULTA = '/amistad/lista';
     
         //const [listaAmigos, setListaAmigos] = useState([]);
         const [listaShow, setListaShow] = useState([]);
@@ -26,10 +24,12 @@ const ListaAmigos = ({amigos}) => {
         } 
 
         const handleBusqueda = () => {
-            const resultado = amigos.filter(amigo => {
-                return amigo.username.toString().toLowerCase().includes(busqueda.toLowerCase());
-            });
-            setListaShow(resultado);
+            if (amigos && amigos.length > 0) {
+                const resultado = amigos.filter(amigo => {
+                    return amigo.username.toString().toLowerCase().includes(busqueda.toLowerCase());
+                });
+                setListaShow(resultado);
+            }
         }
 
         const handleKeyPress = (event) => {
