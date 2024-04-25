@@ -7,6 +7,7 @@ import axios from '../api/axios';
 const Amigos = () => {
     const URL_CONSULTA = '/amistad/amigos';
     const [amigos, setAmigos] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     /*const listaAmigosFicticia = [
             { username: 'Juan' },
@@ -21,11 +22,11 @@ const Amigos = () => {
           await axios.get(URL_CONSULTA, { withCredentials: true })
           .then(response=>{
               setAmigos(response.data.amigos);
-              setListaAmigos(response.data.amigos);
-              setListaShow(response.data.amigos);
+              setLoading(false);
               console.log(response.data);
           }).catch(error=>{
               console.log(error);
+              setLoading(false);
           })
       }
       fetchAmigos();
@@ -47,8 +48,15 @@ const Amigos = () => {
         <div className='amigos'>
             <div className='amigos-lista'>
               <div className='amigos-lista-container'>
-                <h1 className='amigos-titulo'>Tus amigos</h1>
-                <ListaAmigos className='list'></ListaAmigos>
+              {loading ? (
+                <div className='loading-container'>
+                  <p>Loading...</p>
+                </div>
+                ) : (
+                <>
+                  <h1 className='amigos-titulo'>Tus amigos</h1>
+                  <ListaAmigos className='list'></ListaAmigos>
+                </>)}
               </div>
             </div>
             <div className='amigos-peticiones'>
