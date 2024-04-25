@@ -21,7 +21,6 @@ const Autor = () => {
 
         if (id_autor) {
             const URL_AUTOR = `/autores/${id_autor}`;
-            console.log(URL_AUTOR);
             axios.get(URL_AUTOR)
             .then(response => {
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
