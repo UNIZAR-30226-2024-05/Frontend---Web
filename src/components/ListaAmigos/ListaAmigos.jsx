@@ -85,7 +85,7 @@ const ListaAmigos = ({usuarios}) => {
                 const response = await axios.post(
                     '/amistad/send',
                     { other_id: usuarios[index].id },
-                    { headers: { 'Authorization': `Bearer ${token}` } }
+                    { withCredentials: true } 
                 );
                 console.log(response.data.message); // Mensaje de éxito
                 // Actualizar la lista después de enviar una solicitud
