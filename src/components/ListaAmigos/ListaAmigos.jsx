@@ -10,8 +10,8 @@ const ListaAmigos = ({amigos}) => {
         
         const URL_CONSULTA = '/amistad/amigos';
     
-        const [listaAmigos, setListaAmigos] = useState(amigos);
-        const [listaShow, setListaShow] = useState(amigos);
+        const [listaAmigos, setListaAmigos] = useState([]);
+        const [listaShow, setListaShow] = useState([]);
         const [busqueda, setBusqueda] = useState('');
     
         useEffect( () => {
