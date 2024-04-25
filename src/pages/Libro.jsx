@@ -127,6 +127,55 @@ const Libro = () => {
         setPuntuacionUsuario(puntuacionGuardada);
     };
 
+    const handleClickFavoritos = async () => {
+        const audiolibroId = libro.audiolibro.id;
+        const coleccionId = libro.coleccion?.[0].id;
+        const URL_ADDFAV = '/colecciones/añadirAudiolibro';
+        const URL_RMFAV = '/colecciones/añadirAudiolibro';
+        console.log(libro.colecciones?.[0].pertenece);
+        if (libro.colecciones?.[0].pertenece === false) {
+            try {
+                const respuesta = await axios.post(URL_ADDFAV, 
+                  JSON.stringify({audiolibroId, coleccionId}),
+                  {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                  }
+                );
+                console.log(respuesta); /* Solo desarrollo */         
+            } catch (err) {
+                if (!err.response) {
+                  setErrMsg ('No hay respuesta del servidor');
+                } else if (err.response.status === 400) {
+                  setErrMsg ('No propietario'); 
+                } else {
+                  setErrMsg ('Error');
+                }
+            }
+        }
+        else {
+            try {
+                const respuesta = await axios.post(URL_RMFAV, 
+                  JSON.stringify({audiolibroId, coleccionId}),
+                  {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                  }
+                );
+                console.log(respuesta); /* Solo desarrollo */         
+            } catch (err) {
+                if (!err.response) {
+                  setErrMsg ('No hay respuesta del servidor');
+                } else if (err.response.status === 400) {
+                  setErrMsg ('No propietario'); 
+                } else {
+                  setErrMsg ('Error');
+                }
+            }
+        }
+    }
+    
+
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
@@ -159,8 +208,10 @@ const Libro = () => {
 
                 { /* Botón de "Añadir a favoritos" */}
                 <div className="info-anyadir-favoritos">
-                    <button className="info-btnFavoritos">
-                        <FontAwesomeIcon icon={faPlus} /> Añadir a favoritos
+                    <button className="info-btnFavoritos"
+                        onClick={handleClickFavoritos}>
+                        <FontAwesomeIcon icon={faPlus} /> {!(libro.colecciones?.[0].pertenece) ? 
+                        <span>Añadir a favoritos</span> : <span>Eliminar de favoritos</span>}
                     </button>
                 </div>
 

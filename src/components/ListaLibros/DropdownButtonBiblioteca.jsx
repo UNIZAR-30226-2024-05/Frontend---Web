@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MdMoreVert } from 'react-icons/md'; // Importa el ícono de tres puntos
 import './DropdownButtonBiblioteca.css';
 
-const DropdownButtonBiblioteca = () => {
+const DropdownButtonBiblioteca = ({colecciones}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
