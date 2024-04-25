@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import * as IoIcons from "react-icons/io";
 import * as AiIcons from "react-icons/ai";
+import axios from '../../api/axios';
 import { Link } from 'react-router-dom';
-import { SidebarData } from './SidebarData'
 import { TopbarInData, TopbarOutData } from './TopbarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import logo from '../../images/logo.png';
 import AuthContext from '../../context/AuthProvider';
-import axios from '../../api/axios';
 import ListaAmigosSidebar from '../ListaAmigosSidebar/ListaAmigosSidebar';
 import vaca from '../../images/fotos-perfil/vaca.jpg';
 import perro from "../../images/fotos-perfil/perro.jpg"
@@ -21,6 +20,8 @@ import perezoso from "../../images/fotos-perfil/perezoso.jpg"
 import doraemon from "../../images/fotos-perfil/doraemon.jpg"
 import pikachu from "../../images/fotos-perfil/pikachu.jpg"
 
+import foto1 from '../../images/1.png';
+
 function Navbar() {
     const URL_LOGOUT = '/users/logout';
     
@@ -31,6 +32,39 @@ function Navbar() {
     const { auth , setAuth } = useContext(AuthContext);
     const { username } = auth;
     const { img } = auth;
+/*
+    const listaAmigosFicticia = [
+        { username: 'Juan', id: 1, img: foto1 },
+        { username: 'María', id: 2, img: foto1 },
+        { username: 'Pedro', id: 3, img: foto1 },
+        { username: 'Ana', id: 4, img: foto1 },
+        { username: 'Carlos', id: 5, img: foto1 },
+        { username: 'Juan', id: 6, img: foto1 },
+        { username: 'María', id: 7, img: foto1 },
+        { username: 'Pedro', id: 8, img: foto1 },
+        { username: 'Ana', id: 9, img: foto1 },
+        { username: 'Carlos', id: 10, img: foto1 }
+    ];
+*/
+    const [ amigos, setAmigos ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
+
+    useEffect( () => {
+        const URL_CONSULTA = '/amistad/amigos';
+        async function fetchAmigos(){
+            await axios.get(URL_CONSULTA, { withCredentials: true })
+            .then(response=>{
+                setAmigos(response.data.amigos);
+                setLoading(false);
+                console.log(response.data);
+            }).catch(error=>{
+                console.log(error);
+                setLoading(false);
+            })
+        }
+        fetchAmigos();
+    }, []);
+
 
     //Poner la foto de perfil correcta
     const obtenerPerfil = () => {
@@ -160,7 +194,15 @@ function Navbar() {
                         <span>Bienvenido, {username}</span>
                         </div>
                     </div>
-                    <div className='sidebar-list'> <ListaAmigosSidebar /> </div>
+                    <div className='sidebar-list'> 
+                    {loading ? (
+                        <div className='loading-container'>
+                            <p>Loading...</p>
+                        </div>
+                        ) : (
+                            <ListaAmigosSidebar amigos={amigos} />
+                        )}
+                    </div>
                 </div>
             </nav>
         </IconContext.Provider>

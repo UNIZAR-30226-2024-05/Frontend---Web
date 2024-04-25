@@ -1,53 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../../api/axios';
 import './ListaAmigosSidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
-import foto1 from '../../images/1.png';
 
-const ListaAmigosSidebar = () => {
-        
-        const URL_CONSULTA = '/amistad/amigos';
+const ListaAmigosSidebar = ({amigos}) => {
 
         const navigate = useNavigate();
-
-        const listaAmigosFicticia = [
-            { username: 'Juan', id: 1, img: foto1 },
-            { username: 'María', id: 2, img: foto1 },
-            { username: 'Pedro', id: 3, img: foto1 },
-            { username: 'Ana', id: 4, img: foto1 },
-            { username: 'Carlos', id: 5, img: foto1 },
-            { username: 'Juan', id: 6, img: foto1 },
-            { username: 'María', id: 7, img: foto1 },
-            { username: 'Pedro', id: 8, img: foto1 },
-            { username: 'Ana', id: 9, img: foto1 },
-            { username: 'Carlos', id: 10, img: foto1 }
-        ];
-    
-        const [amigos, setAmigos] = useState([]);
-        const [listaAmigos, setListaAmigos] = useState(amigos);
+        
         const [listaShow, setListaShow] = useState(amigos);
         const [busqueda, setBusqueda] = useState('');
     
-        useEffect( () => {
-            /*async function fetchAmigos(){
-                await axios.get(URL_CONSULTA, { withCredentials: true })
-                .then(response=>{
-                    setAmigos(response.data.amigos);
-                    setListaAmigos(response.data.amigos);
-                    setListaShow(response.data.amigos);
-                    console.log(response.data);
-                }).catch(error=>{
-                    console.log(error);
-                })
-            }
-            fetchAmigos();*/
-            setAmigos(listaAmigosFicticia);
-            setListaAmigos(listaAmigosFicticia);
-            setListaShow(listaAmigosFicticia);
-        }, []);
     
         const handleChangeBusqueda = event => {
             setBusqueda(event.target.value);
@@ -55,7 +19,7 @@ const ListaAmigosSidebar = () => {
         } 
 
         const filtrar = () => {
-            var resultado = listaAmigos.filter((elemento) => {
+            var resultado = amigos.filter((elemento) => {
                 if (elemento.username.toString().toLowerCase().includes(busqueda.toLowerCase()))
                 {return elemento;}
             });
