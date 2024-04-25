@@ -94,7 +94,7 @@ const ListaLibros = ({generos, libros}) => {
                         </div>
                     </div>
                     <div className='boton-container'>
-                        <DropdownButtonBiblioteca className='boton-opciones' colecciones={libros.colecciones} />
+                        <DropdownButtonBiblioteca className='boton-opciones' />
                     </div>
                 </div>
               ))}
