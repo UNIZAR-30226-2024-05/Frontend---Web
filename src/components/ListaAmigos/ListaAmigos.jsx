@@ -6,6 +6,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
+
+import perro from '../../images/perro.jpg';
+import gato from '../../images/gato.jpg';
+import rana from '../../images/rana.jpg';
+import leon from '../../images/leon.jpg';
+import pollo from '../../images/pollo.jpg';
+import vaca from '../../images/vaca.jpg';
+import buho from '../../images/buho.jpg';
+import perezoso from '../../images/perezoso.jpg';
+import doraemon from '../../images/doraemon.jpg';
+import pikachu from '../../images/pikachu.jpg';
+
 const ListaAmigos = ({usuarios}) => {
     
         const navigate = useNavigate();
@@ -27,6 +39,44 @@ const ListaAmigos = ({usuarios}) => {
                 return usuario.username.toString().toLowerCase().includes(terminoBusqueda.toLowerCase());
             });
             setListaUsuarios(resultado);
+        }
+
+        const obtenerFotoPerfil = (numero) => {
+            switch (numero) {
+                case 0:
+                    return perro;
+                case 1:
+                    return gato;
+                case 2:
+                    return rana;
+                case 3:
+                    return leon;
+                case 4:
+                    return pollo;
+                case 5:
+                    return vaca;
+                case 6:
+                    return buho;
+                case 7:
+                    return perezoso;
+                case 8:
+                    return doraemon;
+                case 9:
+                    return pikachu;
+            }
+        }
+
+        const obtenerEstado = (numero) => {
+            switch (numero) {
+                case 0:
+                    return 'Sois amigos'
+                case 1:
+                    return 'Enviar solicitud'
+                case 2:
+                    return 'Solictud enviada'
+                case 3:
+                    return 'Aceptar solicitud'
+            }
         }
 
         const eliminarAmigo = async index => {
@@ -68,11 +118,9 @@ const ListaAmigos = ({usuarios}) => {
                     {listaUsuarios.map((usuario, index) => (
                         <div className='amigo' key={index}>
                             <div className='amigo-info'>
-                                <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={usuario.img} alt='Foto de perfil' /></a>
+                                <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil' /></a>
                                 <h2 className='nombre-amigo'><a href='/perfilamigo' className='link-amigo'>{usuario.username}</a></h2>
-                                <button className='eliminar-amigo' onClick={() => eliminarAmigo(index)}>
-                                    <FontAwesomeIcon icon={faTimes} />
-                                </button>
+                                <button> obtenerEstado(usuario.estado) </button>
                             </div>
                         </div>
                     ))}
