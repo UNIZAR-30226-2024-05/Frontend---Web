@@ -29,7 +29,7 @@ const Colecciones = () => {
         const URL_CONSULTA = '/colecciones';
 
         async function fetchColecciones(){
-            await axios.get(URL_CONSULTA)
+            await axios.get(URL_CONSULTA, null, {withCredentials: true})
             .then(response=>{
                 setColecciones(response.data.collections);
                 setLoading(false);
