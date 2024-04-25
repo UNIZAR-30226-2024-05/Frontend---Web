@@ -9,14 +9,6 @@ const Amigos = () => {
     const [amigos, setAmigos] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    /*const listaAmigosFicticia = [
-            { username: 'Juan' },
-            { username: 'María' },
-            { username: 'Pedro' },
-            { username: 'Ana' },
-            { username: 'Carlos' }
-        ];*/
-
     useEffect( () => {
       async function fetchAmigos(){
           await axios.get(URL_CONSULTA, { withCredentials: true })
@@ -30,9 +22,6 @@ const Amigos = () => {
           })
       }
       fetchAmigos();
-      /*setAmigos(listaAmigosFicticia);
-      setListaAmigos(listaAmigosFicticia);
-      setListaShow(listaAmigosFicticia);*/
     }, []);
 
 

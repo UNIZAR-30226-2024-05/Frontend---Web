@@ -7,35 +7,25 @@ import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
 const ListaAmigos = ({amigos}) => {
-        
-        const URL_CONSULTA = '/amistad/lista';
     
         //const [listaAmigos, setListaAmigos] = useState([]);
-        const [listaShow, setListaShow] = useState([]);
+        const [listaShow, setListaShow] = useState(amigos);
         const [busqueda, setBusqueda] = useState('');
     
-        useEffect( () => {
-            if (amigos) {
-                //setListaAmigos(amigos);
-                setListaShow(amigos);
-            }
-        }, [amigos]);
     
         const handleChangeBusqueda = event => {
             setBusqueda(event.target.value);
+            filtrar(event.target.value);
         } 
 
-        const handleBusqueda = () => {
-            const resultado = amigos.filter(amigo => {
-                return amigo.username.toString().toLowerCase().includes(busqueda.toLowerCase());
+        
+
+        const filtrar = (terminoBusqueda) => {
+            var resultado = amigos.filter((elemento) => {
+                if (elemento.username.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+                {return elemento;}
             });
             setListaShow(resultado);
-        }
-
-        const handleKeyPress = (event) => {
-            if (event.key === 'Enter') {
-                handleBusqueda();
-            }
         }
 
         const eliminarAmigo = async index => {
