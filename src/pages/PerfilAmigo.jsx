@@ -34,6 +34,8 @@ const PerfilAmigo = () => {
     const [colecciones, setColecciones] = useState();
     const [estado, setEstado] = useState();
     const [ultimaActividad, setUltimaActividad] = useState();
+    const [portadaUltimaActividad, setPortadaUltimaActividad] = useState();
+    const [fechaUltimaActividad, setFechaUltimaActividad] = useState();
 
     useEffect(() => {
 
@@ -48,6 +50,8 @@ const PerfilAmigo = () => {
                 setColecciones(response.data.colecciones);
                 setEstado(response.data.estado);
                 setUltimaActividad(response.data.ultimo);
+                setPortadaUltimaActividad(response.data.ultimo.img);
+                setFechaUltimaActividad(response.data.ultimo.fecha);
                 console.log(response.data);
             })
             .catch(error => {
@@ -157,11 +161,11 @@ const PerfilAmigo = () => {
                             <h3>Última actividad</h3>
                             <div className="amigo-actividad">
                                 <Link to="/libro" className="amigo-foto-link-libro">
-                                    <img src={ultimaActividad.img} alt="Portada" />
+                                    <img src={portadaUltimaActividad} alt="Portada" />
                                 </Link>
                                 <div className="amigo-actividad-info">
                                     <p><Link to="/libro" className="amigo-link-libro">{ultimaActividad.titulo}</Link></p>
-                                    <p>{ultimaActividad.fecha}</p>
+                                    <p>{fechaUltimaActividad}</p>
                                 </div>
                             </div>
                         </div>
