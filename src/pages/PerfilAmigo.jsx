@@ -51,7 +51,10 @@ const PerfilAmigo = () => {
                 console.log(response.data);
                 setUsuario(response.data.username);
                 setImg(response.data.img);
-                setColecciones(response.data.colecciones);
+                if (response.data.colecciones) {
+                    setColecciones(response.data.colecciones);
+                    console.log(response.data.colecciones);
+                }
                 setEstado(response.data.estado);
                 if (response.data.ultimo) {
                     setUltimaActividad(response.data.ultimo);
