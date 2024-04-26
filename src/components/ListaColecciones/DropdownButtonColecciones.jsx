@@ -41,12 +41,12 @@ const DropdownButtonColecciones = ({ options, collectionId }) => {
     switch (option) {
       case 'Eliminar coleccion':
           console.log('Eliminar coleccion');
-          console.log(id_coleccion);
+          console.log(collectionId);
           eliminarColeccionConsulta();
           break;
       case 'Dejar de seguir coleccion':
           console.log('Dejar de seguir coleccion');
-          console.log(id_coleccion);
+          console.log(collectionId);
           eliminarColeccionConsulta();
           break;
     }
