@@ -10,7 +10,7 @@ import foto3 from '../images/3.jpg';
 import foto4 from '../images/4.jpg';
 import foto5 from '../images/5.jpg';
 import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
-import axios from 'axios';
+import axios from '../api/axios';
 
 import perro from '../images/fotos-perfil/perro.jpg';
 import gato from '../images/fotos-perfil/gato.jpg';
