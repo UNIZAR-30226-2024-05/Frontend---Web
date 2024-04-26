@@ -46,6 +46,12 @@ const PerfilAmigo = () => {
             const URL_PERFIL = `/users/${id_user}`; 
             axios.get(URL_PERFIL, {withCredentials: true})
             .then(response => {
+
+                console.log('Respuesta del servidor:', response.data);
+                console.log('Colecciones:', response.data.colecciones);
+                console.log('Última actividad:', response.data.ultimo);
+
+                
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
                 setPerfil(response.data);
                 console.log(response.data);
