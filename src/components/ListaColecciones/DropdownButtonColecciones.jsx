@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MdMoreVert } from 'react-icons/md'; // Importa el ícono de tres puntos
 import './DropdownButtonColecciones.css';
+import axios from '../../api/axios';
 
 const DropdownButtonColecciones = ({ options, collectionId }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ const DropdownButtonColecciones = ({ options, collectionId }) => {
   };
 
   const eliminarColeccionConsulta = async () => {
+    const URL_CONSULTA = '/colecciones/remove'
     try {
         const respuesta = await axios.post(URL_CONSULTA, 
           JSON.stringify({collectionId}),
