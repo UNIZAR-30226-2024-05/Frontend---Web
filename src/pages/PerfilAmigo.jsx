@@ -44,7 +44,6 @@ const PerfilAmigo = () => {
 
         if (id_user) {
             const URL_PERFIL = `/users/${id_user}`; 
-
             axios.get(URL_PERFIL, {withCredentials: true})
             .then(response => {
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
