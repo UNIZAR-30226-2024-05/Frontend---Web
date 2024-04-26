@@ -38,6 +38,11 @@
     text-align: center; /* Centra el texto horizontalmente */
 }
 
+.foto-amigo{
+    width: 2%;
+    height: 2%;
+}
+
 .lista-amigos .lista .amigo .amigo-info .nombre-amigo {
     /* Estilos para los nombres de los amigos */
     margin: 10px; /* Margen alrededor del nombre de usuario */
