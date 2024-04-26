@@ -42,7 +42,7 @@ const ListaAmigos = ({usuarios}) => {
         }
 
         const obtenerFotoPerfil = (numero) => {
-            switch (numero) {
+            switch(numero) {
                 case 0:
                     return perro;
                 case 1:
