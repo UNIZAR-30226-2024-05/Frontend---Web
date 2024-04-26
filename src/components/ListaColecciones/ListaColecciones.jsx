@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './ListaColecciones.css';
 import { useNavigate } from 'react-router-dom';
+import axios from '../../api/axios';
 import DropdownButton from '../DropdownButton/DropdownButton';
 import AuthContext from '../../context/AuthProvider';
 
