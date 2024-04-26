@@ -48,8 +48,11 @@ const PerfilAmigo = () => {
             .then(response => {
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
                 setUsuario(response.data.username);
+                console.log(response.data.username);
                 setImg(response.data.img);
+                console.log(response.data.img);
                 setColecciones(response.data.colecciones);
+                console.log(response.data.colecciones);
                 setEstado(response.data.estado);
                 setUltimaActividad(response.data.ultimo);
                 setPortadaUltimaActividad(response.data.ultimo.img);
