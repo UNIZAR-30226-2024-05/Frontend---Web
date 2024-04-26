@@ -12,16 +12,16 @@ import foto5 from '../images/5.jpg';
 import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
 import axios from 'axios';
 
-import perro from '../../images/fotos-perfil/perro.jpg';
-import gato from '../../images/fotos-perfil/gato.jpg';
-import rana from '../../images/fotos-perfil/rana.jpg';
-import leon from '../../images/fotos-perfil/leon.jpg';
-import pollo from '../../images/fotos-perfil/pollo.jpg';
-import vaca from '../../images/fotos-perfil/vaca.jpg';
-import buho from '../../images/fotos-perfil/buho.jpg';
-import perezoso from '../../images/fotos-perfil/perezoso.jpg';
-import doraemon from '../../images/fotos-perfil/doraemon.jpg';
-import pikachu from '../../images/fotos-perfil/pikachu.jpg';
+import perro from '../images/fotos-perfil/perro.jpg';
+import gato from '../images/fotos-perfil/gato.jpg';
+import rana from '../images/fotos-perfil/rana.jpg';
+import leon from '../images/fotos-perfil/leon.jpg';
+import pollo from '../images/fotos-perfil/pollo.jpg';
+import vaca from '../images/fotos-perfil/vaca.jpg';
+import buho from '../images/fotos-perfil/buho.jpg';
+import perezoso from '../images/fotos-perfil/perezoso.jpg';
+import doraemon from '../images/fotos-perfil/doraemon.jpg';
+import pikachu from '../images/fotos-perfil/pikachu.jpg';
 
 const PerfilAmigo = () => {
 
