@@ -10,6 +10,19 @@ import foto3 from '../images/3.jpg';
 import foto4 from '../images/4.jpg';
 import foto5 from '../images/5.jpg';
 import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
+import axios from 'axios';
+import { navigate } from 'raviger';
+
+import perro from '../../images/fotos-perfil/perro.jpg';
+import gato from '../../images/fotos-perfil/gato.jpg';
+import rana from '../../images/fotos-perfil/rana.jpg';
+import leon from '../../images/fotos-perfil/leon.jpg';
+import pollo from '../../images/fotos-perfil/pollo.jpg';
+import vaca from '../../images/fotos-perfil/vaca.jpg';
+import buho from '../../images/fotos-perfil/buho.jpg';
+import perezoso from '../../images/fotos-perfil/perezoso.jpg';
+import doraemon from '../../images/fotos-perfil/doraemon.jpg';
+import pikachu from '../../images/fotos-perfil/pikachu.jpg';
 
 const PerfilAmigo = () => {
 
@@ -41,6 +54,42 @@ const PerfilAmigo = () => {
         }
     }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
     
+    const obtenerFotoPerfil = (numero) => {
+        console.log(numero);
+        switch(numero) {
+            case '0':
+                return perro;
+                break;
+            case '1':
+                return gato;
+                break;
+            case '2':
+                return rana;
+                break;
+            case '3':
+                return leon;
+                break;
+            case '4':
+                return pollo;
+                break;
+            case '5':
+                return vaca;
+                break;
+            case '6':
+                return buho;
+                break;
+            case '7':
+                return perezoso;
+                break;
+            case '8':
+                return doraemon;
+                break;
+            case '9':
+                return pikachu;
+                break;
+        }
+    }
+
     const esAmigo = (usuario) => {
         if (usuario.estado === 0) {
             return true;
@@ -80,7 +129,7 @@ const PerfilAmigo = () => {
     return (
         <div className="amigo-perfil-usuario">
             <div className="amigo-foto-perfil">
-                <img src={usuario.img} alt="Foto de perfil" />
+                <img src={obtenerFotoPerfil(usuario.img)} alt="Foto de perfil" />
             </div>
             <div className="amigo-info-usuario">
                 <h2>{usuario.username}</h2>
