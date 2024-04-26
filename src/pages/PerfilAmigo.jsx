@@ -35,6 +35,7 @@ const PerfilAmigo = () => {
     const [estado, setEstado] = useState();
     const [ultimaActividad, setUltimaActividad] = useState();
     const [portadaUltimaActividad, setPortadaUltimaActividad] = useState();
+    const [tituloUltimaActividad, setTituloUltimaActividad] = useState();
     const [fechaUltimaActividad, setFechaUltimaActividad] = useState();
 
     useEffect(() => {
@@ -51,6 +52,7 @@ const PerfilAmigo = () => {
                 setEstado(response.data.estado);
                 setUltimaActividad(response.data.ultimo);
                 setPortadaUltimaActividad(response.data.ultimo.img);
+                setTituloUltimaActividad(response.data.ultimo.titulo);
                 setFechaUltimaActividad(response.data.ultimo.fecha);
                 console.log(response.data);
             })
@@ -164,7 +166,7 @@ const PerfilAmigo = () => {
                                     <img src={portadaUltimaActividad} alt="Portada" />
                                 </Link>
                                 <div className="amigo-actividad-info">
-                                    <p><Link to="/libro" className="amigo-link-libro">{ultimaActividad.titulo}</Link></p>
+                                    <p><Link to="/libro" className="amigo-link-libro">{tituloUltimaActividad}</Link></p>
                                     <p>{fechaUltimaActividad}</p>
                                 </div>
                             </div>
