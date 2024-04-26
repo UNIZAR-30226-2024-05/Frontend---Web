@@ -45,24 +45,34 @@ const ListaAmigos = ({usuarios}) => {
             switch(numero) {
                 case 0:
                     return perro;
+                    break;
                 case 1:
                     return gato;
+                    break;
                 case 2:
                     return rana;
+                    break;
                 case 3:
                     return leon;
+                    break;
                 case 4:
                     return pollo;
+                    break;
                 case 5:
                     return vaca;
+                    break;
                 case 6:
                     return buho;
+                    break;
                 case 7:
                     return perezoso;
+                    break;
                 case 8:
                     return doraemon;
+                    break;
                 case 9:
                     return pikachu;
+                    break;
             }
         }
 
@@ -214,7 +224,6 @@ const ListaAmigos = ({usuarios}) => {
                     {listaUsuarios.map((usuario, index) => (
                         <div className='amigo' key={index}>
                             <div className='amigo-info'>
-                                console.log(obtenerFotoPerfil(usuario.img));
                                 <a href='/perfilamigo' className='link-amigo'><img className='foto-amigo' src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil' /></a>
                                 <h2 className='nombre-amigo'><a href='/perfilamigo' className='link-amigo'>{usuario.username}</a></h2>
                                 {usuario.estado === 0 ? (
