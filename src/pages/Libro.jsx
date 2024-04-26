@@ -231,6 +231,7 @@ const Libro = () => {
                 }
             }
         }
+    }
     
 
     return (
@@ -276,7 +277,7 @@ const Libro = () => {
                 <div className="info-anyadir-ver-mas-tarde">
                     <button className="info-btnVerMasTarde"
                         onClick={handleClickFavoritos}>
-                        <FontAwesomeIcon icon={faPlus} /> {colecciones[0]?.pertenece ? 
+                        <FontAwesomeIcon icon={faPlus} /> {colecciones[1]?.pertenece ? 
                         <span>Quitar de ver mas tarde</span> : <span>Añadir a ver mas tarde</span>}
                     </button>
                 </div>
