@@ -20,7 +20,7 @@
 
 .lista-amigos .lista .amigo {
     /* Estilos para cada amigo */
-    width: 100%; /* Ancho relativo para los contenedores de amigos */
+    width: 70%; /* Ancho relativo para los contenedores de amigos */
     margin-bottom: 20px; /* Espacio debajo de los amigos */ 
 
     background-color: #FAF3E0;
@@ -28,6 +28,17 @@
     display: flex;
     justify-content: center; /* Centra horizontalmente el contenido */
     align-items: center; /* Centra verticalmente el contenido */
+}
+
+.lista-amigos .lista .amigo-activo {
+    width: 70%; /* Ancho relativo para los contenedores de amigos */
+    margin-bottom: 20px; /* Espacio debajo de los amigos */ 
+
+    background-color: orange;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center;
 }
 
 .lista-amigos .lista .amigo .amigo-info {
