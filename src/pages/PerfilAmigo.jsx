@@ -25,7 +25,8 @@ import pikachu from '../images/fotos-perfil/pikachu.jpg';
 
 const PerfilAmigo = () => {
 
-    
+    const navigate = useNavigate();
+
     const location = useLocation();
     const id_user = location.state?.id_user
 
