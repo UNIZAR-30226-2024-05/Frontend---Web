@@ -95,13 +95,6 @@ const ListaColecciones = ({colecciones}) => {
                 placeholder='Cómo quiere llamar a su nueva colección'
                 value={nuevaColeccion}
                 onChange={handleChangeNuevaColeccion}/>
-                
-                <select className="selector-tipo-coleccion" onChange={handleTipoChange} value={tipoColeccion}>
-                {tipoColeccion.map((tipo) => (
-                        <option key={tipo} value={tipo}>{tipo}</option>
-                ))}
-                {/* Agrega más opciones de géneros según sea necesario */}
-                </select>
 
                 <button className='submit-coleccion-button' onClick={handleClickSubmitColeccion}> Enter </button>
                 
