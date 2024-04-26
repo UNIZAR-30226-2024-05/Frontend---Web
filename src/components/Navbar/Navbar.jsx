@@ -63,7 +63,7 @@ function Navbar() {
             })
         }
         fetchAmigos();
-    }, [auth]);
+    }, [username]);
 
 
     //Poner la foto de perfil correcta
