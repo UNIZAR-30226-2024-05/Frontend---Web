@@ -11,7 +11,7 @@ const ListaColecciones = ({colecciones}) => {
     const { auth } = useContext(AuthContext);
     const { user_id } = auth;
 
-    const [crearColeccion, setCrearColeccion] = useState(false);
+    const [crearColeccion, setCrearColeccion] = useState(true);
     const showCrearColeccion = () => setCrearColeccion(!crearColeccion);
     
     const [listaColecciones, setListaColecciones] = useState(colecciones);

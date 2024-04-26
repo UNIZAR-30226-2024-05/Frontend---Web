@@ -47,7 +47,7 @@ const Biblioteca = () => {
             <p>Loading...</p>
           </div>
           ) : (
-            <ListaLibros className='list' generos={generos} libros={libros} />
+            <ListaLibros className='lista' generos={generos} libros={libros} />
           )}
       </div>
       <div className='biblioteca-footer'>
