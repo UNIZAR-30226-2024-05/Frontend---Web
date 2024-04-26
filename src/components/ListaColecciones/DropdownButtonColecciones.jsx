@@ -20,12 +20,9 @@ const DropdownButtonColecciones = ({ options, collectionId }) => {
           }
         );
         console.log(respuesta); /* Solo desarrollo */
-        setNuevaColeccion('');
     } catch (err) {
         if (!err.response) {
             console.log('No hay respuesta del servidor');
-        } else if (err.response.status === 400) {
-            console.log('Error: Titulo existente'); 
         } else if (err.response.status === 500){
             console.log('Server error');
         } else {
