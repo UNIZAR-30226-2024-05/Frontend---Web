@@ -38,7 +38,8 @@ const ListaColecciones = ({colecciones}) => {
 
     const handleClickSubmitColeccion = async () => {
         const URL_CONSULTA = '/colecciones/create';
-
+        console.log(URL_CONSULTA);
+        console.log(nuevaColeccion);
         try {
             const respuesta = await axios.post(URL_CONSULTA, 
               JSON.stringify({title: nuevaColeccion}),
