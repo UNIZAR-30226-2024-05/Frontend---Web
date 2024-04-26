@@ -25,6 +25,7 @@ const ListaAmigos = ({usuarios}) => {
 
         const [listaUsuarios, setListaUsuarios] = useState(usuarios);
         const [busqueda, setBusqueda] = useState('');
+        const [ordenarUsuarios, setOrdenarUsuarios] = useState(false);
     
     
         const handleChangeBusqueda = (event) => {
@@ -38,7 +39,8 @@ const ListaAmigos = ({usuarios}) => {
             var resultado = listaUsuarios.filter((usuario) => {
                 return usuario.username.toString().toLowerCase().includes(terminoBusqueda.toLowerCase());
             });
-            setListaUsuarios(resultado);
+            setUsuariosFiltrados(resultado);
+            setOrdenarUsuarios(true);
         }
 
         const obtenerFotoPerfil = (numero) => {
@@ -208,9 +210,12 @@ const ListaAmigos = ({usuarios}) => {
         }
 
         useEffect(() => {
-            const usuariosOrdenador = [...listaUsuarios].sort((a, b) => { a.estado - b.estado });
-            setListaUsuarios(usuariosOrdenador);
-        }, [listaUsuarios]);
+            if (ordenarUsuarios) {
+                const usuariosOrdenador = [...listaUsuarios].sort((a, b) => { a.estado - b.estado });
+                setListaUsuarios(usuariosOrdenador);
+                setOrdenarUsuarios(false);
+            }
+        }, [listaUsuarios , ordenarUsuarios]);
     
         return (
             <div className='lista-amigos'>
