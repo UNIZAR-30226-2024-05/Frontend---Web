@@ -215,7 +215,7 @@ const ListaAmigos = ({usuarios}) => {
                 setListaUsuarios(usuariosOrdenador);
                 setOrdenarUsuarios(false);
             }
-        }, [listaUsuarios]);
+        }, [listaUsuarios , ordenarUsuarios]);
     
         return (
             <div className='lista-amigos'>
