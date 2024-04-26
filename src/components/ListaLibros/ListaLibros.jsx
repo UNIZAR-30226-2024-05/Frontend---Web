@@ -29,9 +29,6 @@ const ListaLibros = ({generos, libros}) => {
 
     const handleGeneroChange = (event) => {
         setGeneroSeleccionado(event.target.value);
-        /* Solo para desarrollo, quitar mas adelante */
-        console.log(libros);
-        console.log(listaLibros);
     };
 
     const handleBusqueda = () => {
