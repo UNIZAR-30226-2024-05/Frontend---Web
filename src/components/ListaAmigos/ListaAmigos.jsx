@@ -201,6 +201,10 @@ const ListaAmigos = ({usuarios}) => {
             }
         }
     }
+
+    const handleUsuarioClick = (id_usuario) => {
+        navigate('/perfilamigo', {state: {id_usuario}});
+    }
     
     return (
         <div className='lista-amigos'>
@@ -220,8 +224,8 @@ const ListaAmigos = ({usuarios}) => {
                 {listaUsuarios.map((usuario, index) => (
                     <div className={'amigo ' + (usuario.estado === 0 ? 'amigo-activo' : '')} key={index}>
                         <div className='amigo-info'>
-                            <img className='foto-amigo' src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil' onClick={() => navigate('/perfilamigo')}/>
-                            <h2 className='nombre-amigo'><a href='/perfilamigo' className='link-amigo'>{usuario.username}</a></h2>
+                            <img className='foto-amigo' onClick={() => handleUsuarioClick(usuario.id)} src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil'/>
+                            <h2 className='nombre-amigo' onClick={() => handleUsuarioClick(usuario.id)}>{usuario.username}</h2>
                             {usuario.estado === 0 ? (
                                 <button onClick={() => eliminarAmigo(index)}>Eliminar amigo</button>
                             ) : null}

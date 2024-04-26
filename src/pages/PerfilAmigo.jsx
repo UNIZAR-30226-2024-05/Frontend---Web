@@ -13,7 +13,7 @@ import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
 
 const PerfilAmigo = () => {
 
-    /*
+    
     const location = useLocation();
     const id_user = location.state?.id_user
 
@@ -22,9 +22,9 @@ const PerfilAmigo = () => {
     useEffect(() => {
 
         if (id_user) {
-            const URL_PERFIL = `/audiolibros/${id_user}`; /* AJUSTAR *//*
+            const URL_PERFIL = `/users/${id_user}`; 
 
-            axios.get(URL_PERFIL)
+            axios.get(URL_PERFIL, {withCredentials: true})
             .then(response => {
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
                 setUsuario(response.data);
@@ -40,13 +40,21 @@ const PerfilAmigo = () => {
             navigate('/');
         }
     }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
-    */
+    
+    const esAmigo = (usuario) => {
+        if (usuario.estado === 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
-    const usuario = {
+    /*const usuario = {
         nombre: 'Juan',
         foto: fotoPerfil,
     };
-    const esAmigo = true;
+    
     const [colecciones, setColecciones] = useState([
         {portada: foto1, nombre: 'Favoritos'},
         {portada: foto2, nombre: 'Escuchalo más tarde'},
@@ -60,7 +68,7 @@ const PerfilAmigo = () => {
         portada: foto1,
         titulo: 'El principito',
         hora: 'Hace 2 horas'
-    };
+    };*/
 
     const [solicitudEnviada, setSolicitudEnviada] = useState(false);
 
