@@ -29,7 +29,7 @@ const PerfilAmigo = () => {
     const navigate = useNavigate();
 
     const location = useLocation();
-    const id_user = location.state?.id_user
+    const id_user = location.state?.id_user;
 
     const [usuario, setUsuario] = useState();
     const [img, setImg] = useState();
