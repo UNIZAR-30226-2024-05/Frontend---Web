@@ -137,10 +137,12 @@ const Libro = () => {
     const URL_RM = '/colecciones/eliminarAudiolibro';
 
     const handleClickFavoritos = async (event) => {
+
+        const favoritos = colecciones.find(coleccion => coleccion.titulo === 'Favoritos');
         const audiolibroId = libro.audiolibro.id;
-        const coleccionId = colecciones[0]?.id;
-        console.log(colecciones[0]?.pertenece);
-        if (colecciones[0]?.pertenece === false) {
+        const coleccionId = favoritos?.id;
+        console.log(favoritos?.pertenece);
+        if (favoritos?.pertenece === false) {
             try {
                 const respuesta = await axios.post(URL_ADD, 
                   JSON.stringify({audiolibroId, coleccionId}),
@@ -185,10 +187,11 @@ const Libro = () => {
     }
 
     const handleClickMasTarde = async (event) => {
+        const verMasTarde = colecciones.find(coleccion => coleccion.titulo === 'Escuchar mas tarde');
         const audiolibroId = libro.audiolibro.id;
-        const coleccionId = colecciones[1]?.id;
-        console.log(colecciones[1]?.pertenece);
-        if (colecciones[1]?.pertenece === false) {
+        const coleccionId = verMasTarde?.id;
+        console.log(verMasTarde?.pertenece);
+        if (verMasTarde?.pertenece === false) {
             try {
                 const respuesta = await axios.post(URL_ADD, 
                   JSON.stringify({audiolibroId, coleccionId}),

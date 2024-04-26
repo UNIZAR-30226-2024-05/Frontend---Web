@@ -107,7 +107,7 @@ const ListaColecciones = ({colecciones}) => {
 
 
         <div className='lista'>
-            {listaColecciones.map((coleccion, i) => (
+            {listaColecciones.reverse().map((coleccion, i) => (
                 <div key={i}
                 className='coleccion'>
                     <div className='contenido-colec'>
