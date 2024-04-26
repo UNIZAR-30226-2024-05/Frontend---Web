@@ -186,12 +186,12 @@ const Libro = () => {
     const handleClickMasTarde = async (event) => {
         const audiolibroId = libro.audiolibro.id;
         const coleccionId = colecciones[1]?.id;
-        const URL_ADDFAV = '/colecciones/anadirAudiolibro';
-        const URL_RMFAV = '/colecciones/eliminarAudiolibro';
+        const URL_ADDWL = '/colecciones/anadirAudiolibro';
+        const URL_RMWL = '/colecciones/eliminarAudiolibro';
         console.log(colecciones[1]?.pertenece);
         if (colecciones[1]?.pertenece === false) {
             try {
-                const respuesta = await axios.post(URL_ADDFAV, 
+                const respuesta = await axios.post(URL_ADDWL, 
                   JSON.stringify({audiolibroId, coleccionId}),
                   {
                     headers: { 'Content-Type': 'application/json' },
@@ -212,7 +212,7 @@ const Libro = () => {
         }
         else {
             try {
-                const respuesta = await axios.post(URL_RMFAV, 
+                const respuesta = await axios.post(URL_RMWL, 
                   JSON.stringify({audiolibroId, coleccionId}),
                   {
                     headers: { 'Content-Type': 'application/json' },
@@ -276,7 +276,7 @@ const Libro = () => {
                 { /* Botón de "Añadir a ver más tarde" */}
                 <div className="info-anyadir-ver-mas-tarde">
                     <button className="info-btnVerMasTarde"
-                        onClick={handleClickFavoritos}>
+                        onClick={handleClickMasTarde}>
                         <FontAwesomeIcon icon={faPlus} /> {colecciones[1]?.pertenece ? 
                         <span>Quitar de ver mas tarde</span> : <span>Añadir a ver mas tarde</span>}
                     </button>
@@ -290,9 +290,11 @@ const Libro = () => {
                     {mostrarColecciones && (
                         <div className="info-desplegable-colecciones">
                             {colecciones.map((coleccion, index) => (
+                                (index > 1) && (
                                 <div key={index}>
                                     <a href="#" className='info-colecciones-item'>{coleccion}</a>
                                 </div>
+                                )
                             ))}
                         </div>
                     )}
