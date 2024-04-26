@@ -30,6 +30,10 @@ const PerfilAmigo = () => {
     const id_user = location.state?.id_user
 
     const [usuario, setUsuario] = useState();
+    const [img, setImg] = useState();
+    const [colecciones, setColecciones] = useState();
+    const [estado, setEstado] = useState();
+    const [ultimaActividad, setUltimaActividad] = useState();
 
     useEffect(() => {
 
@@ -39,7 +43,11 @@ const PerfilAmigo = () => {
             axios.get(URL_PERFIL, {withCredentials: true})
             .then(response => {
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
-                setUsuario(response.data);
+                setUsuario(response.data.username);
+                setImg(response.data.img);
+                setColecciones(response.data.colecciones);
+                setEstado(response.data.estado);
+                setUltimaActividad(response.data.ultimo);
                 console.log(response.data);
             })
             .catch(error => {
@@ -89,8 +97,8 @@ const PerfilAmigo = () => {
         }
     }
 
-    const esAmigo = (usuario) => {
-        if (usuario.estado === 0) {
+    const esAmigo = (estado) => {
+        if (estado === 0) {
             return true;
         }
         else {
@@ -128,10 +136,10 @@ const PerfilAmigo = () => {
     return (
         <div className="amigo-perfil-usuario">
             <div className="amigo-foto-perfil">
-                <img src={obtenerFotoPerfil(usuario.img)} alt="Foto de perfil" />
+                <img src={obtenerFotoPerfil(img)} alt="Foto de perfil" />
             </div>
             <div className="amigo-info-usuario">
-                <h2>{usuario.username}</h2>
+                <h2>{usuario}</h2>
                 {esAmigo ? (
                     <button className="amigo-somos-amigos">Somos amigos</button>
                 ) : (
@@ -142,18 +150,18 @@ const PerfilAmigo = () => {
                 {esAmigo && (
                     <div className="amigo-colecciones-y-actividad">
                         <div className="amigo-colecciones">
-                            <h3 className="colecciones-usuario">Colecciones de {usuario.username}</h3>
-                            <ListaColecciones className='list' colecciones={usuario.colecciones}></ListaColecciones>
+                            <h3 className="colecciones-usuario">Colecciones de {username}</h3>
+                            <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
                         </div>
                         <div className="amigo-ultima-actividad">
                             <h3>Última actividad</h3>
                             <div className="amigo-actividad">
                                 <Link to="/libro" className="amigo-foto-link-libro">
-                                    <img src={ultimo.img} alt="Portada" />
+                                    <img src={ultimaActividad.img} alt="Portada" />
                                 </Link>
                                 <div className="amigo-actividad-info">
-                                    <p><Link to="/libro" className="amigo-link-libro">{ultimo.titulo}</Link></p>
-                                    <p>{ultimo.fecha}</p>
+                                    <p><Link to="/libro" className="amigo-link-libro">{ultimaActividad.titulo}</Link></p>
+                                    <p>{ultimaActividad.fecha}</p>
                                 </div>
                             </div>
                         </div>
