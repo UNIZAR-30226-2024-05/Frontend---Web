@@ -40,7 +40,7 @@ const ListaColecciones = ({colecciones}) => {
         const URL_CONSULTA = '/colecciones/create';
 
         try {
-            const respuesta = await axios.post(URL_RM, 
+            const respuesta = await axios.post(URL_CONSULTA, 
               JSON.stringify({title: nuevaColeccion}),
               {
                 headers: { 'Content-Type': 'application/json' },
@@ -51,13 +51,13 @@ const ListaColecciones = ({colecciones}) => {
             setNuevaColeccion('');
         } catch (err) {
             if (!err.response) {
-                setErrMsg ('No hay respuesta del servidor');
+                console.log('No hay respuesta del servidor');
             } else if (err.response.status === 400) {
-                setErrMsg ('Error: Titulo existente'); 
+                console.log('Error: Titulo existente'); 
             } else if (err.response.status === 500){
-                setErrMsg ('Server error');
+                console.log('Server error');
             } else {
-                setErrMsg ('Error');
+                console.log('Error');
             }
         }
     }
