@@ -39,7 +39,7 @@ const ListaAmigos = ({usuarios}) => {
             var resultado = listaUsuarios.filter((usuario) => {
                 return usuario.username.toString().toLowerCase().includes(terminoBusqueda.toLowerCase());
             });
-            setListaUsuarios(resultado);
+            setUsuariosFiltrados(resultado);
             setOrdenarUsuarios(true);
         }
 
