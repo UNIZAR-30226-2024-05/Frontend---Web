@@ -206,6 +206,11 @@ const ListaAmigos = ({usuarios}) => {
                 }
             }
         }
+
+        useEffect(() => {
+            const usuariosOrdenador = [...listaUsuarios].sort((a, b) => { a.estado - b.estado });
+            setListaUsuarios(usuariosOrdenador);
+        }, [listaUsuarios]);
     
         return (
             <div className='lista-amigos'>
