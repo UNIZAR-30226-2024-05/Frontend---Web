@@ -11,7 +11,6 @@ import foto4 from '../images/4.jpg';
 import foto5 from '../images/5.jpg';
 import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
 import axios from 'axios';
-import { navigate } from 'raviger';
 
 import perro from '../../images/fotos-perfil/perro.jpg';
 import gato from '../../images/fotos-perfil/gato.jpg';
