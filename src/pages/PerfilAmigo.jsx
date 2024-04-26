@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PerfilAmigo.css';
-import { Link, useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 import fotoPerfil from '../images/foto1.jpg';
