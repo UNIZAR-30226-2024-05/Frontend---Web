@@ -30,6 +30,7 @@ const PerfilAmigo = () => {
     const location = useLocation();
     const id_user = location.state?.id_user;
 
+    const [perfil, setPerfil] = useState();
     const [usuario, setUsuario] = useState();
     const [img, setImg] = useState();
     const [colecciones, setColecciones] = useState();
