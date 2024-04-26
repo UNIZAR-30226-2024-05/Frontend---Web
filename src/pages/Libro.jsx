@@ -133,15 +133,16 @@ const Libro = () => {
         setPuntuacionUsuario(puntuacionGuardada);
     };
 
+    const URL_ADD = '/colecciones/anadirAudiolibro';
+    const URL_RM = '/colecciones/eliminarAudiolibro';
+
     const handleClickFavoritos = async (event) => {
         const audiolibroId = libro.audiolibro.id;
         const coleccionId = colecciones[0]?.id;
-        const URL_ADDFAV = '/colecciones/anadirAudiolibro';
-        const URL_RMFAV = '/colecciones/eliminarAudiolibro';
         console.log(colecciones[0]?.pertenece);
         if (colecciones[0]?.pertenece === false) {
             try {
-                const respuesta = await axios.post(URL_ADDFAV, 
+                const respuesta = await axios.post(URL_ADD, 
                   JSON.stringify({audiolibroId, coleccionId}),
                   {
                     headers: { 'Content-Type': 'application/json' },
@@ -162,7 +163,7 @@ const Libro = () => {
         }
         else {
             try {
-                const respuesta = await axios.post(URL_RMFAV, 
+                const respuesta = await axios.post(URL_RM, 
                   JSON.stringify({audiolibroId, coleccionId}),
                   {
                     headers: { 'Content-Type': 'application/json' },
@@ -186,12 +187,10 @@ const Libro = () => {
     const handleClickMasTarde = async (event) => {
         const audiolibroId = libro.audiolibro.id;
         const coleccionId = colecciones[1]?.id;
-        const URL_ADDWL = '/colecciones/anadirAudiolibro';
-        const URL_RMWL = '/colecciones/eliminarAudiolibro';
         console.log(colecciones[1]?.pertenece);
         if (colecciones[1]?.pertenece === false) {
             try {
-                const respuesta = await axios.post(URL_ADDWL, 
+                const respuesta = await axios.post(URL_ADD, 
                   JSON.stringify({audiolibroId, coleccionId}),
                   {
                     headers: { 'Content-Type': 'application/json' },
@@ -212,7 +211,7 @@ const Libro = () => {
         }
         else {
             try {
-                const respuesta = await axios.post(URL_RMWL, 
+                const respuesta = await axios.post(URL_RM, 
                   JSON.stringify({audiolibroId, coleccionId}),
                   {
                     headers: { 'Content-Type': 'application/json' },

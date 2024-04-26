@@ -10,6 +10,9 @@ const ListaColecciones = ({colecciones}) => {
 
     const { auth } = useContext(AuthContext);
     const { user_id } = auth;
+
+    const [crearColeccion, setCrearColeccion] = useState(false);
+    const showCrearColeccion = () => setCrearColeccion(!crearColeccion);
     
     const [listaColecciones, setListaColecciones] = useState(colecciones);
     const [busqueda, setBusqueda] = useState('');
@@ -44,12 +47,18 @@ const ListaColecciones = ({colecciones}) => {
     return (
     <div className='contenedor-lista'>
         <div className='buscador-container'>
+            <button className='crear-coleccion-btn' onClick={showCrearColeccion}>Crear nueva coleccion</button>
             <input className='buscador'
                 placeholder='Búsqueda por nombre de la colección'
                 value={busqueda}
                 onChange={handleChangeBusqueda}
             />
         </div>
+        {crearColeccion ? null : 
+            <div className='crear-coleccion-container'>
+                <h1>Aquí se creará la coleccion</h1>
+            </div>
+            }
 
         <div className='lista'>
             {listaColecciones.map((coleccion, i) => (

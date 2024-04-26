@@ -46,6 +46,7 @@ const Colecciones = () => {
   return (
     <div className='colecciones'>
       <div className='colecciones-container'>
+        <h1>Mis Colecciones</h1>
       {loading ? (
           <div className='loading-container'>
             <p>Loading...</p>
