@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import './ListaColecciones.css';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';
-import DropdownButton from '../DropdownButton/DropdownButton';
 import AuthContext from '../../context/AuthProvider';
+import DropdownButtonColecciones from './DropdownButtonColecciones';
 
 const ListaColecciones = ({colecciones}) => {
 
@@ -117,10 +117,10 @@ const ListaColecciones = ({colecciones}) => {
                     </div>
                     {user_id === coleccion.propietario ? 
                         <div className='boton-container'>
-                            <DropdownButton className='boton-opciones' options={opciones_col_propia} />
+                            <DropdownButtonColecciones className='boton-opciones' options={opciones_col_propia} collectionId={coleccion.id} />
                         </div> : 
                         <div className='boton-container'>
-                            <DropdownButton className='boton-opciones' options={opciones_col_ajena} />
+                            <DropdownButtonColecciones className='boton-opciones' options={opciones_col_ajena} collectionId={coleccion.id} />
                     </div>}
                 </div>
               ))}
