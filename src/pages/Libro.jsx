@@ -182,6 +182,55 @@ const Libro = () => {
             }
         }
     }
+
+    const handleClickMasTarde = async (event) => {
+        const audiolibroId = libro.audiolibro.id;
+        const coleccionId = colecciones[1]?.id;
+        const URL_ADDFAV = '/colecciones/anadirAudiolibro';
+        const URL_RMFAV = '/colecciones/eliminarAudiolibro';
+        console.log(colecciones[1]?.pertenece);
+        if (colecciones[1]?.pertenece === false) {
+            try {
+                const respuesta = await axios.post(URL_ADDFAV, 
+                  JSON.stringify({audiolibroId, coleccionId}),
+                  {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                  }
+                );
+                console.log(respuesta); /* Solo desarrollo */
+                obtenerDatosLibro();
+            } catch (err) {
+                if (!err.response) {
+                  setErrMsg ('No hay respuesta del servidor');
+                } else if (err.response.status === 400) {
+                  setErrMsg ('No propietario'); 
+                } else {
+                  setErrMsg ('Error');
+                }
+            }
+        }
+        else {
+            try {
+                const respuesta = await axios.post(URL_RMFAV, 
+                  JSON.stringify({audiolibroId, coleccionId}),
+                  {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                  }
+                );
+                console.log(respuesta); /* Solo desarrollo */
+                obtenerDatosLibro();
+            } catch (err) {
+                if (!err.response) {
+                  setErrMsg ('No hay respuesta del servidor');
+                } else if (err.response.status === 400) {
+                  setErrMsg ('No propietario'); 
+                } else {
+                  setErrMsg ('Error');
+                }
+            }
+        }
     
 
     return (
@@ -219,14 +268,16 @@ const Libro = () => {
                     <button className="info-btnFavoritos"
                         onClick={handleClickFavoritos}>
                         <FontAwesomeIcon icon={faPlus} /> {colecciones[0]?.pertenece ? 
-                        <span>Eliminar de favoritos</span> : <span>Añadir a favoritos</span>}
+                        <span>Quitar de favoritos</span> : <span>Añadir a favoritos</span>}
                     </button>
                 </div>
 
                 { /* Botón de "Añadir a ver más tarde" */}
                 <div className="info-anyadir-ver-mas-tarde">
-                    <button className="info-btnVerMasTarde">
-                        <FontAwesomeIcon icon={faPlus} /> Añadir a ver más tarde
+                    <button className="info-btnVerMasTarde"
+                        onClick={handleClickFavoritos}>
+                        <FontAwesomeIcon icon={faPlus} /> {colecciones[0]?.pertenece ? 
+                        <span>Quitar de ver mas tarde</span> : <span>Añadir a ver mas tarde</span>}
                     </button>
                 </div>
 

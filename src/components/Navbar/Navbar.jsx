@@ -63,7 +63,7 @@ function Navbar() {
             })
         }
         fetchAmigos();
-    }, []);
+    }, [auth]);
 
 
     //Poner la foto de perfil correcta
@@ -111,7 +111,6 @@ function Navbar() {
 
       // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
       setAuth({});
-      setMostrarMenu(false);
       window.location.href = '/login'; // Redirige a la página de inicio de sesión
         
 
