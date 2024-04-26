@@ -23,7 +23,7 @@
     height: auto;
 }
 
-.colecciones .colecciones-container h1{
+.colecciones .colecciones-container .title{
     margin-top: 20px;
     align-self: center;
     width: 100%;

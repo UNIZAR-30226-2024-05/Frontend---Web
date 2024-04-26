@@ -11,11 +11,15 @@ const ListaColecciones = ({colecciones}) => {
     const { auth } = useContext(AuthContext);
     const { user_id } = auth;
 
-    const [crearColeccion, setCrearColeccion] = useState(true);
+    const [crearColeccion, setCrearColeccion] = useState(false);
     const showCrearColeccion = () => setCrearColeccion(!crearColeccion);
     
     const [listaColecciones, setListaColecciones] = useState(colecciones);
     const [busqueda, setBusqueda] = useState('');
+
+    const [nuevaColeccion, setNuevaColeccion] = useState('');
+    const tipoColeccion = ['Publica', 'Privada'];
+    const [tipoSeleccionado, setTipoSeleccionado] = useState('Publica');
 
     const opciones_col_propia = [
         'Eliminar coleccion'
@@ -28,7 +32,15 @@ const ListaColecciones = ({colecciones}) => {
     const handleChangeBusqueda = (event) => {
         setBusqueda(event.target.value);
         filtrar(event.target.value);
+    }
+
+    const handleChangeNuevaColeccion = (event) => {
+        setNuevaColeccion(event.target.value);
     } 
+
+    const handleTipoChange = (event) => {
+        setTipoSeleccionado(event.target.value);
+    }
 
     const filtrar = (terminoBusqueda) => {
         var resultado = colecciones.filter((elemento) => {
@@ -47,18 +59,39 @@ const ListaColecciones = ({colecciones}) => {
     return (
     <div className='contenedor-lista'>
         <div className='buscador-container'>
-            <button className='crear-coleccion-btn' onClick={showCrearColeccion}>Crear nueva coleccion</button>
+            <button className='crear-coleccion-btn' onClick={showCrearColeccion}>
+                Crear nueva coleccion
+            </button>
             <input className='buscador'
                 placeholder='Búsqueda por nombre de la colección'
                 value={busqueda}
                 onChange={handleChangeBusqueda}
             />
+            <button className='submit-coleccion-button'> Enter </button>
         </div>
-        {crearColeccion ? null : 
+
+
+
+        {crearColeccion ? (
             <div className='crear-coleccion-container'>
-                <h1>Aquí se creará la coleccion</h1>
+                <input className='nombre-nueva-coleccion'
+                placeholder='Cómo quiere llamar a su nueva colección'
+                value={nuevaColeccion}
+                onChange={handleChangeNuevaColeccion}/>
+                
+                <select className="selector-tipo-coleccion" onChange={handleTipoChange} value={tipoColeccion}>
+                <option value="">Todos los géneros</option>
+                {tipoColeccion.map((tipo) => (
+                        <option key={tipo} value={tipo}>{tipo}</option>
+                ))}
+                {/* Agrega más opciones de géneros según sea necesario */}
+  </select>
+                
             </div>
-            }
+        ) : null}
+
+
+
 
         <div className='lista'>
             {listaColecciones.map((coleccion, i) => (
