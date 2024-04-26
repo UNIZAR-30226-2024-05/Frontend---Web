@@ -18,8 +18,6 @@ const ListaColecciones = ({colecciones}) => {
     const [busqueda, setBusqueda] = useState('');
 
     const [nuevaColeccion, setNuevaColeccion] = useState('');
-    const tipoColeccion = ['Publica', 'Privada'];
-    const [tipoSeleccionado, setTipoSeleccionado] = useState('Publica');
 
     const opciones_col_propia = [
         'Eliminar coleccion'
@@ -38,8 +36,30 @@ const ListaColecciones = ({colecciones}) => {
         setNuevaColeccion(event.target.value);
     } 
 
-    const handleTipoChange = (event) => {
-        setTipoSeleccionado(event.target.value);
+    const handleClickSubmitColeccion = async () => {
+        const URL_CONSULTA = '/colecciones/create';
+
+        try {
+            const respuesta = await axios.post(URL_RM, 
+              JSON.stringify({title: nuevaColeccion}),
+              {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+              }
+            );
+            console.log(respuesta); /* Solo desarrollo */
+            setNuevaColeccion('');
+        } catch (err) {
+            if (!err.response) {
+                setErrMsg ('No hay respuesta del servidor');
+            } else if (err.response.status === 400) {
+                setErrMsg ('Error: Titulo existente'); 
+            } else if (err.response.status === 500){
+                setErrMsg ('Server error');
+            } else {
+                setErrMsg ('Error');
+            }
+        }
     }
 
     const filtrar = (terminoBusqueda) => {
@@ -67,10 +87,7 @@ const ListaColecciones = ({colecciones}) => {
                 value={busqueda}
                 onChange={handleChangeBusqueda}
             />
-            <button className='submit-coleccion-button'> Enter </button>
         </div>
-
-
 
         {crearColeccion ? (
             <div className='crear-coleccion-container'>
@@ -80,12 +97,13 @@ const ListaColecciones = ({colecciones}) => {
                 onChange={handleChangeNuevaColeccion}/>
                 
                 <select className="selector-tipo-coleccion" onChange={handleTipoChange} value={tipoColeccion}>
-                <option value="">Todos los géneros</option>
                 {tipoColeccion.map((tipo) => (
                         <option key={tipo} value={tipo}>{tipo}</option>
                 ))}
                 {/* Agrega más opciones de géneros según sea necesario */}
-  </select>
+                </select>
+
+                <button className='submit-coleccion-button' onClick={handleClickSubmitColeccion}> Enter </button>
                 
             </div>
         ) : null}
