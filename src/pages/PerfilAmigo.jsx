@@ -40,18 +40,14 @@ const PerfilAmigo = () => {
     const [tituloUltimaActividad, setTituloUltimaActividad] = useState();
     const [fechaUltimaActividad, setFechaUltimaActividad] = useState();
 
-    useEffect(() => {
-
+    useEffect(async () => {
         if (id_user) {
             const URL_PERFIL = `/users/${id_user}`; 
-            axios.get(URL_PERFIL, {withCredentials: true})
-            .then(response => {
-
+            try {
+                const response = await axios.get(URL_PERFIL, {withCredentials: true});
                 console.log('Respuesta del servidor:', response.data);
                 console.log('Colecciones:', response.data.colecciones);
                 console.log('Última actividad:', response.data.ultimo);
-
-
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
                 setPerfil(response.data);
                 setUsuario(response.data.username);
@@ -68,14 +64,11 @@ const PerfilAmigo = () => {
                     setTituloUltimaActividad(response.data.ultimo.titulo);
                     setFechaUltimaActividad(response.data.ultimo.fecha);
                 }
-                
-            })
-            .catch(error => {
+            } catch (error) {
                 // Maneja los errores si ocurrieron
                 console.error('Hubo un error al obtener los datos del perfil:', error);
-            });
-        }
-        else {
+            }
+        } else {
             console.log('No se ha pasado ningún usuario');
             navigate('/');
         }
