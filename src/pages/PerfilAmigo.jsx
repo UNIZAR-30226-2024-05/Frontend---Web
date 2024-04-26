@@ -80,10 +80,10 @@ const PerfilAmigo = () => {
     return (
         <div className="amigo-perfil-usuario">
             <div className="amigo-foto-perfil">
-                <img src={usuario.foto} alt="Foto de perfil" />
+                <img src={usuario.img} alt="Foto de perfil" />
             </div>
             <div className="amigo-info-usuario">
-                <h2>{usuario.nombre}</h2>
+                <h2>{usuario.username}</h2>
                 {esAmigo ? (
                     <button className="amigo-somos-amigos">Somos amigos</button>
                 ) : (
@@ -94,19 +94,18 @@ const PerfilAmigo = () => {
                 {esAmigo && (
                     <div className="amigo-colecciones-y-actividad">
                         <div className="amigo-colecciones">
-                            <h3 className="colecciones-usuario">Colecciones de {usuario.nombre}</h3>
-                            <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
+                            <h3 className="colecciones-usuario">Colecciones de {usuario.username}</h3>
+                            <ListaColecciones className='list' colecciones={usuario.colecciones}></ListaColecciones>
                         </div>
                         <div className="amigo-ultima-actividad">
                             <h3>Última actividad</h3>
                             <div className="amigo-actividad">
                                 <Link to="/libro" className="amigo-foto-link-libro">
-                                    <img src={ultimaActividad.portada} alt="Portada" />
+                                    <img src={ultimo.img} alt="Portada" />
                                 </Link>
                                 <div className="amigo-actividad-info">
-                                    <p>{ultimaActividad.tipo}</p>
-                                    <p><Link to="/libro" className="amigo-link-libro">{ultimaActividad.titulo}</Link></p>
-                                    <p>{ultimaActividad.hora}</p>
+                                    <p><Link to="/libro" className="amigo-link-libro">{ultimo.titulo}</Link></p>
+                                    <p>{ultimo.fecha}</p>
                                 </div>
                             </div>
                         </div>
