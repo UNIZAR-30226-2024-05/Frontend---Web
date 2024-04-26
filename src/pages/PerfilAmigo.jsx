@@ -155,10 +155,12 @@ const PerfilAmigo = () => {
                 )}
                 {esAmigo && (
                     <div className="amigo-colecciones-y-actividad">
-                        <div className="amigo-colecciones">
-                            <h3 className="colecciones-usuario">Colecciones de {usuario}</h3>
-                            <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
-                        </div>
+                        {colecciones &&
+                            <div className="amigo-colecciones">
+                                <h3 className="colecciones-usuario">Colecciones de {usuario}</h3>
+                                <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
+                            </div>
+                        }
                         <div className="amigo-ultima-actividad">
                             <h3>Última actividad</h3>
                             <div className="amigo-actividad">
