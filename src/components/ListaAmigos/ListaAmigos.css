@@ -39,8 +39,9 @@
 }
 
 .foto-amigo{
-    width: 2%;
-    height: 2%;
+    margin-left: 5%;
+    width: 7%;
+    height: 7%;
 }
 
 .lista-amigos .lista .amigo .amigo-info .nombre-amigo {
