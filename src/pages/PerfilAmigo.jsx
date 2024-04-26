@@ -53,10 +53,13 @@ const PerfilAmigo = () => {
                 setImg(response.data.img);
                 setColecciones(response.data.colecciones);
                 setEstado(response.data.estado);
-                setUltimaActividad(response.data.ultimo);
-                setPortadaUltimaActividad(response.data.ultimo.img);
-                setTituloUltimaActividad(response.data.ultimo.titulo);
-                setFechaUltimaActividad(response.data.ultimo.fecha);
+                if (response.data.ultimo) {
+                    setUltimaActividad(response.data.ultimo);
+                    setPortadaUltimaActividad(response.data.ultimo.img);
+                    setTituloUltimaActividad(response.data.ultimo.titulo);
+                    setFechaUltimaActividad(response.data.ultimo.fecha);
+                }
+                
                 console.log(response.data);
             })
             .catch(error => {
@@ -164,18 +167,20 @@ const PerfilAmigo = () => {
                                 <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
                             </div>
                         }
-                        <div className="amigo-ultima-actividad">
-                            <h3>Última actividad</h3>
-                            <div className="amigo-actividad">
-                                <Link to="/libro" className="amigo-foto-link-libro">
-                                    <img src={portadaUltimaActividad} alt="Portada" />
-                                </Link>
-                                <div className="amigo-actividad-info">
-                                    <p><Link to="/libro" className="amigo-link-libro">{tituloUltimaActividad}</Link></p>
-                                    <p>{fechaUltimaActividad}</p>
+                        {ultimaActividad &&
+                            <div className="amigo-ultima-actividad">
+                                <h3>Última actividad</h3>
+                                <div className="amigo-actividad">
+                                    <Link to="/libro" className="amigo-foto-link-libro">
+                                        <img src={portadaUltimaActividad} alt="Portada" />
+                                    </Link>
+                                    <div className="amigo-actividad-info">
+                                        <p><Link to="/libro" className="amigo-link-libro">{tituloUltimaActividad}</Link></p>
+                                        <p>{fechaUltimaActividad}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 )}
             </div>
