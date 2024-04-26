@@ -51,17 +51,17 @@ const PerfilAmigo = () => {
                 console.log('Colecciones:', response.data.colecciones);
                 console.log('Última actividad:', response.data.ultimo);
 
-                
+
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
                 setPerfil(response.data);
-                console.log(response.data);
                 setUsuario(response.data.username);
                 setImg(response.data.img);
                 if (response.data.colecciones) {
                     setColecciones(response.data.colecciones);
-                    console.log(response.data.colecciones);
                 }
-                setEstado(response.data.estado);
+                if (response.data.estado) {
+                    setEstado(response.data.estado);
+                }
                 if (response.data.ultimo) {
                     setUltimaActividad(response.data.ultimo);
                     setPortadaUltimaActividad(response.data.ultimo.img);
@@ -69,7 +69,6 @@ const PerfilAmigo = () => {
                     setFechaUltimaActividad(response.data.ultimo.fecha);
                 }
                 
-                console.log(response.data);
             })
             .catch(error => {
                 // Maneja los errores si ocurrieron
