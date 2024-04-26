@@ -44,34 +44,34 @@ const ListaAmigos = ({usuarios}) => {
         const obtenerFotoPerfil = (numero) => {
             console.log(numero);
             switch(numero) {
-                case 0:
+                case '0':
                     return perro;
                     break;
-                case 1:
+                case '1':
                     return gato;
                     break;
-                case 2:
+                case '2':
                     return rana;
                     break;
-                case 3:
+                case '3':
                     return leon;
                     break;
-                case 4:
+                case '4':
                     return pollo;
                     break;
-                case 5:
+                case '5':
                     return vaca;
                     break;
-                case 6:
+                case '6':
                     return buho;
                     break;
-                case 7:
+                case '7':
                     return perezoso;
                     break;
-                case 8:
+                case '8':
                     return doraemon;
                     break;
-                case 9:
+                case '9':
                     return pikachu;
                     break;
             }
