@@ -13,7 +13,7 @@ const ListaAmigosSidebar = ({amigos}) => {
         const [busqueda, setBusqueda] = useState('');
     
         useEffect(() => {
-            // Para actualizar el elemento
+            setListaShow(amigos);
           }, [amigos]);
     
         const handleChangeBusqueda = event => {

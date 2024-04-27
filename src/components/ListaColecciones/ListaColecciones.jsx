@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './ListaColecciones.css';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';
@@ -19,14 +19,19 @@ const ListaColecciones = ({colecciones}) => {
     const [busqueda, setBusqueda] = useState('');
 
     const [nuevaColeccion, setNuevaColeccion] = useState('');
-
-    // Filtrar las colecciones de Favoritos y Escuchar mas tarde
-    const coleccionesFavoritos = listaColecciones.filter(coleccion => coleccion.titulo === "Favoritos");
-    const coleccionesEscucharMasTarde = listaColecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde");
+    
+    const [coleccionesFavoritos, setColeccionesFavoritos] = useState(listaColecciones.filter(coleccion => coleccion.titulo === "Favoritos"));
+    const [coleccionesEscucharMasTarde, setColeccionesEscucharMasTarde] = useState(listaColecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde"));
 
     // Filtrar las demás colecciones
-    const otrasColecciones = listaColecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde");
+    const [otrasColecciones, setOtrasColecciones] = useState(listaColecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde"));
 
+    useEffect(() => {
+        setColeccionesFavoritos(listaColecciones.filter(coleccion => coleccion.titulo === "Favoritos"));
+        setColeccionesEscucharMasTarde(listaColecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde"));
+        setOtrasColecciones(listaColecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde"));
+      }, [listaColecciones]);
+    
 
     const opciones_col_propia = [
         'Eliminar coleccion'
@@ -74,7 +79,7 @@ const ListaColecciones = ({colecciones}) => {
 
     const filtrar = (terminoBusqueda) => {
         var resultado = colecciones.filter((elemento) => {
-            if (elemento.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+            if (elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
             {return elemento;}
         });
         setListaColecciones(resultado);
