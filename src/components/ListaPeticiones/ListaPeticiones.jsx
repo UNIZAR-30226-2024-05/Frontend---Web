@@ -82,7 +82,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
                                         <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
+                                        <h2 className='fecha-peticion'>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
                                         <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
+                                        <h2 className='fecha-peticion'>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
                                         <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
+                                        <h2 className='fecha-peticion'>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
                                         <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
+                                        <h2 className='fecha-peticion'>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
                                     </div>
                                 </div>
                             </div>

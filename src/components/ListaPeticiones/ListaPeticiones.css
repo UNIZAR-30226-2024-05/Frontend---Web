@@ -41,9 +41,9 @@
         cursor: pointer;
     }
 
-.peticion-usernameLink {
-    text-decoration: none;
-    color: black;
+.fecha-peticion {
+    margin: 10px;
+    font-size: 1rem;
 }
   
   .buscador-listaPeticiones-container {
