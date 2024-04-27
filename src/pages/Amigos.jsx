@@ -49,12 +49,10 @@ const Amigos = () => {
                 }
             }
         })
-        .catch(error => {
-            console.log(error);
-        });
       }
+      fetchUsuarios();
+      fetchPeticiones();
     }, []);
-    
 
 
     const [tipos, setTipos] = useState([
