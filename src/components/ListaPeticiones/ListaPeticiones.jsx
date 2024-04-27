@@ -6,7 +6,7 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'; // Importa
 import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Importa el icono faSearch
 
 
-const ListaPeticiones = ({ enviadas, recibidas, aceptadas, rechazadas }) => {
+const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazadas }) => {
 
     const navigate = useNavigate();
     const [listaPeticiones, setListaPeticiones] = useState(peticiones);
