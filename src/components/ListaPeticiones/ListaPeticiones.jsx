@@ -57,21 +57,24 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
             {tiposOrdenados.map((tipo) => (
                 <div key={tipo}>
                     <h2 className='listaPeticiones-tipo'>{tipo.charAt(0).toUpperCase() + tipo.slice(1).toLowerCase()}</h2>
-                    {console.log(listaPeticiones[tipo])}
-                    {listaPeticiones[tipo] && listaPeticiones[tipo].map((peticion, i) => (
-                        <div key={i} className='peticion'>
-                            <div className='contenido-peticion'>
-                                <div className='peticion-username'>
-                                    <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
+                    {listaPeticiones.map((peticion, i) => (
+                        
+                            <div key={i} className='peticion'>
+                                <div className='contenido-peticion'>
+                                    <div className='peticion-username'>
+                                        <h1 onClick={handleUsuarioClick}>{peticion.username}</h1>
+                                    </div>
+                                    <div>
+                                        <h2>{peticion.fecha}</h2>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h2>{peticion.fecha}</h2>
-                                </div>
+
                             </div>
-                        </div>
+                        /* peticion.&{tipo}*/
                     ))}
                 </div>
             ))}
+
             </div>
         </div>
     );
