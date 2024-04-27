@@ -22,9 +22,13 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
             setListaPeticiones(peticiones);
             console.log(peticiones);
             setListaEnviadas(enviadas);
+            console.log(enviadas);
             setListaRecibidas(recibidas);
+            console.log(recibidas);
             setListaAceptadas(aceptadas);
+            console.log(aceptadas);
             setListaRechazadas(rechazadas);
+            console.log(rechazadas);
         }
     }, [peticiones]);
 
