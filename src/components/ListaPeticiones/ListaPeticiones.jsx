@@ -37,18 +37,6 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
                 console.log(rechazadas);
             }
         }
-        /*if (Array.isArray(peticiones)) {
-            setListaPeticiones(peticiones);
-            console.log(peticiones);
-            setListaEnviadas(enviadas);
-            console.log(enviadas);
-            setListaRecibidas(recibidas);
-            console.log(recibidas);
-            setListaAceptadas(aceptadas);
-            console.log(aceptadas);
-            setListaRechazadas(rechazadas);
-            console.log(rechazadas);
-        }*/
     }, [peticiones]);
 
     
@@ -70,8 +58,6 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
     };
 
     const tiposOrdenados = ['enviadas', 'recibidas', 'aceptadas', 'rechazadas'];
-
-
     return (
         <div className='contenedor-lista'>
             <div className='buscador-listaPeticiones-container'>
@@ -96,7 +82,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
                                         <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{peticion.fecha}</h2>
+                                        <h2>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +94,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
                                         <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{peticion.fecha}</h2>
+                                        <h2>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +106,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
                                         <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{peticion.fecha}</h2>
+                                        <h2>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +118,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
                                         <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{peticion.fecha}</h2>
+                                        <h2>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h2>
                                     </div>
                                 </div>
                             </div>
