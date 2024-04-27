@@ -137,7 +137,7 @@ const Libro = () => {
     const URL_RM = '/colecciones/eliminarAudiolibro';
 
     const handleClickColeccion = async (coleccion) => {
-        const audiolibroId = libro.audiolibro.id;
+        const audiolibroId = libro.audiolibro?.id;
         const coleccionId = coleccion.id;
         console.log(coleccion.pertenece);
         if (coleccion.pertenece === false) {
@@ -230,7 +230,7 @@ const Libro = () => {
                 { /* Botón de "Añadir a favoritos" */}
                 <div className="info-anyadir-favoritos" >
                     <button className="info-btnFavoritos"
-                        onClick={handleClickColeccion(coleccionesFavoritos)}>
+                        onClick={() => handleClickColeccion(coleccionesFavoritos)}>
                         <FontAwesomeIcon icon={faPlus} /> {coleccionesFavoritos?.pertenece ? 
                         <span>Quitar de favoritos</span> : <span>Añadir a favoritos</span>}
                     </button>
@@ -239,7 +239,7 @@ const Libro = () => {
                 { /* Botón de "Añadir a ver más tarde" */}
                 <div className="info-anyadir-ver-mas-tarde">
                     <button className="info-btnVerMasTarde"
-                        onClick={handleClickColeccion(coleccionesEscucharMasTarde)}>
+                        onClick={() => handleClickColeccion(coleccionesEscucharMasTarde)}>
                         <FontAwesomeIcon icon={faPlus} /> {coleccionesEscucharMasTarde?.pertenece ? 
                         <span>Quitar de ver mas tarde</span> : <span>Añadir a ver mas tarde</span>}
                     </button>
@@ -256,7 +256,7 @@ const Libro = () => {
 
                                 <button className="info-colecciones-item"
                                     key={index}
-                                    onClick={handleClickColeccion(coleccion)}>
+                                    onClick={() => handleClickColeccion(coleccion)}>
                                     {coleccion.pertenece ? 
                                         <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faPlus} />
                                     }
