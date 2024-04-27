@@ -13,7 +13,7 @@
     /* Estilos para la lista de amigos */
     display: flex; /* Utiliza flexbox para alinear los amigos horizontalmente */
     flex-direction: column;
-    width: 70%;;
+    width: 80%;;
     background-color: gray;
     border-radius: 30px;
     padding: 20px;
