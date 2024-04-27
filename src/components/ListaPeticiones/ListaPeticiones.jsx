@@ -29,7 +29,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
             if (aceptadas) {
                 setListaAceptadas(aceptadas);
             }
-            if (response.data.rechazadas) {
+            if (echazadas) {
                 setListaRechazadas(rechazadas);
             }
         }
