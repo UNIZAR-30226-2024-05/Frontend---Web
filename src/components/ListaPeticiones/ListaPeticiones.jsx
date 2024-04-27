@@ -6,16 +6,22 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'; // Importa
 import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Importa el icono faSearch
 
 
-const ListaPeticiones = ({ peticiones, tipos }) => {
+const ListaPeticiones = ({ enviadas, recibidas, aceptadas, rechazadas, tipos }) => {
 
     const navigate = useNavigate();
     const [listaPeticiones, setListaPeticiones] = useState(peticiones);
+    const [listaEnviadas, setListaEnviadas] = useState(enviadas);
+    const [listaRecibidas, setListaRecibidas] = useState(recibidas);
+    const [listaAceptadas, setListaAceptadas] = useState(aceptadas);
+    const [listaRechazadas, setListaRechazadas] = useState(rechazadas);
+
     const [busqueda, setBusqueda] = useState('');
 
     useEffect(() => {
         if (Array.isArray(peticiones)) {
             setListaPeticiones(peticiones);
             console.log(peticiones);
+
         }
     }, [peticiones]);
 
@@ -62,21 +68,54 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
             {tiposOrdenados.map((tipo) => (
                 <div key={tipo}>
                     <h2 className='listaPeticiones-tipo'>{tipo.charAt(0).toUpperCase() + tipo.slice(1).toLowerCase()}</h2>
-                    {filtrarPeticiones().map((peticion, i) => (
-                        
+                    {tipo === 'enviadas' && enviadas.map((peticion, i) => (
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
                                     <div className='peticion-username'>
-                                    <h1 onClick={() => handleUsuarioClick(peticion[tipo].user_id)}>{peticion[tipo].username}</h1>
+                                        <h1 onClick={() => handleUsuarioClick(enviadas.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{peticion[tipo].fecha}</h2>
+                                        <h2>{enviadas.fecha}</h2>
                                     </div>
                                 </div>
-
                             </div>
-                        /* peticion.&{tipo}*/
-                    ))}
+                        ))}
+                        {tipo === 'recibidas' && recibidas.map((peticion, i) => (
+                            <div key={i} className='peticion'>
+                                <div className='contenido-peticion'>
+                                    <div className='peticion-username'>
+                                        <h1 onClick={() => handleUsuarioClick(recibidas.user_id)}>{peticion.username}</h1>
+                                    </div>
+                                    <div>
+                                        <h2>{recibidas.fecha}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                        {tipo === 'aceptadas' && aceptadas.map((peticion, i) => (
+                            <div key={i} className='peticion'>
+                                <div className='contenido-peticion'>
+                                    <div className='peticion-username'>
+                                        <h1 onClick={() => handleUsuarioClick(aceptadas.user_id)}>{peticion.username}</h1>
+                                    </div>
+                                    <div>
+                                        <h2>{aceptadas.fecha}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                        {tipo === 'rechazadas' && rechazadas.map((peticion, i) => (
+                            <div key={i} className='peticion'>
+                                <div className='contenido-peticion'>
+                                    <div className='peticion-username'>
+                                        <h1 onClick={() => handleUsuarioClick(rechazadas.user_id)}>{peticion.username}</h1>
+                                    </div>
+                                    <div>
+                                        <h2>{rechazadas.fecha}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                 </div>
             ))}
 
