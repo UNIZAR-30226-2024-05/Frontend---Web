@@ -37,7 +37,7 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
         navigate('/perfilamigo', { state: { id_user } });
     };
 
-    const tiposOrdenados = ['recibidas', 'enviadas', 'aceptadas', 'rechazadas'];
+    const tiposOrdenados = ['enviadas', 'recibidas', 'aceptadas', 'rechazadas'];
 
 
     return (
@@ -57,7 +57,7 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
             {tiposOrdenados.map((tipo) => (
                 <div key={tipo}>
                     <h2 className='listaPeticiones-tipo'>{tipo.charAt(0).toUpperCase() + tipo.slice(1).toLowerCase()}</h2>
-                    {listaPeticiones.map((peticion, i) => (
+                    {listaPeticiones[tipo] && listaPeticiones[tipo].map((peticion, i) => (
                         peticion === tipo && (
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
