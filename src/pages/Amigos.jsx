@@ -28,22 +28,33 @@ const Amigos = () => {
           })
       }
 
-      async function fetchPeticiones(){
-          await axios.get('/amistad/peticiones', { withCredentials: true })
-          .then(response=>{
-              setPeticiones(response.data.peticiones);
-              console.log(response.data);
-              setEnviadas(response.data.peticiones.enviadas);
-              setRecibidas(response.data.peticiones.recibidas);
-              setAceptadas(response.data.peticiones.aceptadas);
-              setRechazadas(response.data.peticiones.rechazadas);
-          }).catch(error=>{
-              console.log(error);
-          })
+      async function fetchPeticiones() {
+        await axios.get('/amistad/peticiones', { withCredentials: true })
+        .then(response => {
+            setPeticiones(response.data.peticiones);
+            console.log(response.data);
+    
+            if (response.data.peticiones) {
+                if (response.data.peticiones.enviadas) {
+                    setEnviadas(response.data.peticiones.enviadas);
+                }
+                if (response.data.peticiones.recibidas) {
+                    setRecibidas(response.data.peticiones.recibidas);
+                }
+                if (response.data.peticiones.aceptadas) {
+                    setAceptadas(response.data.peticiones.aceptadas);
+                }
+                if (response.data.peticiones.rechazadas) {
+                    setRechazadas(response.data.peticiones.rechazadas);
+                }
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
       }
-      fetchUsuarios();
-      fetchPeticiones();
     }, []);
+    
 
 
     const [tipos, setTipos] = useState([
