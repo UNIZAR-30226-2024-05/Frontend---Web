@@ -148,7 +148,9 @@ function skipCancion(capitulo, indice) {
       return 0;
     }
     else{
-      return (currentTime / duracion) * 100;
+      const calcular = (currentTime / duracion) * 100;
+      console.log(calcular)
+      return calcular
     }
   }
 
