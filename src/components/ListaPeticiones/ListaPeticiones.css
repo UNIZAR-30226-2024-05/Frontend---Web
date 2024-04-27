@@ -20,6 +20,7 @@
   .contenedor-lista .lista .peticion {
     /* Estilos para cada peticion */
     margin-bottom: 20px; /* Espacio debajo de las peticiones */
+    width: 60%;
     background-color: #FAF3E0;
     border-radius: 20px;
   }
