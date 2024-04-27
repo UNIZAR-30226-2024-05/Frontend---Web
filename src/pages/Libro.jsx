@@ -228,8 +228,14 @@ const Libro = () => {
                 <div className="info-anyadir-favoritos" >
                     <button className="info-btnFavoritos"
                         onClick={() => handleClickColeccion(coleccionesFavoritos[0])}>
-                        <FontAwesomeIcon icon={faPlus} /> {coleccionesFavoritos[0]?.pertenece ? 
-                        <span>Quitar de favoritos</span> : <span>Añadir a favoritos</span>}
+                        {coleccionesFavoritos[0]?.pertenece ? <>
+                            <FontAwesomeIcon icon={faMinus} />
+                            <span>Quitar de favoritos</span> 
+                        </> : <>
+                            <FontAwesomeIcon icon={faPlus} />
+                            <span>Añadir a favoritos</span> 
+                        </>
+                        }
                     </button>
                 </div>
 
@@ -237,8 +243,13 @@ const Libro = () => {
                 <div className="info-anyadir-ver-mas-tarde">
                     <button className="info-btnVerMasTarde"
                         onClick={() => handleClickColeccion(coleccionesEscucharMasTarde[0])}>
-                        <FontAwesomeIcon icon={faPlus} /> {coleccionesEscucharMasTarde[0]?.pertenece ? 
-                        <span>Quitar de ver mas tarde</span> : <span>Añadir a ver mas tarde</span>}
+                        {coleccionesEscucharMasTarde[0]?.pertenece ? <>
+                            <FontAwesomeIcon icon={faMinus} />
+                            <span>Quitar de ver mas tarde</span> 
+                        </> : <>
+                            <FontAwesomeIcon icon={faPlus} />
+                            <span>Añadir a ver mas tarde</span> 
+                        </>}
                     </button>
                 </div>
 
