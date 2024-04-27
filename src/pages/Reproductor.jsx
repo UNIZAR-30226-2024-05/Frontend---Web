@@ -145,6 +145,22 @@ function skipCancion(capitulo, indice) {
   }
 
 
+  const updateProgress = () => {
+    if (soundInstance && soundInstance.playing()) {
+      setCurrentTime(soundInstance.seek());
+      requestAnimationFrame(updateProgress);
+    }
+  };
+
+  useEffect(() => {
+    if (soundInstance && soundInstance.playing()) {
+      requestAnimationFrame(updateProgress);
+    }
+    return () => {
+      cancelAnimationFrame(updateProgress);
+    };
+  }, [soundInstance]);
+
   //Funcion para calcular el progreso de la barra
   function progreso(currentTime, duracion){
     console.log(currentTime)
