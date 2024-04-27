@@ -137,7 +137,7 @@ const Libro = () => {
     const URL_RM = '/colecciones/eliminarAudiolibro';
 
     const handleClickColeccion = async (coleccion) => {
-        const audiolibroId = libro.audiolibro.id;
+        const audiolibroId = libro.audiolibro?.id;
         const coleccionId = coleccion.id;
         console.log(coleccion.pertenece);
         if (coleccion.pertenece === false) {
@@ -184,12 +184,15 @@ const Libro = () => {
         }
     }
 
-    const coleccionesFavoritos = colecciones.filter(coleccion => coleccion.titulo === "Favoritos");
-    console.log(coleccionesFavoritos);
-    const coleccionesEscucharMasTarde = colecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde");
-    console.log(coleccionesEscucharMasTarde);
-    const otrasColecciones = colecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde");
-    console.log(otrasColecciones);
+    const [coleccionesFavoritos, setColeccionesFavoritos] = useState([]);
+    const [coleccionesEscucharMasTarde, setColeccionesEscucharMasTarde] = useState([]);
+    const [otrasColecciones, setOtrasColecciones] = useState([]);
+
+    useEffect(() => {
+        setColeccionesFavoritos(colecciones.filter(coleccion => coleccion.titulo === 'Favoritos'));
+        setColeccionesEscucharMasTarde(colecciones.filter(coleccion => coleccion.titulo === 'Escuchar mas tarde'));
+        setOtrasColecciones(colecciones.filter(coleccion => coleccion.titulo !== 'Favoritos' && coleccion.titulo !== 'Escuchar mas tarde'));
+    }, [colecciones]);
 
     return (
         <div className='info-libro'>
@@ -224,8 +227,8 @@ const Libro = () => {
                 { /* Botón de "Añadir a favoritos" */}
                 <div className="info-anyadir-favoritos" >
                     <button className="info-btnFavoritos"
-                        onClick={handleClickColeccion(coleccionesFavoritos)}>
-                        <FontAwesomeIcon icon={faPlus} /> {coleccionesFavoritos?.pertenece ? 
+                        onClick={() => handleClickColeccion(coleccionesFavoritos[0])}>
+                        <FontAwesomeIcon icon={faPlus} /> {coleccionesFavoritos[0]?.pertenece ? 
                         <span>Quitar de favoritos</span> : <span>Añadir a favoritos</span>}
                     </button>
                 </div>
@@ -233,8 +236,8 @@ const Libro = () => {
                 { /* Botón de "Añadir a ver más tarde" */}
                 <div className="info-anyadir-ver-mas-tarde">
                     <button className="info-btnVerMasTarde"
-                        onClick={handleClickColeccion(coleccionesEscucharMasTarde)}>
-                        <FontAwesomeIcon icon={faPlus} /> {coleccionesEscucharMasTarde?.pertenece ? 
+                        onClick={() => handleClickColeccion(coleccionesEscucharMasTarde[0])}>
+                        <FontAwesomeIcon icon={faPlus} /> {coleccionesEscucharMasTarde[0]?.pertenece ? 
                         <span>Quitar de ver mas tarde</span> : <span>Añadir a ver mas tarde</span>}
                     </button>
                 </div>
@@ -246,15 +249,15 @@ const Libro = () => {
                     </button>
                     {mostrarColecciones && (
                         <div className="info-desplegable-colecciones">
-                            {otrasColecciones.map((coleccion, index) => (
+                            {otrasColecciones?.map((coleccion, index) => (
 
                                 <button className="info-colecciones-item"
                                     key={index}
-                                    onClick={handleClickColeccion(coleccion)}>
-                                    {coleccion.pertenece ? 
+                                    onClick={() => handleClickColeccion(coleccion)}>
+                                    {coleccion?.pertenece ? 
                                         <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faPlus} />
                                     }
-                                    <span>{coleccion}</span>
+                                    <span>{coleccion.titulo}</span>
                                 </button>
 
                             ))}
