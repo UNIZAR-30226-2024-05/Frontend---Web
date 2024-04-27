@@ -34,7 +34,7 @@ const Amigos = () => {
             const data = response.data;
     
             setPeticiones(data.peticiones || []);
-            setEnviadas(data.peticiones[enviadas] || []);
+            setEnviadas(data.peticiones?.[enviadas] || []);
             setRecibidas(data.peticiones?.recibidas || []);
             setAceptadas(data.peticiones?.aceptadas || []);
             setRechazadas(data.peticiones?.rechazadas || []);
