@@ -26,41 +26,6 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
         setListaPeticiones(resultado);
     };
 
-    const obtenerFotoPerfil = (numero) => {
-        console.log(numero);
-        switch(numero) {
-            case '0':
-                return perro;
-                break;
-            case '1':
-                return gato;
-                break;
-            case '2':
-                return rana;
-                break;
-            case '3':
-                return leon;
-                break;
-            case '4':
-                return pollo;
-                break;
-            case '5':
-                return vaca;
-                break;
-            case '6':
-                return buho;
-                break;
-            case '7':
-                return perezoso;
-                break;
-            case '8':
-                return doraemon;
-                break;
-            case '9':
-                return pikachu;
-                break;
-        }
-    }
 
     const handleUsuarioClick = (id_user) => {
         navigate('/perfilamigo', { state: { id_user } });
@@ -78,7 +43,7 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
                     value={busqueda}
                     onChange={handleChangeBusqueda}
                 />
-                <button className='buscador-listaPeticiones-container-button-search' onClick={handleBusqueda}>
+                <button className='buscador-listaPeticiones-container-button-search'>
                     <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>
@@ -92,6 +57,9 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
                                 <div className='contenido-peticion'>
                                     <div className='peticion-username'>
                                         <h1 onClick={handleUsuarioClick}>{peticion.username}</h1>
+                                    </div>
+                                    <div>
+                                        <h2>{peticion.fecha}</h2>
                                     </div>
                                 </div>
 
