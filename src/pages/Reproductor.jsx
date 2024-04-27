@@ -32,6 +32,7 @@ const Reproductor = () => {
   const [play, setPlay] = useState(false)
   const [soundInstance, setSoundInstance] = useState(null)
   const [currentTime, setCurrentTime] = useState(null);
+  const [duracion, setDuracion ] = useState(null);
   const MAX = 20;
   const [indice, setIndice] = useState(0)
   const sonidoRef = useRef<HTMLAudioElement>(null)
@@ -68,6 +69,7 @@ const Reproductor = () => {
             }
           });
           setSoundInstance(newSoundInstance); // Establece la nueva instancia de sonido
+          setDuracion(newSoundInstance.duration())
         } catch (error) {
           // Maneja cualquier excepción relacionada con la creación del contexto de audio
           console.error('Error al crear la instancia de sonido:', error);
@@ -139,6 +141,17 @@ function skipCancion(capitulo, indice) {
     soundInstance.volume(volume)
   }
 
+
+  //Funcion para calcular el progreso de la barra
+  function progreso(currentTime, duracion){
+    if(duracion == 0){
+      return 0;
+    }
+    else{
+      return (currentTime / duracion) * 100;
+    }
+  }
+
   return (
     <main>
       <div className='player'>
@@ -163,8 +176,8 @@ function skipCancion(capitulo, indice) {
         <div className='progressbar-container'>
           <div className='progressbar'>
             <motion.div className='bar'
-            animate={{width: "75%"}}
-            transition={{duration: 2}}
+            animate={{width: '${progreso()}%'}}
+            transition={{duration: 0.1}}
                 />
           </div>
         </div>
