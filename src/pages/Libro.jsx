@@ -4,7 +4,7 @@ import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import axios from '../api/axios';
 
@@ -174,20 +174,22 @@ const Libro = () => {
                 obtenerDatosLibro();
             } catch (err) {
                 if (!err.response) {
-                  setErrMsg ('No hay respuesta del servidor');
+                  console.log('No hay respuesta del servidor');
                 } else if (err.response.status === 400) {
-                  setErrMsg ('No propietario'); 
+                  console.log('No propietario'); 
                 } else {
-                  setErrMsg ('Error');
+                  console.log('Error');
                 }
             }
         }
     }
 
     const coleccionesFavoritos = colecciones.filter(coleccion => coleccion.titulo === "Favoritos");
+    console.log(coleccionesFavoritos);
     const coleccionesEscucharMasTarde = colecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde");
+    console.log(coleccionesEscucharMasTarde);
     const otrasColecciones = colecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde");
-    
+    console.log(otrasColecciones);
 
     return (
         <div className='info-libro'>
@@ -223,7 +225,7 @@ const Libro = () => {
                 <div className="info-anyadir-favoritos" >
                     <button className="info-btnFavoritos"
                         onClick={handleClickColeccion(coleccionesFavoritos)}>
-                        <FontAwesomeIcon icon={faPlus} /> {coleccionesFavoritos.pertenece ? 
+                        <FontAwesomeIcon icon={faPlus} /> {coleccionesFavoritos?.pertenece ? 
                         <span>Quitar de favoritos</span> : <span>Añadir a favoritos</span>}
                     </button>
                 </div>
@@ -232,7 +234,7 @@ const Libro = () => {
                 <div className="info-anyadir-ver-mas-tarde">
                     <button className="info-btnVerMasTarde"
                         onClick={handleClickColeccion(coleccionesEscucharMasTarde)}>
-                        <FontAwesomeIcon icon={faPlus} /> {coleccionesEscucharMasTarde.pertenece ? 
+                        <FontAwesomeIcon icon={faPlus} /> {coleccionesEscucharMasTarde?.pertenece ? 
                         <span>Quitar de ver mas tarde</span> : <span>Añadir a ver mas tarde</span>}
                     </button>
                 </div>
@@ -245,14 +247,14 @@ const Libro = () => {
                     {mostrarColecciones && (
                         <div className="info-desplegable-colecciones">
                             {otrasColecciones.map((coleccion, index) => (
-                
+
                                 <button className="info-colecciones-item"
                                     key={index}
                                     onClick={handleClickColeccion(coleccion)}>
-                                    <FontAwesomeIcon icon={faPlus} /> 
                                     {coleccion.pertenece ? 
-                                        <span>{coleccion}</span> : null
+                                        <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faPlus} />
                                     }
+                                    <span>{coleccion}</span>
                                 </button>
 
                             ))}
