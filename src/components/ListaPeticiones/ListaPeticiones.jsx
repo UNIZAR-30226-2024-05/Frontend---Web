@@ -13,8 +13,10 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
     const [busqueda, setBusqueda] = useState('');
 
     useEffect(() => {
-        setListaPeticiones(peticiones);
-        console.log(peticiones);
+        if (Array.isArray(peticiones)) {
+            setListaPeticiones(peticiones);
+            console.log(peticiones);
+        }
     }, [peticiones]);
 
     
