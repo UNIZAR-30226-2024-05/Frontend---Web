@@ -37,7 +37,6 @@ const ListaAmigos = ({usuarios}) => {
     }
 
     const obtenerFotoPerfil = (numero) => {
-        console.log(numero);
         switch(numero) {
             case '0':
                 return perro;
