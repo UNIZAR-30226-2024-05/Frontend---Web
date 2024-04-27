@@ -39,6 +39,11 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
 
     const tiposOrdenados = ['enviadas', 'recibidas', 'aceptadas', 'rechazadas'];
 
+    const filtrarPeticiones = () => {
+        return peticiones.filter(peticion =>
+            peticion.username.toLowerCase().includes(busqueda.toLowerCase())
+        );
+    };
 
     return (
         <div className='contenedor-lista'>
@@ -57,7 +62,7 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
             {tiposOrdenados.map((tipo) => (
                 <div key={tipo}>
                     <h2 className='listaPeticiones-tipo'>{tipo.charAt(0).toUpperCase() + tipo.slice(1).toLowerCase()}</h2>
-                    {listaPeticiones.map((peticion, i) => (
+                    {filtrarPeticiones().map((peticion, i) => (
                         
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
