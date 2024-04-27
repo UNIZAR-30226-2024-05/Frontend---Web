@@ -9,6 +9,7 @@
     /* Estilos para la lista de libros */
     display: flex; /* Utiliza flexbox para alinear los libros horizontalmente */
     flex-direction: column;
+    width: 90%;
   }
 
   .listaPeticiones-tipo {
