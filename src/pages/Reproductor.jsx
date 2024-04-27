@@ -178,7 +178,7 @@ function skipCancion(capitulo, indice) {
         <div className='progressbar-container'>
           <div className='progressbar'>
             <motion.div className='bar'
-            animate={{width: '${progreso()}%'}}
+            animate={{width: '${progreso(currentTime, duracion)}%'}}
             transition={{duration: 0.1}}
                 />
           </div>
