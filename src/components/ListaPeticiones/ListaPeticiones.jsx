@@ -21,7 +21,10 @@ const ListaPeticiones = ({ enviadas, recibidas, aceptadas, rechazadas, tipos }) 
         if (Array.isArray(peticiones)) {
             setListaPeticiones(peticiones);
             console.log(peticiones);
-
+            setListaEnviadas(enviadas);
+            setListaRecibidas(recibidas);
+            setListaAceptadas(aceptadas);
+            setListaRechazadas(rechazadas);
         }
     }, [peticiones]);
 
@@ -68,50 +71,50 @@ const ListaPeticiones = ({ enviadas, recibidas, aceptadas, rechazadas, tipos }) 
             {tiposOrdenados.map((tipo) => (
                 <div key={tipo}>
                     <h2 className='listaPeticiones-tipo'>{tipo.charAt(0).toUpperCase() + tipo.slice(1).toLowerCase()}</h2>
-                    {tipo === 'enviadas' && enviadas.map((peticion, i) => (
+                    {tipo === 'enviadas' && listaEnviadas.map((peticion, i) => (
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
                                     <div className='peticion-username'>
-                                        <h1 onClick={() => handleUsuarioClick(enviadas.user_id)}>{peticion.username}</h1>
+                                        <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{enviadas.fecha}</h2>
+                                        <h2>{peticion.fecha}</h2>
                                     </div>
                                 </div>
                             </div>
                         ))}
-                        {tipo === 'recibidas' && recibidas.map((peticion, i) => (
+                        {tipo === 'recibidas' && listaRecibidas.map((peticion, i) => (
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
                                     <div className='peticion-username'>
-                                        <h1 onClick={() => handleUsuarioClick(recibidas.user_id)}>{peticion.username}</h1>
+                                        <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{recibidas.fecha}</h2>
+                                        <h2>{peticion.fecha}</h2>
                                     </div>
                                 </div>
                             </div>
                         ))}
-                        {tipo === 'aceptadas' && aceptadas.map((peticion, i) => (
+                        {tipo === 'aceptadas' && listaAceptadas.map((peticion, i) => (
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
                                     <div className='peticion-username'>
-                                        <h1 onClick={() => handleUsuarioClick(aceptadas.user_id)}>{peticion.username}</h1>
+                                        <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{aceptadas.fecha}</h2>
+                                        <h2>{peticion.fecha}</h2>
                                     </div>
                                 </div>
                             </div>
                         ))}
-                        {tipo === 'rechazadas' && rechazadas.map((peticion, i) => (
+                        {tipo === 'rechazadas' && listaRechazadas.map((peticion, i) => (
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
                                     <div className='peticion-username'>
-                                        <h1 onClick={() => handleUsuarioClick(rechazadas.user_id)}>{peticion.username}</h1>
+                                        <h1 onClick={() => handleUsuarioClick(peticion.user_id)}>{peticion.username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{rechazadas.fecha}</h2>
+                                        <h2>{peticion.fecha}</h2>
                                     </div>
                                 </div>
                             </div>
