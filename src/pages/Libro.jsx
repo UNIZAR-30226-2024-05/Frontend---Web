@@ -198,6 +198,16 @@ const Libro = () => {
         console.log(otrasColecciones);
     }, [colecciones]);
 
+    useEffect(() => {
+        setColeccionesFavoritos(colecciones.filter(coleccion => coleccion.titulo === 'Favoritos'));
+        setColeccionesEscucharMasTarde(colecciones.filter(coleccion => coleccion.titulo === 'Escuchar mas tarde'));
+        setOtrasColecciones(colecciones.filter(coleccion => coleccion.titulo !== 'Favoritos' && coleccion.titulo !== 'Escuchar mas tarde'));
+        console.log(colecciones);
+        console.log(coleccionesFavoritos);
+        console.log(coleccionesEscucharMasTarde);
+        console.log(otrasColecciones);
+    }, [otrasColecciones]);
+
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
