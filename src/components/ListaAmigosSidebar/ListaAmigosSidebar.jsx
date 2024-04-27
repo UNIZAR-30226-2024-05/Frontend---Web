@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ListaAmigosSidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,6 +12,9 @@ const ListaAmigosSidebar = ({amigos}) => {
         const [listaShow, setListaShow] = useState(amigos);
         const [busqueda, setBusqueda] = useState('');
     
+        useEffect(() => {
+            setListaShow(amigos);
+          }, [amigos]);
     
         const handleChangeBusqueda = event => {
             setBusqueda(event.target.value);

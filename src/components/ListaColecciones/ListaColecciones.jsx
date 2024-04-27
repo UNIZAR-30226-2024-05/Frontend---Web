@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './ListaColecciones.css';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';
@@ -19,6 +19,19 @@ const ListaColecciones = ({colecciones}) => {
     const [busqueda, setBusqueda] = useState('');
 
     const [nuevaColeccion, setNuevaColeccion] = useState('');
+    
+    const [coleccionesFavoritos, setColeccionesFavoritos] = useState(listaColecciones.filter(coleccion => coleccion.titulo === "Favoritos"));
+    const [coleccionesEscucharMasTarde, setColeccionesEscucharMasTarde] = useState(listaColecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde"));
+
+    // Filtrar las demás colecciones
+    const [otrasColecciones, setOtrasColecciones] = useState(listaColecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde"));
+
+    useEffect(() => {
+        setColeccionesFavoritos(listaColecciones.filter(coleccion => coleccion.titulo === "Favoritos"));
+        setColeccionesEscucharMasTarde(listaColecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde"));
+        setOtrasColecciones(listaColecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde"));
+      }, [listaColecciones]);
+    
 
     const opciones_col_propia = [
         'Eliminar coleccion'
@@ -66,7 +79,7 @@ const ListaColecciones = ({colecciones}) => {
 
     const filtrar = (terminoBusqueda) => {
         var resultado = colecciones.filter((elemento) => {
-            if (elemento.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+            if (elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
             {return elemento;}
         });
         setListaColecciones(resultado);
@@ -103,15 +116,29 @@ const ListaColecciones = ({colecciones}) => {
             </div>
         ) : null}
 
-
-
-
         <div className='lista'>
-            {listaColecciones.reverse().map((coleccion, i) => (
-                <div key={i}
-                className='coleccion'>
+            {coleccionesFavoritos.map((coleccion, i) => (
+                <div key={i} className='coleccion'>
                     <div className='contenido-colec'>
-                    <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
+                        <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
+                            <h1>{coleccion.titulo}</h1>
+                        </div>
+                    </div>
+                </div>
+            ))}
+            {coleccionesEscucharMasTarde.map((coleccion, i) => (
+                <div key={i} className='coleccion'>
+                    <div className='contenido-colec'>
+                        <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
+                            <h1>{coleccion.titulo}</h1>
+                        </div>
+                    </div>
+                </div>
+            ))}
+            {otrasColecciones.map((coleccion, i) => (
+                <div key={i} className='coleccion'>
+                    <div className='contenido-colec'>
+                        <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
                             <h1>{coleccion.titulo}</h1>
                         </div>
                     </div>
@@ -121,9 +148,10 @@ const ListaColecciones = ({colecciones}) => {
                         </div> : 
                         <div className='boton-container'>
                             <DropdownButtonColecciones className='boton-opciones' options={opciones_col_ajena} collectionId={coleccion.id} />
-                    </div>}
+                        </div>
+                    }
                 </div>
-              ))}
+            ))}
         </div>
         
     </div>
