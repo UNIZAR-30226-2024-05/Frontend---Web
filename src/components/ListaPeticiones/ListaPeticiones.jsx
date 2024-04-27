@@ -58,7 +58,7 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
                 <div key={tipo}>
                     <h2 className='listaPeticiones-tipo'>{tipo.charAt(0).toUpperCase() + tipo.slice(1).toLowerCase()}</h2>
                     {listaPeticiones.map((peticion, i) => (
-                        peticion.tipo === tipo && (
+                        peticion === tipo && (
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
                                     <div className='peticion-username'>
