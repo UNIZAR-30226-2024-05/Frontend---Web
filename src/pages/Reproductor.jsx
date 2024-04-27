@@ -154,7 +154,7 @@ function skipCancion(capitulo, indice) {
       //console.log(calcular)
       return calcular
     }
-  }
+  } 
 
   return (
     <main>
