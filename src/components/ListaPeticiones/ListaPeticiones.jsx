@@ -18,7 +18,22 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
     const [busqueda, setBusqueda] = useState('');
 
     useEffect(() => {
-        if (Array.isArray(peticiones)) {
+        if (peticiones) {
+            setListaPeticiones(peticiones);
+            if (enviadas) {
+                setListaEnviadas(enviadas);
+            }
+            if (recibidas) {
+                setListaRecibidas(recibidas);
+            }
+            if (aceptadas) {
+                setListaAceptadas(aceptadas);
+            }
+            if (response.data.rechazadas) {
+                setListaRechazadas(rechazadas);
+            }
+        }
+        /*if (Array.isArray(peticiones)) {
             setListaPeticiones(peticiones);
             console.log(peticiones);
             setListaEnviadas(enviadas);
@@ -29,7 +44,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
             console.log(aceptadas);
             setListaRechazadas(rechazadas);
             console.log(rechazadas);
-        }
+        }*/
     }, [peticiones]);
 
     
