@@ -71,7 +71,7 @@ const Amigos = () => {
             <div className='amigos-peticiones'>
               <div className='amigos-lista-container'>
                 <h1 className='amigos-titulo'>Historial de peticiones</h1>
-                <ListaPeticiones className='list' tipos={tipos} enviadas={enviadas} recibidas={recibidas} aceptadas={aceptadas} rechazadas={rechazadas}></ListaPeticiones>
+                <ListaPeticiones className='list' enviadas={enviadas} recibidas={recibidas} aceptadas={aceptadas} rechazadas={rechazadas}></ListaPeticiones>
               </div> 
             </div>
         </div>

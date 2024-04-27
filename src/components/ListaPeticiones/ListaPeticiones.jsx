@@ -6,7 +6,7 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'; // Importa
 import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Importa el icono faSearch
 
 
-const ListaPeticiones = ({ enviadas, recibidas, aceptadas, rechazadas, tipos }) => {
+const ListaPeticiones = ({ enviadas, recibidas, aceptadas, rechazadas }) => {
 
     const navigate = useNavigate();
     const [listaPeticiones, setListaPeticiones] = useState(peticiones);
@@ -48,11 +48,6 @@ const ListaPeticiones = ({ enviadas, recibidas, aceptadas, rechazadas, tipos }) 
 
     const tiposOrdenados = ['enviadas', 'recibidas', 'aceptadas', 'rechazadas'];
 
-    const filtrarPeticiones = () => {
-        return peticiones.filter(peticion =>
-            peticion.username.toLowerCase().includes(busqueda.toLowerCase())
-        );
-    };
 
     return (
         <div className='contenedor-lista'>
