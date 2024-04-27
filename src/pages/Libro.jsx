@@ -184,12 +184,18 @@ const Libro = () => {
         }
     }
 
-    const coleccionesFavoritos = colecciones.filter(coleccion => coleccion.titulo === "Favoritos");
-    console.log(coleccionesFavoritos);
-    const coleccionesEscucharMasTarde = colecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde");
-    console.log(coleccionesEscucharMasTarde);
-    const otrasColecciones = colecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde");
-    console.log(otrasColecciones);
+    const [coleccionesFavoritos, setColeccionesFavoritos] = useState([]);
+    const [coleccionesEscucharMasTarde, setColeccionesEscucharMasTarde] = useState([]);
+    const [otrasColecciones, setOtrasColecciones] = useState([]);
+
+    useEffect(() => {
+        setColeccionesFavoritos(colecciones.filter(coleccion => coleccion.titulo === "Favoritos"));
+        setColeccionesEscucharMasTarde(colecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde"));
+        setOtrasColecciones(colecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde"));
+        console.log(coleccionesFavoritos);
+        console.log(coleccionesEscucharMasTarde);
+        console.log(otrasColecciones);
+    }, [colecciones]);
 
     return (
         <div className='info-libro'>
