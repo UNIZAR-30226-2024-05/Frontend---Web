@@ -62,10 +62,10 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
                                     <div className='peticion-username'>
-                                        <h1 onClick={handleUsuarioClick}>{peticion.username}</h1>
+                                    <h1 onClick={() => handleUsuarioClick(peticion[tipo].user_id)}>{peticion[tipo].username}</h1>
                                     </div>
                                     <div>
-                                        <h2>{peticion.fecha}</h2>
+                                        <h2>{peticion[tipo].fecha}</h2>
                                     </div>
                                 </div>
 
