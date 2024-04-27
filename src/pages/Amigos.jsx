@@ -63,7 +63,7 @@ const Amigos = () => {
             </div>
             <div className='amigos-peticiones'>
               <div className='amigos-lista-container'>
-                <h1 className='amigos-titulo'>Peticiones</h1>
+                <h1 className='amigos-titulo'>Historial de peticiones</h1>
                 <ListaPeticiones className='list' tipos={tipos} peticiones={peticiones}></ListaPeticiones>
               </div> 
             </div>

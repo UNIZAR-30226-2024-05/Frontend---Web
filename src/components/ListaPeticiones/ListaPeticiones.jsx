@@ -4,7 +4,6 @@ import './ListaPeticiones.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos necesarios
 import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Importa el icono faSearch
-import axios from 'axios';
 
 
 const ListaPeticiones = ({ peticiones, tipos }) => {
@@ -12,6 +11,11 @@ const ListaPeticiones = ({ peticiones, tipos }) => {
     const navigate = useNavigate();
     const [listaPeticiones, setListaPeticiones] = useState(peticiones);
     const [busqueda, setBusqueda] = useState('');
+
+    useEffect(() => {
+        setListaPeticiones(peticiones);
+        console.log(peticiones);
+    }, [peticiones]);
 
     
 
