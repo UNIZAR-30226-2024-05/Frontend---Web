@@ -136,13 +136,11 @@ const Libro = () => {
     const URL_ADD = '/colecciones/anadirAudiolibro';
     const URL_RM = '/colecciones/eliminarAudiolibro';
 
-    const handleClickFavoritos = async (event) => {
-
-        const favoritos = colecciones.find(coleccion => coleccion.titulo === 'Favoritos');
+    const handleClickColeccion = async (coleccion) => {
         const audiolibroId = libro.audiolibro.id;
-        const coleccionId = favoritos?.id;
-        console.log(favoritos?.pertenece);
-        if (favoritos?.pertenece === false) {
+        const coleccionId = coleccion.id;
+        console.log(coleccion.pertenece);
+        if (coleccion.pertenece === false) {
             try {
                 const respuesta = await axios.post(URL_ADD, 
                   JSON.stringify({audiolibroId, coleccionId}),
@@ -186,54 +184,9 @@ const Libro = () => {
         }
     }
 
-    const handleClickMasTarde = async (event) => {
-        const verMasTarde = colecciones.find(coleccion => coleccion.titulo === 'Escuchar mas tarde');
-        const audiolibroId = libro.audiolibro.id;
-        const coleccionId = verMasTarde?.id;
-        console.log(verMasTarde?.pertenece);
-        if (verMasTarde?.pertenece === false) {
-            try {
-                const respuesta = await axios.post(URL_ADD, 
-                  JSON.stringify({audiolibroId, coleccionId}),
-                  {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                  }
-                );
-                console.log(respuesta); /* Solo desarrollo */
-                obtenerDatosLibro();
-            } catch (err) {
-                if (!err.response) {
-                  setErrMsg ('No hay respuesta del servidor');
-                } else if (err.response.status === 400) {
-                  setErrMsg ('No propietario'); 
-                } else {
-                  setErrMsg ('Error');
-                }
-            }
-        }
-        else {
-            try {
-                const respuesta = await axios.post(URL_RM, 
-                  JSON.stringify({audiolibroId, coleccionId}),
-                  {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                  }
-                );
-                console.log(respuesta); /* Solo desarrollo */
-                obtenerDatosLibro();
-            } catch (err) {
-                if (!err.response) {
-                  setErrMsg ('No hay respuesta del servidor');
-                } else if (err.response.status === 400) {
-                  setErrMsg ('No propietario'); 
-                } else {
-                  setErrMsg ('Error');
-                }
-            }
-        }
-    }
+    const coleccionesFavoritos = colecciones.filter(coleccion => coleccion.titulo === "Favoritos");
+    const coleccionesEscucharMasTarde = colecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde");
+    const otrasColecciones = colecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde");
     
 
     return (
@@ -269,8 +222,8 @@ const Libro = () => {
                 { /* Botón de "Añadir a favoritos" */}
                 <div className="info-anyadir-favoritos" >
                     <button className="info-btnFavoritos"
-                        onClick={handleClickFavoritos}>
-                        <FontAwesomeIcon icon={faPlus} /> {colecciones[0]?.pertenece ? 
+                        onClick={handleClickColeccion(coleccionesFavoritos)}>
+                        <FontAwesomeIcon icon={faPlus} /> {coleccionesFavoritos.pertenece ? 
                         <span>Quitar de favoritos</span> : <span>Añadir a favoritos</span>}
                     </button>
                 </div>
@@ -278,8 +231,8 @@ const Libro = () => {
                 { /* Botón de "Añadir a ver más tarde" */}
                 <div className="info-anyadir-ver-mas-tarde">
                     <button className="info-btnVerMasTarde"
-                        onClick={handleClickMasTarde}>
-                        <FontAwesomeIcon icon={faPlus} /> {colecciones[1]?.pertenece ? 
+                        onClick={handleClickColeccion(coleccionesEscucharMasTarde)}>
+                        <FontAwesomeIcon icon={faPlus} /> {coleccionesEscucharMasTarde.pertenece ? 
                         <span>Quitar de ver mas tarde</span> : <span>Añadir a ver mas tarde</span>}
                     </button>
                 </div>
@@ -291,12 +244,17 @@ const Libro = () => {
                     </button>
                     {mostrarColecciones && (
                         <div className="info-desplegable-colecciones">
-                            {colecciones.map((coleccion, index) => (
-                                (index > 1) && (
-                                <div key={index}>
-                                    <a href="#" className='info-colecciones-item'>{coleccion}</a>
-                                </div>
-                                )
+                            {otrasColecciones.map((coleccion, index) => (
+                
+                                <button className="info-colecciones-item"
+                                    key={index}
+                                    onClick={handleClickColeccion(coleccion)}>
+                                    <FontAwesomeIcon icon={faPlus} /> 
+                                    {coleccion.pertenece ? 
+                                        <span>{coleccion}</span> : null
+                                    }
+                                </button>
+
                             ))}
                         </div>
                     )}
