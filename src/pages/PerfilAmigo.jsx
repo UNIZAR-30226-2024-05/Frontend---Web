@@ -2,15 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './PerfilAmigo.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-
-import fotoPerfil from '../images/foto1.jpg';
-import foto1 from '../images/1.png';
-import foto2 from '../images/2.jpg';
-import foto3 from '../images/3.jpg';
-import foto4 from '../images/4.jpg';
-import foto5 from '../images/5.jpg';
 import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
-import axios from '../api/axios';
+import axios from '../api/axios.jsx';
 
 import perro from '../images/fotos-perfil/perro.jpg';
 import gato from '../images/fotos-perfil/gato.jpg';
