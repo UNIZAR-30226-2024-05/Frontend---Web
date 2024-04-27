@@ -20,6 +20,14 @@ const ListaColecciones = ({colecciones}) => {
 
     const [nuevaColeccion, setNuevaColeccion] = useState('');
 
+    // Filtrar las colecciones de Favoritos y Escuchar mas tarde
+    const coleccionesFavoritos = listaColecciones.filter(coleccion => coleccion.titulo === "Favoritos");
+    const coleccionesEscucharMasTarde = listaColecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde");
+
+    // Filtrar las demás colecciones
+    const otrasColecciones = listaColecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde");
+
+
     const opciones_col_propia = [
         'Eliminar coleccion'
     ];
@@ -103,15 +111,29 @@ const ListaColecciones = ({colecciones}) => {
             </div>
         ) : null}
 
-
-
-
         <div className='lista'>
-            {listaColecciones.reverse().map((coleccion, i) => (
-                <div key={i}
-                className='coleccion'>
+            {coleccionesFavoritos.map((coleccion, i) => (
+                <div key={i} className='coleccion'>
                     <div className='contenido-colec'>
-                    <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
+                        <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
+                            <h1>{coleccion.titulo}</h1>
+                        </div>
+                    </div>
+                </div>
+            ))}
+            {coleccionesEscucharMasTarde.map((coleccion, i) => (
+                <div key={i} className='coleccion'>
+                    <div className='contenido-colec'>
+                        <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
+                            <h1>{coleccion.titulo}</h1>
+                        </div>
+                    </div>
+                </div>
+            ))}
+            {otrasColecciones.map((coleccion, i) => (
+                <div key={i} className='coleccion'>
+                    <div className='contenido-colec'>
+                        <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
                             <h1>{coleccion.titulo}</h1>
                         </div>
                     </div>
@@ -121,9 +143,10 @@ const ListaColecciones = ({colecciones}) => {
                         </div> : 
                         <div className='boton-container'>
                             <DropdownButtonColecciones className='boton-opciones' options={opciones_col_ajena} collectionId={coleccion.id} />
-                    </div>}
+                        </div>
+                    }
                 </div>
-              ))}
+            ))}
         </div>
         
     </div>
@@ -131,3 +154,50 @@ const ListaColecciones = ({colecciones}) => {
 }
 
 export default ListaColecciones;
+
+
+
+
+// Filtrar las colecciones de Favoritos y Escuchar mas tarde
+const coleccionesFavoritos = listaColecciones.filter(coleccion => coleccion.titulo === "Favoritos");
+const coleccionesEscucharMasTarde = listaColecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde");
+
+// Filtrar las demás colecciones
+const otrasColecciones = listaColecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde");
+
+// Mapear las colecciones en el orden deseado
+{coleccionesFavoritos.map((coleccion, i) => (
+    <div key={i} className='coleccion'>
+        <div className='contenido-colec'>
+            <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
+                <h1>{coleccion.titulo}</h1>
+            </div>
+        </div>
+    </div>
+))}
+{coleccionesEscucharMasTarde.map((coleccion, i) => (
+    <div key={i} className='coleccion'>
+        <div className='contenido-colec'>
+            <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
+                <h1>{coleccion.titulo}</h1>
+            </div>
+        </div>
+    </div>
+))}
+{otrasColecciones.map((coleccion, i) => (
+    <div key={i} className='coleccion'>
+        <div className='contenido-colec'>
+            <div className='nombre' onClick={() => handleColeccionClick(coleccion.id)}>
+                <h1>{coleccion.titulo}</h1>
+            </div>
+        </div>
+        {user_id === coleccion.propietario ? 
+            <div className='boton-container'>
+                <DropdownButtonColecciones className='boton-opciones' options={opciones_col_propia} collectionId={coleccion.id} />
+            </div> : 
+            <div className='boton-container'>
+                <DropdownButtonColecciones className='boton-opciones' options={opciones_col_ajena} collectionId={coleccion.id} />
+            </div>
+        }
+    </div>
+))}
