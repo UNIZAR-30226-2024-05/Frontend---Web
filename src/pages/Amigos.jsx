@@ -38,6 +38,13 @@ const Amigos = () => {
             setRecibidas(data.peticiones?.recibidas || []);
             setAceptadas(data.peticiones?.aceptadas || []);
             setRechazadas(data.peticiones?.rechazadas || []);
+
+            console.log("Data received from API:", data);
+            console.log("Enviadas:", data.peticiones?.enviadas);
+            console.log("Recibidas:", data.peticiones?.recibidas);
+            console.log("Aceptadas:", data.peticiones?.aceptadas);
+            console.log("Rechazadas:", data.peticiones?.rechazadas);
+
         } catch (error) {
             console.error("Error fetching peticiones:", error);
         }
