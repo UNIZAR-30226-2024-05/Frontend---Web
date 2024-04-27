@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Play, Pause, ChevronDoubleLeft, ChevronDoubleRight, CakeOutline } from "heroicons-react"
 import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
 import { useState, useRef, useContext } from 'react';
