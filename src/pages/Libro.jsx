@@ -192,21 +192,7 @@ const Libro = () => {
         setColeccionesFavoritos(colecciones.filter(coleccion => coleccion.titulo === 'Favoritos'));
         setColeccionesEscucharMasTarde(colecciones.filter(coleccion => coleccion.titulo === 'Escuchar mas tarde'));
         setOtrasColecciones(colecciones.filter(coleccion => coleccion.titulo !== 'Favoritos' && coleccion.titulo !== 'Escuchar mas tarde'));
-        console.log(colecciones);
-        console.log(coleccionesFavoritos);
-        console.log(coleccionesEscucharMasTarde);
-        console.log(otrasColecciones);
     }, [colecciones]);
-
-    useEffect(() => {
-        setColeccionesFavoritos(colecciones.filter(coleccion => coleccion.titulo === 'Favoritos'));
-        setColeccionesEscucharMasTarde(colecciones.filter(coleccion => coleccion.titulo === 'Escuchar mas tarde'));
-        setOtrasColecciones(colecciones.filter(coleccion => coleccion.titulo !== 'Favoritos' && coleccion.titulo !== 'Escuchar mas tarde'));
-        console.log(colecciones);
-        console.log(coleccionesFavoritos);
-        console.log(coleccionesEscucharMasTarde);
-        console.log(otrasColecciones);
-    }, [otrasColecciones]);
 
     return (
         <div className='info-libro'>
@@ -263,15 +249,15 @@ const Libro = () => {
                     </button>
                     {mostrarColecciones && (
                         <div className="info-desplegable-colecciones">
-                            {otrasColecciones.map((coleccion, index) => (
+                            {otrasColecciones?.map((coleccion, index) => (
 
                                 <button className="info-colecciones-item"
                                     key={index}
                                     onClick={() => handleClickColeccion(coleccion)}>
-                                    {coleccion.pertenece ? 
+                                    {coleccion?.pertenece ? 
                                         <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faPlus} />
                                     }
-                                    <span>{coleccion}</span>
+                                    <span>{coleccion.titulo}</span>
                                 </button>
 
                             ))}
