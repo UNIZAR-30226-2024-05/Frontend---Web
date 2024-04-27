@@ -44,6 +44,7 @@ const Reproductor = () => {
     }
   }
   
+  /*
   const updateProgress = () => {
     //if (soundInstance && soundInstance.playing()) {
       setCurrentTime(soundInstance.seek());
@@ -58,7 +59,7 @@ const Reproductor = () => {
     return () => {
       cancelAnimationFrame(updateProgress);
     };
-  }, [soundInstance]);
+  }, [soundInstance]); */
 
 
   //Función para cambiar el icono de play
@@ -98,7 +99,7 @@ const Reproductor = () => {
       // Restablece la posición de reproducción almacenada a null
       setCurrentTime(null);
       setPlay(true);
-      requestAnimationFrame(updateProgress);
+      //requestAnimationFrame(updateProgress);
     }
   }
   
