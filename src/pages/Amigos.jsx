@@ -35,17 +35,17 @@ const Amigos = () => {
             console.log(response.data);
     
             if (response.data.peticiones) {
-                if (response.data.enviadas) {
-                    setEnviadas(response.data.enviadas);
+                if (response.data.peticiones.enviadas) {
+                    setEnviadas(response.data.peticiones.enviadas);
                 }
-                if (response.data.recibidas) {
-                    setRecibidas(response.data.recibidas);
+                if (response.data.peticiones.recibidas) {
+                    setRecibidas(response.data.peticiones.recibidas);
                 }
-                if (response.data.aceptadas) {
-                    setAceptadas(response.data.aceptadas);
+                if (response.data.peticiones.aceptadas) {
+                    setAceptadas(response.data.peticiones.aceptadas);
                 }
-                if (response.data.rechazadas) {
-                    setRechazadas(response.data.rechazadas);
+                if (response.data.peticiones.rechazadas) {
+                    setRechazadas(response.data.peticiones.rechazadas);
                 }
             }
         })
