@@ -66,10 +66,13 @@ const Reproductor = () => {
             autoplay: true,
             onend: () => {
               setPlay(false);
+            },
+            onload: () => {
+              setDuracion(newSoundInstance.duration())
             }
           });
           setSoundInstance(newSoundInstance); // Establece la nueva instancia de sonido
-          setDuracion(newSoundInstance.duration())
+          //setDuracion(newSoundInstance.duration())
         } catch (error) {
           // Maneja cualquier excepción relacionada con la creación del contexto de audio
           console.error('Error al crear la instancia de sonido:', error);
