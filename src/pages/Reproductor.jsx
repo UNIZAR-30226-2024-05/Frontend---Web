@@ -151,7 +151,7 @@ function skipCancion(capitulo, indice) {
     }
     else{
       const calcular = (currentTime / duracion) * 100;
-      console.log(calcular)
+      //console.log(calcular)
       return calcular
     }
   }
