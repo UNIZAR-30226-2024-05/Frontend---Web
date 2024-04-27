@@ -35,7 +35,7 @@ const Amigos = () => {
             console.log(response.data);
     
             if (response.data.peticiones) {
-                if (response.data.peticiones.enviadas) {
+                if (response.data.peticiones?.enviadas) {
                     setEnviadas(response.data.peticiones.enviadas);
                 }
                 if (response.data.peticiones.recibidas) {
