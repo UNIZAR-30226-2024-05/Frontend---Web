@@ -13,6 +13,7 @@ const Amigos = () => {
     const [enviadas, setEnviadas] = useState([]);
     const [recibidas, setRecibidas] = useState([]);
     const [aceptadas, setAceptadas] = useState([]);
+    const [rechazadas, setRechazadas] = useState([]);
 
     useEffect( () => {
       async function fetchUsuarios(){
@@ -71,7 +72,7 @@ const Amigos = () => {
             <div className='amigos-peticiones'>
               <div className='amigos-lista-container'>
                 <h1 className='amigos-titulo'>Historial de peticiones</h1>
-                <ListaPeticiones className='list' enviadas={enviadas} recibidas={recibidas} aceptadas={aceptadas} rechazadas={rechazadas}></ListaPeticiones>
+                <ListaPeticiones className='list' peticiones={peticiones} enviadas={enviadas} recibidas={recibidas} aceptadas={aceptadas} rechazadas={rechazadas}></ListaPeticiones>
               </div> 
             </div>
         </div>
