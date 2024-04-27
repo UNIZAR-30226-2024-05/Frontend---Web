@@ -43,7 +43,23 @@ const Reproductor = () => {
       return capitulos[indice];
     }
   }
-  //console.log(obtenerCapiulo(capitulos, 0));
+  
+  const updateProgress = () => {
+    if (soundInstance && soundInstance.playing()) {
+      setCurrentTime(soundInstance.seek());
+      requestAnimationFrame(updateProgress);
+    }
+  };
+
+  useEffect(() => {
+    if (soundInstance && soundInstance.playing()) {
+      requestAnimationFrame(updateProgress);
+    }
+    return () => {
+      cancelAnimationFrame(updateProgress);
+    };
+  }, [soundInstance]);
+
 
   //Función para cambiar el icono de play
   function toggleAudio(capitulo) {
@@ -82,6 +98,7 @@ const Reproductor = () => {
       // Restablece la posición de reproducción almacenada a null
       setCurrentTime(null);
       setPlay(true);
+      requestAnimationFrame(updateProgress);
     }
   }
   
@@ -143,23 +160,6 @@ function skipCancion(capitulo, indice) {
     const volume = Number(value) / MAX
     soundInstance.volume(volume)
   }
-
-
-  const updateProgress = () => {
-    if (soundInstance && soundInstance.playing()) {
-      setCurrentTime(soundInstance.seek());
-      requestAnimationFrame(updateProgress);
-    }
-  };
-
-  useEffect(() => {
-    if (soundInstance && soundInstance.playing()) {
-      requestAnimationFrame(updateProgress);
-    }
-    return () => {
-      cancelAnimationFrame(updateProgress);
-    };
-  }, [soundInstance]);
 
   //Funcion para calcular el progreso de la barra
   function progreso(currentTime, duracion){
