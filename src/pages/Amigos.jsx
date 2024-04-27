@@ -33,10 +33,10 @@ const Amigos = () => {
           .then(response=>{
               setPeticiones(response.data.peticiones);
               console.log(response.data);
-              setEnviadas(response.data.enviadas);
-              setRecibidas(response.data.recibidas);
-              setAceptadas(response.data.aceptadas);
-              setRechazadas(response.data.rechazadas);
+              setEnviadas(response.data.peticiones.enviadas);
+              setRecibidas(response.data.peticiones.recibidas);
+              setAceptadas(response.data.peticiones.aceptadas);
+              setRechazadas(response.data.peticiones.rechazadas);
           }).catch(error=>{
               console.log(error);
           })
