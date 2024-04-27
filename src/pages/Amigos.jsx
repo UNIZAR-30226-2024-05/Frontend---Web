@@ -34,10 +34,14 @@ const Amigos = () => {
             const data = response.data;
     
             setPeticiones(data.peticiones || []);
-            setEnviadas(data.peticiones?.[enviadas] || []);
+            /*setEnviadas(data.peticiones?.[enviadas] || []);
             setRecibidas(data.peticiones?.recibidas || []);
             setAceptadas(data.peticiones?.aceptadas || []);
-            setRechazadas(data.peticiones?.rechazadas || []);
+            setRechazadas(data.peticiones?.rechazadas || []);*/
+            setEnviadas(data.enviadas || []);
+            setRecibidas(data.recibidas || []);
+            setAceptadas(data.aceptadas || []);
+            setRechazadas(data.rechazadas || []);
 
             console.log("Data received from API:", data);
             console.log("Enviadas:", data.peticiones?.enviadas);
