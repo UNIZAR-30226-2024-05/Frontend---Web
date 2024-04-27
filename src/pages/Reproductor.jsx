@@ -45,10 +45,10 @@ const Reproductor = () => {
   }
   
   const updateProgress = () => {
-    if (soundInstance && soundInstance.playing()) {
+    //if (soundInstance && soundInstance.playing()) {
       setCurrentTime(soundInstance.seek());
       requestAnimationFrame(updateProgress);
-    }
+    //}
   };
 
   useEffect(() => {
@@ -163,8 +163,8 @@ function skipCancion(capitulo, indice) {
 
   //Funcion para calcular el progreso de la barra
   function progreso(currentTime, duracion){
-    console.log(currentTime)
-    console.log(duracion)
+    //console.log(currentTime)
+    //console.log(duracion)
     if(duracion == 0){
       return 0;
     }
