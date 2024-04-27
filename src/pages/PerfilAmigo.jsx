@@ -112,26 +112,6 @@ const PerfilAmigo = () => {
         }
     }
 
-    /*const usuario = {
-        nombre: 'Juan',
-        foto: fotoPerfil,
-    };
-    
-    const [colecciones, setColecciones] = useState([
-        {portada: foto1, nombre: 'Favoritos'},
-        {portada: foto2, nombre: 'Escuchalo más tarde'},
-        {portada: foto3, nombre: 'Harry Potter'},
-        {portada: foto4, nombre: 'Versos Perversos'},
-        {portada: foto5, nombre: 'Otra coleccion más'}
-    ]);
-
-    const ultimaActividad = {
-        tipo: 'Libro escuchado',
-        portada: foto1,
-        titulo: 'El principito',
-        hora: 'Hace 2 horas'
-    };*/
-
     const [solicitudEnviada, setSolicitudEnviada] = useState(false);
 
     const enviarSolicitud = () => {
@@ -174,7 +154,12 @@ const PerfilAmigo = () => {
                                     </div>
                                 </div>
                             </div>
-                        }
+                        } : (
+                            <div className="amigo-ultima-actividad">
+                                <h3>Última actividad</h3>
+                                <p>No hay actividad reciente</p>
+                            </div>
+                        )
                     </div>
                 )}
             </div>

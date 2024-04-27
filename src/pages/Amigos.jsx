@@ -9,6 +9,8 @@ const Amigos = () => {
     const [usuarios, setUsuarios] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const [peticiones, setPeticiones] = useState([]);
+
     useEffect( () => {
       async function fetchUsuarios(){
           await axios.get(URL_CONSULTA, { withCredentials: true })
@@ -21,7 +23,18 @@ const Amigos = () => {
               setLoading(false);
           })
       }
+
+      async function fetchPeticiones(){
+          await axios.get('/amistad/peticiones', { withCredentials: true })
+          .then(response=>{
+              setPeticiones(response.data.peticiones);
+              console.log(response.data);
+          }).catch(error=>{
+              console.log(error);
+          })
+      }
       fetchUsuarios();
+      fetchPeticiones();
     }, []);
 
 
@@ -51,7 +64,7 @@ const Amigos = () => {
             <div className='amigos-peticiones'>
               <div className='amigos-lista-container'>
                 <h1 className='amigos-titulo'>Peticiones</h1>
-                <ListaPeticiones className='list' tipos={tipos} amigos={usuarios}></ListaPeticiones>
+                <ListaPeticiones className='list' tipos={tipos} peticiones={peticiones}></ListaPeticiones>
               </div> 
             </div>
         </div>

@@ -7,90 +7,67 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Importa el icon
 import axios from 'axios';
 
 
-const ListaPeticiones = ({ tipos }) => {
-    const peticionesFicticias = [
-        { username: 'Juan', tipo: 'recibidas' },
-        { username: 'María', tipo: 'enviadas' },
-        { username: 'Pedro', tipo: 'aceptadas' },
-        { username: 'Ana', tipo: 'rechazadas' },
-        { username: 'Carlos', tipo: 'recibidas' }
-    ];
+const ListaPeticiones = ({ peticiones, tipos }) => {
 
-    const [peticiones, setPeticiones] = useState([]);
-    const [listaPeticiones, setListaPeticiones] = useState([]);
-    const [listaShow, setListaShow] = useState([]);
+    const navigate = useNavigate();
+    const [listaPeticiones, setListaPeticiones] = useState(peticiones);
     const [busqueda, setBusqueda] = useState('');
-    const [tipoSeleccionado, setTipoSeleccionado] = useState('');
 
-    useEffect(() => {
-        /*async function fetchPeticiones() {
-            await axios.get(/amistad/peticiones, { withCredentials: true })
-                 .then(response => {
-                     setPeticiones(response.data.peticiones);
-                     setListaPeticiones(response.data.peticiones);
-                     setListaShow(response.data.peticiones);
-                     console.log(response.data);
-                 }).catch(error => {
-                     console.log(error);
-                 })
-        }
-        fetchPeticiones();*/
-        setPeticiones(peticionesFicticias);
-        setListaPeticiones(peticionesFicticias);
-        setListaShow(peticionesFicticias);
-    }, []);
+    
 
     const handleChangeBusqueda = event => {
         setBusqueda(event.target.value);
     };
 
-    const handleBusqueda = () => {
-        var resultado = listaPeticiones.filter((elemento) => {
-            return elemento.username.toString().toLowerCase().includes(busqueda.toLowerCase());
+    const filtrar = () => {
+        var resultado = listaPeticiones.filter((peticion) => {
+            return peticion.username.toString().toLowerCase().includes(busqueda.toLowerCase());
         });
-        setListaShow(resultado);
-    };
-    
-    const navigate = useNavigate();
-
-    const handlePeticionClick = (peticion) => {
-        navigate('/perfilamigo', { state: { username: peticion.username } });
+        setListaPeticiones(resultado);
     };
 
-    const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
-            handleBusqueda();
+    const obtenerFotoPerfil = (numero) => {
+        console.log(numero);
+        switch(numero) {
+            case '0':
+                return perro;
+                break;
+            case '1':
+                return gato;
+                break;
+            case '2':
+                return rana;
+                break;
+            case '3':
+                return leon;
+                break;
+            case '4':
+                return pollo;
+                break;
+            case '5':
+                return vaca;
+                break;
+            case '6':
+                return buho;
+                break;
+            case '7':
+                return perezoso;
+                break;
+            case '8':
+                return doraemon;
+                break;
+            case '9':
+                return pikachu;
+                break;
         }
     }
+
+    const handleUsuarioClick = (id_user) => {
+        navigate('/perfilamigo', { state: { id_user } });
+    };
 
     const tiposOrdenados = ['recibidas', 'enviadas', 'aceptadas', 'rechazadas'];
 
-    const aceptarSolicitud = async () => {
-        try {
-            const response = await axios.post('/amistad/accept', { other_id });
-            console.log(response.data.message); // Mensaje de éxito
-        } catch (error) {
-            if (error.response) {
-                console.error(error.response.data.error); // Manejar errores específicos del servidor
-            } else {
-                console.error('Error del servidor:', error.message); // Manejar otros errores
-            }
-        }
-
-    }
-
-    const denegarSolicitud = async () => {
-        try {
-            const response = await axios.post('/amistad/reject', { other_id });
-            console.log(response.data.message); // Mensaje de éxito
-        } catch (error) {
-            if (error.response) {
-                console.error(error.response.data.error); // Manejar errores específicos del servidor
-            } else {
-                console.error('Error del servidor:', error.message); // Manejar otros errores
-            }
-        }
-    }
 
     return (
         <div className='contenedor-lista'>
@@ -100,7 +77,6 @@ const ListaPeticiones = ({ tipos }) => {
                     placeholder='Búsqueda por nombre de usuario'
                     value={busqueda}
                     onChange={handleChangeBusqueda}
-                    onKeyDown={handleKeyPress}
                 />
                 <button className='buscador-listaPeticiones-container-button-search' onClick={handleBusqueda}>
                     <FontAwesomeIcon icon={faSearch} />
@@ -115,16 +91,8 @@ const ListaPeticiones = ({ tipos }) => {
                             <div key={i} className='peticion'>
                                 <div className='contenido-peticion'>
                                     <div className='peticion-username'>
-                                        <a href='/perfilamigo' className='peticion-usernameLink'>
-                                            <h1>{peticion.username}</h1>
-                                        </a>
+                                        <h1 onClick={handleUsuarioClick}>{peticion.username}</h1>
                                     </div>
-                                    {tipo === 'recibidas' && (
-                                        <div className='accion-peticion'>
-                                            <FontAwesomeIcon icon={faCheck} className='icono-aceptar' onClick={aceptarSolicitud}/>
-                                            <FontAwesomeIcon icon={faTimes} className='icono-rechazar' onClick={denegarSolicitud}/>
-                                        </div>
-                                    )}
                                 </div>
 
                             </div>
