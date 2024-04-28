@@ -57,7 +57,8 @@
 }
 
 .botonEliminar .botonEnviar .botonCancelar{
-    height: 10%;
+    height: 15%;
+    margin-bottom: 10%;
 }
 
 .lista-amigos .lista .amigo .amigo-info .nombre-amigo {
