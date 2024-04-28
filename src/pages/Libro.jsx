@@ -4,8 +4,8 @@ import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlay } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faPlay, faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import axios from '../api/axios';
 
 const Libro = () => {
@@ -229,10 +229,10 @@ const Libro = () => {
                     <button className="info-btnFavoritos"
                         onClick={() => handleClickColeccion(coleccionesFavoritos[0])}>
                         {coleccionesFavoritos[0]?.pertenece ? <>
-                            <FontAwesomeIcon icon="fa-solid fa-heart" />
+                            <FontAwesomeIcon icon={solidHeart} />
                             <span>Favoritos</span> 
                         </> : <>
-                            <FontAwesomeIcon icon="fa-regular fa-heart" />
+                            <FontAwesomeIcon icon={regularHeart} />
                             <span>Favoritos</span> 
                         </>
                         }
