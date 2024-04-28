@@ -28,6 +28,7 @@
     align-self: flex-start;
     justify-self: center;
     width: 100%;
+    text-align: center;
 }
 
 .colecciones .colecciones-container .lista {

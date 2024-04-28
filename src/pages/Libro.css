@@ -134,6 +134,7 @@
   padding: 0 20px;
   border: none;
   font-size: 1.2rem;
+  overflow: hidden;
 }
 
 .info-btnFavoritos svg {
@@ -169,6 +170,7 @@
   padding: 0 20px;
   border: none;
   font-size: 1.2rem;
+  overflow: hidden;
 }
 
 .info-btnVerMasTarde svg {
