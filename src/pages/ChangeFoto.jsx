@@ -66,7 +66,7 @@ export const Changefoto = () => {
         break;
     }
     console.log(newImg)
-    setAuth(username, user_id, newImg, role)
+    //setAuth(username, user_id, newImg, role)
     var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg}), {withCredentials: true});
     navigate('/perfil');
   };
