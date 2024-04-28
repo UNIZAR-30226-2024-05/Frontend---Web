@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import AuthContext from '../context/AuthProvider';
+import React from 'react'
 import "./ChangeFoto.css"
 import perro from "../images/fotos-perfil/perro.jpg"
 import gato from "../images/fotos-perfil/gato.jpg"
@@ -26,9 +25,6 @@ export const Changefoto = () => {
   const { username } = auth;
   const { user_id } = auth;
   const { role } = auth;
-  console.log(username)
-  console.log(user_id)
-  console.log(role)
 
 
   const handleClick = async (param) => {
@@ -65,9 +61,9 @@ export const Changefoto = () => {
         newImg = '9'
         break;
     }
-    console.log(newImg)
-    //setAuth(username, user_id, newImg, role)
-    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg}), {withCredentials: true});
+    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg}), {headers: { 'Content-Type': 'application/json' },
+    withCredentials: true});
+    setAuth(username, user_id, newImg, role)
     navigate('/perfil');
   };
 
