@@ -35,7 +35,7 @@ const Coleccion = () => {
   return (
     <div className='coleccion'>
       <div className='coleccion-container'>
-        <h1 className='title'>{coleccion?.coleccion.titulo}</h1>
+        <h1 className='title'>{coleccion?.coleccion?.titulo}</h1>
       {loading ? (
           <div className='loading-container'>
             <p>Loading...</p>
