@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ListaAmigosSidebar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import foto1 from '../../images/1.png';
 import Cookie from 'js-cookie';
 
 const ListaAmigosSidebar = ({amigos}) => {
@@ -144,7 +143,7 @@ const ListaAmigosSidebar = ({amigos}) => {
                                 
                                 <img 
                                 className='ultima-lectura'
-                                src={amigo.img}
+                                src={foto1}
                                 onClick={() => handleIrUltimaLectura()}
                                 onMouseEnter={(event) => handleMouseEnterUltimaLectura(event, 'Ultima Lectura')} /* CAMBIAR CUANDO TENGA LA CONSULTA */
                                 onMouseLeave={handleMouseLeaveUltimaLectura} />
