@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./ChangeFoto.css"
 import perro from "../images/fotos-perfil/perro.jpg"
 import gato from "../images/fotos-perfil/gato.jpg"
