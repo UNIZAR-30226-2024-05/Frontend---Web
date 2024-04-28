@@ -20,12 +20,6 @@ export const Changefoto = () => {
 
   const navigate = useNavigate();
   const URL_PERFIL = '/users/change_img'
-  const { auth , setAuth } = useContext(AuthContext);
-  //const { img } = auth;
-  const { username } = auth;
-  const { user_id } = auth;
-  const { role } = auth;
-
 
   const handleClick = async (param) => {
     var newImg;
@@ -61,9 +55,7 @@ export const Changefoto = () => {
         newImg = '9'
         break;
     }
-    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg}), {headers: { 'Content-Type': 'application/json' },
-    withCredentials: true});
-    setAuth(username, user_id, newImg, role)
+    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg}), {withCredentials: true});
     navigate('/perfil');
   };
 
