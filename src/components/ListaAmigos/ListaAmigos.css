@@ -52,8 +52,12 @@
 
 .foto-amigo{
     margin-left: 5%;
-    width: 7%;
-    height: 7%;
+    width: 10%;
+    height: 10%;
+}
+
+.botonEliminar .botonEnviar .botonCancelar{
+    height: 10%;
 }
 
 .lista-amigos .lista .amigo .amigo-info .nombre-amigo {

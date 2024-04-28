@@ -226,13 +226,13 @@ const ListaAmigos = ({usuarios}) => {
                             <img className='foto-amigo' onClick={() => handleUsuarioClick(usuario.id)} src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil'/>
                             <h2 className='nombre-amigo' onClick={() => handleUsuarioClick(usuario.id)}>{usuario.username}</h2>
                             {usuario.estado === 0 ? (
-                                <button onClick={() => eliminarAmigo(index)}>Eliminar amigo</button>
+                                <button className='botonEliminar' onClick={() => eliminarAmigo(index)}>Eliminar amigo</button>
                             ) : null}
                             {usuario.estado === 1 ? (
-                                <button onClick={() => enviarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
+                                <button className='botonEnviar' onClick={() => enviarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
                             ) : null}
                             {usuario.estado === 2 ? (
-                                <button onClick={() => cancelarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
+                                <button className='botonCancelar' onClick={() => cancelarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
                             ) : null}
                             {usuario.estado === 3 ? (
                                 <div>
