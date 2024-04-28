@@ -25,9 +25,6 @@ export const Changefoto = () => {
   const { username } = auth;
   const { user_id } = auth;
   const { role } = auth;
-  console.log(username)
-  console.log(user_id)
-  console.log(role)
 
 
   const handleClick = async (param) => {
