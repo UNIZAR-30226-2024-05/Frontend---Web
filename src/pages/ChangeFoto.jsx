@@ -21,7 +21,7 @@ export const Changefoto = () => {
 
   const navigate = useNavigate();
   const URL_PERFIL = '/users/change_img'
-  const [auth, setAuth ] = useContext(AuthContext)
+  const {auth, setAuth } = useContext(AuthContext)
   const { username } = auth;
   const {user_id}  = auth;
   const {img} = auth;
