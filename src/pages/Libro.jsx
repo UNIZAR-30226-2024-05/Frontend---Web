@@ -4,7 +4,7 @@ import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus, faPlay, faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faPlay, faCaretUp, faCaretDown, faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import axios from '../api/axios';
 
@@ -256,7 +256,11 @@ const Libro = () => {
                 { /* Botón de añadir a colecciones */}
                 <div className="info-anyadir-a-colecciones">
                     <button className='info-btnAnyadirColecciones' onClick={() => setMostrarColecciones(!mostrarColecciones)}>
-                        <FontAwesomeIcon icon={faPlus} /> Añadir a colecciones
+                        {mostrarColecciones ? 
+                            <FontAwesomeIcon icon={faCaretUp} /> : 
+                            <FontAwesomeIcon icon={faCaretDown} />
+                        }
+                        <span>Añadir a colecciones</span>
                     </button>
                     {mostrarColecciones && (
                         <div className="info-desplegable-colecciones">

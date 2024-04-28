@@ -23,6 +23,14 @@
     height: auto;
 }
 
+.coleccion .coleccion-container .title{
+    margin-top: 20px;
+    align-self: flex-start;
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+}
+
 .coleccion .coleccion-container .lista {
     width: 100%;
 }

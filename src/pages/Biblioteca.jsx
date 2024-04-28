@@ -42,6 +42,7 @@ const Biblioteca = () => {
   return (
     <div className='biblioteca'>
       <div className='biblioteca-container'>
+        <h1 className='title'>Biblioteca</h1>
         {loading ? (
           <div className='loading-container'>
             <p>Loading...</p>
