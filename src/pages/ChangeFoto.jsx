@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AuthContext from '../context/AuthProvider';
 import "./ChangeFoto.css"
 import perro from "../images/fotos-perfil/perro.jpg"
 import gato from "../images/fotos-perfil/gato.jpg"
@@ -20,6 +21,15 @@ export const Changefoto = () => {
 
   const navigate = useNavigate();
   const URL_PERFIL = '/users/change_img'
+  const {auth, setAuth } = useContext(AuthContext)
+  const { username } = auth;
+  const { user_id } = auth
+  const { img } = auth
+  const { role } = auth
+  console.log(username)
+  console.log(user_id)
+  console.log(img)
+  console.log(role)
 
   const handleClick = async (param) => {
     var newImg;
