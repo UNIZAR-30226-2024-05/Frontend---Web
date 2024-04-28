@@ -32,20 +32,7 @@ function Navbar() {
     const { auth , setAuth } = useContext(AuthContext);
     const { username } = auth;
     const { img } = auth;
-/*
-    const listaAmigosFicticia = [
-        { username: 'Juan', id: 1, img: foto1 },
-        { username: 'María', id: 2, img: foto1 },
-        { username: 'Pedro', id: 3, img: foto1 },
-        { username: 'Ana', id: 4, img: foto1 },
-        { username: 'Carlos', id: 5, img: foto1 },
-        { username: 'Juan', id: 6, img: foto1 },
-        { username: 'María', id: 7, img: foto1 },
-        { username: 'Pedro', id: 8, img: foto1 },
-        { username: 'Ana', id: 9, img: foto1 },
-        { username: 'Carlos', id: 10, img: foto1 }
-    ];
-*/
+
     const [ amigos, setAmigos ] = useState([]);
     const [ loading, setLoading ] = useState(true);
 

@@ -25,7 +25,8 @@
 
 .colecciones .colecciones-container .title{
     margin-top: 20px;
-    align-self: center;
+    align-self: flex-start;
+    justify-self: center;
     width: 100%;
 }
 

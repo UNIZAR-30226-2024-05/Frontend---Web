@@ -229,11 +229,11 @@ const Libro = () => {
                     <button className="info-btnFavoritos"
                         onClick={() => handleClickColeccion(coleccionesFavoritos[0])}>
                         {coleccionesFavoritos[0]?.pertenece ? <>
-                            <FontAwesomeIcon icon={faMinus} />
-                            <span>Quitar de favoritos</span> 
+                            <FontAwesomeIcon icon="fa-solid fa-heart" />
+                            <span>Favoritos</span> 
                         </> : <>
-                            <FontAwesomeIcon icon={faPlus} />
-                            <span>Añadir a favoritos</span> 
+                            <FontAwesomeIcon icon="fa-regular fa-heart" />
+                            <span>Favoritos</span> 
                         </>
                         }
                     </button>
@@ -245,10 +245,10 @@ const Libro = () => {
                         onClick={() => handleClickColeccion(coleccionesEscucharMasTarde[0])}>
                         {coleccionesEscucharMasTarde[0]?.pertenece ? <>
                             <FontAwesomeIcon icon={faMinus} />
-                            <span>Quitar de ver mas tarde</span> 
+                            <span>Ver mas tarde</span> 
                         </> : <>
                             <FontAwesomeIcon icon={faPlus} />
-                            <span>Añadir a ver mas tarde</span> 
+                            <span>Ver mas tarde</span> 
                         </>}
                     </button>
                 </div>
