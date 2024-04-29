@@ -93,11 +93,11 @@ const Libro = () => {
         setPrivacidad(event.target.value);
     }
 
-    const handleEnviarResenia = () => {
+    const handleEnviarResenia = async () => {
         const navigate = useNavigate();
         console.log('Enviando reseña');
         try {
-            const respuesta = axios.post('/review/post_review', 
+            const respuesta = await axios.post('/review/post_review', 
             JSON.stringify({id_libro, comentario, puntuacionGuardada, privacidad}),
             {
                 headers: { 'Content-Type': 'application/json' },
