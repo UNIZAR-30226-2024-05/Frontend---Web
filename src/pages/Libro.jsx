@@ -103,7 +103,7 @@ const Libro = () => {
 
     const handleEnviarResenia = async (navigate) => {
         try {
-            console.log({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad });
+            console.log({ id_libro, comentario, puntuacion: puntuacionGuardada, visibilidad: privacidad });
             const respuesta = await axios.post(
                 '/review/post_review',
                 JSON.stringify({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad }),
