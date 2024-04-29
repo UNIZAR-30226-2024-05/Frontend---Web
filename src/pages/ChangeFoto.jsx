@@ -1,17 +1,18 @@
-import React from 'react'
-import "./ChangeFoto.css"
-import perro from "../images/fotos-perfil/perro.jpg"
-import gato from "../images/fotos-perfil/gato.jpg"
-import rana from "../images/fotos-perfil/rana.jpg"
-import leon from "../images/fotos-perfil/leon.jpg"
-import pollo from "../images/fotos-perfil/pollo.jpg"
-import vaca from "../images/fotos-perfil/vaca.jpg"
-import buho from "../images/fotos-perfil/buho.jpg"
-import perezoso from "../images/fotos-perfil/perezoso.jpg"
-import doraemon from "../images/fotos-perfil/doraemon.jpg"
-import pikachu from "../images/fotos-perfil/pikachu.jpg"
+import React, {useContext} from 'react';
+import "./ChangeFoto.css";
+import perro from "../images/fotos-perfil/perro.jpg";
+import gato from "../images/fotos-perfil/gato.jpg";
+import rana from "../images/fotos-perfil/rana.jpg";
+import leon from "../images/fotos-perfil/leon.jpg";
+import pollo from "../images/fotos-perfil/pollo.jpg";
+import vaca from "../images/fotos-perfil/vaca.jpg";
+import buho from "../images/fotos-perfil/buho.jpg";
+import perezoso from "../images/fotos-perfil/perezoso.jpg";
+import doraemon from "../images/fotos-perfil/doraemon.jpg";
+import pikachu from "../images/fotos-perfil/pikachu.jpg";
 import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
+import AuthContext from '../../context/AuthProvider';
 
 
 
@@ -19,6 +20,10 @@ import axios from '../api/axios';
 export const Changefoto = () => {
 
   const navigate = useNavigate();
+
+  const { auth , setAuth } = useContext(AuthContext);
+  const { img } = auth;
+
   const URL_PERFIL = '/users/change_img'
 
   const handleClick = async (param) => {
@@ -56,7 +61,34 @@ export const Changefoto = () => {
         break;
     }
     //setAuth({username, user_id, newImg, role})
-    var respuesta = await axios.post(URL_PERFIL, JSON.stringify({newImg}), {withCredentials: true});
+    if (img === newImg){
+      console.log(auth?.img);
+      console.log('Es la misma imagen');
+    }
+    else{
+      console.log(auth?.img);
+      try {
+        const respuesta = await axios.post(URL_PERFIL, 
+          JSON.stringify({newImg}),
+          {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+          }
+        );
+        console.log(respuesta); /* Solo desarrollo */
+
+        /*setAuth({ username, user_id, img, role });*/
+
+      } catch (err) {
+        if (!err.response) {
+          console.log('No hay respuesta del servidor');
+        } else if (err.response.status === 500) {
+          console.log('Server Error');
+        } else {
+          console.log('Fallo en el cambio de foto');
+        }
+      }
+    }
     navigate('/perfil');
   };
 
