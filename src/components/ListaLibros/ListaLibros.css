@@ -51,7 +51,6 @@
 .autor{
   display: flex;
   flex-direction: row;
-  align-content: left;
   margin-top: 2vh;
 }
 
