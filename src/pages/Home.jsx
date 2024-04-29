@@ -14,14 +14,12 @@ import foto1 from '../images/1.png';
 const Home = () => {
 
   const navigate = useNavigate();
-
-  const location = useLocation();
   const id_libro = 1;
   const [capitulos, setCapitulos] = useState([]);
   const [portada, setPortada] = useState();
 
   const obtenerDatosLibro = () => {
-    const URL_AUDIOLIBRO = `/audiolibros/1`;
+    const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
     axios.get(URL_AUDIOLIBRO, {withCredentials: true})
     .then(response => {
         // Actualiza el estado de los libros con los datos de los audiolibros recibidos
