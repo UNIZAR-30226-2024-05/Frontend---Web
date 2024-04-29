@@ -51,6 +51,19 @@ const ListaColecciones = ({colecciones}) => {
     } 
 
     const handleClickSubmitColeccion = async () => {
+
+        const URL_COLECCION = '/colecciones';
+        async function fetchColecciones(){
+            await axios.get(URL_COLECCION, {withCredentials: true})
+            .then(response=>{
+                setColecciones(response.data.collections);
+                console.log(response.data);
+            }).catch(error=>{
+                console.log(error);
+                setLoading(false);
+            })
+        }
+
         const URL_CONSULTA = '/colecciones/create';
         console.log(URL_CONSULTA);
         console.log(nuevaColeccion);
@@ -64,6 +77,8 @@ const ListaColecciones = ({colecciones}) => {
             );
             console.log(respuesta); /* Solo desarrollo */
             setNuevaColeccion('');
+            setCrearColeccion(false);
+            fetchColecciones();
         } catch (err) {
             if (!err.response) {
                 console.log('No hay respuesta del servidor');

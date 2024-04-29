@@ -52,7 +52,7 @@ const Colecciones = () => {
             <p>Loading...</p>
           </div>
           ) : (
-            <ListaColecciones className='lista' colecciones={colecciones} />
+            <ListaColecciones className='lista' colecciones={colecciones} setColecciones={setColecciones} />
           )}
       </div>
       <div className='colecciones-footer'>
