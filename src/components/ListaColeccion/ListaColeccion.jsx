@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ListaColeccion.css';
-import DropdownButton from '../DropdownButton/DropdownButton';
+import DropdownButtonColeccion from './DropdownButtonColeccion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
