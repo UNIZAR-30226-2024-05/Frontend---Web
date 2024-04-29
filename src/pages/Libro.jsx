@@ -26,6 +26,7 @@ const Libro = () => {
     const [miResenia, setMiResenia] = useState([]);
     const [miPuntuacion, setMiPuntuacion] = useState(0);
     const [privacidad, setPrivacidad] = useState([]);
+    const [comentario, setComentario] = useState('');
 
     const [capitulos, setCapitulos] = useState([]);
 
