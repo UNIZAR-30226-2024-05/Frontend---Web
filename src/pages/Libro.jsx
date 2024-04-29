@@ -94,11 +94,10 @@ const Libro = () => {
     }
 
     const handleEnviarResenia = async (navigate) => {
-        console.log('Enviando reseña');
         try {
             const respuesta = await axios.post(
                 '/review/post_review',
-                JSON.stringify({ id_libro, comentario, puntuacionGuardada, privacidad }),
+                JSON.stringify({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
