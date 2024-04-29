@@ -90,7 +90,7 @@ export const Perfil = () => {
           <img className='Img' src={obtenerPerfil()}/>
         </div>
         <div className='Nombre'>
-          {/*<text src={response.data.username}/>*/}
+          <h2 src='response.data.username'/>
         </div>
     </div>
   )
