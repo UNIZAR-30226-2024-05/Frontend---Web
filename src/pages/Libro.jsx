@@ -93,19 +93,19 @@ const Libro = () => {
         setPrivacidad(event.target.value);
     }
 
-    const handleEnviarResenia = async () => {
-        const navigate = useNavigate();
+    const handleEnviarResenia = async (navigate) => {
         console.log('Enviando reseña');
         try {
-            const respuesta = await axios.post('/review/post_review', 
-            JSON.stringify({id_libro, comentario, puntuacionGuardada, privacidad}),
-            {
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: true
-            });
+            const respuesta = await axios.post(
+                '/review/post_review',
+                JSON.stringify({ id_libro, comentario, puntuacionGuardada, privacidad }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
             console.log(respuesta);
-        }
-        catch (error) {
+        } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
             } else if (error.response.status === 409) {
@@ -116,8 +116,9 @@ const Libro = () => {
                 console.log('Error desconocido');
             }
         }
-        navigate('/libro', {state: {id_libro}});
+        navigate('/libro', { state: { id_libro } });
     }
+    
 
 
 
