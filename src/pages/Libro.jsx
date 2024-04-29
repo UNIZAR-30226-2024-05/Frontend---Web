@@ -84,9 +84,9 @@ const Libro = () => {
     const [mostrarColecciones, setMostrarColecciones] = useState(false);
 
     const tienesReseña = () => {
-        return miResenia === null;
+        return miResenia !== null;
     }
-    
+
     const reseñasAmigos = [
         {
             nombre: 'Ana',
@@ -340,9 +340,23 @@ const Libro = () => {
                 </div>
                 {/* Mi reseña */}
                 <div className='info-mi-resenia'>
-                    {tienesReseña ? (
-                        <h2>Mi reseña</h2>
-                        // mostrar el contenido de tu reseña
+                    {tienesReseña() ? (
+                        <div>
+                            <h2>Mi reseña</h2>
+                            <p>{miResenia.comentario}</p>
+                            <h2>Mi puntuación</h2>
+                            <div className="info-puntuacion">
+                                {[...Array(Math.floor(miResenia.puntuacion))].map((_, index) => (
+                                    <span key={index} className="info-star-filled">&#9733;</span>
+                                ))}
+                                {[...Array(5 - Math.floor(miResenia.puntuacion))].map((_, index) => (
+                                    <span key={index} className="info-star-empty">&#9733;</span>
+                                ))}
+                                ({miResenia.puntuacion})
+                            </div>
+                            <h3>miResenia.fecha</h3>
+                            <button>Editar reseña</button>
+                        </div>
                     ) : (
                         <div>
                             <h2>¡Añade tu reseña y comparte tu opinión!</h2>
