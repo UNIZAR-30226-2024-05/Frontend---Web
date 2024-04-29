@@ -379,7 +379,7 @@ const Libro = () => {
                                     >&#9733;</span>
                                 ))}
                             </div>
-                            <h3>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
+                            <h3>{new Date(miResenia.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                             <button>Editar reseña</button>
                         </div>
                     ) : (
@@ -426,7 +426,7 @@ const Libro = () => {
                                         ))}
                                         ({amigo.puntuacion})
                                     </div>
-                                    <h3>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
+                                    <h3>{new Date(amigo.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                                 </div>
                             ))}
                         </div>
@@ -452,7 +452,7 @@ const Libro = () => {
                                         ))}
                                         ({usuario.puntuacion})
                                     </div>
-                                    <h3>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
+                                    <h3>{new Date(usuario.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                                 </div>
                             ))}
                         </div>
