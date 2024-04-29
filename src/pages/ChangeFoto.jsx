@@ -22,7 +22,7 @@ export const Changefoto = () => {
   const navigate = useNavigate();
 
   const { auth , setAuth } = useContext(AuthContext);
-  const { img } = auth;
+ 
 
   const URL_PERFIL = '/users/change_img'
 
@@ -62,10 +62,7 @@ export const Changefoto = () => {
     }
     console.log(auth);
     //setAuth({username, user_id, newImg, role})
-    if (img === newImg){
-      console.log('Es la misma imagen');
-    }
-    else{
+    
       try {
         const respuesta = await axios.post(URL_PERFIL, 
           JSON.stringify({newImg}),
@@ -87,7 +84,7 @@ export const Changefoto = () => {
           console.log('Fallo en el cambio de foto');
         }
       }
-    }
+    
     navigate('/perfil');
   };
 
