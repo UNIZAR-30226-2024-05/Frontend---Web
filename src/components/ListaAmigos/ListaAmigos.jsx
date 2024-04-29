@@ -225,21 +225,23 @@ const ListaAmigos = ({usuarios}) => {
                         <div className='amigo-info'>
                             <img className='foto-amigo' onClick={() => handleUsuarioClick(usuario.id)} src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil'/>
                             <h2 className='nombre-amigo' onClick={() => handleUsuarioClick(usuario.id)}>{usuario.username}</h2>
-                            {usuario.estado === 0 ? (
-                                <button className='botonEliminar' onClick={() => eliminarAmigo(index)}>Eliminar amigo</button>
-                            ) : null}
-                            {usuario.estado === 1 ? (
-                                <button className='botonEnviar' onClick={() => enviarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
-                            ) : null}
-                            {usuario.estado === 2 ? (
-                                <button className='botonCancelar' onClick={() => cancelarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
-                            ) : null}
-                            {usuario.estado === 3 ? (
-                                <div>
-                                    <button onClick={() => aceptarSolicitud(index)}>Aceptar solicitud</button>
-                                    <button onClick={() => rechazarSolicitud(index)}>Rechazar solicitud</button>
-                                </div>
-                            ) : null}
+                            <div className='contenedor-botones'>
+                                {usuario.estado === 0 ? (
+                                    <button className='botonEliminar' onClick={() => eliminarAmigo(index)}>Eliminar amigo</button>
+                                ) : null}
+                                {usuario.estado === 1 ? (
+                                    <button className='botonEnviar' onClick={() => enviarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
+                                ) : null}
+                                {usuario.estado === 2 ? (
+                                    <button className='botonCancelar' onClick={() => cancelarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
+                                ) : null}
+                                {usuario.estado === 3 ? (
+                                    <div>
+                                        <button onClick={() => aceptarSolicitud(index)}>Aceptar solicitud</button>
+                                        <button onClick={() => rechazarSolicitud(index)}>Rechazar solicitud</button>
+                                    </div>
+                                ) : null}
+                            </div>
                         </div>
                     </div>
                 ))}

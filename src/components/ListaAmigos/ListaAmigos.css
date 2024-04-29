@@ -56,7 +56,14 @@
     height: 10%;
 }
 
-.botonEliminar .botonEnviar .botonCancelar{
+.contenedor-botones {
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos a la derecha */
+}
+
+.botonEliminar,
+.botonEnviar,
+.botonCancelar {
     height: 20%;
     margin-bottom: 5%;
 }
