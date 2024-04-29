@@ -18,6 +18,17 @@ const Home = () => {
   const [capitulos, setCapitulos] = useState([]);
   const [portada, setPortada] = useState();
 
+  useEffect(() => {
+
+    if (id_libro) {
+        obtenerDatosLibro();
+    }
+    else {
+        console.log('No se ha pasado ningún libro');
+        navigate('/');
+    }
+  }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
+
   const obtenerDatosLibro = () => {
     const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
     axios.get(URL_AUDIOLIBRO, {withCredentials: true})
