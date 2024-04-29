@@ -12,7 +12,7 @@ import doraemon from "../images/fotos-perfil/doraemon.jpg";
 import pikachu from "../images/fotos-perfil/pikachu.jpg";
 import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
-import AuthContext from '../../context/AuthProvider';
+import AuthContext from '../context/AuthProvider';
 
 
 
@@ -22,7 +22,7 @@ export const Changefoto = () => {
   const navigate = useNavigate();
 
   const { auth , setAuth } = useContext(AuthContext);
- 
+  const { img } = auth;
 
   const URL_PERFIL = '/users/change_img'
 
@@ -60,9 +60,13 @@ export const Changefoto = () => {
         newImg = '9'
         break;
     }
-    console.log(auth);
     //setAuth({username, user_id, newImg, role})
-    
+    if (img === newImg){
+      console.log(auth?.img);
+      console.log('Es la misma imagen');
+    }
+    else{
+      console.log(auth?.img);
       try {
         const respuesta = await axios.post(URL_PERFIL, 
           JSON.stringify({newImg}),
@@ -84,7 +88,7 @@ export const Changefoto = () => {
           console.log('Fallo en el cambio de foto');
         }
       }
-    
+    }
     navigate('/perfil');
   };
 
