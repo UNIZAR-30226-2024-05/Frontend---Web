@@ -23,11 +23,13 @@ export const Perfil = () => {
 
   
   const [perfil, setPerfil] = useState([]);
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     axios.get(URL_PERFIL, {withCredentials: true})
     .then(response => {
       setPerfil(response.data);
+      setUsername(response.data.username);
       console.log(response.data);
     }).catch(err => {
       console.log(err)
@@ -90,7 +92,7 @@ export const Perfil = () => {
           <img className='Img' src={obtenerPerfil()}/>
         </div>
         <div className='Nombre'>
-          <h2>{reponse.data.username}</h2>
+          <h2>{username}</h2>
         </div>
     </div>
   )
