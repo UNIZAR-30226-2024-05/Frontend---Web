@@ -48,6 +48,12 @@
     text-decoration: none;
 }
 
+.autor{
+  display: flex;
+  align-content: left;
+  margin-top: 2vh;
+}
+
 .contenedor-lista .lista .libro .contenido-libro .titulo:hover {
   cursor: pointer;
   text-decoration: underline;
