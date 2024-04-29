@@ -69,7 +69,7 @@ const Home = () => {
           </div>
         </>
       ) : (<> {/* Cabecera si está logueado */}
-          <Link to='/player' className='foto-presentacion'>
+          <Link to='/libro' className='foto-presentacion'>
             <img className='foto-presentacion' src={foto1} alt={'Portada-ultimo-leido'}></img>
           </Link>
           <div className="texto-presentacion">

@@ -90,9 +90,13 @@ const ListaLibros = ({generos, libros}) => {
                             <h1>{libro.titulo}</h1>
                         </div>
                     </div>
+                    { /* Quito el boton de momento, confirmar eliminación más adelante */ 
+                    /*
                     <div className='boton-container'>
                         <DropdownButtonBiblioteca className='boton-opciones' />
                     </div>
+                    */
+                    }
                 </div>
               ))}
         </div>
