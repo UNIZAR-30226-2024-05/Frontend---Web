@@ -24,7 +24,7 @@ const Libro = () => {
     const [portada, setPortada] = useState(foto1);
     const [colecciones, setColecciones] = useState([]);
     const [miResenia, setMiResenia] = useState([]);
-    const [privacidad, setPrivacidad] = useState([]);
+    const [privacidad, setPrivacidad] = useState('');
     const [comentario, setComentario] = useState('');
 
     const [capitulos, setCapitulos] = useState([]);
