@@ -18,9 +18,6 @@ import pikachu from "../images/fotos-perfil/pikachu.jpg"
 
 export const Perfil = () => {
   const URL_PERFIL = 'users/profile';
-  const location = useLocation();
-  const nuevaFotoPerfil = location.state?.nuevaFotoPerfil;
-
   
   const [perfil, setPerfil] = useState([]);
   const [username, setUsername] = useState('');
@@ -74,25 +71,27 @@ export const Perfil = () => {
   const navigate = useNavigate()
   return (
     <div className='perfil'>
-        <div className='Botones'>
-          <div className='Foto'>
+        <div className='botones-container'>
+          <div className='Boton'>
             <button className='BotonFoto' type='button' onClick={() => {navigate("/changefoto")}}>Cambiar la foto</button>
           </div>
-          <div className='Nombre'>
+          <div className='Boton'>
             <button className='BotonNombre' type='button' onClick={() => {navigate("/changenombre")}}>Cambiar el nombre</button>
           </div>
-          <div className='Correo'>
+          <div className='Boton'>
             <button className='BotonCorreo' type='button' onClick={() => {navigate("/changecorreo")}}>Cambiar el correo</button>
           </div>
-          <div className='Contrasegna'>
+          <div className='Boton'>
             <button className='BotonContrasegna' type='button' onClick={() => {navigate("/changepwd")}}>Cambiar la contraseña</button>
           </div>
         </div>
-        <div className='Imagen'>
-          <img className='Img' src={obtenerPerfil()}/>
-        </div>
-        <div className='Nombre'>
-          <h2>{username}</h2>
+        <div className='perfil-container'>
+          <div className='Imagen'>
+            <img className='Img' src={obtenerPerfil()}/>
+          </div>
+          <div className='Nombre'>
+            <h2>{username}</h2>
+          </div>
         </div>
     </div>
   )

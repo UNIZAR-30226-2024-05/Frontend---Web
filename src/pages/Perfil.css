@@ -1,60 +1,77 @@
 .perfil{
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: flex-start;
     height: calc(100vh - 80px);
 }
 
-.Botones{
+.botones-container{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    row-gap: 30px;
-    margin-left: -20%;
-    margin-top: 5%;
+    align-content: flex-start;
+    row-gap: 6vh;
+    margin-left: 10vw;
+}
+
+.Boton{
+    height: 80px;
+    width: 400px;
 }
 
 .BotonFoto{
-    height: 80px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     text-align: left;
     font-size: 20px;
+    padding-left: 10%;
     background-color: #A4CEF4;
     border-radius: 20px; 
 }
 
 .BotonNombre{
-    height: 80px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     text-align: left;
     font-size: 20px;
+    padding-left: 10%;
     background-color: #A4CEF4;
     border-radius: 20px;  
 }
 
 .BotonCorreo{
-    height: 80px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     text-align: left;
     font-size: 20px;
+    padding-left: 10%;
     background-color: #A4CEF4;
     border-radius: 20px;  
 }
 
 .BotonContrasegna{
-    height: 80px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     text-align: left;
     font-size: 20px;
+    padding-left: 10%;
     background-color: #A4CEF4;
     border-radius: 20px;
 }
 
+.perfil-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left: 20vw;
+    margin-top: 5vh;
+}
+
 .Imagen{
-    margin-left: 15%;
-    width: 30%;
-    height: 55%;
-    margin-top: 5%;
+    margin-left: 15vw;
+    width: 30vw;
+    height: 55vh;
 }
 
 .Img{
@@ -64,5 +81,5 @@
 }
 
 .Nombre{
-    margin-top: 5%;
+    margin-top: 5vh;
 }
