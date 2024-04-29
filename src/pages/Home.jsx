@@ -6,12 +6,39 @@ import Footer from '../components/Footer/Footer';
 import AuthContext from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 
 import foto1 from '../images/1.png';
 
 const Home = () => {
-  
+
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const id_libro = 1;
+  const [capitulos, setCapitulos] = useState([]);
+  const [portada, setPortada] = useState();
+
+  const obtenerDatosLibro = () => {
+    const URL_AUDIOLIBRO = `/audiolibros/1`;
+    axios.get(URL_AUDIOLIBRO, {withCredentials: true})
+    .then(response => {
+        // Actualiza el estado de los libros con los datos de los audiolibros recibidos
+        setCapitulos(response.data.capitulos);
+        setPortada(response.data.audiolibro.img);
+        console.log(response.data);
+    })
+    .catch(error => {
+        // Maneja los errores si ocurrieron
+        console.error('Hubo un error al obtener el audiolibro:', error);
+    });
+  };
+
+  const handleCapituloClick = (capitulos, portada) => {
+    navigate('/player', {state: {capitulos, portada}});
+  };
+
   const URL_AUDIOLIBROS = '/audiolibros';
 
   const [books, setBooks] = useState([]);
@@ -69,9 +96,7 @@ const Home = () => {
           </div>
         </>
       ) : (<> {/* Cabecera si está logueado */}
-          <Link to='/player' className='foto-presentacion'>
-            <img className='foto-presentacion' src={foto1} alt={'Portada-ultimo-leido'}></img>
-          </Link>
+          <img className='foto-presentacion' src={foto1} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick(capitulos, portada)}></img>
           <div className="texto-presentacion">
             <h2>Continua tu lectura</h2>
             <span>Pincha en la portada para continuar por donde lo dejaste.</span>
