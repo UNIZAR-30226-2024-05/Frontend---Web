@@ -406,6 +406,7 @@ const Libro = () => {
                                 <textarea 
                                     className="info-texto-resenia"
                                     value={comentario}
+                                    onChange={(event) => setComentario(event.target.value)}
                                     placeholder="Escribe aquí tu reseña"
                                     required
                                 />
