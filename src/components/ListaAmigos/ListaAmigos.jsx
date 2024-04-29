@@ -87,17 +87,17 @@ const ListaAmigos = ({usuarios}) => {
         }
     }
 
-    const enviarSolicitud = async index => {
+    const enviarSolicitud = async (index) => {
         try {
             const response = await axios.post(
                 '/amistad/send',
-                { other_id: usuarios[index].id },
+                { other_id: listaShow[index].id },
                 { withCredentials: true } 
             );
             console.log(response.data.message); // Mensaje de éxito
             // Actualizar la lista después de enviar una solicitud
             const updatedAmigos = usuarios.map((amigo, i) => {
-                if (i === index) {
+                if (usuarios[i] === listaShow[index]) {
                     return { ...amigo, estado: 2 };
                 }
                 return amigo;
@@ -112,7 +112,7 @@ const ListaAmigos = ({usuarios}) => {
         }
     };
 
-    const eliminarAmigo = async index => {
+    const eliminarAmigo = async (index) => {
         try {
             const response = await axios.post(
                 '/amistad/remove',
