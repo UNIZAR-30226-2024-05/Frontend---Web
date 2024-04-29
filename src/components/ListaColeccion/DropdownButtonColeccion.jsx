@@ -31,6 +31,7 @@ const DropdownButtonColeccion = ({libro, coleccion, setListaLibros}) => {
                 const nuevaColeccion = coleccion.audiolibros.filter(item => item.id !== audiolibroId);
                 return nuevaColeccion;
             });
+            setIsOpen(false);
         } catch (err) {
             if (!err.response) {
               console.log('No hay respuesta del servidor');
