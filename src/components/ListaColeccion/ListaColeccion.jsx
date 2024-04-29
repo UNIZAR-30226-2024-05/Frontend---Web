@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ListaColeccion.css';
 import DropdownButtonColeccion from './DropdownButtonColeccion';
@@ -6,17 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaColeccion = ({ coleccion }) => {
+const ListaColeccion = ({ coleccion, setColeccion }) => {
 
     const [listaLibros, setListaLibros] = useState(coleccion.audiolibros);
     const [listaShow, setListaShow] = useState(coleccion.audiolibros);
     const [busqueda, setBusqueda] = useState('');
 
-    const [opciones, setOpciones] = useState([
-        'Añadir a favoritos',
-        'Añadir a escuchar mas tarde',
-        'Añadir a colecciones'
-    ]);
+    useEffect(() => {
+        setListaLibros(coleccion.audiolibros);
+        filtrar(busqueda);
+      }, [coleccion]);
 
     const handleChangeBusqueda = event => {
         setBusqueda(event.target.value);
