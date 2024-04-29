@@ -439,7 +439,7 @@ const Libro = () => {
                     <h2>Reseñas del resto de la comunidad</h2>
                     {hayReseniasComunidad() ? (
                         <div>
-                            {reseniasComunidad.map((usuario, index) => (
+                            {reseniasComunidad.filter(usuario => usuario.username !== miResenia.username).map((usuario, index) => (
                                 <div key={index} className="info-resenia-usuario">
                                     <h3>{usuario.username}</h3>
                                     <p>{usuario.comentario}</p>
