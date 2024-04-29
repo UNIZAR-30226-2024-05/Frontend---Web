@@ -238,8 +238,8 @@ const ListaAmigos = ({usuarios}) => {
                             ) : null}
                             {usuario.estado === 3 ? (
                                 <div>
-                                    <button onClick={() => aceptarSolicitud(index)}>Aceptar solicitud</button>
-                                    <button onClick={() => rechazarSolicitud(index)}>Rechazar solicitud</button>
+                                    <button className='botoAceptar' onClick={() => aceptarSolicitud(index)}>Aceptar solicitud</button>
+                                    <button className='botonRechazar' onClick={() => rechazarSolicitud(index)}>Rechazar solicitud</button>
                                 </div>
                             ) : null}
                         </div>
