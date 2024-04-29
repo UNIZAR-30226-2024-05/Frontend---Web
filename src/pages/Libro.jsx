@@ -368,10 +368,10 @@ const Libro = () => {
                 {/* Mi reseña */}
                 <div className='info-mi-resenia'>
                     {tienesResenia() ? (
-                        <div>
+                        <div className='info-miReseniaExiste'>
                             <h2>Mi reseña</h2>
                             <p>{miResenia.comentario}</p>
-                            <h2>Mi puntuación</h2>
+                            <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
                             <div className='info-estrellas-en-resenias'>
                                 {[...Array(5)].map((_, index) => (
                                     <span key={index}
@@ -417,14 +417,12 @@ const Libro = () => {
                                 <div key={index} className="info-resenia-amigo">
                                     <h3>{amigo.username}</h3>
                                     <p>{amigo.comentario}</p>
-                                    <div className="info-puntuacion">
-                                        {[...Array(Math.floor(amigo.puntuacion))].map((_, index) => (
-                                            <span key={index} className="info-star-filled">&#9733;</span>
+                                    <div className='info-estrellas-en-resenias'>
+                                        {[...Array(5)].map((_, index) => (
+                                            <span key={index}
+                                                className={(index < amigo.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                            >&#9733;</span>
                                         ))}
-                                        {[...Array(5 - Math.floor(amigo.puntuacion))].map((_, index) => (
-                                            <span key={index} className="info-star-empty">&#9733;</span>
-                                        ))}
-                                        ({amigo.puntuacion})
                                     </div>
                                     <h3>{amigo.fecha &&new Date(amigo.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                                 </div>
@@ -443,14 +441,12 @@ const Libro = () => {
                                 <div key={index} className="info-resenia-usuario">
                                     <h3>{usuario.username}</h3>
                                     <p>{usuario.comentario}</p>
-                                    <div className="info-puntuacion">
-                                        {[...Array(Math.floor(usuario.puntuacion))].map((_, index) => (
-                                            <span key={index} className="info-star-filled">&#9733;</span>
+                                    <div className='info-estrellas-en-resenias'>
+                                        {[...Array(5)].map((_, index) => (
+                                            <span key={index}
+                                                className={(index < usuario.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                            >&#9733;</span>
                                         ))}
-                                        {[...Array(5 - Math.floor(usuario.puntuacion))].map((_, index) => (
-                                            <span key={index} className="info-star-empty">&#9733;</span>
-                                        ))}
-                                        ({usuario.puntuacion})
                                     </div>
                                     <h3>{usuario.fecha &&new Date(usuario.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                                 </div>

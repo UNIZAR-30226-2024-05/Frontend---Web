@@ -336,6 +336,10 @@
   border-radius: 5px;
 }
 
+.info-miReseniaExiste {
+  height: 100px;
+}
+
 /* Form para añadir reseña*/
 .info-anadir-mia {
   margin-top: 2%;
@@ -365,6 +369,14 @@
   padding: 2px 5px;
   justify-self: center;
   align-self: center;
+}
+
+.info-miResenia-puntuacion {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 5%;
+  width: 30%;
+  font-size: 2.0rem;
 }
 
 /* Las segundas que aparecen son las reseñas de los amigos*/
