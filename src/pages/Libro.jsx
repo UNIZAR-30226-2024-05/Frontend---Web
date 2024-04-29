@@ -456,6 +456,8 @@ const Libro = () => {
                                 </div>
                             ))}
                         </div>
+
+                        
                     ) : (
                         <p>¡Nadie ha subido una reseña de este libro todavía!</p>
                     )}
