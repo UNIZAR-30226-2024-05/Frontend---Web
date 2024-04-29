@@ -84,8 +84,9 @@ const Libro = () => {
     const [mostrarColecciones, setMostrarColecciones] = useState(false);
 
     const tienesReseña = () => {
-        return miResenia !== null;
+        return miResenia === null;
     }
+    
     const reseñasAmigos = [
         {
             nombre: 'Ana',
