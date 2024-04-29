@@ -61,16 +61,13 @@ export const Changefoto = () => {
     }
     //setAuth({username, user_id, newImg, role})
     if (auth?.img === newImg){
-      console.log(auth?.img);
       console.log('Es la misma imagen');
     }
     else{
-      console.log(auth?.img);
       try {
         const respuesta = await axios.post(URL_PERFIL, 
           JSON.stringify({newImg}),
           {
-            headers: { 'Content-Type': 'application/json' },
             withCredentials: true
           }
         );
@@ -87,7 +84,6 @@ export const Changefoto = () => {
       }
     }
     navigate('/perfil');
-    console.log(auth?.img);
   };
 
   return (
