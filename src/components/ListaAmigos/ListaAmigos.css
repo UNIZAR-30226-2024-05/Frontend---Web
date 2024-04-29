@@ -58,7 +58,7 @@
 
 .contenedor-botones {
     display: flex;
-    justify-content: flex-end; /* Alinea los elementos a la derecha */
+    justify-self: flex-end; /* Alinea los elementos a la derecha */
 }
 
 .botonEliminar,
