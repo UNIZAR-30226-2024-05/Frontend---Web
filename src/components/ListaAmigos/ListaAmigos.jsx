@@ -237,8 +237,8 @@ const ListaAmigos = ({usuarios}) => {
                                 <button className='botonCancelar' onClick={() => cancelarSolicitud(index)}> {obtenerEstado(usuario.estado)} </button>
                             ) : null}
                             {usuario.estado === 3 ? (
-                                <div>
-                                    <button className='botoAceptar' onClick={() => aceptarSolicitud(index)}>Aceptar solicitud</button>
+                                <div className='dos-botones'>
+                                    <button className='botonAceptar' onClick={() => aceptarSolicitud(index)}>Aceptar solicitud</button>
                                     <button className='botonRechazar' onClick={() => rechazarSolicitud(index)}>Rechazar solicitud</button>
                                 </div>
                             ) : null}

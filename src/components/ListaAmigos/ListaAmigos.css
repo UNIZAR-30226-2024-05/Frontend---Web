@@ -62,6 +62,10 @@
     justify-self: flex-end; /* Alinea los elementos a la derecha */
 }
 
+.lista-amigos .lista .amigo .contenedor-botones .dos-botones {
+    justify-self: flex-start;
+}
+
 .botonEliminar,
 .botonEnviar,
 .botonCancelar,
