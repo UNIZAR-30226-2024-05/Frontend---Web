@@ -91,13 +91,13 @@ const Libro = () => {
 
     const handlePrivacidadChange = (event) => {
         if (event.target.value === 'publica') {
-            setPrivacidad('0');
+            setPrivacidad("0");
         }
         else if (event.target.value === 'amigos') {
-            setPrivacidad('1');
+            setPrivacidad("1");
         }
         else if (event.target.value === 'privada') {
-            setPrivacidad('2');
+            setPrivacidad("2");
         }
     }
 
