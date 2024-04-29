@@ -381,6 +381,8 @@ const Libro = () => {
                             </div>
                             <h3>{miResenia.fecha && new Date(miResenia.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                             <button>Editar reseña</button>
+
+                            
                         </div>
                     ) : (
                         <div className='info-mi-resenia-noExiste'>
