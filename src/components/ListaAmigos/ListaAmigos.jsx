@@ -116,12 +116,17 @@ const ListaAmigos = ({usuarios}) => {
         try {
             const response = await axios.post(
                 '/amistad/remove',
-                { other_id: usuarios[index].id },
+                { other_id: listaShow[index].id },
                 { withCredentials: true }
             );
             console.log(response.data.message); // Mensaje de éxito
             // Actualizar la lista después de eliminar un amigo
-            const updatedAmigos = usuarios.filter((amigo, i) => i !== index);
+            const updatedAmigos = usuarios.map((amigo, i) => {
+                if (usuarios[i] === listaShow[index]) {
+                    return { ...amigo, estado: 1 };
+                }
+                return amigo;
+            });
             setListaUsuarios(updatedAmigos);
         } catch (error) {
             if (error.response) {
@@ -132,17 +137,17 @@ const ListaAmigos = ({usuarios}) => {
         }
     };
 
-    const cancelarSolicitud = async index => {
+    const cancelarSolicitud = async (index) => {
         try {
             const response = await axios.post(
                 '/amistad/cancel',
-                { other_id: usuarios[index].id },
+                { other_id: listaShow[index].id },
                 { withCredentials: true }
             );
             console.log(response.data.message); // Mensaje de éxito
             // Actualizar la lista después de cancelar una solicitud
             const updatedAmigos = usuarios.map((amigo, i) => {
-                if (i === index) {
+                if (usuarios[i] === listaShow[index]) {
                     return { ...amigo, estado: 1 };
                 }
                 return amigo;
@@ -157,7 +162,7 @@ const ListaAmigos = ({usuarios}) => {
         }
     }
 
-    const aceptarSolicitud = async index => {
+    const aceptarSolicitud = async (index) => {
         try {
             const response = await axios.post(
                 '/amistad/accept',
@@ -167,7 +172,7 @@ const ListaAmigos = ({usuarios}) => {
             console.log(response.data.message); // Mensaje de éxito
             // Actualizar la lista después de aceptar una solicitud
             const updatedAmigos = usuarios.map((amigo, i) => {
-                if (i === index) {
+                if (usuarios[i] === listaShow[index]) {
                     return { ...amigo, estado: 0 };
                 }
                 return amigo;
@@ -182,16 +187,21 @@ const ListaAmigos = ({usuarios}) => {
         }
     }
 
-    const rechazarSolicitud = async index => {
+    const rechazarSolicitud = async (index) => {
         try {
             const response = await axios.post(
                 '/amistad/reject',
-                { other_id: usuarios[index].id },
+                { other_id: listaShow[index].id },
                 { withCredentials: true }
             );
             console.log(response.data.message); // Mensaje de éxito
             // Actualizar la lista después de rechazar una solicitud
-            const updatedAmigos = usuarios.filter((amigo, i) => i !== index);
+            const updatedAmigos = usuarios.map((amigo, i) => {
+                if (usuarios[i] === listaShow[index]) {
+                    return { ...amigo, estado: 1 };
+                }
+                return amigo;
+            });
             setListaUsuarios(updatedAmigos);
         } catch (error) {
             if (error.response) {
