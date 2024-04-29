@@ -23,6 +23,7 @@ const Libro = () => {
     const [generos, setGeneros] = useState([]);
     const [portada, setPortada] = useState(foto1);
     const [colecciones, setColecciones] = useState([]);
+    const [miResenia, setMiResenia] = useState([]);
 
     const [capitulos, setCapitulos] = useState([]);
 
@@ -52,6 +53,7 @@ const Libro = () => {
             setPortada(response.data.audiolibro.img);
             setCapitulos(response.data.capitulos);
             setColecciones(response.data.colecciones);
+            setMiResenia(response.data.own_review);
             console.log(response.data);
         })
         .catch(error => {
@@ -81,7 +83,9 @@ const Libro = () => {
 
     const [mostrarColecciones, setMostrarColecciones] = useState(false);
 
-    const tienesReseña = false; // simulamos que no tenemos reseña
+    const tienesReseña = () => {
+        return miResenia !== null;
+    }
     const reseñasAmigos = [
         {
             nombre: 'Ana',
