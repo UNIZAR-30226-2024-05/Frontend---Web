@@ -411,7 +411,7 @@ const Libro = () => {
                                     required
                                 />
                             </form>
-                            <button className="info-subir-resenia" type="submit">Publicar reseña</button>
+                            <button className="info-subir-resenia" type="submit" onClick={handleEnviarResenia}>Publicar reseña</button>
                         </div>
                     )}
                 </div>
