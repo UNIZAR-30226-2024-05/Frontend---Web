@@ -366,7 +366,7 @@ const Libro = () => {
                     </div>
                 </div>
                 {/* Mi reseña */}
-                <div className='info-mi-resenia'>
+                <div>
                     {tienesResenia() ? (
                         <div className='info-miReseniaExiste'>
                             <h2>Mi reseña</h2>
@@ -383,7 +383,7 @@ const Libro = () => {
                             <button>Editar reseña</button>
                         </div>
                     ) : (
-                        <div>
+                        <div className='info-mi-resenia-noExiste'>
                             <h2>¡Añade tu reseña y comparte tu opinión!</h2>
                             <form onSubmit={handleSubmit} className='info-anadir-mia'>
                                 <select 
@@ -434,7 +434,7 @@ const Libro = () => {
                 </div>
 
                 <div className="info-resenias">
-                    <h2>Reseñas públicas del resto de la comunidad</h2>
+                    <h2>Reseñas públicas de la comunidad</h2>
                     {hayReseniasComunidad() ? (
                         <div>
                             {reseniasComunidad.map((usuario, index) => (
