@@ -396,6 +396,7 @@ const Libro = () => {
                                     onChange={handlePrivacidadChange}
                                     required>
                                     <h3>Selecciona quién quieres que vea tus reseñas.</h3>
+                                    <option value=''>Selecciona una opción</option>
                                     <option value='publica'>Pública</option>
                                     <option value='amigos'>Solo amigos</option>
                                     <option value='privada'>Privada</option>
