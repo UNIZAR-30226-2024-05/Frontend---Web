@@ -11,12 +11,12 @@ const ListaColeccion = ({ coleccion, setColeccion }) => {
     const [listaLibros, setListaLibros] = useState(coleccion.audiolibros);
     const [listaShow, setListaShow] = useState(coleccion.audiolibros);
     const [busqueda, setBusqueda] = useState('');
-
+/*
     useEffect(() => {
         setListaLibros(coleccion.audiolibros);
         filtrar(busqueda);
       }, [coleccion]);
-
+*/
     const handleChangeBusqueda = event => {
         setBusqueda(event.target.value);
         filtrar(event.target.value);
