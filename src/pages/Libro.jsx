@@ -93,7 +93,7 @@ const Libro = () => {
         setPrivacidad(event.target.value);
     }
 
-    const handleEnviarResenia = (event) => {
+    const handleEnviarResenia = () => {
         const navigate = useNavigate();
         console.log('Enviando reseña');
         try {
