@@ -62,8 +62,8 @@
 .perfil-container{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-
+    align-items: center;
+    text-align: center;
     margin-left: 20vw;
     margin-top: 5vh;
 }
@@ -82,5 +82,4 @@
 .Nombre{
     margin-top: 5vh;
     width: 30vw;
-    align-items: center;
 }
