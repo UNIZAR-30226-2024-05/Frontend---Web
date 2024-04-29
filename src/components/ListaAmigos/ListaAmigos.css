@@ -58,6 +58,7 @@
 
 .lista-amigos .lista .amigo .contenedor-botones {
     display: flex;
+    margin-right: 5%;
     justify-self: flex-end; /* Alinea los elementos a la derecha */
 }
 
@@ -66,6 +67,7 @@
 .botonCancelar {
     height: 20%;
     margin-bottom: 5%;
+    border-radius: 10px;
 }
 
 .lista-amigos .lista .amigo .amigo-info .nombre-amigo {
