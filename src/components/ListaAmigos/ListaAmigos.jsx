@@ -25,6 +25,10 @@ const ListaAmigos = ({usuarios}) => {
     const [listaShow, setListaShow] = useState(usuarios);
     const [busqueda, setBusqueda] = useState('');
 
+    useEffect(() => {
+        filtrar(busqueda);
+      }, [listaUsuarios]);
+
     const handleChangeBusqueda = (event) => {
         setBusqueda(event.target.value);
         filtrar(event.target.value);
