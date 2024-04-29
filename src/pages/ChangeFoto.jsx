@@ -22,7 +22,6 @@ export const Changefoto = () => {
   const navigate = useNavigate();
 
   const { auth , setAuth } = useContext(AuthContext);
-  const { img, setImg } = auth;
 
   const URL_PERFIL = '/users/change_img'
 
@@ -61,7 +60,7 @@ export const Changefoto = () => {
         break;
     }
     //setAuth({username, user_id, newImg, role})
-    if (img === newImg){
+    if (auth?.img === newImg){
       console.log(auth?.img);
       console.log('Es la misma imagen');
     }
@@ -75,9 +74,7 @@ export const Changefoto = () => {
             withCredentials: true
           }
         );
-        setImg({newImg});
-
-        /*setAuth({ username, user_id, img, role });*/
+        setAuth({ ...auth, img: newImg });
 
       } catch (err) {
         if (!err.response) {
