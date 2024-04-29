@@ -50,13 +50,13 @@
     text-align: center; /* Centra el texto horizontalmente */
 }
 
-.foto-amigo{
+.lista-amigos .lista .amigo .amigo-info .foto-amigo{
     margin-left: 5%;
     width: 10%;
     height: 10%;
 }
 
-.contenedor-botones {
+.lista-amigos .lista .amigo .contenedor-botones {
     display: flex;
     justify-self: flex-end; /* Alinea los elementos a la derecha */
 }
