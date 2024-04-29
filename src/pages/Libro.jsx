@@ -24,6 +24,9 @@ const Libro = () => {
     const [portada, setPortada] = useState(foto1);
     const [colecciones, setColecciones] = useState([]);
     const [miResenia, setMiResenia] = useState([]);
+    const [miReseniaComentario, setMiReseniaComentario] = useState('');
+    const [miReseniaPuntuacion, setMiReseniaPuntuacion] = useState(0);
+    const [miReseniaFecha, setMiReseniaFecha] = useState('');
     const [privacidad, setPrivacidad] = useState('');
     const [comentario, setComentario] = useState('');
 
@@ -56,6 +59,9 @@ const Libro = () => {
             setCapitulos(response.data.capitulos);
             setColecciones(response.data.colecciones);
             setMiResenia(response.data.own_review);
+            setMiReseniaComentario(response.data.own_review.comentario);
+            setMiReseniaPuntuacion(response.data.own_review.puntuacion);
+            setMiReseniaFecha(response.data.own_review.fecha);
             console.log(response.data);
         })
         .catch(error => {
@@ -386,16 +392,16 @@ const Libro = () => {
                     {tienesReseña() ? (
                         <div>
                             <h2>Mi reseña</h2>
-                            <p>{miResenia.comentario}</p>
+                            <p>{miReseniaComentario}</p>
                             <h2>Mi puntuación</h2>
                             <div className='info-mis-estrellas'>
                                 {[...Array(5)].map((_, index) => (
                                     <span key={index}
-                                        className={(index < miResenia.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                        className={(index < miReseniaPuntuacion.puntuacion) ? "info-star-filled" : "info-star-empty"}
                                     >&#9733;</span>
                                 ))}
                             </div>
-                            <h3>{miResenia.fecha}</h3>
+                            <h3>{miReseniaFecha}</h3>
                             <button>Editar reseña</button>
                         </div>
                     ) : (
