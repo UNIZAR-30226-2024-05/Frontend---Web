@@ -226,6 +226,10 @@ const Libro = () => {
         setOtrasColecciones(colecciones.filter(coleccion => coleccion.titulo !== 'Favoritos' && coleccion.titulo !== 'Escuchar mas tarde'));
     }, [colecciones]);
 
+    const handleUsuarioClick = (id_user) => {
+        navigate('/perfilamigo', { state: { id_user } });
+    }
+
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
@@ -415,7 +419,7 @@ const Libro = () => {
                         <div>
                             {reseniasAmigos.map((amigo, index) => (
                                 <div key={index} className="info-resenia-amigo">
-                                    <h3>{amigo.username}</h3>
+                                    <h3 onClick={() => handleUsuarioClick(amigo.user_id)}>{amigo.username}</h3>
                                     <p>{amigo.comentario}</p>
                                     <div className='info-estrellas-en-resenias'>
                                         {[...Array(5)].map((_, index) => (
@@ -439,7 +443,7 @@ const Libro = () => {
                         <div>
                             {reseniasComunidad.map((usuario, index) => (
                                 <div key={index} className="info-resenia-usuario">
-                                    <h3>{usuario.username}</h3>
+                                    <h3 onClick={() => handleUsuarioClick(usuario.user_id)}>{usuario.username}</h3>
                                     <p>{usuario.comentario}</p>
                                     <div className='info-estrellas-en-resenias'>
                                         {[...Array(5)].map((_, index) => (
