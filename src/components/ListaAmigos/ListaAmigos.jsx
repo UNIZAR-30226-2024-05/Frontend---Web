@@ -22,6 +22,7 @@ const ListaAmigos = ({usuarios}) => {
     
     const navigate = useNavigate();
     const [listaUsuarios, setListaUsuarios] = useState(usuarios);
+    const [listaShow, setListaShow] = useState(usuarios);
     const [busqueda, setBusqueda] = useState('');
 
     const handleChangeBusqueda = (event) => {
@@ -33,7 +34,7 @@ const ListaAmigos = ({usuarios}) => {
         var resultado = listaUsuarios.filter((usuario) => {
             return usuario.username.toString().toLowerCase().includes(terminoBusqueda.toLowerCase());
         });
-        setListaUsuarios(resultado);
+        setListaShow(resultado);
     }
 
     const obtenerFotoPerfil = (numero) => {
@@ -220,7 +221,7 @@ const ListaAmigos = ({usuarios}) => {
             </div>
 
             <div className='lista'>
-                {listaUsuarios.map((usuario, index) => (
+                {listaShow.map((usuario, index) => (
                     <div className={'amigo ' + (usuario.estado === 0 ? 'amigo-activo' : '')} key={index}>
                         <div className='amigo-info'>
                             <img className='foto-amigo' onClick={() => handleUsuarioClick(usuario.id)} src={obtenerFotoPerfil(usuario.img)} alt='Foto de perfil'/>
