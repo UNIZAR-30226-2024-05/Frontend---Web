@@ -67,14 +67,14 @@ const Amigos = () => {
                 ) : (
                 <>
                   <h1 className='amigos-titulo'>Tus amigos</h1>
-                  <ListaAmigos usuarios={usuarios} className='list'></ListaAmigos>
+                  <ListaAmigos usuarios={usuarios} className='lista'></ListaAmigos>
                 </>)}
               </div>
             </div>
             <div className='amigos-peticiones'>
               <div className='amigos-lista-container'>
                 <h1 className='amigos-titulo'>Historial de peticiones</h1>
-                <ListaPeticiones className='list' peticiones={peticiones} enviadas={enviadas} recibidas={recibidas} aceptadas={aceptadas} rechazadas={rechazadas}></ListaPeticiones>
+                <ListaPeticiones className='lista' peticiones={peticiones} enviadas={enviadas} recibidas={recibidas} aceptadas={aceptadas} rechazadas={rechazadas}></ListaPeticiones>
               </div> 
             </div>
         </div>
