@@ -68,6 +68,7 @@ export const Changefoto = () => {
         const respuesta = await axios.post(URL_PERFIL, 
           JSON.stringify({newImg}),
           {
+            headers: { 'Content-Type': 'application/json' },
             withCredentials: true
           }
         );
