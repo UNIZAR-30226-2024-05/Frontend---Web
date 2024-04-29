@@ -3,7 +3,7 @@ import axios from '../../api/axios';
 import { MdMoreVert } from 'react-icons/md'; // Importa el ícono de tres puntos
 import './DropdownButtonColeccion.css';
 
-const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
+const DropdownButtonColeccion = ({libro, coleccion, setListaLibros}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -28,9 +28,9 @@ const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
               }
             );
             console.log(respuesta); /* Solo desarrollo */
-            setColeccion(coleccion => {
+            setListaLibros(coleccion => {
                 // Realiza una copia de la colección actual y filtra el audiolibro eliminado
-                const nuevaColeccion = coleccion.coleccion.filter(item => item.id !== audiolibroId);
+                const nuevaColeccion = coleccion?.coleccion.filter(item => item.id !== audiolibroId);
                 return nuevaColeccion;
             });
         } catch (err) {

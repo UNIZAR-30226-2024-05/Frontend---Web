@@ -6,17 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaColeccion = ({ coleccion, setColeccion }) => {
+const ListaColeccion = ({ coleccion }) => {
 
     const [listaLibros, setListaLibros] = useState(coleccion.audiolibros);
     const [listaShow, setListaShow] = useState(coleccion.audiolibros);
     const [busqueda, setBusqueda] = useState('');
-/*
+
     useEffect(() => {
-        setListaLibros(coleccion.audiolibros);
         filtrar(busqueda);
-      }, [coleccion]);
-*/
+      }, [listaLibros]);
+
     const handleChangeBusqueda = event => {
         setBusqueda(event.target.value);
         filtrar(event.target.value);
@@ -89,7 +88,7 @@ const ListaColeccion = ({ coleccion, setColeccion }) => {
                         className='boton-opciones' 
                         libro={libro} 
                         coleccion={coleccion} 
-                        setColeccion={setColeccion}/>
+                        setListaLibros={setListaLibros}/>
                     </div>
                 </div>
               ))}
