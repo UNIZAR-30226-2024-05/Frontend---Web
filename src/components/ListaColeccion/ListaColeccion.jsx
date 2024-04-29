@@ -6,13 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaColeccion = ({ coleccion }) => {
+const ListaColeccion = ({ coleccion, setColeccion }) => {
 
     const [listaLibros, setListaLibros] = useState(coleccion.audiolibros);
     const [listaShow, setListaShow] = useState(coleccion.audiolibros);
     const [busqueda, setBusqueda] = useState('');
 
     useEffect(() => {
+        setColeccion({...coleccion, audiolibros: listaLibros})
         filtrar(busqueda);
       }, [listaLibros]);
 

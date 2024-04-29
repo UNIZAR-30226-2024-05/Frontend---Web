@@ -17,9 +17,6 @@ const DropdownButtonColeccion = ({libro, coleccion, setListaLibros}) => {
     const URL_RM = '/colecciones/eliminarAudiolibro'; 
     const audiolibroId = libro?.id;
     const coleccionId = coleccion?.coleccion.id;
-    console.log(audiolibroId);
-    console.log(coleccionId);
-    console.log(coleccion);
         try {
             const respuesta = await axios.post(URL_RM, 
               JSON.stringify({audiolibroId, coleccionId}),
@@ -31,7 +28,6 @@ const DropdownButtonColeccion = ({libro, coleccion, setListaLibros}) => {
             console.log(respuesta); /* Solo desarrollo */
             setListaLibros(libros => {
                 // Realiza una copia de la colección actual y filtra el audiolibro eliminado
-                console.log(coleccion.audiolibros);
                 const nuevaColeccion = coleccion.audiolibros.filter(item => item.id !== audiolibroId);
                 return nuevaColeccion;
             });
