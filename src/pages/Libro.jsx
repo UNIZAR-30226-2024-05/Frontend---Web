@@ -345,15 +345,7 @@ const Libro = () => {
                             <h2>Mi reseña</h2>
                             <p>{miResenia.comentario}</p>
                             <h2>Mi puntuación</h2>
-                            <div className="info-puntuacion">
-                                {[...Array(Math.floor(miResenia.puntuacion))].map((_, index) => (
-                                    <span key={index} className="info-star-filled">&#9733;</span>
-                                ))}
-                                {[...Array(5 - Math.floor(miResenia.puntuacion))].map((_, index) => (
-                                    <span key={index} className="info-star-empty">&#9733;</span>
-                                ))}
-                                ({miResenia.puntuacion})
-                            </div>
+                            
                             <h3>miResenia.fecha</h3>
                             <button>Editar reseña</button>
                         </div>
