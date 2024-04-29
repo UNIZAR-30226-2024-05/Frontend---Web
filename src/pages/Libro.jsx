@@ -413,7 +413,7 @@ const Libro = () => {
                     <h2>Reseñas de tus amigos</h2>
                     {hayReseniasAmigos() ? (
                         <div>
-                            {reseñasAmigos.map((amigo, index) => (
+                            {reseniasAmigos.map((amigo, index) => (
                                 <div key={index} className="info-resenia-amigo">
                                     <h3>{amigo.username}</h3>
                                     <p>{amigo.comentario}</p>
@@ -439,7 +439,7 @@ const Libro = () => {
                     <h2>Reseñas del resto de la comunidad</h2>
                     {hayReseniasComunidad() ? (
                         <div>
-                            {reseñasComunidad.map((usuario, index) => (
+                            {reseniasComunidad.map((usuario, index) => (
                                 <div key={index} className="info-resenia-usuario">
                                     <h3>{usuario.username}</h3>
                                     <p>{usuario.comentario}</p>
