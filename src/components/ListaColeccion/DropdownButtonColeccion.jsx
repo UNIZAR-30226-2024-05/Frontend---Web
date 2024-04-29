@@ -14,7 +14,7 @@ const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
 
   const handleOptionClick = async () => {
     const URL_RM = '/colecciones/eliminarAudiolibro'; 
-    const audiolibroId = libro.audiolibro?.id;
+    const audiolibroId = libro?.id;
     const coleccionId = coleccion?.coleccion.id;
     console.log(audiolibroId);
     console.log(coleccionId);
