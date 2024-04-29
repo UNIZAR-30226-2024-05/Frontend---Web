@@ -32,6 +32,9 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
         setOtrasColecciones(listaColecciones.filter(coleccion => coleccion.titulo !== "Favoritos" && coleccion.titulo !== "Escuchar mas tarde"));
       }, [listaColecciones]);
     
+    useEffect(() => {
+        setListaColecciones(colecciones);
+      }, [colecciones]);
 
     const opciones_col_propia = [
         'Eliminar coleccion'
