@@ -60,13 +60,12 @@ export const Changefoto = () => {
         newImg = '9'
         break;
     }
+    console.log(auth);
     //setAuth({username, user_id, newImg, role})
     if (img === newImg){
-      console.log(auth?.img);
       console.log('Es la misma imagen');
     }
     else{
-      console.log(auth?.img);
       try {
         const respuesta = await axios.post(URL_PERFIL, 
           JSON.stringify({newImg}),
