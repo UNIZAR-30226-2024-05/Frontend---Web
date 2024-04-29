@@ -22,7 +22,7 @@ export const Changefoto = () => {
   const navigate = useNavigate();
 
   const { auth , setAuth } = useContext(AuthContext);
-  const { img } = auth;
+  const { img, setImg } = auth;
 
   const URL_PERFIL = '/users/change_img'
 
@@ -75,7 +75,7 @@ export const Changefoto = () => {
             withCredentials: true
           }
         );
-        console.log(respuesta); /* Solo desarrollo */
+        setImg({newImg});
 
         /*setAuth({ username, user_id, img, role });*/
 
@@ -90,6 +90,7 @@ export const Changefoto = () => {
       }
     }
     navigate('/perfil');
+    console.log(auth?.img);
   };
 
   return (
