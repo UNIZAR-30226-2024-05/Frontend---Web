@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MdMoreVert } from 'react-icons/md'; // Importa el ícono de tres puntos
 import './DropdownButtonColeccion.css';
 
-const DropdownButtonColeccion = ({libro, coleccion}) => {
+const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const option = 'Eliminar de ' + coleccion.titulo;
+  const option = 'Eliminar de ' + coleccion?.titulo;
 
   const handleToggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -15,7 +15,7 @@ const DropdownButtonColeccion = ({libro, coleccion}) => {
   const handleOptionClick = async () => {
     const URL_RM = '/colecciones/eliminarAudiolibro'; 
     const audiolibroId = libro.audiolibro?.id;
-    const coleccionId = coleccion.id;
+    const coleccionId = coleccion?.id;
         try {
             const respuesta = await axios.post(URL_RM, 
               JSON.stringify({audiolibroId, coleccionId}),

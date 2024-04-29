@@ -86,7 +86,11 @@ const ListaColeccion = ({ coleccion }) => {
                         </div>
                     </div>
                     <div className='boton-container'>
-                        <DropdownButtonColeccion className='boton-opciones' libro={libro} coleccion={coleccion} />
+                        <DropdownButtonColeccion 
+                        className='boton-opciones' 
+                        libro={libro} 
+                        coleccion={coleccion} 
+                        setColeccion={setColeccion}/>
                     </div>
                 </div>
               ))}
