@@ -369,8 +369,8 @@ const Libro = () => {
                 <div>
                     {tienesResenia() ? (
                         <div className='info-miReseniaExiste'>
-                            <h2>Mi reseña</h2>
-                            <p>{miResenia.comentario}</p>
+                            <h2 className='info-miResenia-titulo'>Mi reseña</h2>
+                            <p className="info-texto-resenia">{miResenia.comentario}</p>
                             <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
                             <div className='info-estrellas-en-resenias'>
                                 {[...Array(5)].map((_, index) => (
@@ -382,11 +382,11 @@ const Libro = () => {
                             <h3>{miResenia.fecha && new Date(miResenia.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                             <button>Editar reseña</button>
 
-                            
+
                         </div>
                     ) : (
                         <div className='info-mi-resenia-noExiste'>
-                            <h2>¡Añade tu reseña y comparte tu opinión!</h2>
+                            <h2 className='info-miResenia-titulo'>¡Añade tu reseña y comparte tu opinión!</h2>
                             <form onSubmit={handleSubmit} className='info-anadir-mia'>
                                 <select 
                                     className='info-select-privacidad' 
