@@ -375,7 +375,7 @@ const Libro = () => {
                             <div className='info-estrellas-en-resenias'>
                                 {[...Array(5)].map((_, index) => (
                                     <span key={index}
-                                        className={(index < miResenia.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                        className={(miResenia && typeof miResenia.puntuacion !== 'undefined' &&index < miResenia.puntuacion) ? "info-star-filled" : "info-star-empty"}
                                     >&#9733;</span>
                                 ))}
                             </div>
@@ -420,7 +420,7 @@ const Libro = () => {
                                     <div className='info-estrellas-en-resenias'>
                                         {[...Array(5)].map((_, index) => (
                                             <span key={index}
-                                                className={(index < amigo.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                                className={(amigo && typeof amigo.puntuacion !== 'undefined' && index < amigo.puntuacion) ? "info-star-filled" : "info-star-empty"}
                                             >&#9733;</span>
                                         ))}
                                     </div>
@@ -444,7 +444,7 @@ const Libro = () => {
                                     <div className='info-estrellas-en-resenias'>
                                         {[...Array(5)].map((_, index) => (
                                             <span key={index}
-                                                className={(index < usuario.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                                className={(usuario && typeof usuario.puntuacion !== 'undefined' &&index < usuario.puntuacion) ? "info-star-filled" : "info-star-empty"}
                                             >&#9733;</span>
                                         ))}
                                     </div>
