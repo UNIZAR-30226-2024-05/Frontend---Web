@@ -5,7 +5,7 @@ import axios from '../../api/axios';
 import AuthContext from '../../context/AuthProvider';
 import DropdownButtonColecciones from './DropdownButtonColecciones';
 
-const ListaColecciones = ({colecciones}) => {
+const ListaColecciones = ({colecciones, setColecciones}) => {
 
     const navigate = useNavigate();
 
@@ -159,10 +159,18 @@ const ListaColecciones = ({colecciones}) => {
                     </div>
                     {user_id === coleccion.propietario ? 
                         <div className='boton-container'>
-                            <DropdownButtonColecciones className='boton-opciones' options={opciones_col_propia} collectionId={coleccion.id} />
+                            <DropdownButtonColecciones 
+                            className='boton-opciones' 
+                            options={opciones_col_propia} 
+                            collectionId={coleccion.id}
+                            setColecciones={setColecciones}/>
                         </div> : 
                         <div className='boton-container'>
-                            <DropdownButtonColecciones className='boton-opciones' options={opciones_col_ajena} collectionId={coleccion.id} />
+                            <DropdownButtonColecciones
+                            className='boton-opciones'
+                            options={opciones_col_ajena}
+                            collectionId={coleccion.id} 
+                            setColecciones={setColecciones}/>
                         </div>
                     }
                 </div>
