@@ -68,13 +68,21 @@
 
 .botonEliminar,
 .botonEnviar,
-.botonCancelar,
-.botonAceptar,
-.botonRechazar {
+.botonCancelar{
     height: 20%;
     margin-top: 2vh;
     margin-bottom: 2vh;
     border-radius: 10px;
+}
+
+.botonAceptar{
+    height: 20vh;
+    margin-top: 5vh;
+}
+
+.botonRechazar{
+    height: 20vh;
+    margin-bottom: 5vh;
 }
 
 .lista-amigos .lista .amigo .amigo-info .nombre-amigo {
