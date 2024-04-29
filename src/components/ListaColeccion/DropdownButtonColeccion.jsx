@@ -6,7 +6,7 @@ const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const option = 'Eliminar de ' + coleccion?.titulo;
+  const [option, setOption] = useState('Eliminar de ' + coleccion?.titulo);
 
   const handleToggleDropdown = () => {
     setIsOpen(!isOpen);
