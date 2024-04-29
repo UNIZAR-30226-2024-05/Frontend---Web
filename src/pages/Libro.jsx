@@ -132,11 +132,11 @@ const Libro = () => {
     }
     
     const hayReseniasAmigos = () => {
-        return reseñasAmigos && Object.keys(reseñasAmigos).length > 0;
+        return reseniasAmigos && Object.keys(reseniasAmigos).length > 0;
     }
 
     const hayReseniasComunidad = () => {
-        return reseñasComunidad && Object.keys(reseñasComunidad).length > 0;
+        return reseniasComunidad && Object.keys(reseniasComunidad).length > 0;
     }  
 
     const [puntuacionUsuario, setPuntuacionUsuario] = useState(0);
