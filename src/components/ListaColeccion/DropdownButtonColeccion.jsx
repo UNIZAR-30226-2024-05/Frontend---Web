@@ -30,7 +30,7 @@ const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
             console.log(respuesta); /* Solo desarrollo */
             setColeccion(coleccion => {
                 // Realiza una copia de la colección actual y filtra el audiolibro eliminado
-                const nuevaColeccion = coleccion.filter(item => item.id !== audiolibroId);
+                const nuevaColeccion = coleccion.coleccion.filter(item => item.id !== audiolibroId);
                 return nuevaColeccion;
             });
         } catch (err) {
