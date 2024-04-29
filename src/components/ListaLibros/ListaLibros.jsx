@@ -54,6 +54,9 @@ const ListaLibros = ({generos, libros}) => {
         navigate('/libro', {state: {id_libro}})
     }
 
+    const handleAutorClick = (id_autor) => {
+        navigate('/autor', {state: {id_autor}})
+    }
 
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
 
@@ -88,6 +91,9 @@ const ListaLibros = ({generos, libros}) => {
                         </div>
                         <div className='titulo' onClick={() => handleLibroClick(libro.id)}>
                             <h1>{libro.titulo}</h1>
+                        </div>
+                        <div className='autor'>
+                            <p>Autor: <span onClick={() => handleAutorClick(libro.autor)} className='info-linkAutor'>{autor.nombre}</span></p>
                         </div>
                     </div>
                     { /* Quito el boton de momento, confirmar eliminación más adelante */ 
