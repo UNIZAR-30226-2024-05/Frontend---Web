@@ -316,6 +316,14 @@
   font-size: 2.0rem;
 }
 
+.info-estrellas-en-resenias {
+  display: flex;
+  justify-content: flex-start;
+  width: 30%;
+  cursor: pointer;
+  font-size: 2.0rem;
+}
+
 /* Parte donde se escribe mi reseña*/
 .info-mi-resenia {
   margin-top: 5%;

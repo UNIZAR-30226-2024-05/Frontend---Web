@@ -372,7 +372,7 @@ const Libro = () => {
                             <h2>Mi reseña</h2>
                             <p>{miResenia.comentario}</p>
                             <h2>Mi puntuación</h2>
-                            <div className='info-mis-estrellas'>
+                            <div className='info-estrellas-en-resenias'>
                                 {[...Array(5)].map((_, index) => (
                                     <span key={index}
                                         className={(index < miResenia.puntuacion) ? "info-star-filled" : "info-star-empty"}
@@ -391,7 +391,7 @@ const Libro = () => {
                                     value={privacidad}
                                     onChange={handlePrivacidadChange}
                                     required>
-                                    <option value=''>Selecciona la privacidad de tu reseña</option>
+                                    <h3>Selecciona quién quieres que vea tus reseñas.</h3>
                                     <option value='publica'>Pública</option>
                                     <option value='amigos'>Solo amigos</option>
                                     <option value='privada'>Privada</option>
@@ -408,7 +408,7 @@ const Libro = () => {
                         </div>
                     )}
                 </div>
-                {/* Reseñas de los oyentes al final*/}
+                {/* Reseñas de tus amigos y publicas al final*/}
                 <div className="info-resenias-amigos">
                     <h2>Reseñas de tus amigos</h2>
                     {hayReseniasAmigos() ? (
@@ -436,10 +436,10 @@ const Libro = () => {
                 </div>
 
                 <div className="info-resenias">
-                    <h2>Reseñas del resto de la comunidad</h2>
+                    <h2>Reseñas públicas del resto de la comunidad</h2>
                     {hayReseniasComunidad() ? (
                         <div>
-                            {reseniasComunidad.filter(usuario => usuario.username !== miResenia.username).map((usuario, index) => (
+                            {reseniasComunidad.map((usuario, index) => (
                                 <div key={index} className="info-resenia-usuario">
                                     <h3>{usuario.username}</h3>
                                     <p>{usuario.comentario}</p>
