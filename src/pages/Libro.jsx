@@ -24,6 +24,8 @@ const Libro = () => {
     const [portada, setPortada] = useState(foto1);
     const [colecciones, setColecciones] = useState([]);
     const [miResenia, setMiResenia] = useState([]);
+    const [miPuntuacion, setMiPuntuacion] = useState(0);
+    const [privacidad, setPrivacidad] = useState([]);
 
     const [capitulos, setCapitulos] = useState([]);
 
@@ -87,6 +89,37 @@ const Libro = () => {
         return miResenia.length > 0;
     }
 
+    const handlePrivacidadChange = (event) => {
+        setPrivacidad(event.target.value);
+    }
+
+    const handleEnviarResenia = (event) => {
+        const navigate = useNavigate();
+        try {
+            const respuesta = axios.post('/review/post_review', 
+            JSON.stringify({id_libro, comentario, puntuacionGuardada, privacidad}),
+            {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+            });
+            console.log(respuesta);
+        }
+        catch (error) {
+            if (!error.response) {
+                console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 409) {
+                console.log('Ya hay una reseña tuya en este libro');
+            } else if (error.response.status === 500) {
+                console.log('Error en el servidor');
+            } else {
+                console.log('Error desconocido');
+            }
+        }
+        navigate('/libro', {state: {id_libro}});
+    }
+
+
+
     const reseñasAmigos = [
         {
             nombre: 'Ana',
@@ -120,7 +153,7 @@ const Libro = () => {
         
     }
 
-    const handleClick = (index) => {
+    const handleClickPuntuacion = (index) => {
         const nuevaPuntuacion = index + 1;
         setPuntuacionUsuario(nuevaPuntuacion);
         setPuntuacionGuardada(nuevaPuntuacion);
@@ -331,7 +364,7 @@ const Libro = () => {
                         {[...Array(5)].map((_, index) => (
                             <span key={index}
                                 className={(index < puntuacionUsuario) ? "info-star-filled" : "info-star-empty"}
-                                onClick={() => handleClick(index)}
+                                onClick={() => handleClickPuntuacion(index)}
                                 onMouseEnter={() => handleMouseEnter(index)}
                                 onMouseLeave={handleMouseLeave}
                             >&#9733;</span>
@@ -345,15 +378,33 @@ const Libro = () => {
                             <h2>Mi reseña</h2>
                             <p>{miResenia.comentario}</p>
                             <h2>Mi puntuación</h2>
-                            
-                            <h3>miResenia.fecha</h3>
+                            <div className='info-mis-estrellas'>
+                                {[...Array(5)].map((_, index) => (
+                                    <span key={index}
+                                        className={(index < miResenia.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                    >&#9733;</span>
+                                ))}
+                            </div>
+                            <h3>{miResenia.fecha}</h3>
                             <button>Editar reseña</button>
                         </div>
                     ) : (
                         <div>
                             <h2>¡Añade tu reseña y comparte tu opinión!</h2>
                             <form onSubmit={handleSubmit} className='info-anadir-mia'>
-                                <textarea className="info-texto-resenia"
+                                <select 
+                                    className='info-select-privacidad' 
+                                    value={privacidad}
+                                    onChange={handlePrivacidadChange}
+                                    required>
+                                    <option value=''>Selecciona la privacidad de tu reseña</option>
+                                    <option value='publica'>Pública</option>
+                                    <option value='amigos'>Solo amigos</option>
+                                    <option value='privada'>Privada</option>
+                                </select>
+                                <textarea 
+                                    className="info-texto-resenia"
+                                    value={comentario}
                                     placeholder="Escribe aquí tu reseña"
                                     required
                                 />
