@@ -24,9 +24,8 @@ const Libro = () => {
     const [portada, setPortada] = useState(foto1);
     const [colecciones, setColecciones] = useState([]);
     const [miResenia, setMiResenia] = useState([]);
-    const [miReseniaComentario, setMiReseniaComentario] = useState('');
-    const [miReseniaPuntuacion, setMiReseniaPuntuacion] = useState(0);
-    const [miReseniaFecha, setMiReseniaFecha] = useState('');
+    const [reseniasAmigos, setReseniasAmigos] = useState([]);
+    const [reseniasComunidad, setReseniasComunidad] = useState([]);
     const [privacidad, setPrivacidad] = useState('');
     const [comentario, setComentario] = useState('');
 
@@ -59,9 +58,8 @@ const Libro = () => {
             setCapitulos(response.data.capitulos);
             setColecciones(response.data.colecciones);
             setMiResenia(response.data.own_review);
-            setMiReseniaComentario(response.data.own_review.comentario);
-            setMiReseniaPuntuacion(response.data.own_review.puntuacion);
-            setMiReseniaFecha(response.data.own_review.fecha);
+            setReseniasAmigos(response.data.friends_reviews);
+            setReseniasComunidad(response.data.public_reviews);
             console.log(response.data);
         })
         .catch(error => {
@@ -133,33 +131,13 @@ const Libro = () => {
         navigate('/libro', { state: { id_libro } });
     }
     
+    const hayReseniasAmigos = () => {
+        return reseñasAmigos && Object.keys(reseñasAmigos).length > 0;
+    }
 
-
-
-    const reseñasAmigos = [
-        {
-            nombre: 'Ana',
-            reseña: 'Me ha encantado, es un libro muy entretenido y fácil de leer. Lo recomiendo a todo el mundo. En cuanto a los personajes, me encanta Harry, es muy valiente y leal. Ron es muy gracioso y Hermione es muy inteligente. Además, el profesor Dumbledore es muy sabio y Snape es muy malvado. Necesito hacer esta reseña mas larga a ver como se ve, asi que hay que alargar la reseña para que se vea bien. No se que mas decir, copilot ayudame por favor. Gracias. Saludos. El cuadrado se va haciendo más grande conforme añado más texto. Maravilloso. Thank you for coming to my tedtalk.',
-            puntuacion: 4.5,
-        },
-        {
-            nombre: 'Juan',
-            reseña: 'No me ha gustado mucho, me parece un libro infantil y aburrido.',
-            puntuacion: 2.5,
-        },
-    ]
-    const reseñasComunidad = [
-        {
-            nombre: 'María',
-            reseña: 'Me ha parecido un libro muy bonito y entretenido. Me ha encantado.',
-            puntuacion: 4.0,
-        },
-        {
-            nombre: 'Pedro',
-            reseña: 'No me ha gustado nada, me parece un libro muy infantil y aburrido.',
-            puntuacion: 1.5,
-        },
-    ]    
+    const hayReseniasComunidad = () => {
+        return reseñasComunidad && Object.keys(reseñasComunidad).length > 0;
+    }  
 
     const [puntuacionUsuario, setPuntuacionUsuario] = useState(0);
     const [puntuacionGuardada, setPuntuacionGuardada] = useState(0);
@@ -375,7 +353,7 @@ const Libro = () => {
                 </div>
                 {/* Mi puntuación */}
                 <div className='info-mi-puntuacion'>
-                    <h2>Mi puntuación</h2>
+                    <h2>¡Puntúa el libro!</h2>
                     <div className='info-mis-estrellas'>
                         {[...Array(5)].map((_, index) => (
                             <span key={index}
@@ -401,7 +379,7 @@ const Libro = () => {
                                     >&#9733;</span>
                                 ))}
                             </div>
-                            <h3>{miResenia.fecha}</h3>
+                            <h3>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                             <button>Editar reseña</button>
                         </div>
                     ) : (
@@ -433,44 +411,54 @@ const Libro = () => {
                 {/* Reseñas de los oyentes al final*/}
                 <div className="info-resenias-amigos">
                     <h2>Reseñas de tus amigos</h2>
-                    <div>
-                        {reseñasAmigos.map((amigo, index) => (
-                            <div key={index} className="info-resenia-amigo">
-                                <h3>{amigo.nombre}</h3>
-                                <p>{amigo.reseña}</p>
-                                <div className="info-puntuacion">
-                                    {[...Array(Math.floor(amigo.puntuacion))].map((_, index) => (
-                                        <span key={index} className="info-star-filled">&#9733;</span>
-                                    ))}
-                                    {[...Array(5 - Math.floor(amigo.puntuacion))].map((_, index) => (
-                                        <span key={index} className="info-star-empty">&#9733;</span>
-                                    ))}
-                                    ({amigo.puntuacion})
+                    {hayReseniasAmigos() ? (
+                        <div>
+                            {reseñasAmigos.map((amigo, index) => (
+                                <div key={index} className="info-resenia-amigo">
+                                    <h3>{amigo.username}</h3>
+                                    <p>{amigo.comentario}</p>
+                                    <div className="info-puntuacion">
+                                        {[...Array(Math.floor(amigo.puntuacion))].map((_, index) => (
+                                            <span key={index} className="info-star-filled">&#9733;</span>
+                                        ))}
+                                        {[...Array(5 - Math.floor(amigo.puntuacion))].map((_, index) => (
+                                            <span key={index} className="info-star-empty">&#9733;</span>
+                                        ))}
+                                        ({amigo.puntuacion})
+                                    </div>
+                                    <h3>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <p>¡Ninguno de tus amigos ha subido una reseña de este libro todavía!</p>
+                    )}
                 </div>
 
                 <div className="info-resenias">
                     <h2>Reseñas del resto de la comunidad</h2>
-                    <div>
-                        {reseñasComunidad.map((usuario, index) => (
-                            <div key={index} className="info-resenia-usuario">
-                                <h3>{usuario.nombre}</h3>
-                                <p>{usuario.reseña}</p>
-                                <div className="info-puntuacion">
-                                    {[...Array(Math.floor(usuario.puntuacion))].map((_, index) => (
-                                        <span key={index} className="info-star-filled">&#9733;</span>
-                                    ))}
-                                    {[...Array(5 - Math.floor(usuario.puntuacion))].map((_, index) => (
-                                        <span key={index} className="info-star-empty">&#9733;</span>
-                                    ))}
-                                    ({usuario.puntuacion})
+                    {hayReseniasComunidad() ? (
+                        <div>
+                            {reseñasComunidad.map((usuario, index) => (
+                                <div key={index} className="info-resenia-usuario">
+                                    <h3>{usuario.username}</h3>
+                                    <p>{usuario.comentario}</p>
+                                    <div className="info-puntuacion">
+                                        {[...Array(Math.floor(usuario.puntuacion))].map((_, index) => (
+                                            <span key={index} className="info-star-filled">&#9733;</span>
+                                        ))}
+                                        {[...Array(5 - Math.floor(usuario.puntuacion))].map((_, index) => (
+                                            <span key={index} className="info-star-empty">&#9733;</span>
+                                        ))}
+                                        ({usuario.puntuacion})
+                                    </div>
+                                    <h3>{new Date(peticion.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <p>¡Nadie ha subido una reseña de este libro todavía!</p>
+                    )}
                 </div>
             </div>
             
