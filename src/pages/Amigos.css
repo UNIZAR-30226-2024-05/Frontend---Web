@@ -1,5 +1,7 @@
 .amigos {
     background: linear-gradient(#7f9894, #21ad96);
+    height: auto;
+    min-height: calc(100vh - 80px);
     display: flex;
     justify-content: center; /* Centra los elementos horizontalmente */
     align-items: flex-start;
