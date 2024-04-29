@@ -24,7 +24,6 @@ const Libro = () => {
     const [portada, setPortada] = useState(foto1);
     const [colecciones, setColecciones] = useState([]);
     const [miResenia, setMiResenia] = useState([]);
-    const [miPuntuacion, setMiPuntuacion] = useState(0);
     const [privacidad, setPrivacidad] = useState([]);
     const [comentario, setComentario] = useState('');
 
@@ -96,6 +95,7 @@ const Libro = () => {
 
     const handleEnviarResenia = (event) => {
         const navigate = useNavigate();
+        console.log('Enviando reseña');
         try {
             const respuesta = axios.post('/review/post_review', 
             JSON.stringify({id_libro, comentario, puntuacionGuardada, privacidad}),
