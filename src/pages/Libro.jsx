@@ -90,7 +90,15 @@ const Libro = () => {
     }
 
     const handlePrivacidadChange = (event) => {
-        setPrivacidad(event.target.value);
+        if (event.target.value === 'publica') {
+            setPrivacidad('0');
+        }
+        else if (event.target.value === 'amigos') {
+            setPrivacidad('1');
+        }
+        else if (event.target.value === 'privada') {
+            setPrivacidad('2');
+        }
     }
 
     const handleEnviarResenia = async (navigate) => {
