@@ -92,7 +92,7 @@ const Libro = () => {
     const [mostrarColecciones, setMostrarColecciones] = useState(false);
 
     const tienesResenia = () => {
-        return miResenia.length > 0;
+        return miResenia && Object.keys(miResenia).length > 0;
     }
 
     const handlePrivacidadChange = (event) => {
