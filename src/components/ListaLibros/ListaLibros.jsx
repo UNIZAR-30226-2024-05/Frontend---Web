@@ -93,7 +93,7 @@ const ListaLibros = ({generos, libros}) => {
                             <h1>{libro.titulo}</h1>
                         </div>
                         <div className='autor'>
-                            <p>Autor: <span onClick={() => handleAutorClick(libro.autor)} className='info-linkAutor'>{autor.nombre}</span></p>
+                            <p>Autor: <span onClick={() => handleAutorClick(libro.autor)} className='info-linkAutor'>{libro.autor}</span></p>
                         </div>
                     </div>
                     { /* Quito el boton de momento, confirmar eliminación más adelante */ 
