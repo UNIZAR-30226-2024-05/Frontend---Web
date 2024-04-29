@@ -6,7 +6,7 @@ const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const [option, setOption] = useState('Eliminar de ' + coleccion?.titulo);
+  const [option, setOption] = useState('Eliminar de ' + coleccion.coleccion.titulo);
 
   const handleToggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -15,7 +15,7 @@ const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
   const handleOptionClick = async () => {
     const URL_RM = '/colecciones/eliminarAudiolibro'; 
     const audiolibroId = libro.audiolibro?.id;
-    const coleccionId = coleccion?.id;
+    const coleccionId = coleccion?.coleccion.id;
         try {
             const respuesta = await axios.post(URL_RM, 
               JSON.stringify({audiolibroId, coleccionId}),
