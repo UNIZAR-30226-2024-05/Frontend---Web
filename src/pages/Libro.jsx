@@ -509,7 +509,7 @@ const Libro = () => {
                         <div>
                             {reseniasAmigos.map((amigo, index) => (
                                 <div key={index} className="info-resenia-amigo">
-                                    <h3 onClick={() => handleUsuarioClick(amigo.user_id)}>{amigo.username}</h3>
+                                    <h3 onClick={() => handleUsuarioClick(amigo.user_id)} className='link-usuario'>{amigo.username}</h3>
                                     <p>{amigo.comentario}</p>
                                     <div className='info-estrellas-en-resenias'>
                                         {[...Array(5)].map((_, index) => (
@@ -533,7 +533,7 @@ const Libro = () => {
                         <div>
                             {reseniasComunidad.map((usuario, index) => (
                                 <div key={index} className="info-resenia-usuario">
-                                    <h3 onClick={() => handleUsuarioClick(usuario.user_id)}>{usuario.username}</h3>
+                                    <h3 onClick={() => handleUsuarioClick(usuario.user_id)} className='link-usuario'>{usuario.username}</h3>
                                     <p>{usuario.comentario}</p>
                                     <div className='info-estrellas-en-resenias'>
                                         {[...Array(5)].map((_, index) => (

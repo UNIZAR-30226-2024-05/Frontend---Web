@@ -445,3 +445,6 @@
   border-radius: 5px;
 }
 
+.link-usuario {
+  cursor: pointer;
+}
