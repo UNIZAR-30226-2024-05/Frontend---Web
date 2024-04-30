@@ -4,7 +4,7 @@ import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus, faPlay, faCaretUp, faCaretDown, faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faPlay, faCaretUp, faCaretDown, faHeart as solidHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import axios from '../api/axios';
 
@@ -230,6 +230,32 @@ const Libro = () => {
         navigate('/perfilamigo', { state: { id_user } });
     }
 
+    const handleBorrarResenia = (id_resenia) => {
+        try {
+            const respuesta = axios.post(
+                '/review/delete_review',
+                JSON.stringify({ id_review: id_resenia }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(respuesta);
+        } catch (error) {
+            if (!error.response) {
+                console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 403) {
+                console.log('No propietario');
+            } else if (error.response.status === 404) {
+                console.log('La reseña no existe')
+            }else if (error.response.status === 500){
+                console.log('Server error');
+            } else {
+                console.log('Error');
+            }
+        }
+    }
+
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
@@ -374,6 +400,9 @@ const Libro = () => {
                     {tienesResenia() ? (
                         <div className='info-miReseniaExiste'>
                             <h2 className='info-miResenia-titulo'>Mi reseña</h2>
+                            <h3>
+                                <FontAwesomeIcon icon={faTrashAlt} onClick={handleBorrarResenia(miResenia.id)}/>
+                            </h3>
                             <p className="info-texto-resenia">{miResenia.comentario}</p>
                             <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
                             <div className='info-estrellas-en-resenias'>
