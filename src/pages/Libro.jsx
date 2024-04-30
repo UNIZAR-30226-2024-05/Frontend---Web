@@ -266,7 +266,7 @@ const Libro = () => {
         try {
             const respuesta = axios.post(
                 '/review/edit_review',
-                JSON.stringify({  }),
+                JSON.stringify({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -460,9 +460,9 @@ const Libro = () => {
                                         required
                                     >
                                         <option value=''>Selecciona una opción</option>
-                                        <option value='publica'>Pública</option>
-                                        <option value='amigos'>Solo amigos</option>
-                                        <option value='privada'>Privada</option>
+                                        <option value='0'>Pública</option>
+                                        <option value='1'>Solo amigos</option>
+                                        <option value='2'>Privada</option>
                                     </select>
                                     <textarea
                                         className="info-texto-resenia"
@@ -486,9 +486,9 @@ const Libro = () => {
                                     required
                                 >
                                     <option value=''>Selecciona una opción</option>
-                                    <option value='publica'>Pública</option>
-                                    <option value='amigos'>Solo amigos</option>
-                                    <option value='privada'>Privada</option>
+                                    <option value='0'>Pública</option>
+                                    <option value='1'>Solo amigos</option>
+                                    <option value='2'>Privada</option>
                                 </select>
                                 <textarea
                                     className="info-texto-resenia"
