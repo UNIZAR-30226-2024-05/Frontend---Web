@@ -19,6 +19,7 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
     const [busqueda, setBusqueda] = useState('');
 
     const [nuevaColeccion, setNuevaColeccion] = useState('');
+    const [errMsg, setErrMsg] = useState('');
     
     const [coleccionesFavoritos, setColeccionesFavoritos] = useState(listaColecciones.filter(coleccion => coleccion.titulo === "Favoritos"));
     const [coleccionesEscucharMasTarde, setColeccionesEscucharMasTarde] = useState(listaColecciones.filter(coleccion => coleccion.titulo === "Escuchar mas tarde"));
@@ -53,45 +54,51 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
         setNuevaColeccion(event.target.value);
     } 
 
+    const URL_COLECCION = '/colecciones';
+
+    async function fetchColecciones(){
+        await axios.get(URL_COLECCION, {withCredentials: true})
+        .then(response=>{
+            setColecciones(response.data.collections);
+            console.log(response.data);
+        }).catch(error=>{
+            console.log(error);
+            setLoading(false);
+        })
+    }
+
     const handleClickSubmitColeccion = async () => {
 
-        const URL_COLECCION = '/colecciones';
-        async function fetchColecciones(){
-            await axios.get(URL_COLECCION, {withCredentials: true})
-            .then(response=>{
-                setColecciones(response.data.collections);
-                console.log(response.data);
-            }).catch(error=>{
-                console.log(error);
-                setLoading(false);
-            })
-        }
-
         const URL_CONSULTA = '/colecciones/create';
-        console.log(URL_CONSULTA);
-        console.log(nuevaColeccion);
-        try {
-            const respuesta = await axios.post(URL_CONSULTA, 
-              JSON.stringify({title: nuevaColeccion}),
-              {
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: true
-              }
-            );
-            console.log(respuesta); /* Solo desarrollo */
-            setNuevaColeccion('');
-            setCrearColeccion(false);
-            fetchColecciones();
-        } catch (err) {
-            if (!err.response) {
-                console.log('No hay respuesta del servidor');
-            } else if (err.response.status === 400) {
-                console.log('Error: Titulo existente'); 
-            } else if (err.response.status === 500){
-                console.log('Server error');
-            } else {
-                console.log('Error');
+
+        if(nuevaColeccion.length > 5 || nuevaColeccion.length < 30 ){
+            try {
+                const respuesta = await axios.post(URL_CONSULTA, 
+                JSON.stringify({title: nuevaColeccion}),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+                );
+                console.log(respuesta); /* Solo desarrollo */
+                setNuevaColeccion('');
+                setCrearColeccion(false);
+                setErrMsg('');
+                fetchColecciones();
+            } catch (err) {
+                if (!err.response) {
+                    setErrMsg('No hay respuesta del servidor');
+                } else if (err.response.status === 400) {
+                    setErrMsg('Error: Titulo existente'); 
+                } else if (err.response.status === 500){
+                    setErrMsg('Server error');
+                } else {
+                    setErrMsg('Error');
+                }
             }
+        }
+        else {
+            setErrMsg('La colección debe tener entre 5 y 30 caracteres');
         }
     }
 
@@ -133,6 +140,7 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
                 
             </div>
         ) : null}
+        {errMsg && <div className="sign-error-message"><p>{errMsg}</p></div>}
 
         <div className='lista'>
             {coleccionesFavoritos.map((coleccion, i) => (

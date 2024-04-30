@@ -61,10 +61,6 @@
   color: #000000;
 }
 
-.error-message {
-  margin-left: 10px;
-}
-
 .sign-error-message {
   background: #ff0000d1;
   border-radius: 10px;
