@@ -434,10 +434,7 @@ const Libro = () => {
                     {tienesResenia() ? (
                         !modoEdicion ? (
                             <div className='info-miReseniaExiste'>
-                                <h2 className='info-miResenia-titulo'>Mi reseña</h2>
-                                <h3>
-                                    <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(navigate)} className='borrar-resenia'/>
-                                </h3>
+                                <h2 className='info-miResenia-titulo'>Mi reseña <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(navigate)} className='borrar-resenia'/></h2>
                                 <p className="info-texto-resenia">{miResenia.comentario}</p>
                                 <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
                                 <div className='info-estrellas-en-resenias'>
