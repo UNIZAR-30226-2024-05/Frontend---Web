@@ -436,7 +436,7 @@ const Libro = () => {
                             <div className='info-miReseniaExiste'>
                                 <h2 className='info-miResenia-titulo'>Mi reseña</h2>
                                 <h3>
-                                    <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(navigate)} />
+                                    <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(navigate)} className='borrar-resenia'/>
                                 </h3>
                                 <p className="info-texto-resenia">{miResenia.comentario}</p>
                                 <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
@@ -448,7 +448,7 @@ const Libro = () => {
                                     ))}
                                 </div>
                                 <h3>{miResenia.fecha && new Date(miResenia.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
-                                <button onClick={() => setModoEdicion(true)}>Editar reseña</button>
+                                <button onClick={() => setModoEdicion(true)} className='boton-editar-resenia'>Editar reseña</button>
                             </div>
                         ) : (
                             <div className='info-editarResenia'>

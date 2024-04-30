@@ -393,8 +393,22 @@
 }
 
 .borrar-resenia {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.boton-editar-resenia {
+  margin-top: 2%;
+  margin-left: 80%;
+  width: 20%;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: beige;
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
 }
 
 /* Las segundas que aparecen son las reseñas de los amigos*/
