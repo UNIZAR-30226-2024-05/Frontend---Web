@@ -24,6 +24,7 @@ const Libro = () => {
     const [portada, setPortada] = useState(foto1);
     const [colecciones, setColecciones] = useState([]);
     const [miResenia, setMiResenia] = useState([]);
+    const [miReseniaId, setMiReseniaId] = useState('');
     const [reseniasAmigos, setReseniasAmigos] = useState([]);
     const [reseniasComunidad, setReseniasComunidad] = useState([]);
     const [privacidad, setPrivacidad] = useState('');
@@ -58,6 +59,7 @@ const Libro = () => {
             setCapitulos(response.data.capitulos);
             setColecciones(response.data.colecciones);
             setMiResenia(response.data.own_review);
+            setMiReseniaId(response.data.own_review.id);
             setReseniasAmigos(response.data.friends_reviews);
             setReseniasComunidad(response.data.public_reviews);
             console.log(response.data);
@@ -235,7 +237,7 @@ const Libro = () => {
         try {
             const respuesta = await axios.post(
                 '/review/delete_review',
-                JSON.stringify({ id_review: miResenia.id_resenia }),
+                JSON.stringify({ id_review: miReseniaId }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
