@@ -11,12 +11,12 @@ const ListaColeccion = ({ coleccion, setColeccion }) => {
     const [listaLibros, setListaLibros] = useState(coleccion.audiolibros);
     const [listaShow, setListaShow] = useState(coleccion.audiolibros);
     const [busqueda, setBusqueda] = useState('');
-/*
+
     useEffect(() => {
-        setListaLibros(coleccion.audiolibros);
+        setColeccion({...coleccion, audiolibros: listaLibros})
         filtrar(busqueda);
-      }, [coleccion]);
-*/
+      }, [listaLibros]);
+
     const handleChangeBusqueda = event => {
         setBusqueda(event.target.value);
         filtrar(event.target.value);
@@ -89,7 +89,7 @@ const ListaColeccion = ({ coleccion, setColeccion }) => {
                         className='boton-opciones' 
                         libro={libro} 
                         coleccion={coleccion} 
-                        setColeccion={setColeccion}/>
+                        setListaLibros={setListaLibros}/>
                     </div>
                 </div>
               ))}

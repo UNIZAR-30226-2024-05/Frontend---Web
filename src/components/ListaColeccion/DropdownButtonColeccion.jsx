@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from '../../api/axios';
 import { MdMoreVert } from 'react-icons/md'; // Importa el ícono de tres puntos
 import './DropdownButtonColeccion.css';
 
-const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
+const DropdownButtonColeccion = ({libro, coleccion, setListaLibros}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -16,8 +17,6 @@ const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
     const URL_RM = '/colecciones/eliminarAudiolibro'; 
     const audiolibroId = libro?.id;
     const coleccionId = coleccion?.coleccion.id;
-    console.log(audiolibroId);
-    console.log(coleccionId);
         try {
             const respuesta = await axios.post(URL_RM, 
               JSON.stringify({audiolibroId, coleccionId}),
@@ -27,11 +26,12 @@ const DropdownButtonColeccion = ({libro, coleccion, setColeccion}) => {
               }
             );
             console.log(respuesta); /* Solo desarrollo */
-            setColeccion(coleccion => {
+            setListaLibros(libros => {
                 // Realiza una copia de la colección actual y filtra el audiolibro eliminado
-                const nuevaColeccion = coleccion.filter(item => item.id !== audiolibroId);
+                const nuevaColeccion = coleccion.audiolibros.filter(item => item.id !== audiolibroId);
                 return nuevaColeccion;
             });
+            setIsOpen(false);
         } catch (err) {
             if (!err.response) {
               console.log('No hay respuesta del servidor');
