@@ -230,12 +230,12 @@ const Libro = () => {
         navigate('/perfilamigo', { state: { id_user } });
     }
 
-    const handleBorrarResenia = async (id_resenia) => {
+    const handleBorrarResenia = async () => {
         console.log(id_resenia);
         try {
             const respuesta = await axios.post(
                 '/review/delete_review',
-                JSON.stringify({ id_review: id_resenia }),
+                JSON.stringify({ id_review: miResenia.id_resenia }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -402,7 +402,7 @@ const Libro = () => {
                         <div className='info-miReseniaExiste'>
                             <h2 className='info-miResenia-titulo'>Mi reseña</h2>
                             <h3>
-                                <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(miResenia.id)}/>
+                                <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia()}/>
                             </h3>
                             <p className="info-texto-resenia">{miResenia.comentario}</p>
                             <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
