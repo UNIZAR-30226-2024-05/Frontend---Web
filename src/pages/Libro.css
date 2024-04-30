@@ -392,6 +392,11 @@
   font-size: 2.0rem;
 }
 
+.borrar-resenia {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
 /* Las segundas que aparecen son las reseñas de los amigos*/
 .info-resenias-amigos{
   margin-top: 5%;
