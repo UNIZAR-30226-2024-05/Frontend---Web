@@ -233,7 +233,7 @@ const Libro = () => {
     }
 
     const handleBorrarResenia = async () => {
-        //console.log(id_resenia);
+        console.log(miReseniaId);
         try {
             const respuesta = await axios.post(
                 '/review/delete_review',
