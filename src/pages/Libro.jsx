@@ -263,6 +263,7 @@ const Libro = () => {
     const [modoEdicion, setModoEdicion] = useState(false);
 
     const handleEditarResenia = () => {
+        console.log({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad });
         try {
             const respuesta = axios.post(
                 '/review/post_review',
