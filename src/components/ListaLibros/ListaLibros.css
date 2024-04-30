@@ -44,7 +44,7 @@
 .contenedor-lista .lista .libro .contenido-libro .info-libro {
     /* Estilos para los títulos de los libros */
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     color: white;
     text-decoration: none;
 }
@@ -57,11 +57,6 @@
 .contenedor-lista .lista .libro .contenido-libro .info-libro .autor {
   /* Estilos para los títulos de los libros */
   margin: 0; /* Elimina el margen predeterminado */
-  margin-top: 2vh;
-}
-.autor{
-  display: flex;
-  flex-direction: row;
   margin-top: 2vh;
 }
 
