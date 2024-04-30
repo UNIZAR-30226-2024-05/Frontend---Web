@@ -265,7 +265,7 @@ const Libro = () => {
     const handleEditarResenia = () => {
         try {
             const respuesta = axios.post(
-                '/review/edit_review',
+                '/review/post_review',
                 JSON.stringify({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad }),
                 {
                     headers: { 'Content-Type': 'application/json' },
