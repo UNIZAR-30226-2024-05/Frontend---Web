@@ -41,13 +41,24 @@
     margin: 10px;
 }
 
-.contenedor-lista .lista .libro .contenido-libro .titulo {
+.contenedor-lista .lista .libro .contenido-libro .info-libro {
     /* Estilos para los títulos de los libros */
-    margin: 0; /* Elimina el margen predeterminado */
+    display: flex;
+    flex-direction: row;
     color: white;
     text-decoration: none;
 }
 
+.contenedor-lista .lista .libro .contenido-libro .info-libro .titulo {
+  /* Estilos para los títulos de los libros */
+  margin: 0; /* Elimina el margen predeterminado */
+}
+
+.contenedor-lista .lista .libro .contenido-libro .info-libro .autor {
+  /* Estilos para los títulos de los libros */
+  margin: 0; /* Elimina el margen predeterminado */
+  margin-top: 2vh;
+}
 .autor{
   display: flex;
   flex-direction: row;
