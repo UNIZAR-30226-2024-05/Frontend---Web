@@ -232,7 +232,7 @@ const Libro = () => {
         navigate('/perfilamigo', { state: { id_user } });
     }
 
-    const handleBorrarResenia = async () => {
+    const handleBorrarResenia = async (navigate) => {
         console.log(miReseniaId);
         try {
             const respuesta = await axios.post(
@@ -243,7 +243,7 @@ const Libro = () => {
                     withCredentials: true
                 }
             );
-            console.log(respuesta.data);
+            console.log(respuesta);
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
@@ -257,6 +257,7 @@ const Libro = () => {
                 console.log('Error');
             }
         }
+        navigate('/libro', { state: { id_libro } });
     }
 
     return (
@@ -404,7 +405,7 @@ const Libro = () => {
                         <div className='info-miReseniaExiste'>
                             <h2 className='info-miResenia-titulo'>Mi reseña</h2>
                             <h3>
-                                <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia()}/>
+                                <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(navigate)}/>
                             </h3>
                             <p className="info-texto-resenia">{miResenia.comentario}</p>
                             <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
