@@ -260,6 +260,35 @@ const Libro = () => {
         navigate('/libro', { state: { id_libro } });
     }
 
+    const [modoEdicion, setModoEdicion] = useState(false);
+
+    const handleEditarResenia = () => {
+        try {
+            const respuesta = axios.post(
+                '/review/edit_review',
+                JSON.stringify({  }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(respuesta);
+        }
+        catch (error) {
+            if (!error.response) {
+                console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 403) {
+                console.log('No propietario');
+            } else if (error.response.status === 404) {
+                console.log('La reseña no existe')
+            }else if (error.response.status === 500){
+                console.log('Server error');
+            } else {
+                console.log('Error');
+            }
+        }
+    }
+
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
@@ -402,39 +431,66 @@ const Libro = () => {
                 {/* Mi reseña */}
                 <div>
                     {tienesResenia() ? (
-                        <div className='info-miReseniaExiste'>
-                            <h2 className='info-miResenia-titulo'>Mi reseña</h2>
-                            <h3>
-                                <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(navigate)}/>
-                            </h3>
-                            <p className="info-texto-resenia">{miResenia.comentario}</p>
-                            <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
-                            <div className='info-estrellas-en-resenias'>
-                                {[...Array(5)].map((_, index) => (
-                                    <span key={index}
-                                        className={(miResenia && typeof miResenia.puntuacion !== 'undefined' &&index < miResenia.puntuacion) ? "info-star-filled" : "info-star-empty"}
-                                    >&#9733;</span>
-                                ))}
+                        !modoEdicion ? (
+                            <div className='info-miReseniaExiste'>
+                                <h2 className='info-miResenia-titulo'>Mi reseña</h2>
+                                <h3>
+                                    <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(navigate)} />
+                                </h3>
+                                <p className="info-texto-resenia">{miResenia.comentario}</p>
+                                <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
+                                <div className='info-estrellas-en-resenias'>
+                                    {[...Array(5)].map((_, index) => (
+                                        <span key={index}
+                                            className={(miResenia && typeof miResenia.puntuacion !== 'undefined' && index < miResenia.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                        >&#9733;</span>
+                                    ))}
+                                </div>
+                                <h3>{miResenia.fecha && new Date(miResenia.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
+                                <button onClick={() => setModoEdicion(true)}>Editar reseña</button>
                             </div>
-                            <h3>{miResenia.fecha && new Date(miResenia.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
-                            <button>Editar reseña</button>
-                        </div>
+                        ) : (
+                            <div className='info-editarResenia'>
+                                <h2>Editar mi reseña</h2>
+                                <form onSubmit={handleSubmit} className='info-anadir-mia'>
+                                    <select
+                                        className='info-select-privacidad'
+                                        value={privacidad}
+                                        onChange={handlePrivacidadChange}
+                                        required
+                                    >
+                                        <option value=''>Selecciona una opción</option>
+                                        <option value='publica'>Pública</option>
+                                        <option value='amigos'>Solo amigos</option>
+                                        <option value='privada'>Privada</option>
+                                    </select>
+                                    <textarea
+                                        className="info-texto-resenia"
+                                        value={comentario}
+                                        onChange={(event) => setComentario(event.target.value)}
+                                        placeholder="Escribe aquí tu reseña"
+                                        required
+                                    />
+                                    <button className="info-subir-resenia" type="submit" onClick={() => handleEditarResenia()}>Guardar cambios</button>
+                                </form>
+                            </div>
+                        )
                     ) : (
                         <div className='info-mi-resenia-noExiste'>
                             <h2 className='info-miResenia-titulo'>¡Añade tu reseña y comparte tu opinión!</h2>
                             <form onSubmit={handleSubmit} className='info-anadir-mia'>
-                                <select 
-                                    className='info-select-privacidad' 
+                                <select
+                                    className='info-select-privacidad'
                                     value={privacidad}
                                     onChange={handlePrivacidadChange}
-                                    required>
-                                    <h3>Selecciona quién quieres que vea tus reseñas.</h3>
+                                    required
+                                >
                                     <option value=''>Selecciona una opción</option>
                                     <option value='publica'>Pública</option>
                                     <option value='amigos'>Solo amigos</option>
                                     <option value='privada'>Privada</option>
                                 </select>
-                                <textarea 
+                                <textarea
                                     className="info-texto-resenia"
                                     value={comentario}
                                     onChange={(event) => setComentario(event.target.value)}
@@ -442,10 +498,12 @@ const Libro = () => {
                                     required
                                 />
                             </form>
-                            <button className="info-subir-resenia" type="submit" onClick={()=> handleEnviarResenia(navigate)}>Publicar reseña</button>
+                            <button className="info-subir-resenia" type="submit" onClick={() => handleEnviarResenia(navigate)}>Publicar reseña</button>
                         </div>
                     )}
                 </div>
+
+
                 {/* Reseñas de tus amigos y publicas al final*/}
                 <div className="info-resenias-amigos">
                     <h2>Reseñas de tus amigos</h2>
