@@ -71,7 +71,7 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
 
         const URL_CONSULTA = '/colecciones/create';
 
-        if(nuevaColeccion.length > 5 || nuevaColeccion.length < 30 ){
+        if(nuevaColeccion.length > 5 && nuevaColeccion.length < 30 ){
             try {
                 const respuesta = await axios.post(URL_CONSULTA, 
                 JSON.stringify({title: nuevaColeccion}),

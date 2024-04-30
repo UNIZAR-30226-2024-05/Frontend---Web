@@ -21,7 +21,6 @@ const DropdownButtonColecciones = ({ options, collectionId, setColecciones }) =>
                 console.log(response.data);
             }).catch(error=>{
                 console.log(error);
-                setLoading(false);
             })
         }
 
@@ -36,6 +35,7 @@ const DropdownButtonColecciones = ({ options, collectionId, setColecciones }) =>
         );
         console.log(respuesta); /* Solo desarrollo */
         fetchColecciones();
+        setIsOpen(false);
     } catch (err) {
         if (!err.response) {
             console.log('No hay respuesta del servidor');
@@ -53,13 +53,9 @@ const DropdownButtonColecciones = ({ options, collectionId, setColecciones }) =>
     // Por ejemplo, cerrar el menú desplegable, ejecutar una función, etc.
     switch (option) {
       case 'Eliminar coleccion':
-          console.log('Eliminar coleccion');
-          console.log(collectionId);
           eliminarColeccionConsulta();
           break;
       case 'Dejar de seguir coleccion':
-          console.log('Dejar de seguir coleccion');
-          console.log(collectionId);
           eliminarColeccionConsulta();
           break;
     }
