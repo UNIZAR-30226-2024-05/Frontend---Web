@@ -13,7 +13,10 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
     const { user_id } = auth;
 
     const [crearColeccion, setCrearColeccion] = useState(false);
-    const showCrearColeccion = () => setCrearColeccion(!crearColeccion);
+    const showCrearColeccion = () => {
+        setCrearColeccion(!crearColeccion)
+        setErrMsg('');
+    };
     
     const [listaColecciones, setListaColecciones] = useState(colecciones);
     const [busqueda, setBusqueda] = useState('');
@@ -71,7 +74,7 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
 
         const URL_CONSULTA = '/colecciones/create';
 
-        if(nuevaColeccion.length > 5 && nuevaColeccion.length < 30 ){
+        if(nuevaColeccion.length > 4 && nuevaColeccion.length < 30 ){
             try {
                 const respuesta = await axios.post(URL_CONSULTA, 
                 JSON.stringify({title: nuevaColeccion}),
