@@ -89,11 +89,13 @@ const ListaLibros = ({generos, libros}) => {
                         <div className='portadas' onClick={() => handleLibroClick(libro.id)}>
                             <img src={libro.img} alt={libro.titulo}></img>
                         </div>
-                        <div className='titulo' onClick={() => handleLibroClick(libro.id)}>
-                            <h1>{libro.titulo}</h1>
-                        </div>
-                        <div className='autor'>
-                            <p>Autor: <span onClick={() => handleAutorClick(libro.autor)} className='info-linkAutor'>{libro.autor}</span></p>
+                        <div className='info-libro'>
+                            <div className='titulo' onClick={() => handleLibroClick(libro.id)}>
+                                <h1>{libro.titulo}</h1>
+                            </div>
+                            <div className='autor'>
+                                <p>Autor: <span onClick={() => handleAutorClick(libro.autor)} className='info-linkAutor'>{libro.autor}</span></p>
+                            </div>
                         </div>
                     </div>
                     { /* Quito el boton de momento, confirmar eliminación más adelante */ 
