@@ -230,9 +230,9 @@ const Libro = () => {
         navigate('/perfilamigo', { state: { id_user } });
     }
 
-    const handleBorrarResenia = (id_resenia) => {
+    const handleBorrarResenia = async (id_resenia) => {
         try {
-            const respuesta = axios.post(
+            const respuesta = await axios.post(
                 '/review/delete_review',
                 JSON.stringify({ id_review: id_resenia }),
                 {
@@ -240,7 +240,7 @@ const Libro = () => {
                     withCredentials: true
                 }
             );
-            console.log(respuesta);
+            console.log(respuesta.data);
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
