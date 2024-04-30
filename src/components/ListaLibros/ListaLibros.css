@@ -44,6 +44,7 @@
 .contenedor-lista .lista .libro .contenido-libro .info-libro {
     /* Estilos para los títulos de los libros */
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     color: white;
     text-decoration: none;
@@ -60,7 +61,12 @@
   margin-top: 2vh;
 }
 
-.contenedor-lista .lista .libro .contenido-libro .titulo:hover {
+.contenedor-lista .lista .libro .contenido-libro .info-libro .autor .info-linkAutor {
+  /* Estilos para los títulos de los libros */
+  color:white;
+}
+
+.contenedor-lista .lista .libro .contenido-libro .info-libro .titulo:hover {
   cursor: pointer;
   text-decoration: underline;
 }
