@@ -48,6 +48,7 @@
     flex-direction: column;
     color: white;
     text-decoration: none;
+    background: none;
 }
 
 .contenedor-lista .lista .libro .contenido-libro .info-libro .titulo {
