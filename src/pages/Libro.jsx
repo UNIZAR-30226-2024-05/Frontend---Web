@@ -267,7 +267,7 @@ const Libro = () => {
         try {
             const respuesta = axios.post(
                 '/review/edit_review',
-                JSON.stringify({ id_audiolibro: id_libro, comentario, puntuacion: puntuacionGuardada, visibilidad: privacidad }),
+                JSON.stringify({ id_review: miResenia.id, comentario, puntuacion: puntuacionGuardada, visibilidad: privacidad }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
