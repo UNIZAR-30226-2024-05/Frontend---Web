@@ -14,12 +14,12 @@
 
 .contenedor-lista .lista .coleccion {
     /* Estilos para cada coleccion */
-    margin-right: 20px; /* Espacio entre las colecciones */
-    margin-bottom: 20px; /* Espacio debajo de las colecciones */ 
     background-color: #0000006e;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 80% 20%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
 }
 
 .contenedor-lista .lista .coleccion .contenido-colec {

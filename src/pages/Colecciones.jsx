@@ -11,13 +11,14 @@ import foto4 from '../images/4.jpg';
 import foto5 from '../images/5.jpg';
 
 const Colecciones = () => {
- /*
+ 
+  /*
   const [colecciones, setColecciones] = useState([
-    {portada: foto1, nombre: 'Favoritos'},
-    {portada: foto2, nombre: 'Escuchalo más tarde'},
-    {portada: foto3, nombre: 'Harry Potter'},
-    {portada: foto4, nombre: 'Versos Perversos'},
-    {portada: foto5, nombre: 'Otra coleccion más'}
+    {id: 1, titulo: 'Favoritos', propietario: 4},
+    {id: 2, titulo: 'Escuchalo más tarde', propietario: 4},
+    {id: 3, titulo: 'Harry Potter', propietario: 4},
+    {id: 4, titulo: 'Versos Perversos', propietario: 4},
+    {id: 5, titulo: 'Otra coleccion más', propietario: 4}
   ]);
   */
 
