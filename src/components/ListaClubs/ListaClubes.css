@@ -1,0 +1,127 @@
+.contenedor-lista {
+    /* Estilos para el contenedor de la lista */
+    text-align: center;
+    padding: 40px 100px;
+    max-width: 100% !important;
+}
+
+.contenedor-lista .lista {
+    /* Estilos para la lista de clubes */
+    display: flex; /* Utiliza flexbox para alinear los clubs horizontalmente */
+    flex-direction: column;
+}
+
+.contenedor-lista .lista .club {
+    /* Estilos para cada club */
+    background-color: #0000006e;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.contenedor-lista .lista .club .contenido-club {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  grid-column: span 1;
+}
+
+.contenedor-lista .lista .club .contenido-club .nombre {
+    /* Estilos para los títulos de las clubes */
+    margin: 0; /* Elimina el margen predeterminado */
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 10%;
+}
+
+.contenedor-lista .lista .club .boton-container {
+  margin-right: 50px;
+  margin-left: auto;
+  position: relative;
+  align-self: center;
+  justify-self: flex-end;
+  grid-column: span 1;
+}
+
+.contenedor-lista .lista .club .boton-container .boton-opciones{
+  position: absolute; /* Establece el posicionamiento absoluto */
+  top: calc(100% + 5px); /* Coloca el menú debajo del botón */
+  right: 0; /* Lo alinea con el borde derecho del contenedor del botón */
+  background-color: black;
+  z-index: 1; /* Asegura que esté por encima de otros elementos */
+}
+
+.contenedor-lista .buscador-container{
+    align-items: end;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+  }
+
+  .contenedor-lista .buscador-container .crear-club-btn{
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+  }
+
+  .contenedor-lista .buscador-container .buscador{
+    width: 50% !important;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+  }
+
+  .contenedor-lista .crear-club-container{
+    align-items: end;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+  }
+
+  .contenedor-lista .crear-club-container .submit-club-button{
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .contenedor-lista .crear-club-container .nombre-nuevo-club{
+    width: 50% !important;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+  }
+
+  .sign-error-message {
+    background: #ff0000d1;
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+  }
+  
+  @media (max-width: 988px){
+    
+    .contenedor-lista .buscador-container .buscador{
+        width: 100% !important;
+    }
+    
+    .contenedor-lista .buscador-container{
+        padding-bottom: 15px;
+    }
+}

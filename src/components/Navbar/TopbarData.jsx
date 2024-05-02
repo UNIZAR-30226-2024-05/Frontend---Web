@@ -25,7 +25,7 @@ export const TopbarInData = [
     },
     {
         title: 'Clubs de lectura',
-        path: '/clubs',
+        path: '/clubes',
         cName: 'menu-text'
     } 
 ]

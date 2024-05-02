@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './Colecciones.css';
+import './Clubes.css';
 import axios from '../api/axios';
-import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
+import ListaClubes from '../components/ListaClubs/ListaClubes';
 import Footer from '../components/Footer/Footer';
 
-const Colecciones = () => {
+const Clubes = () => {
  
   /*
   const [colecciones, setColecciones] = useState([
@@ -16,17 +16,17 @@ const Colecciones = () => {
   ]);
   */
 
-  const [colecciones, setColecciones] = useState([]);
+  const [clubes, setClubes] = useState([]);
   const [loading, setLoading] = useState(true); /* Poner TRUE en que descomente consulta */
 
   
     useEffect( () => {
-        const URL_CONSULTA = '/colecciones';
+        const URL_CONSULTA = '/clubes'; /* Cambiar */
 
-        async function fetchColecciones(){
+        async function fetchClubs(){
             await axios.get(URL_CONSULTA, {withCredentials: true})
             .then(response=>{
-                setColecciones(response.data.collections);
+                setClubes(response.data.collections);
                 setLoading(false);
                 console.log(response.data);
             }).catch(error=>{
@@ -34,27 +34,27 @@ const Colecciones = () => {
                 setLoading(false);
             })
         }
-        fetchColecciones();
+        fetchClubs();
     }, []);
 
 
   return (
-    <div className='colecciones'>
-      <div className='colecciones-container'>
-        <h1 className='title'>Mis Colecciones</h1>
+    <div className='clubes'>
+      <div className='clubes-container'>
+        <h1 className='title'>Mis Clubes</h1>
       {loading ? (
           <div className='loading-container'>
             <p>Loading...</p>
           </div>
           ) : (
-            <ListaColecciones className='lista' colecciones={colecciones} setColecciones={setColecciones} />
+            <ListaClubes className='lista' clubes={clubes} setClubes={setClubes} />
           )}
       </div>
-      <div className='colecciones-footer'>
+      <div className='clubes-footer'>
         <Footer className='footer' />
       </div>
     </div>
   );
 }
 
-export default Colecciones
+export default Clubes

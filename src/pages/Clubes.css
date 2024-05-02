@@ -1,0 +1,48 @@
+.clubes {
+    margin-top: 80px;
+}
+
+.clubes .clubes-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    justify-content: center;
+    height: auto;
+    min-height:calc(100vh - 80px);
+    /*background: #0ec3a4;*/
+    background: linear-gradient(#7f9894, #21ad96);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 1.5rem;
+}
+
+.clubes .clubes-footer {
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.clubes .clubes-container .title{
+    margin-top: 20px;
+    align-self: flex-start;
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+}
+
+.clubes .clubes-container .lista {
+    width: 100%;
+}
+
+.clubes .clubes-container .loading-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.clubes .clubes-footer .footer{
+    width: 100%;
+    align-self: flex-end;
+}
