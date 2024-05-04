@@ -94,23 +94,32 @@ const Home = () => {
   // Variables para conocer el contexto (Usuario conectado o no)
   const { auth } = useContext(AuthContext);
   const { username } = auth;
+  const { role } = auth;
 
   return (
     <div className='home'>
       {!username ? (
-        <>{/* Cabecera si no está logueado */}
+        <> {/* Cabecera si no está logueado */}
           <img className='foto-presentacion' src={logo} alt={'Foto presentación'}></img>
           <div className="texto-presentacion">
             <h2>¡Bienvenido a Narratives!</h2>
           </div>
         </>
-      ) : (<> {/* Cabecera si está logueado */}
-          <img className='foto-presentacion' src={foto1} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick(capitulos, portada)}></img>
-          <div className="texto-presentacion">
-            <h2>Continua tu lectura</h2>
-            <span>Pincha en la portada para continuar por donde lo dejaste.</span>
-          </div>
-        </>)}
+      ) : (
+        <> {/* Cabecera si está logueado */}
+          {role === 'normal' ? (
+            <>
+              <img className='foto-presentacion' src={foto1} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick(capitulos, portada)}></img>
+              <div className="texto-presentacion">
+                <h2>Continua tu lectura</h2>
+                <span>Pincha en la portada para continuar por donde lo dejaste.</span>
+              </div>
+            </>
+          ) : role === 'admin' ? (
+            <h1>¡Bienvenido Administrador!</h1>
+          ) : null}
+        </>
+      )}
       <Carrusel title={'Todos'} libros={books}/>
       <Carrusel title={genero1} libros={carr1}/>
       <Carrusel title={genero2} libros={carr2}/>
