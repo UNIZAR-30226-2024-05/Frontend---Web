@@ -116,7 +116,12 @@ const Home = () => {
               </div>
             </>
           ) : role === 'admin' ? (
-            <h1>¡Bienvenido Administrador!</h1>
+            <>
+              <img className='foto-presentacion' src={logo} alt={'Foto presentación'}></img>
+              <div className="texto-presentacion">
+                <h2>¡Bienvenido a Narratives!</h2>
+              </div>
+            </>
           ) : null}
         </>
       )}

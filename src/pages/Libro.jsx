@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react';
 import './Libro.css'; 
 import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
+import AuthContext from '../context/AuthProvider';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus, faPlay, faCaretUp, faCaretDown, faHeart as solidHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faPlay, faEdit, faCaretUp, faCaretDown, faHeart as solidHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import axios from '../api/axios';
 
 const Libro = () => {
 
     const navigate = useNavigate();
+    const { auth } = useContext(AuthContext);
+    const { role } = auth;
 
     const location = useLocation();
     const id_libro = location.state?.id_libro;
@@ -295,6 +298,7 @@ const Libro = () => {
             {/* Portada del libro a la izquierda */}
             <div className="info-portada">
                 <img src={portada} alt="Portada del libro" />
+                {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditPhoto()} className='libro-editButton'/>)}
 
                 {/* Estrellas de puntuación */}
                 <div className="info-puntuacion">
@@ -308,73 +312,78 @@ const Libro = () => {
                     ({puntuacion})
                 </div>
 
-                {/* Enlace a Amazon debajo de la portada */}
-                <div className="info-enlace-amazon">
-                    <a href={generarEnlaceAmazon(titulo)} className="info-linkCompra" target="_blank" rel="noopener noreferrer">Comprar en Amazon</a>
-                </div>
+                {role === 'normal' && (
+                    <>
 
-                { /* Botón de "Reproducir" con icono de play */}
-                <div className="info-reproducir">
-                    <a href="/player" className="info-linkReproducir">
-                        <FontAwesomeIcon icon={faPlay} /> Escuchar audiolibro
-                    </a>
-                </div>
+                    {/* Enlace a Amazon debajo de la portada */}
+                    <div className="info-enlace-amazon">
+                        <a href={generarEnlaceAmazon(titulo)} className="info-linkCompra" target="_blank" rel="noopener noreferrer">Comprar en Amazon</a>
+                    </div>
 
-                { /* Botón de "Añadir a favoritos" */}
-                <div className="info-anyadir-favoritos" >
-                    <button className="info-btnFavoritos"
-                        onClick={() => handleClickColeccion(coleccionesFavoritos[0])}>
-                        {coleccionesFavoritos[0]?.pertenece ? <>
-                            <FontAwesomeIcon icon={solidHeart} />
-                            <span>Favoritos</span> 
-                        </> : <>
-                            <FontAwesomeIcon icon={regularHeart} />
-                            <span>Favoritos</span> 
-                        </>
-                        }
-                    </button>
-                </div>
+                    { /* Botón de "Reproducir" con icono de play */}
+                    <div className="info-reproducir">
+                        <a href="/player" className="info-linkReproducir">
+                            <FontAwesomeIcon icon={faPlay} /> Escuchar audiolibro
+                        </a>
+                    </div>
 
-                { /* Botón de "Añadir a ver más tarde" */}
-                <div className="info-anyadir-ver-mas-tarde">
-                    <button className="info-btnVerMasTarde"
-                        onClick={() => handleClickColeccion(coleccionesEscucharMasTarde[0])}>
-                        {coleccionesEscucharMasTarde[0]?.pertenece ? <>
-                            <FontAwesomeIcon icon={faMinus} />
-                            <span>Ver mas tarde</span> 
-                        </> : <>
-                            <FontAwesomeIcon icon={faPlus} />
-                            <span>Ver mas tarde</span> 
-                        </>}
-                    </button>
-                </div>
+                    { /* Botón de "Añadir a favoritos" */}
+                    <div className="info-anyadir-favoritos" >
+                        <button className="info-btnFavoritos"
+                            onClick={() => handleClickColeccion(coleccionesFavoritos[0])}>
+                            {coleccionesFavoritos[0]?.pertenece ? <>
+                                <FontAwesomeIcon icon={solidHeart} />
+                                <span>Favoritos</span> 
+                            </> : <>
+                                <FontAwesomeIcon icon={regularHeart} />
+                                <span>Favoritos</span> 
+                            </>
+                            }
+                        </button>
+                    </div>
 
-                { /* Botón de añadir a colecciones */}
-                <div className="info-anyadir-a-colecciones">
-                    <button className='info-btnAnyadirColecciones' onClick={() => setMostrarColecciones(!mostrarColecciones)}>
-                        {mostrarColecciones ? 
-                            <FontAwesomeIcon icon={faCaretUp} /> : 
-                            <FontAwesomeIcon icon={faCaretDown} />
-                        }
-                        <span>Añadir a colecciones</span>
-                    </button>
-                    {mostrarColecciones && (
-                        <div className="info-desplegable-colecciones">
-                            {otrasColecciones?.map((coleccion, index) => (
+                    { /* Botón de "Añadir a ver más tarde" */}
+                    <div className="info-anyadir-ver-mas-tarde">
+                        <button className="info-btnVerMasTarde"
+                            onClick={() => handleClickColeccion(coleccionesEscucharMasTarde[0])}>
+                            {coleccionesEscucharMasTarde[0]?.pertenece ? <>
+                                <FontAwesomeIcon icon={faMinus} />
+                                <span>Ver mas tarde</span> 
+                            </> : <>
+                                <FontAwesomeIcon icon={faPlus} />
+                                <span>Ver mas tarde</span> 
+                            </>}
+                        </button>
+                    </div>
 
-                                <button className="info-colecciones-item"
-                                    key={index}
-                                    onClick={() => handleClickColeccion(coleccion)}>
-                                    {coleccion?.pertenece ? 
-                                        <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faPlus} />
-                                    }
-                                    <span>{coleccion.titulo}</span>
-                                </button>
+                    { /* Botón de añadir a colecciones */}
+                    <div className="info-anyadir-a-colecciones">
+                        <button className='info-btnAnyadirColecciones' onClick={() => setMostrarColecciones(!mostrarColecciones)}>
+                            {mostrarColecciones ? 
+                                <FontAwesomeIcon icon={faCaretUp} /> : 
+                                <FontAwesomeIcon icon={faCaretDown} />
+                            }
+                            <span>Añadir a colecciones</span>
+                        </button>
+                        {mostrarColecciones && (
+                            <div className="info-desplegable-colecciones">
+                                {otrasColecciones?.map((coleccion, index) => (
 
-                            ))}
-                        </div>
-                    )}
-                </div>
+                                    <button className="info-colecciones-item"
+                                        key={index}
+                                        onClick={() => handleClickColeccion(coleccion)}>
+                                        {coleccion?.pertenece ? 
+                                            <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faPlus} />
+                                        }
+                                        <span>{coleccion.titulo}</span>
+                                    </button>
+
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    </>
+                )}
             </div>
 
             {/* Detalles del libro a la derecha */}
@@ -382,16 +391,19 @@ const Libro = () => {
                 {/* Título del libro */}
                 <div className='info-titulo'>
                     <h1>{titulo}</h1>
+                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditTitulo()} className='libro-editButton'/>)}
                 </div>
                 
                 {/* Descripción del libro */}
                 <div className='info-descripcion'>
                     <p>{descripcion}</p>
+                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditDescripcion()} className='libro-editButton'/>)}
                 </div>
                 
                 {/* Autor del libro */}
                 <div className="info-autor">
                     <p>Autor: <span onClick={() => handleAutorClick(autor.id)} className='info-linkAutor'>{autor.nombre}</span></p>
+                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditAutor()} className='libro-editButton'/>)}
                 </div>
 
                 {/* Género del libro */}
@@ -404,6 +416,7 @@ const Libro = () => {
 
                 <div className="info-capitulos">
                     <h2 className="tituloCap"> Capítulos</h2>
+                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditCapitulos()} className='libro-editButton'/>)}
                     <div className='capitulos'>
                         {capitulos.map((capitulo, i) => (
                             <div key={i}

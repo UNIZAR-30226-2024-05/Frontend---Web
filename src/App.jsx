@@ -26,6 +26,8 @@ import NotFound from './pages/NotFound';
 import Libro from './pages/Libro';
 import PerfilAmigo from './pages/PerfilAmigo';
 import Autor from './pages/Autor';
+import AnyadirLibro from './pages/AnyadirLibro';
+import AnyadirAutor from './pages/AnyadirAutor';
 
 function App() {
 
@@ -56,6 +58,8 @@ function App() {
       <Route path='/libro' element={<ProtectedRoute element={Libro} />}/>
       <Route path='/perfilamigo' element={<ProtectedRoute element={PerfilAmigo} />}/>
       <Route path='/autor' element={<Autor />}/>
+      <Route path='/anyadirlibro' element={<ProtectedRoute element={AnyadirLibro} />}/>
+      <Route path='/anyadirautor' element={<ProtectedRoute element={AnyadirAutor} />}/>
      </Routes>
      <Navbar />
     </Router>

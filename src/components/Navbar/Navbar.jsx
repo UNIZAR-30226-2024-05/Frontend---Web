@@ -3,7 +3,7 @@ import * as IoIcons from "react-icons/io";
 import * as AiIcons from "react-icons/ai";
 import axios from '../../api/axios';
 import { Link } from 'react-router-dom';
-import { TopbarInData, TopbarOutData } from './TopbarData';
+import { TopbarAdminData, TopbarInData, TopbarOutData } from './TopbarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import logo from '../../images/logo.png';
@@ -152,17 +152,33 @@ function Navbar() {
                         </>
                     ) : (
                         <>
-                            <ul className='menu-items'>
-                                {TopbarOutData.map((item, index) => {
-                                    return(
-                                        <li key={index} className={item.cName}>
-                                            <Link to={item.path}>
-                                                <span>{item.title}</span>
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                            {role === 'normal' ? (
+                                <>
+                                    <ul className='menu-items'>
+                                        {TopbarOutData.map((item, index) => {
+                                            return(
+                                                <li key={index} className={item.cName}>
+                                                    <Link to={item.path}>
+                                                        <span>{item.title}</span>
+                                                    </Link>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                </>
+                            ) : role === 'admin' ? (
+                                <ul className='menu-items'>
+                                    {TopbarAdminData.map((item, index) => {
+                                        return(
+                                            <li key={index} className={item.cName}>
+                                                <Link to={item.path}>
+                                                    <span>{item.title}</span>
+                                                </Link>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            ) : null}
                         </>
                     )}
                 </div>

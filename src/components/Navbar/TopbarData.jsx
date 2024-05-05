@@ -54,3 +54,31 @@ export const TopbarOutData = [
         cName: 'menu-text'
     }
 ]
+
+export const TopbarAdminData = [
+    {
+        title: 'Home',
+        path: '/',
+        cName: 'menu-text'
+    },
+    {
+        title: 'Biblioteca',
+        path: '/biblioteca',
+        cName: 'menu-text'
+    },
+    {
+        title: 'Autores',
+        path: '/autores',
+        cName: 'menu-text'
+    },
+    {
+        title: 'Añadir libro',
+        path: '/addBook',
+        cName: 'menu-text'
+    },
+    {
+        title: 'Añadir autor',
+        path: '/addAuthor',
+        cName: 'menu-text'
+    }
+]
