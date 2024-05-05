@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
     margin-top: 6%;
+    margin-top: 80px;
+    height: calc(100vh - 80px);
     background: linear-gradient(#7f9894, #21ad96);
 }
 
