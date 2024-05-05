@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './AnyadirAutor.css';
-import axios from '../../api/axios';
+import axios from '../api/axios';
 
 const AnyadirAutor = () => {
     const [nombreDecidido, setnombreDecidido] = useState('');
