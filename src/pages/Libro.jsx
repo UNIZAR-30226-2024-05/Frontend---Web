@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Libro.css'; 
 import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
