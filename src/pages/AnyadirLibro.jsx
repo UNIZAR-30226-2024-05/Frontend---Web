@@ -71,7 +71,7 @@ const AnyadirLibro = () => {
 
     return (
         <div className='anyadir-libro-container'>
-            <h2>Añadir un nuevo libro</h2>
+            <h2 className='anyadir-libro-titulo'>Añadir un nuevo libro</h2>
             <h3>Introduce su título</h3>
             <input
                 className='titulo-nuevo-libro'
@@ -94,7 +94,6 @@ const AnyadirLibro = () => {
                 onChange={handleChangeNuevaDescripcion}
             />
             <h3>Introduce la imagen de la portada</h3>
-            <label htmlFor="file-upload" className="input-file-button">Seleccionar Archivo</label>
             <input type="file" id="imagen-upload" className="input-file" onChange={handleChangeNuevaImagen} />
 
             {imagenDecidida && (
@@ -102,7 +101,6 @@ const AnyadirLibro = () => {
             )}
 
             <h3>Introduce los audios de cada capítulo</h3>
-            <label htmlFor="file-upload" className="input-file-button">Seleccionar Archivo</label>
             <input type="file" id="audio-upload" className="input-file" onChange={handleAgregarAudioCapitulo} />
 
             <button
