@@ -4,7 +4,6 @@
 
 .autores .autores-container {
     display: grid;
-    grid-template-columns: 1fr;
     align-items: center;
     height: auto;
     min-height:calc(100vh - 80px);
@@ -16,7 +15,6 @@
     font-size: 1.5rem;
 }
 
-
 .autores .nombre {
     margin-top: 20px;
     align-self: flex-start;
@@ -25,12 +23,6 @@
     text-align: center;
 }
 
-.autores .autores-container{
+.autores .autores-container .lista {
     width: 60%;
-}
-
-.lista{
-    display: flex;
-    justify-content: center;
-    margin: 20px;
 }
