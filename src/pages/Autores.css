@@ -4,8 +4,7 @@
 
 .autores .autores-container {
     display: grid;
-    grid-template-columns: 1fr;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     height: auto;
     min-height:calc(100vh - 80px);
@@ -26,5 +25,5 @@
 }
 
 .autores .autores-container .lista {
-    width: 60%;
+    width: 40%;
 }
