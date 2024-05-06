@@ -22,8 +22,14 @@ const AnyadirLibro = () => {
     }
 
     const handleChangeNuevaImagen = (event) => {
-        setImagenDecidida(event.target.files);
+        // Obtener la primera imagen seleccionada
+        const file = event.target.files[0];
+        // Crear una URL local para la imagen seleccionada
+        const imageUrl = URL.createObjectURL(file);
+        // Establecer la URL de la imagen como una variable de estado
+        setImagenDecidida(imageUrl);
     }
+    
 
     const handleAgregarAudioCapitulo = (event) => {
         setAudioCapitulo(event.target.files[0]);
@@ -87,6 +93,9 @@ const AnyadirLibro = () => {
                 value={imagenDecidida}
                 onChange={handleChangeNuevaImagen}
             />
+            {imagenDecidida && (
+                <img src={imagenDecidida} alt="Vista previa de la imagen" />
+            )}
             <h3>Introduce los audios de cada capítulo</h3>
             <input
                 type="file"
