@@ -35,10 +35,12 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
         setListaClubes(clubes);
         setTusClubes(listaClubes.filter(club => club.propietario === user_id));
         setClubesSeguidos(listaClubes.filter(club => club.propietario !== user_id));
+        console.log(clubes);
       }, [clubes]);
 
     useEffect(() => {
         setListaOtrosClubes(otrosClubes);
+        console.log(otrosClubes);
       }, [otrosClubes]);
 
     const opcion_mis_clubs = 'Eliminar club';
