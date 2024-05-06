@@ -21,10 +21,10 @@
     margin-top: 20px;
     align-self: flex-start;
     justify-self: center;
-    width: 100%;
+    width: auto;
     text-align: center;
 }
 
 .autores .autores-container .lista {
-    width: 100%;
+    width: 60%;
 }

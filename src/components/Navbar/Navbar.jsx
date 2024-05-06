@@ -108,15 +108,23 @@ function Navbar() {
                 <div className='navbar'>
                     {username ? (
                         <>
-                            <Link to='/perfil' className='profile-picture'>
-                                <img className='fotoPerfil' src={obtenerPerfil()} alt="Profile"/>
-                            </Link>
-                            <div className='menu-bars'>
-                                <IoIcons.IoMdPeople onClick={showSidebar} />
-                            </div>
-                            <div className='menu-text'>
-                                <Link to='/' onClick={handleCerrarSesion} className='boton-cerrar-sesion'>Cerrar Sesión</Link>
-                            </div>
+                            {role === 'normal' ? (
+                                <>
+                                <Link to='/perfil' className='profile-picture'>
+                                    <img className='fotoPerfil' src={obtenerPerfil()} alt="Profile"/>
+                                </Link>
+                                <div className='menu-bars'>
+                                    <IoIcons.IoMdPeople onClick={showSidebar} />
+                                </div>
+                                <div className='menu-text'>
+                                    <Link to='/' onClick={handleCerrarSesion} className='boton-cerrar-sesion'>Cerrar Sesión</Link>
+                                </div>
+                                </>
+                            ) : role === 'admin' ? (
+                                <div className='menu-text'>
+                                    <Link to='/' onClick={handleCerrarSesion} className='boton-cerrar-sesion'>Cerrar Sesión</Link>
+                                </div>
+                            ) : null}
                         </>
                     ) : (null)
                     }

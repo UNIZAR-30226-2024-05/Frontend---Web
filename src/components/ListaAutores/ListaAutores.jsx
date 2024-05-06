@@ -35,7 +35,7 @@ const ListaAutores = ({autores}) => {
                 <div className="lista">
                     {listaShow.map((autor) => (
                         <div key={autor.id_autor} className="autor" onClick={() => handleAutorClick(autor.id_autor)}>
-                            <p>{autor.nombre}</p>
+                            <p className='nombre-autor'>{autor.nombre}</p>
                         </div>
                     ))}
                 </div>

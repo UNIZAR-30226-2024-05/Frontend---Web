@@ -26,9 +26,13 @@
 .lista-autores .lista .autor {
     margin-right: 20px;
     margin-bottom: 20px;
-    background-color: white;
+    background-color: #0000006e;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 80% 20%;
     cursor: pointer;
+}
+
+.lista-autores.lista .autor .nombre-autor {
+  color: white;
 }
