@@ -20,12 +20,13 @@
 .lista-autores .lista {
     display: flex;
     flex-direction: column;
+    width: auto;
 }
 
 .lista-autores .lista .autor {
     margin-right: 20px;
     margin-bottom: 20px;
-    background-color: #0000006e;
+    background-color: white;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 80% 20%;
