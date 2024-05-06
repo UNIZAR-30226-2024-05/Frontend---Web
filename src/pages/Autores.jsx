@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Autores.css';
 import axios from '../api/axios';
 import ListaAutores from '../components/ListaAutores/ListaAutores';
