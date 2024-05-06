@@ -3,7 +3,7 @@ import { MdMoreVert } from 'react-icons/md'; // Importa el ícono de tres puntos
 import './DropdownButtonClubes.css';
 import axios from '../../api/axios';
 
-const DropdownButtonClubes = ({ options, club_Id, setClubes }) => {
+const DropdownButtonClubes = ({ opcion, club, clubes, setClubes, otrosClubes, setOtrosClubes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -11,30 +11,71 @@ const DropdownButtonClubes = ({ options, club_Id, setClubes }) => {
     setIsOpen(!isOpen);
   };
 
-  const eliminarClubConsulta = async () => {
+  const deleteClub = async () => {
 
-    const URL_Club = '/clubes';
-        async function fetchClubes(){
-            await axios.get(URL_Club, {withCredentials: true})
-            .then(response=>{
-                setClubes(response.data.clubes);    /* Revisar */
-                console.log(response.data);
-            }).catch(error=>{
-                console.log(error);
-            })
-        }
-
-    const URL_CONSULTA = '/clubes/remove'
+    const URL_BORRAR = '/club/delete'
     try {
-        const respuesta = await axios.post(URL_CONSULTA, 
-          JSON.stringify({club_Id}),
+        const respuesta = await axios.post(URL_BORRAR, 
+          JSON.stringify({id: club.id}),
           {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
           }
         );
         console.log(respuesta); /* Solo desarrollo */
-        fetchClubes();
+        setClubes(clubes.filter(c => c.id !== club.id));
+        setIsOpen(false);
+    } catch (err) {
+        if (!err.response) {
+            console.log('No hay respuesta del servidor');
+        } else if (err.response.status === 500){
+            console.log('Server error');
+        } else {
+            console.log('Error');
+        }
+    }
+  }
+
+  const leaveClub = async () => {
+
+    const URL_SALIR = '/club/left'
+    try {
+        const respuesta = await axios.post(URL_SALIR, 
+          JSON.stringify({id: club.id}),
+          {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+          }
+        );
+        console.log(respuesta); /* Solo desarrollo */
+        setClubes(clubes.filter(c => c.id !== club.id));
+        setOtrosClubes([...otrosClubes, club]);
+        setIsOpen(false);
+    } catch (err) {
+        if (!err.response) {
+            console.log('No hay respuesta del servidor');
+        } else if (err.response.status === 500){
+            console.log('Server error');
+        } else {
+            console.log('Error');
+        }
+    }
+  }
+
+  const joinClub = async () => {
+
+    const URL_UNIRSE = '/club/join'
+    try {
+        const respuesta = await axios.post(URL_UNIRSE, 
+          JSON.stringify({id: club.id}),
+          {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+          }
+        );
+        console.log(respuesta); /* Solo desarrollo */
+        setClubes([...clubes, club]);
+        setOtrosClubes(otrosClubes.filter(c => c.id !== club.id));
         setIsOpen(false);
     } catch (err) {
         if (!err.response) {
@@ -52,12 +93,14 @@ const DropdownButtonClubes = ({ options, club_Id, setClubes }) => {
     // Aquí puedes agregar la lógica para manejar la opción seleccionada
     // Por ejemplo, cerrar el menú desplegable, ejecutar una función, etc.
     switch (option) {
-      case 'Eliminar club':
-          eliminarClubConsulta();
-          break;
-      case 'Dejar de seguir club':
-          eliminarClubConsulta();
-          break;
+        case 'Eliminar club':
+            deleteClub();
+            break;
+        case 'Dejar el club':
+            leaveClub();
+            break;
+        case 'Unirse al club':
+            joinClub();
     }
   };
 
@@ -81,11 +124,7 @@ useEffect(() => {
         </button>
         {isOpen && (
             <div className="dropdown-menu">
-                {options.map((option, index) => (
-                    <div key={index}>
-                        <button onClick={() => handleOptionClick(option)}>{option}</button>
-                    </div>
-                ))}
+                <button onClick={() => handleOptionClick(opcion)}>{opcion}</button>
             </div>
         )}
     </div>

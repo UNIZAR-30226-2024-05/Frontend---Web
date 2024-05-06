@@ -57,7 +57,8 @@
 }
 
 .contenedor-lista .buscador-container{
-    align-items: end;
+    align-items: flex-start;
+    justify-content: flex-start;
     right: 0;
     display: flex;
     justify-content: center;
@@ -69,7 +70,7 @@
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    margin-right: 5px;
+    margin-right: 2%;
   }
 
   .contenedor-lista .buscador-container .buscador{
@@ -82,14 +83,16 @@
   }
 
   .contenedor-lista .crear-club-container{
-    align-items: end;
+    align-items: flex-start;
+    justify-content:space-between;
     right: 0;
     display: flex;
-    justify-content: center;
+    margin-left: 10vw;
+    margin-right: 10vw;
     padding-bottom: 25px;
   }
 
-  .contenedor-lista .crear-club-container .submit-club-button{
+  .contenedor-lista .submit-club-button{
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
@@ -97,7 +100,27 @@
   }
 
   .contenedor-lista .crear-club-container .nombre-nuevo-club{
-    width: 50% !important;
+    width: 75% !important;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+  }
+
+  .contenedor-lista .crear-club-container .descripcion-nuevo-club{
+    width: 75% !important;
+    min-height: 30px; /* Altura mínima del input */
+    max-height: 100px; /* Altura máxima del input */
+    height: 60px; /* Altura inicial del input */
+    border-radius: 10px;
+    padding-top: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+  }
+
+  .contenedor-lista .crear-club-container .selector-libros {
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
@@ -113,6 +136,7 @@
     align-items: center;
     justify-content: center;
     border: 1px solid #000;
+    margin-top: 0.5%;
   }
   
   @media (max-width: 988px){

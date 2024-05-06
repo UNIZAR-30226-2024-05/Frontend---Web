@@ -6,27 +6,51 @@ import Footer from '../components/Footer/Footer';
 
 const Clubes = () => {
  
-  /*
-  const [colecciones, setColecciones] = useState([
-    {id: 1, titulo: 'Favoritos', propietario: 4},
-    {id: 2, titulo: 'Escuchalo más tarde', propietario: 4},
-    {id: 3, titulo: 'Harry Potter', propietario: 4},
-    {id: 4, titulo: 'Versos Perversos', propietario: 4},
-    {id: 5, titulo: 'Otra coleccion más', propietario: 4}
+
+  const [libros, setLibros] = useState([
+    {titulo: 'primero'},
+    {titulo: 'segundo'}
   ]);
-  */
 
-  const [clubes, setClubes] = useState([]);
+  const [clubes, setClubes] = useState([
+    {id: 1, titulo: 'Mi club', propietario: 4, seguido: true},
+    {id: 2, titulo: 'Club Harry Potter', propietario: 5, seguido: true},
+    {id: 3, titulo: 'Club de la trucha', propietario: 5, seguido: true}
+  ]);
+
+  const [otrosClubes, setOtrosClubes] = useState([
+    {id: 4, titulo: 'Faltadas', propietario: 5, seguido: false},
+    {id: 5, titulo: 'Otro club más', propietario: 5, seguido: false}
+  ])
+
+
+  //const [clubes, setClubes] = useState([]);
+  //const [otrosClubes, setOtrosClubes] = useState([]);
   const [loading, setLoading] = useState(true); /* Poner TRUE en que descomente consulta */
+  const [loading2, setLoading2] = useState(true); /* Poner TRUE en que descomente consulta */
 
-  
+  useEffect( () => {
+    const URL_LIBROS = '/audiolibros';
+    async function fetchLibros(){
+        await axios.get(URL_LIBROS, {withCredentials: true})
+        .then(response=>{
+            setLibros(response.data.audiolibros);
+            console.log(response.data);
+        }).catch(error=>{
+            console.log(error);
+        })
+    }
+    fetchLibros();
+  }, []);
+
     useEffect( () => {
-        const URL_CONSULTA = '/clubes'; /* Cambiar */
+        const URL_CLUBES = '/club/lista'; /* Cambiar */
+        const URL_OTROS_CLUBES = '/club/all'; /* Cambiar */
 
-        async function fetchClubs(){
-            await axios.get(URL_CONSULTA, {withCredentials: true})
+        async function fetchClubes(){
+            await axios.get(URL_CLUBES, {withCredentials: true})
             .then(response=>{
-                setClubes(response.data.collections);
+                setClubes(response.data.listaClubes);
                 setLoading(false);
                 console.log(response.data);
             }).catch(error=>{
@@ -34,7 +58,20 @@ const Clubes = () => {
                 setLoading(false);
             })
         }
-        fetchClubs();
+
+        async function fetchOtrosClubes(){
+          await axios.get(URL_OTROS_CLUBES, {withCredentials: true})
+          .then(response=>{
+              setOtrosClubes(response.data.listaClubes);
+              setLoading2(false);
+              console.log(response.data);
+          }).catch(error=>{
+              console.log(error);
+              setLoading2(false);
+          })
+      }
+        fetchClubes();
+        fetchOtrosClubes();
     }, []);
 
 
@@ -42,12 +79,17 @@ const Clubes = () => {
     <div className='clubes'>
       <div className='clubes-container'>
         <h1 className='title'>Mis Clubes</h1>
-      {loading ? (
+      {(loading && loading2) ? (
           <div className='loading-container'>
             <p>Loading...</p>
           </div>
           ) : (
-            <ListaClubes className='lista' clubes={clubes} setClubes={setClubes} />
+            <ListaClubes className='lista'
+            clubes={clubes} 
+            setClubes={setClubes}
+            otrosClubes={otrosClubes}
+            setOtrosClubes={setOtrosClubes}
+            libros={libros} />
           )}
       </div>
       <div className='clubes-footer'>

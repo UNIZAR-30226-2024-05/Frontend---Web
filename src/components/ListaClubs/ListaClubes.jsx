@@ -5,7 +5,7 @@ import axios from '../../api/axios';
 import AuthContext from '../../context/AuthProvider';
 import DropdownButtonClubes from './DropdownButtonClubes';
 
-const ListaClubes = ({clubes, setClubes}) => {
+const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) => {
 
     const navigate = useNavigate();
 
@@ -19,34 +19,36 @@ const ListaClubes = ({clubes, setClubes}) => {
     };
     
     const [listaClubes, setListaClubes] = useState(clubes);
+    const [listaOtrosClubes, setListaOtrosClubes] = useState(otrosClubes);
     const [busqueda, setBusqueda] = useState('');
 
     const [nuevoClub, setNuevoClub] = useState('');
+    const [descripcion, setDescripcion] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    
-    const [clubesFavoritos, setClubesFavoritos] = useState(listaClubes.filter(club => club.titulo === "Favoritos"));
-    const [clubesEscucharMasTarde, setClubesEscucharMasTarde] = useState(listaClubes.filter(club => club.titulo === "Escuchar mas tarde"));
 
-    // Filtrar las demás clubes
-    const [otrosClubes, setOtrosClubes] = useState(listaClubes.filter(club => club.titulo !== "Favoritos" && club.titulo !== "Escuchar mas tarde"));
+    const [libroSeleccionado, setLibroSeleccionado] = useState('');
+    
+    const [tusClubes, setTusClubes] = useState(listaClubes.filter(club => club.propietario === user_id));
+    const [clubesSeguidos, setClubesSeguidos] = useState(listaClubes.filter(club => club.propietario !== user_id));
 
     useEffect(() => {
-        setClubesFavoritos(listaClubes.filter(club => club.titulo === "Favoritos"));
-        setClubesEscucharMasTarde(listaClubes.filter(club => club.titulo === "Escuchar mas tarde"));
-        setOtrosClubes(listaClubes.filter(club => club.titulo !== "Favoritos" && club.titulo !== "Escuchar mas tarde"));
+        setTusClubes(listaClubes.filter(club => club.propietario === user_id));
+        setClubesSeguidos(listaClubes.filter(club => club.propietario !== user_id));
       }, [listaClubes]);
+
+    useEffect(() => {
+        setListaOtrosClubes(listaOtrosClubes);
+      }, [listaOtrosClubes]);
     
     useEffect(() => {
         setListaClubes(clubes);
       }, [clubes]);
 
-    const opciones_col_propia = [
-        'Eliminar club'
-    ];
+    const opcion_mis_clubs = 'Eliminar club';
 
-    const opciones_col_ajena = [
-        'Dejar de seguir club'
-    ];
+    const opcion_otros_clubs = 'Unirse al club';
+
+    const opcion_club_seguido= 'Dejar el club';
 
     const handleChangeBusqueda = (event) => {
         setBusqueda(event.target.value);
@@ -55,18 +57,37 @@ const ListaClubes = ({clubes, setClubes}) => {
 
     const handleChangeNuevoClub = (event) => {
         setNuevoClub(event.target.value);
+    }
+
+    const handleChangeDescripcion = (event) => {
+        setDescripcion(event.target.value);
     } 
 
-    const URL_CLUB = '/clubes';     /* ATENTO */
+    const handleLibroChange = (event) => {
+        setLibroSeleccionado(event.target.value);
+    };
+
+    const URL_CLUBES = '/club/lista';     /* ATENTO */
 
     async function fetchClubes(){
-        await axios.get(URL_CLUB, {withCredentials: true})
+        await axios.get(URL_CLUBES, {withCredentials: true})
         .then(response=>{
-            setClubes(response.data.clubs);
+            setClubes(response.data.listaClubes);
             console.log(response.data);
         }).catch(error=>{
             console.log(error);
-            setLoading(false);
+        })
+    }
+
+    const URL_OTROS_CLUBES = '/club/all';     /* ATENTO */
+
+    async function fetchOtrosClubes(){
+        await axios.get(URL_OTROS_CLUBES, {withCredentials: true})
+        .then(response=>{
+            setOtrosClubes(response.data.listaClubes);
+            console.log(response.data);
+        }).catch(error=>{
+            console.log(error);
         })
     }
 
@@ -77,7 +98,7 @@ const ListaClubes = ({clubes, setClubes}) => {
         if(nuevoClub.length > 4 && nuevoClub.length < 30 ){
             try {
                 const respuesta = await axios.post(URL_CONSULTA, 
-                JSON.stringify({title: nuevoClub}),
+                JSON.stringify({nombre: nuevoClub, audiolibroID, descripcion}),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -87,12 +108,11 @@ const ListaClubes = ({clubes, setClubes}) => {
                 setNuevoClub('');
                 setCrearClub(false);
                 setErrMsg('');
+                /*          IGUAL SERÍA BUENO QUE TE LLEVE DIRECTAMENTE A SU PÁGINA         */
                 fetchClubes();
             } catch (err) {
                 if (!err.response) {
                     setErrMsg('No hay respuesta del servidor');
-                } else if (err.response.status === 400) {
-                    setErrMsg('Error: Titulo existente'); 
                 } else if (err.response.status === 500){
                     setErrMsg('Server error');
                 } else {
@@ -133,60 +153,95 @@ const ListaClubes = ({clubes, setClubes}) => {
         </div>
 
         {crearClub ? (
-            <div className='crear-club-container'>
-                <input className='nombre-nuevo-club'
-                placeholder='Cómo quiere llamar a su nuevo club'
-                value={nuevoClub}
-                onChange={handleChangeNuevoClub}/>
-
-                <button className='submit-club-button' onClick={handleClickSubmitClub}> Enter </button>
-                
-            </div>
+            <>
+                <div className='crear-club-container'>
+                    <h4>Nombre del club:</h4>
+                    <input className='nombre-nuevo-club'
+                    placeholder='Cómo quiere llamar a su nuevo club'
+                    value={nuevoClub}
+                    onChange={handleChangeNuevoClub}/>
+                </div>
+                <div className='crear-club-container'>
+                    <h4>Libro:</h4>
+                    <select className="selector-libros" onChange={handleLibroChange} value={libroSeleccionado}>
+                        <option value="">Sin libro</option>
+                        {libros.map((libro) => (
+                                <option key={libro.titulo} value={libro.titulo}>{libro.titulo}</option>
+                        ))}
+                        {/* Agrega más opciones de géneros según sea necesario */}
+                    </select>
+                </div>
+                <div className='crear-club-container'>
+                    <h4>Descripción del club:</h4>
+                    <textarea className='descripcion-nuevo-club'
+                    placeholder='Una breve descripción del club (opcional)'
+                    value={descripcion}
+                    onChange={handleChangeDescripcion}/>
+                </div>
+                <button className='submit-club-button' onClick={handleClickSubmitClub}> Crear club </button>
+            </>
         ) : null}
         {errMsg && <div className="sign-error-message"><p>{errMsg}</p></div>}
 
         <div className='lista'>
-            {clubesFavoritos.map((club, i) => (
+            <h2>Tus clubes</h2>
+            {tusClubes.map((club, i) => (
                 <div key={i} className='club'>
                     <div className='contenido-club'>
                         <div className='nombre' onClick={() => handleClubClick(club.id)}>
                             <h1>{club.titulo}</h1>
                         </div>
                     </div>
-                </div>
-            ))}
-            {clubesEscucharMasTarde.map((club, i) => (
-                <div key={i} className='club'>
-                    <div className='contenido-club'>
-                        <div className='nombre' onClick={() => handleClubClick(club.id)}>
-                            <h1>{club.titulo}</h1>
-                        </div>
-                    </div>
-                </div>
-            ))}
-            {otrosClubes.map((club, i) => (
-                <div key={i} className='club'>
-                    <div className='contenido-club'>
-                        <div className='nombre' onClick={() => handleClubClick(club.id)}>
-                            <h1>{club.titulo}</h1>
-                        </div>
-                    </div>
-                    {user_id === club.propietario ? 
-                        <div className='boton-container'>
-                            <DropdownButtonClubes 
+                    <div className='boton-container'>
+                        <DropdownButtonClubes 
                             className='boton-opciones' 
-                            options={opciones_col_propia} 
-                            club_Id={club.id}
-                            setClubes={setClubes}/>
-                        </div> : 
-                        <div className='boton-container'>
-                            <DropdownButtonClubes
-                            className='boton-opciones'
-                            options={opciones_col_ajena}
-                            club_Id={club.id} 
-                            setClubes={setClubes}/>
+                            opcion={opcion_mis_clubs} 
+                            club={club}
+                            clubes={clubes}
+                            setClubes={setClubes}
+                            otrosClubes={otrosClubes}
+                            setOtrosClubes={setOtrosClubes} />
+                    </div>
+                </div>
+            ))}
+            <h2>Clubes seguidos</h2>
+            {clubesSeguidos.map((club, i) => (
+                <div key={i} className='club'>
+                    <div className='contenido-club'>
+                        <div className='nombre' onClick={() => handleClubClick(club.id)}>
+                            <h1>{club.titulo}</h1>
                         </div>
-                    }
+                    </div>
+                    <div className='boton-container'>
+                        <DropdownButtonClubes 
+                            className='boton-opciones' 
+                            opcion={opcion_club_seguido} 
+                            club={club}
+                            clubes={clubes}
+                            setClubes={setClubes}
+                            otrosClubes={otrosClubes}
+                            setOtrosClubes={setOtrosClubes} />
+                    </div>
+                </div>
+            ))}
+            <h2>Otros clubes</h2>
+            {listaOtrosClubes.map((club, i) => (
+                <div key={i} className='club'>
+                    <div className='contenido-club'>
+                        <div className='nombre' onClick={() => handleClubClick(club.id)}>
+                            <h1>{club.titulo}</h1>
+                        </div>
+                    </div> 
+                    <div className='boton-container'>
+                        <DropdownButtonClubes 
+                            className='boton-opciones' 
+                            opcion={opcion_otros_clubs} 
+                            club={club}
+                            clubes={clubes}
+                            setClubes={setClubes}
+                            otrosClubes={otrosClubes}
+                            setOtrosClubes={setOtrosClubes}/>
+                    </div>
                 </div>
             ))}
         </div>
