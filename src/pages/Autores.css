@@ -23,6 +23,12 @@
     text-align: center;
 }
 
-.autores .autores-container .lista {
+.autores .autores-container{
     width: 60%;
+}
+
+.lista{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }
