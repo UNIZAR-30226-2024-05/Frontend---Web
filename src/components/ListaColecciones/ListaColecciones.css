@@ -73,6 +73,11 @@
     margin-right: 5px;
   }
 
+  .crear-coleccion-btn{
+    background-color: #0fa7b2;
+    border: 2px solid #000;
+  }
+
   .contenedor-lista .buscador-container .buscador{
     width: 50% !important;
     height: 5vh;
