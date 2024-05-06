@@ -9,7 +9,7 @@
 
 .amigo-foto-perfil {
     margin-top: 2vh;
-    width: 10vw;
+    width: 1vw;
     height: 45vh;
     overflow: hidden;
     border-radius: 8px;
@@ -35,6 +35,7 @@
     padding: 2px 5px;
     justify-self: center;
     align-self: center;
+    border: 2px solid #000;
 }
 
 .amigo-boton-solicitud {
@@ -47,7 +48,6 @@
     padding: 2px 5px;
     justify-self: center;
     align-self: center;
-    border: 2px solid #000;
 }
 
 .amigo-colecciones-y-actividad {
