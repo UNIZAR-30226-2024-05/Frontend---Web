@@ -34,6 +34,11 @@ const AnyadirLibro = () => {
     }
 
     const handleSubmit = async () => {
+        console.log(tituloDecidido);
+        console.log(autorDecidido);
+        console.log(descripcionDecidida);
+        console.log(imagenDecidida);
+        console.log(audioCapitulo);
         try {
             const response = await axios.post('/audiolibros/anadir', 
             JSON.stringify({
