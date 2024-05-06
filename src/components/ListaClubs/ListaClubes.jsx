@@ -100,16 +100,17 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
         const URL_CREAR = '/club/create'; /* ATENTO */
 
         if(nuevoClub.length > 4 && nuevoClub.length < 30 ){
+            console.log(libroSeleccionado);
             try {
                 const respuesta = await axios.post(URL_CREAR, 
-                JSON.stringify({nombre: nuevoClub, audiolibroID: libroSeleccionado.id, descripcion}),
+                JSON.stringify({nombre: nuevoClub, audiolibroID: libroSeleccionado, descripcion}),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
                 );
                 console.log(respuesta); /* Solo desarrollo */
-                console.log(libroSeleccionado.id);
+                console.log(libroSeleccionado);
                 setNuevoClub('');
                 setCrearClub(false);
                 setErrMsg('');
@@ -176,7 +177,7 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
                     <select className="selector-libros" onChange={handleLibroChange} value={libroSeleccionado}>
                         <option value="">Sin libro</option>
                         {libros.map((libro) => (
-                                <option key={libro.titulo} value={libro.titulo}>{libro.titulo}</option>
+                                <option key={libro.titulo} value={libro.id}>{libro.titulo}</option>
                         ))}
                         {/* Agrega más opciones de géneros según sea necesario */}
                     </select>

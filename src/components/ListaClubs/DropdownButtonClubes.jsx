@@ -81,8 +81,6 @@ const DropdownButtonClubes = ({ opcion, club, clubes, setClubes, otrosClubes, se
         if (!err.response) {
             console.log('No hay respuesta del servidor');
         } else if (err.response.status === 500){
-            setClubes(clubes => [...clubes, club]);
-            setOtrosClubes(otrosClubes.filter(c => c.id !== club.id));
             console.log('Server error');
         } else {
             console.log('Error');
