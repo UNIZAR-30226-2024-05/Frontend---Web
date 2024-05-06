@@ -68,24 +68,31 @@
 
 /* Estilo para el botón de selección de archivo */
 .input-file-button {
-    background-color: #4CAF50; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    padding: 10px 20px; /* Espaciado interno del botón */
-    border: none; /* Borde del botón */
-    border-radius: 5px; /* Borde redondeado del botón */
-    cursor: pointer; /* Cambiar cursor al pasar por encima */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 40%;
+    width: 20%;
+    font-size: 1.2rem;
+    background-color: #0fa7b2;
+    border-radius: 10px;
+    padding: 2px 5px;
+    justify-self: center;
+    align-self: center; 
 }
 
 /* Estilo para ocultar el input de tipo file */
-.input-file {
-    display: none; /* Ocultar el input */
-}
+
 
 
 .subit-libro-button {
-    height: 30px;
-    border-radius: 10px;
-    margin-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 40%;
+  width: 20%;
+  font-size: 1.2rem;
+  background-color: #0fa7b2;
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
 }

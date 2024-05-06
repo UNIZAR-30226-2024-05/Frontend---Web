@@ -95,14 +95,15 @@ const AnyadirLibro = () => {
             />
             <h3>Introduce la imagen de la portada</h3>
             <label htmlFor="file-upload" className="input-file-button">Seleccionar Archivo</label>
-            <input type="file" id="file-upload" className="input-file" onChange={handleChangeNuevaImagen} />
+            <input type="file" id="imagen-upload" className="input-file" onChange={handleChangeNuevaImagen} />
 
             {imagenDecidida && (
                 <img src={URL.createObjectURL(imagenDecidida)} alt="Vista previa de la imagen" className='vista-previa-portadas'/>
             )}
+
             <h3>Introduce los audios de cada capítulo</h3>
             <label htmlFor="file-upload" className="input-file-button">Seleccionar Archivo</label>
-            <input type="file" id="file-upload" className="input-file" onChange={handleAgregarAudioCapitulo} />
+            <input type="file" id="audio-upload" className="input-file" onChange={handleAgregarAudioCapitulo} />
 
             <button
                 className='submit-libro-button'
