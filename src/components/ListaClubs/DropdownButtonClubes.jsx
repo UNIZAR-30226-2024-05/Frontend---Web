@@ -50,7 +50,7 @@ const DropdownButtonClubes = ({ opcion, club, clubes, setClubes, otrosClubes, se
         );
         console.log(respuesta); /* Solo desarrollo */
         setClubes(clubes.filter(c => c.id !== club.id));
-        setOtrosClubes([...otrosClubes, club]);
+        setOtrosClubes(otrosClubes => [...otrosClubes, club]);
         console.log(clubes);
         console.log(otrosClubes);
         setIsOpen(false);
@@ -77,7 +77,7 @@ const DropdownButtonClubes = ({ opcion, club, clubes, setClubes, otrosClubes, se
           }
         );
         console.log(respuesta); /* Solo desarrollo */
-        setClubes([...clubes, club]);
+        setClubes(clubes => [...clubes, club]);
         setOtrosClubes(otrosClubes.filter(c => c.id !== club.id));
         console.log(clubes);
         console.log(otrosClubes);
