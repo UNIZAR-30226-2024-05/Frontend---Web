@@ -5,27 +5,10 @@ import ListaClubes from '../components/ListaClubs/ListaClubes';
 import Footer from '../components/Footer/Footer';
 
 const Clubes = () => {
- 
-
-  const [libros, setLibros] = useState([
-    {titulo: 'primero'},
-    {titulo: 'segundo'}
-  ]);
-
-  const [clubes, setClubes] = useState([
-    {id: 1, titulo: 'Mi club', propietario: 4, seguido: true},
-    {id: 2, titulo: 'Club Harry Potter', propietario: 5, seguido: true},
-    {id: 3, titulo: 'Club de la trucha', propietario: 5, seguido: true}
-  ]);
-
-  const [otrosClubes, setOtrosClubes] = useState([
-    {id: 4, titulo: 'Faltadas', propietario: 5, seguido: false},
-    {id: 5, titulo: 'Otro club más', propietario: 5, seguido: false}
-  ])
-
-
-  //const [clubes, setClubes] = useState([]);
-  //const [otrosClubes, setOtrosClubes] = useState([]);
+  
+  const [clubes, setClubes] = useState([]);
+  const [otrosClubes, setOtrosClubes] = useState([]);
+  const [libros, setLibros] = useState([]);
   const [loading, setLoading] = useState(true); /* Poner TRUE en que descomente consulta */
   const [loading2, setLoading2] = useState(true); /* Poner TRUE en que descomente consulta */
 
@@ -70,8 +53,8 @@ const Clubes = () => {
               setLoading2(false);
           })
       }
-        fetchClubes();
-        fetchOtrosClubes();
+      fetchClubes();
+      fetchOtrosClubes();
     }, []);
 
 
