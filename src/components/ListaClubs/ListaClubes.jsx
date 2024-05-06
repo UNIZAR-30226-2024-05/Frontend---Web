@@ -34,15 +34,15 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
     useEffect(() => {
         setTusClubes(listaClubes.filter(club => club.propietario === user_id));
         setClubesSeguidos(listaClubes.filter(club => club.propietario !== user_id));
-      }, [listaClubes, clubes]);
+      }, [listaClubes]);
 
     useEffect(() => {
-        setListaOtrosClubes(listaOtrosClubes);
-      }, [listaOtrosClubes, otrosClubes]);
-    
-    useEffect(() => {
-        setListaClubes(clubes);
+        setListaClubes(otrosClubes);
       }, [clubes]);
+
+    useEffect(() => {
+        setListaOtrosClubes(otrosClubes);
+      }, [otrosClubes]);
 
     const opcion_mis_clubs = 'Eliminar club';
 
@@ -130,7 +130,12 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
             if (elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
             {return elemento;}
         });
+        var resultado2 = otrosClubes.filter((elemento) => {
+            if (elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+            {return elemento;}
+        });
         setListaClubes(resultado);
+        setListaOtrosClubes(resultado2);
     }
 
     const handleClubClick = (id_club) => {
