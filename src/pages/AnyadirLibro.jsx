@@ -88,7 +88,6 @@ const AnyadirLibro = () => {
             <input
                 type="file"
                 className='imagen-nuevo-libro'
-                value={imagenDecidida}
                 onChange={handleChangeNuevaImagen}
             />
             {imagenDecidida && (
