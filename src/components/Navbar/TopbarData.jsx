@@ -73,12 +73,12 @@ export const TopbarAdminData = [
     },
     {
         title: 'Añadir libro',
-        path: '/AnyadirLibro',
+        path: '/anyadirLibro',
         cName: 'menu-text'
     },
     {
         title: 'Añadir autor',
-        path: '/AnyadirAutor',
+        path: '/anyadirAutor',
         cName: 'menu-text'
     }
 ]
