@@ -32,6 +32,7 @@ function Navbar() {
     const { auth , setAuth } = useContext(AuthContext);
     const { username } = auth;
     const { img } = auth;
+    const { role } = auth;
 
     const [ amigos, setAmigos ] = useState([]);
     const [ loading, setLoading ] = useState(true);
