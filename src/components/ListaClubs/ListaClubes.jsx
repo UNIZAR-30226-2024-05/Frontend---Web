@@ -124,11 +124,11 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
 
     const filtrar = (terminoBusqueda) => {
         var resultado = clubes.filter((elemento) => {
-            if (elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+            if (elemento.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
             {return elemento;}
         });
         var resultado2 = otrosClubes.filter((elemento) => {
-            if (elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+            if (elemento.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
             {return elemento;}
         });
         setListaClubes(resultado);
