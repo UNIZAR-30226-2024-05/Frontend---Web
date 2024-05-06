@@ -1,4 +1,5 @@
 .lista-autores {
+    display: grid;
     text-align: center;
     padding: 40px 100px;
     max-width: 100% !important;
@@ -33,6 +34,6 @@
     cursor: pointer;
 }
 
-.lista-autores.lista .autor .nombre-autor {
+.lista-autores .lista .autor .nombre-autor {
   color: white;
 }
