@@ -40,16 +40,19 @@ const AnyadirLibro = () => {
         console.log(imagenDecidida);
         console.log(audioCapitulo);
         try {
-            const response = await axios.post('/audiolibros/anadir', 
-            JSON.stringify({
-                titulo: tituloDecidido,
-                nombreAutor: autorDecidido,
-                descripcion: descripcionDecidida,
-            }), {image: imagenDecidida}, {audios: audioCapitulo},
-        {
-            headers: { 'Content-Type': 'application/json' },
-            withCredentials: true
-        });
+            const formData = new FormData();
+            formData.append('titulo', tituloDecidido);
+            formData.append('nombreAutor', autorDecidido);
+            formData.append('descripcion', descripcionDecidida);
+            formData.append('image', imagenDecidida);
+            formData.append('audios', audioCapitulo);
+    
+            const response = await axios.post('/audiolibros/anadir', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                withCredentials: true
+            });
             console.log(response.data);
             
         } catch (error) {
@@ -64,6 +67,7 @@ const AnyadirLibro = () => {
             }            
         }
     }
+    
 
     return (
         <div className='anyadir-libro-container'>
@@ -90,20 +94,15 @@ const AnyadirLibro = () => {
                 onChange={handleChangeNuevaDescripcion}
             />
             <h3>Introduce la imagen de la portada</h3>
-            <input
-                type="file"
-                className='imagen-nuevo-libro'
-                onChange={handleChangeNuevaImagen}
-            />
+            <label htmlFor="file-upload" className="input-file-button">Seleccionar Archivo</label>
+            <input type="file" id="file-upload" className="input-file" onChange={handleChangeNuevaImagen} />
+
             {imagenDecidida && (
-                <img src={URL.createObjectURL(imagenDecidida)} alt="Vista previa de la imagen" />
+                <img src={URL.createObjectURL(imagenDecidida)} alt="Vista previa de la imagen" className='vista-previa-portadas'/>
             )}
             <h3>Introduce los audios de cada capítulo</h3>
-            <input
-                type="file"
-                className='audio-capitulo-libro'
-                onChange={handleAgregarAudioCapitulo}
-            />
+            <label htmlFor="file-upload" className="input-file-button">Seleccionar Archivo</label>
+            <input type="file" id="file-upload" className="input-file" onChange={handleAgregarAudioCapitulo} />
 
             <button
                 className='submit-libro-button'
