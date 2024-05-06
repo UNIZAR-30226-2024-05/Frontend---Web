@@ -56,7 +56,7 @@ function App() {
       <Route path='/player' element={<ProtectedRoute element={Reproductor} />}/>
       <Route path='*' element={<NotFound />}/>
       <Route path='/libro' element={<ProtectedRoute element={Libro} />}/>
-      <Route path='/perfilamigo' element={PerfilAmigo}/>
+      <Route path='/perfilamigo' element={<ProtectedRoute element={PerfilAmigo} />}/>
       <Route path='/autor' element={<Autor />}/>
       <Route path='/anyadirlibro' element={<ProtectedRoute element={AnyadirLibro} />}/>
       <Route path='/anyadirautor' element={<ProtectedRoute element={AnyadirAutor} />}/>
