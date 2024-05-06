@@ -20,7 +20,11 @@
     grid-template-columns: 80% 20%;
     margin-top: 3vh;
     margin-bottom: 3vh;
-    width: 11vw;
+    width: 22vw;
+}
+
+.contenido-colec{
+  text-align: left;
 }
 
 .contenedor-lista .lista .coleccion .contenido-colec {
