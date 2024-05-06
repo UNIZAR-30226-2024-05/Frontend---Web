@@ -86,7 +86,7 @@ const Libro = () => {
         // Reemplazar espacios en blanco con "+" para la URL
         const tituloFormateado = titulo.replace(/\s/g, '+');
         // URL base de búsqueda en Amazon
-        const urlBase = 'https://www.amazon.com/s?k=';
+        const urlBase = 'https://www.amazon.es/s?k=';
         // Generar el enlace completo
         const enlaceAmazon = `${urlBase}${tituloFormateado}`;
         return enlaceAmazon;
