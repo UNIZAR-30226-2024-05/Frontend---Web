@@ -37,3 +37,8 @@
 .lista-autores .lista .autor .nombre-autor {
   color: white;
 }
+
+.lista{
+  display: flex;
+  align-self: center;
+}
