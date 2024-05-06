@@ -93,12 +93,12 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
 
     const handleClickSubmitClub = async () => {
 
-        const URL_CONSULTA = '/club/create'; /* ATENTO */
+        const URL_CREAR = '/club/create'; /* ATENTO */
 
         if(nuevoClub.length > 4 && nuevoClub.length < 30 ){
             try {
-                const respuesta = await axios.post(URL_CONSULTA, 
-                JSON.stringify({nombre: nuevoClub, audiolibroID, descripcion}),
+                const respuesta = await axios.post(URL_CREAR, 
+                JSON.stringify({nombre: nuevoClub, audiolibroID: libroSeleccionado.id, descripcion}),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
