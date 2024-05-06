@@ -23,8 +23,8 @@ const ListaAutores = ({autores}) => {
     
         const navigate = useNavigate();
     
-        const handleAutorClick = (id) => {
-            navigate('/autor', {state: {id}})
+        const handleAutorClick = (id_autor) => {
+            navigate('/autor', {state: {id_autor}})
         }
     
         return (
