@@ -96,9 +96,7 @@ const AnyadirLibro = () => {
             <h3>Introduce los audios de cada capítulo</h3>
             <input
                 type="file"
-                accept="audio/*"
                 className='audio-capitulo-libro'
-                
                 onChange={handleAgregarAudioCapitulo}
             />
 
