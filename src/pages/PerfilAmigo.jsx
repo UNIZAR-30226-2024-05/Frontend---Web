@@ -125,7 +125,7 @@ const PerfilAmigo = () => {
                 <img src={obtenerFotoPerfil(img)} alt="Foto de perfil" />
             </div>
             <div className="amigo-info-usuario">
-                <h2 className='nombre-user'>{usuario}</h2>
+                <h2>{usuario}</h2>
                 {esAmigo ? (
                     <button className="amigo-somos-amigos">Somos amigos</button>
                 ) : (
