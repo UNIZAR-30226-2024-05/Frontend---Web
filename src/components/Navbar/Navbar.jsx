@@ -30,14 +30,12 @@ function Navbar() {
 
     // Variables para conocer el contexto (Usuario conectado o no)
     const { auth , setAuth } = useContext(AuthContext);
-    const { username } = auth;
-    const { img } = auth;
-    const { role } = auth;
+    const { username, img, role } = auth;
 
     const [ amigos, setAmigos ] = useState([]);
     const [ loading, setLoading ] = useState(true);
 
-    useEffect( () => {
+    useEffect(() => {
         const URL_CONSULTA = '/amistad/amigos';
         async function fetchAmigos(){
             await axios.get(URL_CONSULTA, { withCredentials: true })
@@ -58,105 +56,79 @@ function Navbar() {
     const obtenerPerfil = () => {
         switch(img){
         case '0':
-            return perro
-            break;
+            return perro;
         case '1':
-            return gato
-            break;
+            return gato;
         case '2':
-            return rana
-            break;
+            return rana;
         case '3':
             return leon;
-            break;
         case '4':
-            return pollo
-            break;
+            return pollo;
         case '5':
-            return vaca
-            break;
+            return vaca;
         case '6':
-            return buho
-            break;
+            return buho;
         case '7':
-            return perezoso
-            break;
+            return perezoso;
         case '8':
-            return doraemon
-            break;
+            return doraemon;
         case '9':
-            return pikachu
-            break;
+            return pikachu;
         }
     }
   
     const handleCerrarSesion = async (event) => {
         event.preventDefault();
     
-    try {
-      const respuesta = await axios.post(URL_LOGOUT, null, {withCredentials: true});
-      console.log(JSON.stringify(respuesta?.data));
+        try {
+            const respuesta = await axios.post(URL_LOGOUT, null, {withCredentials: true});
+            console.log(JSON.stringify(respuesta?.data));
 
-      // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
-      setAuth({});
-      window.location.href = '/login'; // Redirige a la página de inicio de sesión
-        
-
-    } catch (err) {
-      if (!err.response) {
-        console.log('No hay respuesta del servidor');
-      } else if (err.response.status === 401) {
-        console.log('No hay sesión iniciada');
-      } else {
-        console.log('Fallo en el logout');
-      }
-      setAuth({});
-    }
+            // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
+            setAuth({});
+            window.location.href = '/login'; // Redirige a la página de inicio de sesión
+        } catch (err) {
+            if (!err.response) {
+                console.log('No hay respuesta del servidor');
+            } else if (err.response.status === 401) {
+                console.log('No hay sesión iniciada');
+            } else {
+                console.log('Fallo en el logout');
+            }
+            setAuth({});
+        }
     };
 
     const showSidebar = () => setSidebar(!sidebar);
 
     return (
-    <>
-        <IconContext.Provider value={{color:    '#fff'}}>
-            <div className='navbar'>
-                {username ? (
-                <>
-                    <Link to='/perfil' className='profile-picture'>
-                        <img className='fotoPerfil' src={obtenerPerfil()}/>
-                    </Link>
-                    <div className='menu-bars'>
-                        <IoIcons.IoMdPeople onClick={showSidebar} />
-                    </div>
-                    <div className='menu-text'>
-                        <Link to='/' onClick={handleCerrarSesion} className='boton-cerrar-sesion'>Cerrar Sesión</Link>
-                    </div>
-                </>) : (null)
-                }
-
-                {/* ESTO ES TEMPORAL*/} 
-
-                <div className='menu'>
-                    { username ? (
+        <>
+            <IconContext.Provider value={{color: '#fff'}}>
+                <div className='navbar'>
+                    {username ? (
                         <>
-                            <ul className='menu-items'>
-                                {TopbarInData.map((item, index) => {
-                                    return(
-                                        <li key={index} className={item.cName}>
-                                            <Link to={item.path}>
-                                                <span>{item.title}</span>
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                            <Link to='/perfil' className='profile-picture'>
+                                <img className='fotoPerfil' src={obtenerPerfil()} alt="Profile"/>
+                            </Link>
+                            <div className='menu-bars'>
+                                <IoIcons.IoMdPeople onClick={showSidebar} />
+                            </div>
+                            <div className='menu-text'>
+                                <Link to='/' onClick={handleCerrarSesion} className='boton-cerrar-sesion'>Cerrar Sesión</Link>
+                            </div>
                         </>
-                    ) : (
-                        <>
-                            {role === 'normal' ? (
-                                <>
+                    ) : (null)
+                    }
+
+                    {/* ESTO ES TEMPORAL*/} 
+
+                    <div className='menu'>
+                        { username ? (
+                            <>
+                                {role === 'normal' ? (
                                     <ul className='menu-items'>
-                                        {TopbarOutData.map((item, index) => {
+                                        {TopbarInData.map((item, index) => {
                                             return(
                                                 <li key={index} className={item.cName}>
                                                     <Link to={item.path}>
@@ -166,50 +138,61 @@ function Navbar() {
                                             );
                                         })}
                                     </ul>
-                                </>
-                            ) : role === 'admin' ? (
-                                <ul className='menu-items'>
-                                    {TopbarAdminData.map((item, index) => {
-                                        return(
-                                            <li key={index} className={item.cName}>
-                                                <Link to={item.path}>
-                                                    <span>{item.title}</span>
-                                                </Link>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            ) : null}
-                        </>
-                    )}
-                </div>
-                <Link to='/' className='menu-bars right-elements'>
-                    <img src={logo} alt="Logo" />
-                </Link>
-            </div>
-            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                <div className='nav-menu-items'>
-                    <div className="navbar-toggle">
-                        <div className='menu-bars' onClick={showSidebar}>
-                        <AiIcons.AiOutlineClose />
-                        </div>
-                        <div className='nav-text'>
-                        <span>Bienvenido, {username}</span>
-                        </div>
-                    </div>
-                    <div className='sidebar-list'> 
-                    {loading ? (
-                        <div className='loading-container'>
-                            <p>Loading...</p>
-                        </div>
+                                ) : role === 'admin' ? (
+                                    <ul className='menu-items'>
+                                        {TopbarAdminData.map((item, index) => {
+                                            return(
+                                                <li key={index} className={item.cName}>
+                                                    <Link to={item.path}>
+                                                        <span>{item.title}</span>
+                                                    </Link>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                ) : null}
+                            </>
                         ) : (
-                            <ListaAmigosSidebar amigos={amigos} />
+                            <ul className='menu-items'>
+                                {TopbarOutData.map((item, index) => {
+                                    return(
+                                        <li key={index} className={item.cName}>
+                                            <Link to={item.path}>
+                                                <span>{item.title}</span>
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         )}
                     </div>
+                    <Link to='/' className='menu-bars right-elements'>
+                        <img src={logo} alt="Logo" />
+                    </Link>
                 </div>
-            </nav>
-        </IconContext.Provider>
-    </>
+                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                    <div className='nav-menu-items'>
+                        <div className="navbar-toggle">
+                            <div className='menu-bars' onClick={showSidebar}>
+                                <AiIcons.AiOutlineClose />
+                            </div>
+                            <div className='nav-text'>
+                                <span>Bienvenido, {username}</span>
+                            </div>
+                        </div>
+                        <div className='sidebar-list'> 
+                            {loading ? (
+                                <div className='loading-container'>
+                                    <p>Loading...</p>
+                                </div>
+                                ) : (
+                                    <ListaAmigosSidebar amigos={amigos} />
+                                )}
+                        </div>
+                    </div>
+                </nav>
+            </IconContext.Provider>
+        </>
     );
 }
 
