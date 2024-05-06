@@ -189,7 +189,7 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
                 <div key={i} className='club'>
                     <div className='contenido-club'>
                         <div className='nombre' onClick={() => handleClubClick(club.id)}>
-                            <h1>{club.titulo}</h1>
+                            <h1>{club.nombre}</h1>
                         </div>
                     </div>
                     <div className='boton-container'>
@@ -209,7 +209,7 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
                 <div key={i} className='club'>
                     <div className='contenido-club'>
                         <div className='nombre' onClick={() => handleClubClick(club.id)}>
-                            <h1>{club.titulo}</h1>
+                            <h1>{club.nombre}</h1>
                         </div>
                     </div>
                     <div className='boton-container'>
@@ -229,7 +229,7 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
                 <div key={i} className='club'>
                     <div className='contenido-club'>
                         <div className='nombre' onClick={() => handleClubClick(club.id)}>
-                            <h1>{club.titulo}</h1>
+                            <h1>{club.nombre}</h1>
                         </div>
                     </div> 
                     <div className='boton-container'>
