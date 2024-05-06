@@ -47,6 +47,7 @@
     padding: 2px 5px;
     justify-self: center;
     align-self: center;
+    border: 2px solid #000;
 }
 
 .amigo-colecciones-y-actividad {
