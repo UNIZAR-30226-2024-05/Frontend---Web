@@ -1,8 +1,8 @@
-.lista-autores {
-    display: grid;
-    text-align: center;
-    padding: 40px 100px;
-    max-width: 100% !important;
+.lista-autores input{
+  width: 50%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #0000006e;
 }
 
 .busqueda {
