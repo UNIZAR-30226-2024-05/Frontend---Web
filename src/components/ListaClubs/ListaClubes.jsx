@@ -26,7 +26,7 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
     const [descripcion, setDescripcion] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
-    const [libroSeleccionado, setLibroSeleccionado] = useState('');
+    const [libroSeleccionado, setLibroSeleccionado] = useState(null);
     
     const [tusClubes, setTusClubes] = useState(listaClubes.filter(club => club.propietario === user_id));
     const [clubesSeguidos, setClubesSeguidos] = useState(listaClubes.filter(club => club.propietario !== user_id));
@@ -100,7 +100,6 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
         const URL_CREAR = '/club/create'; /* ATENTO */
 
         if(nuevoClub.length > 4 && nuevoClub.length < 30 ){
-            console.log(libroSeleccionado);
             try {
                 const respuesta = await axios.post(URL_CREAR, 
                 JSON.stringify({nombre: nuevoClub, audiolibroID: libroSeleccionado, descripcion}),
@@ -110,7 +109,6 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
                 }
                 );
                 console.log(respuesta); /* Solo desarrollo */
-                console.log(libroSeleccionado);
                 setNuevoClub('');
                 setCrearClub(false);
                 setErrMsg('');
