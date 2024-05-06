@@ -32,6 +32,8 @@
     display: grid;
     grid-template-columns: 80% 20%;
     cursor: pointer;
+    width: 48vw;
+    height: 5vh;
 }
 
 .lista-autores .lista .autor .nombre-autor {
