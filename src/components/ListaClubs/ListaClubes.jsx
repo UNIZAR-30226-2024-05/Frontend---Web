@@ -39,6 +39,8 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
     useEffect (() => {
         setTusClubes(listaClubes.filter(club => club.isadmin));
         setClubesSeguidos(listaClubes.filter(club => !club.isadmin));
+        console.log(tusClubes);
+        console.log(clubesSeguidos);
     }, [listaClubes]);
 
     useEffect(() => {
@@ -107,6 +109,7 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
                 }
                 );
                 console.log(respuesta); /* Solo desarrollo */
+                console.log(libroSeleccionado.id);
                 setNuevoClub('');
                 setCrearClub(false);
                 setErrMsg('');
