@@ -4,6 +4,7 @@
 
 .autores .autores-container {
     display: grid;
+    grid-template-columns: 1fr;
     align-items: center;
     height: auto;
     min-height:calc(100vh - 80px);
@@ -14,6 +15,7 @@
     background-repeat: no-repeat;
     font-size: 1.5rem;
 }
+
 
 .autores .nombre {
     margin-top: 20px;
