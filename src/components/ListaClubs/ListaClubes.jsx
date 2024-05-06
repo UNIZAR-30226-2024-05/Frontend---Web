@@ -93,7 +93,7 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
 
     const handleClickSubmitClub = async () => {
 
-        const URL_CONSULTA = '/clubes/create'; /* ATENTO */
+        const URL_CONSULTA = '/club/create'; /* ATENTO */
 
         if(nuevoClub.length > 4 && nuevoClub.length < 30 ){
             try {
