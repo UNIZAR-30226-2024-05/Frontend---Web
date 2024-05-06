@@ -49,7 +49,7 @@ const DropdownButtonClubes = ({ opcion, club, clubes, setClubes, otrosClubes, se
         );
         console.log(respuesta); /* Solo desarrollo */
         setClubes(clubes.filter(c => c.id !== club.id));
-        setOtrosClubes(otrosClubes => [...otrosClubes, club]);
+        setOtrosClubes(otrosClubes => [club, ...otrosClubes]);
         setIsOpen(false);
     } catch (err) {
         if (!err.response) {
