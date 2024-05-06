@@ -28,6 +28,7 @@ import PerfilAmigo from './pages/PerfilAmigo';
 import Autor from './pages/Autor';
 import AnyadirLibro from './pages/AnyadirLibro';
 import AnyadirAutor from './pages/AnyadirAutor';
+import Autores from './pages/Autores';
 
 function App() {
 
@@ -60,6 +61,7 @@ function App() {
       <Route path='/autor' element={<Autor />}/>
       <Route path='/anyadirlibro' element={<ProtectedRoute element={AnyadirLibro} />}/>
       <Route path='/anyadirautor' element={<ProtectedRoute element={AnyadirAutor} />}/>
+      <Route path='/autores' element={<ProtectedRoute element={Autores} />}/>
      </Routes>
      <Navbar />
     </Router>
