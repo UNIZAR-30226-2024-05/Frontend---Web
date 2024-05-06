@@ -23,8 +23,8 @@ const ListaAutores = ({autores}) => {
     
         const navigate = useNavigate();
     
-        const handleAutorClick = (id_autor) => {
-            navigate('/autor', {state: {id_autor}})
+        const handleAutorClick = (id) => {
+            navigate('/autor', {state: {id}})
         }
     
         return (
@@ -34,7 +34,7 @@ const ListaAutores = ({autores}) => {
                 </div>
                 <div className="lista">
                     {listaShow.map((autor) => (
-                        <div key={autor.id_autor} className="autor" onClick={() => handleAutorClick(autor.id)}>
+                        <div key={autor.id} className="autor" onClick={() => handleAutorClick(autor.id)}>
                             <p className='nombre-autor'>{autor.nombre}</p>
                         </div>
                     ))}
