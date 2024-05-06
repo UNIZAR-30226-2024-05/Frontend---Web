@@ -33,10 +33,13 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
 
     useEffect(() => {
         setListaClubes(clubes);
-        setTusClubes(listaClubes.filter(club => club.propietario === user_id));
-        setClubesSeguidos(listaClubes.filter(club => club.propietario !== user_id));
         console.log(clubes);
       }, [clubes]);
+
+    useEffect (() => {
+        setTusClubes(listaClubes.filter(club => club.propietario === user_id));
+        setClubesSeguidos(listaClubes.filter(club => club.propietario !== user_id));
+    })
 
     useEffect(() => {
         setListaOtrosClubes(otrosClubes);
