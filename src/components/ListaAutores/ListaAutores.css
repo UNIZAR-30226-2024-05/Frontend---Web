@@ -19,9 +19,7 @@
 
 .lista-autores .lista {
     display: flex;
-    align-items: center;
-    flex: 1;
-    grid-column: span 1;
+    flex-direction: column;
 }
 
 .lista-autores .lista .autor {
@@ -31,4 +29,5 @@
     border-radius: 20px;
     display: grid;
     grid-template-columns: 80% 20%;
+    cursor: pointer;
 }

@@ -28,7 +28,7 @@ const Autores = () => {
     return (
         <div className='autores'>
         <div className='autores-container'>
-            <h1 className='title'>Autores</h1>
+            <h1 className='nombre'>Autores</h1>
             {loading ? (
             <div className='loading-container'>
                 <p>Loading...</p>
