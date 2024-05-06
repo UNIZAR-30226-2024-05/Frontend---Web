@@ -24,6 +24,7 @@ const DropdownButtonClubes = ({ opcion, club, clubes, setClubes, otrosClubes, se
         );
         console.log(respuesta); /* Solo desarrollo */
         setClubes(clubes.filter(c => c.id !== club.id));
+        console.log(clubes);
         setIsOpen(false);
     } catch (err) {
         if (!err.response) {
@@ -50,6 +51,8 @@ const DropdownButtonClubes = ({ opcion, club, clubes, setClubes, otrosClubes, se
         console.log(respuesta); /* Solo desarrollo */
         setClubes(clubes.filter(c => c.id !== club.id));
         setOtrosClubes([...otrosClubes, club]);
+        console.log(clubes);
+        console.log(otrosClubes);
         setIsOpen(false);
     } catch (err) {
         if (!err.response) {
@@ -76,6 +79,8 @@ const DropdownButtonClubes = ({ opcion, club, clubes, setClubes, otrosClubes, se
         console.log(respuesta); /* Solo desarrollo */
         setClubes([...clubes, club]);
         setOtrosClubes(otrosClubes.filter(c => c.id !== club.id));
+        console.log(clubes);
+        console.log(otrosClubes);
         setIsOpen(false);
     } catch (err) {
         if (!err.response) {
