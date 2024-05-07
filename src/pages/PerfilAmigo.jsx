@@ -29,6 +29,7 @@ const PerfilAmigo = () => {
     const [colecciones, setColecciones] = useState();
     const [estado, setEstado] = useState();
     const [ultimaActividad, setUltimaActividad] = useState();
+    const [idUltimaActividad, setIdUltimaActividad] = useState();
     const [portadaUltimaActividad, setPortadaUltimaActividad] = useState();
     const [tituloUltimaActividad, setTituloUltimaActividad] = useState();
     const [fechaUltimaActividad, setFechaUltimaActividad] = useState();
@@ -53,6 +54,7 @@ const PerfilAmigo = () => {
                 }
                 if (response.data.ultimo) {
                     setUltimaActividad(response.data.ultimo);
+                    setIdUltimaActividad(response.data.ultimo.id)
                     setPortadaUltimaActividad(response.data.ultimo.img);
                     setTituloUltimaActividad(response.data.ultimo.titulo);
                     setFechaUltimaActividad(response.data.ultimo.fecha);
@@ -119,8 +121,8 @@ const PerfilAmigo = () => {
         console.log('Solicitud enviada');
     };
 
-    const handleClickLibro = (id_libro) => {
-        navigate(`/libro?id=${id_libro}`);
+    const handleClickLibro = (idUltimaActividad) => {
+        navigate(`/libro?id=${idUltimaActividad}`);
     }
 
     return (
