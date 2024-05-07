@@ -40,12 +40,12 @@ const ListaColeccionesAmigo = ({colecciones, setColecciones}) => {
         setListaColecciones(colecciones);
       }, [colecciones]);
 
-    const opciones_col_propia = [
-        'Eliminar coleccion'
+    const opcion_seguida = [
+        'Dejar de seguir coleccion'
     ];
 
-    const opciones_col_ajena = [
-        'Dejar de seguir coleccion'
+    const opcion_no_seguida = [
+        'Seguir coleccion'
     ];
 
     const handleChangeBusqueda = (event) => {
@@ -175,14 +175,14 @@ const ListaColeccionesAmigo = ({colecciones, setColecciones}) => {
                         <div className='boton-container'>
                             <DropdownButtonColeccionesAmigo 
                             className='boton-opciones' 
-                            options={opciones_col_propia} 
+                            options={opcion_seguida} 
                             collectionId={coleccion.id}
                             setColecciones={setColecciones}/>
                         </div> : 
                         <div className='boton-container'>
                             <DropdownButtonColeccionesAmigo
                             className='boton-opciones'
-                            options={opciones_col_ajena}
+                            options={opcion_no_seguida}
                             collectionId={coleccion.id}
                             setColecciones={setColecciones}/>
                         </div>
