@@ -155,6 +155,10 @@
     cursor: pointer;
   }
 
+  .autor-audiolibro-titulo:hover {
+    text-decoration: underline;
+  }
+
   .autor-audiolibro-titulo a:hover {
     text-decoration: underline;
   }
