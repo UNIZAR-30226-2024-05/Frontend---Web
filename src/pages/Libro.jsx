@@ -341,6 +341,11 @@ const Libro = () => {
         setModoEdicionCapitulos(!modoEdicionCapitulos);
     }
 
+    const handleAudiosChange = (files) => {
+        const newChapters = Array.from(files);
+        setNuevosCapitulos(newChapters);
+    }
+
     const handleGuardarCambios = async () => {
         try {
             const formData = new FormData();
@@ -376,7 +381,7 @@ const Libro = () => {
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
-            {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleGuardarCambios}> Guardar cambios</button> )}
+            {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleGuardarCambios()}> Guardar cambios</button> )}
             <div className="info-portada">
                 <img src={portada} alt="Portada del libro" />
                 {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditPhoto()} className='libro-editButton'/>)}
@@ -545,9 +550,9 @@ const Libro = () => {
                         <>
                         <h3>Introduce los nuevos capítulos</h3>
                         <input
-                            type="text"
-                            value={nuevosCapitulos}
-                            onChange={(event) => setNuevosCapitulos(event.target.value)}
+                            type="file"
+                            multiple
+                            onChange={(event) => handleAudiosChange(event.target.value)}
                         />
                         </>
                     )}

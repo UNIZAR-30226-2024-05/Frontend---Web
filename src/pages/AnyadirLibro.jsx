@@ -115,7 +115,12 @@ const AnyadirLibro = () => {
             )}
 
             <h3>Introduce los audios de cada capítulo</h3>
-            <input type="file" id="audio-upload" className="input-file" onChange={handleAgregarAudioCapitulo} />
+            <h3>Introduce los nuevos capítulos</h3>
+            <input
+                type="file"
+                multiple
+                onChange={(event) => handleAudiosChange(event.target.value)}
+            />
 
             <button
                 className='submit-libro-button'
