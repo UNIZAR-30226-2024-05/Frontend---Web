@@ -128,6 +128,7 @@
   .autor-audiolibros {
     width: 60%;
     margin-left: 10%;
+    margin-bottom: 10px;
   }
 
   .autor-audiolibro-concreto {
@@ -210,6 +211,7 @@
 
   .libro-admin-eliminar-autor {
     margin-left: 10px;
+    margin-bottom: 20px;
     width: 20%;
     height: 50px;
     font-size: 1.2rem;
