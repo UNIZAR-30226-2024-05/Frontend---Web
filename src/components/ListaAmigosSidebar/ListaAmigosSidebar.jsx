@@ -29,7 +29,7 @@ const ListaAmigosSidebar = ({amigos}) => {
         }
 
         const handleNombreClick = (id_user) => {
-            navigate('/perfilamigo', {state: {id_user}})
+            navigate(`/perfilamigo?id=${id_user}`);
         }
 
         let timer;

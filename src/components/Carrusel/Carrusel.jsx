@@ -89,7 +89,7 @@ const navigate = useNavigate();
 
 const handleLibroClick = (id_libro) => {
   console.log(id_libro);
-  navigate('/libro', {state: {id_libro}})
+  navigate(`/libro?id=${id_libro}`);
 }
 
 

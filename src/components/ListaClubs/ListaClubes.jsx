@@ -143,7 +143,7 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
     }
 
     const handleClubClick = (id_club) => {
-        navigate('/club', {state: {id_club}})
+        navigate(`/club?id=${id_club}`);
     }
 
     {/* En que se pueda, cambiar todo lo de clubes por una consulta al servidor. */}

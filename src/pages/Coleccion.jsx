@@ -8,7 +8,7 @@ import ListaColeccion from '../components/ListaColeccion/ListaColeccion';
 const Coleccion = () => {
 
     const location = useLocation();
-    const id_coleccion = location.state?.id_coleccion;
+    const id_coleccion = new URLSearchParams(location.search).get('id');
 
     const [coleccion, setColeccion] = useState([]);
     const [loading, setLoading] = useState(true);

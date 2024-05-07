@@ -217,7 +217,7 @@ const ListaAmigos = ({usuarios}) => {
     }
 
     const handleUsuarioClick = (id_user) => {
-        navigate('/perfilamigo', {state: {id_user}});
+        navigate(`/perfilamigo?id=${id_user}`);
     }
     
     return (

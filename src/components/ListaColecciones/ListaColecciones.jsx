@@ -114,7 +114,7 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
     }
 
     const handleColeccionClick = (id_coleccion) => {
-        navigate('/coleccion', {state: {id_coleccion}})
+        navigate(`/coleccion?id=${id_coleccion}`);
     }
 
     {/* En que se pueda, cambiar todo lo de colecciones por una consulta al servidor. */}

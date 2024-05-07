@@ -51,7 +51,7 @@ const ListaColeccion = ({ coleccion, setColeccion }) => {
     const navigate = useNavigate();
 
     const handleLibroClick = (id_libro) => {
-        navigate('/libro', {state: {id_libro}})
+        navigate(`/libro?id=${id_libro}`);
     }
 
 
