@@ -352,7 +352,7 @@ const Libro = () => {
             formData.append('image', nuevaPortada);
             formData.append('capitulos', nuevosCapitulos);
             const respuesta = await axios.post(
-                '/audiolibros/editar',
+                '/audiolibros/actualizar',
                 formData,
                 {
                     headers: { 'Content-Type': 'multipart/form-data' },
@@ -508,7 +508,7 @@ const Libro = () => {
                 
                 {/* Autor del libro */}
                 <div className="info-autor">
-                    <p>Autor: <span onClick={() => handleAutorClick(autor.id)} className='info-linkAutor'>{autor.nombre} {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditAutor()} className='libro-editButton'/>)}</span></p>
+                    <p>Autor: <span onClick={() => handleAutorClick(autor.id)} className='info-linkAutor'>{autor.nombre}</span> {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditAutor()} className='libro-editButton'/>)}</p>
                     {role === 'admin' && modoEdicionAutor && (
                         <>
                         <h3>Introduce el nuevo autor</h3>
