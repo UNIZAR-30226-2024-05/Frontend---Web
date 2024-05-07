@@ -88,6 +88,7 @@ const Autor = () => {
         if (ciudadNueva === '') {
             setCiudadNueva(ciudadNacimientoAutor);
         }
+        console.log({nombreNuevo, informacionNueva, ciudadNueva});
         try {
             const response = await axios.post(
                 `/autores/update`, 
@@ -117,6 +118,38 @@ const Autor = () => {
                 console.error('No existe el autor');
             } else if (error.response.status === 409) {
                 console.error('Estas modificando el nombre a un autor ya existente');
+            } else if (error.response.status === 500) {
+                console.error('Error del servidor');
+            }
+            else {
+                console.error('Error desconocido');
+            }
+        }
+    }
+
+    const estasSeguro = () => {
+        if (window.confirm('¿Estás seguro de que quieres eliminar este autor? Se borrarán TODOS sus libros')) {
+            handleEliminarAutor();
+        }
+    }
+
+    const handleEliminarAutor = async () => {
+        try {
+            const response = await axios.post(
+                'autores/delete', JSON.stringify({id: id_autor}),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(response.data);
+            navigate('/');
+        }
+        catch(error) {
+            if (!error.response) {
+                console.error('No hay respuesta del servidor');
+            } else if (error.response.status === 404) {
+                console.error('No existe el autor');
             } else if (error.response.status === 500) {
                 console.error('Error del servidor');
             }
@@ -223,6 +256,7 @@ const Autor = () => {
                     ))}
                 </div>
                 {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleEditarDatos()}> Guardar cambios</button> )}
+                {role === 'admin' && (<button className='libro-admin-eliminar-autor'onClick={() => estasSeguro()}> Eliminar autor</button> )}
             </div>
         </div>
     )

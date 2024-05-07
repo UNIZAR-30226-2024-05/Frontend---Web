@@ -351,25 +351,51 @@ const Libro = () => {
         try {
             const formData = new FormData();
             formData.append('audiolibroId', id_libro);
-            
-            if (nuevoTitulo) {
+
+            if (nuevoTitulo === '') {
+                formData.append('titulo', titulo);
+            }
+            else {
                 formData.append('titulo', nuevoTitulo);
             }
-            if (nuevoAutor) {
+
+            if (nuevoAutor === '') {
+                formData.append('autor', autor.nombre);
+            }
+            else {          
                 formData.append('autor', nuevoAutor);
             }
-            if (nuevaDescripcion) {
+
+            if (nuevaDescripcion === '') {
+                formData.append('descripcion', descripcion);
+            }
+            else {            
                 formData.append('descripcion', nuevaDescripcion);
             }
-            if (nuevoGenero) {
+
+            if (nuevoGenero === '') {
+                formData.append('genero', generos[0].nombre);
+            }
+            else {
                 formData.append('genero', nuevoGenero);
             }
-            if (nuevaPortada) {
+
+            if (nuevaPortada === '') {
+                formData.append('image', portada);
+            }
+            else {
                 formData.append('image', nuevaPortada);
             }
-            if (nuevosCapitulos) {
+
+            if (nuevosCapitulos.length === 0) {
+                formData.append('capitulos', capitulos);
+            }
+            else {           
                 formData.append('capitulos', nuevosCapitulos);
             }
+
+            console.log(formData);
+            
             const respuesta = await axios.post(
                 '/audiolibros/actualizar',
                 formData,
@@ -390,6 +416,31 @@ const Libro = () => {
                 console.log('Error');
             }
         }
+    }
+
+    const handleBorrarLibro = async () => {
+        try {
+            const respuesta = await axios.post(
+                '/audiolibros/eliminar',
+                JSON.stringify({ audiolibroId: id_libro }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(respuesta);
+        } catch (error) {
+            if (!error.response) {
+                console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 409) {
+                console.log('El audiolibro no existe')
+            }else if (error.response.status === 500){
+                console.log('Server error');
+            } else {
+                console.log('Error');
+            }
+        }
+        navigate('/');
     }
 
     return (
@@ -723,6 +774,7 @@ const Libro = () => {
                     )}
                 </div>
                 {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleGuardarCambios()}> Guardar cambios</button> )}
+                {role === 'admin' && (<button className='libro-admin-borrar-libro' onClick={() => handleBorrarLibro()}> Borrar libro</button> )}
             </div>
         </div>  
     );
