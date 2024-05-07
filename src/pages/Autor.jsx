@@ -79,13 +79,13 @@ const Autor = () => {
 
     const handleEditarDatos = async () => {
         console.log({nombreNuevo, informacionNueva, ciudadNueva});
-        if (nombreNuevo ==='') {
+        if (!nombreNuevo) {
             setNombreNuevo(nombreAutor);
         }
-        if (informacionNueva === '') {
+        if (!informacionNueva) {
             setInformacionNueva(textoInformacionAutor);
         }
-        if (ciudadNueva === '') {
+        if (!ciudadNueva) {
             setCiudadNueva(ciudadNacimientoAutor);
         }
         console.log({nombreNuevo, informacionNueva, ciudadNueva});

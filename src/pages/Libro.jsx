@@ -352,42 +352,42 @@ const Libro = () => {
             const formData = new FormData();
             formData.append('audiolibroId', id_libro);
 
-            if (nuevoTitulo === '') {
+            if (!nuevoTitulo) {
                 formData.append('titulo', titulo);
             }
             else {
                 formData.append('titulo', nuevoTitulo);
             }
 
-            if (nuevoAutor === '') {
+            if (!nuevoAutor) {
                 formData.append('autor', autor.nombre);
             }
             else {          
                 formData.append('autor', nuevoAutor);
             }
 
-            if (nuevaDescripcion === '') {
+            if (!nuevaDescripcion) {
                 formData.append('descripcion', descripcion);
             }
             else {            
                 formData.append('descripcion', nuevaDescripcion);
             }
 
-            if (nuevoGenero === '') {
+            if (!nuevoGenero) {
                 formData.append('genero', generos[0].nombre);
             }
             else {
                 formData.append('genero', nuevoGenero);
             }
 
-            if (nuevaPortada === '') {
+            if (!nuevaPortada) {
                 formData.append('image', portada);
             }
             else {
                 formData.append('image', nuevaPortada);
             }
 
-            if (nuevosCapitulos.length === 0) {
+            if (!nuevosCapitulos) {
                 formData.append('capitulos', capitulos);
             }
             else {           
