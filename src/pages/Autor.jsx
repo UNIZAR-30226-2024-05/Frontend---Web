@@ -3,12 +3,17 @@ import './Autor.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 import DropdownButton from '../components/DropdownButton/DropdownButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import AuthContext from '../context/AuthProvider';
 
 
 const Autor = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const { auth } = useContext(AuthContext);
+    const { role } = auth;
     const id_autor = new URLSearchParams(location.search).get('id');
     const [autor, setAutor] = useState([]);
     const [nombreAutor, setNombreAutor] = useState('Autor');
