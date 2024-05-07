@@ -79,35 +79,27 @@ const Autor = () => {
 
     const handleEditarDatos = async () => {
         console.log({nombreNuevo, informacionNueva, ciudadNueva});
-        if (!nombreNuevo) {
-            setNombreNuevo(nombreAutor);
-        }
-        if (!informacionNueva) {
-            setInformacionNueva(textoInformacionAutor);
-        }
-        if (!ciudadNueva) {
-            setCiudadNueva(ciudadNacimientoAutor);
-        }
-        console.log({nombreNuevo, informacionNueva, ciudadNueva});
         try {
             const response = await axios.post(
                 `/autores/update`, 
                 JSON.stringify({
-                id: id_autor,
-                nombre: nombreNuevo,
-                informacion: informacionNueva,
-                ciudadnacimiento: ciudadNueva
-            }),
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                withCredentials: true
-            });
+                    id: id_autor,
+                    nombre: nombreNuevo || nombreAutor,
+                    informacion: informacionNueva || textoInformacionAutor,
+                    ciudadnacimiento: ciudadNueva || ciudadNacimientoAutor
+                }),
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: true
+                }
+            );
             console.log(response.data);
-            setNombreAutor(nombreNuevo);
-            setTextoInformacionAutor(informacionNueva);
-            setCiudadNacimientoAutor(ciudadNueva);
+            // Actualizar los estados después de la solicitud POST
+            setNombreAutor(nombreNuevo || nombreAutor);
+            setTextoInformacionAutor(informacionNueva || textoInformacionAutor);
+            setCiudadNacimientoAutor(ciudadNueva || ciudadNacimientoAutor);
             setEditNombre(false);
             setEditInformacion(false);
             setEditCiudad(false);
