@@ -51,11 +51,11 @@ const ListaLibros = ({generos, libros}) => {
     const navigate = useNavigate();
 
     const handleLibroClick = (id_libro) => {
-        navigate('/libro', {state: {id_libro}})
+        navigate(`/libro?id=${id_libro}`);
     }
-
+    
     const handleAutorClick = (id_autor) => {
-        navigate('/autor', {state: {id_autor}})
+        navigate(`/autor?id=${id_autor}`);
     }
 
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}

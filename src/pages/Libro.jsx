@@ -16,7 +16,7 @@ const Libro = () => {
     const { role } = auth;
 
     const location = useLocation();
-    const id_libro = location.state?.id_libro;
+    const id_libro = new URLSearchParams(location.search).get('id');
     const [libro, setLibro] = useState();
 
     const [titulo, setTitulo] = useState('Titulo');

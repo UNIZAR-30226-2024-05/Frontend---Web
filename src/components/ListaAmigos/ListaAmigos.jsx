@@ -83,7 +83,7 @@ const ListaAmigos = ({usuarios}) => {
             case 1:
                 return 'Enviar solicitud'
             case 2:
-                return 'Solicitud enviada'
+                return 'Cancelar solicitud'
             case 3:
                 return 'Aceptar solicitud'
             default:
