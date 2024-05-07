@@ -23,16 +23,16 @@ const PerfilAmigo = () => {
     const location = useLocation();
     const id_user = new URLSearchParams(location.search).get('id');
 
-    const [perfil, setPerfil] = useState();
-    const [usuario, setUsuario] = useState();
-    const [img, setImg] = useState();
-    const [colecciones, setColecciones] = useState();
-    const [estado, setEstado] = useState();
-    const [ultimaActividad, setUltimaActividad] = useState();
-    const [idUltimaActividad, setIdUltimaActividad] = useState();
-    const [portadaUltimaActividad, setPortadaUltimaActividad] = useState();
-    const [tituloUltimaActividad, setTituloUltimaActividad] = useState();
-    const [fechaUltimaActividad, setFechaUltimaActividad] = useState();
+    const [perfil, setPerfil] = useState([]);
+    const [usuario, setUsuario] = useState('');
+    const [img, setImg] = useState(null);
+    const [colecciones, setColecciones] = useState([]);
+    const [estado, setEstado] = useState([]);
+    const [ultimaActividad, setUltimaActividad] = useState([]);
+    const [idUltimaActividad, setIdUltimaActividad] = useState(0);
+    const [portadaUltimaActividad, setPortadaUltimaActividad] = useState(null);
+    const [tituloUltimaActividad, setTituloUltimaActividad] = useState('');
+    const [fechaUltimaActividad, setFechaUltimaActividad] = useState(null);
 
     useEffect(async () => {
         if (id_user) {
