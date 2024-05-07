@@ -20,7 +20,7 @@ const Autor = () => {
     useEffect(() => {
 
         if (id_autor) {
-            const URL_AUTOR = `/autores/${id_autor}`;
+            const URL_AUTOR = `/autores/data/${id_autor}`;
             axios.get(URL_AUTOR)
             .then(response => {
                 // Actualiza el estado de los libros con los datos de los audiolibros recibidos
