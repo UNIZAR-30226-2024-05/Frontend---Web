@@ -256,7 +256,7 @@ const Autor = () => {
                     ))}
                 </div>
                 {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleEditarDatos()}> Guardar cambios</button> )}
-                {role === 'admin' && (<button className='libro-admin-eliminar-autor'onClick={() => estasSeguro()}> Eliminar autor</button> )}
+                {role === 'admin' && (<button className='libro-admin-eliminar-autor'onClick={() => estasSeguro()}></button> )}
             </div>
         </div>
     )

@@ -394,7 +394,7 @@ const Libro = () => {
                 formData.append('capitulos', nuevosCapitulos);
             }
 
-            console.log(formData);
+            console.log({ formData });
             
             const respuesta = await axios.post(
                 '/audiolibros/actualizar',
@@ -774,7 +774,7 @@ const Libro = () => {
                     )}
                 </div>
                 {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleGuardarCambios()}> Guardar cambios</button> )}
-                {role === 'admin' && (<button className='libro-admin-borrar-libro' onClick={() => handleBorrarLibro()}> Borrar libro</button> )}
+                {role === 'admin' && (<button className='libro-admin-borrar-libro' onClick={() => handleBorrarLibro()}></button> )}
             </div>
         </div>  
     );

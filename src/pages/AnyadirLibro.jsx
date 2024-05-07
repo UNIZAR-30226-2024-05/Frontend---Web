@@ -119,7 +119,7 @@ const AnyadirLibro = () => {
             <input
                 type="file"
                 multiple
-                onChange={(event) => handleAudiosChange(event.target.value)}
+                onChange={(event) => handleAgregarAudioCapitulo(event.target.value)}
             />
 
             <button

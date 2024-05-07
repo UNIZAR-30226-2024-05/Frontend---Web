@@ -75,7 +75,7 @@ const AnyadirAutor = () => {
                 className='submit-autor-button'
                 onClick={handleSubmit}
             >
-                Añadir Libro
+                Añadir autor
             </button>
         </div>
     );
