@@ -52,7 +52,6 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
         setListaPeticiones(resultado);
     };
 
-
     const handleUsuarioClick = (id_user) => {
         navigate(`/perfilamigo?id=${id_user}`);
     };

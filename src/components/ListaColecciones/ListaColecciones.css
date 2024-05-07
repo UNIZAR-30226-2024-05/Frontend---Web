@@ -20,12 +20,6 @@
     grid-template-columns: 80% 20%;
     margin-top: 3vh;
     margin-bottom: 3vh;
-    width: 22vw;
-    align-self: center;
-}
-
-.contenido-colec{
-  text-align: left;
 }
 
 .contenedor-lista .lista .coleccion .contenido-colec {
@@ -72,22 +66,16 @@
   }
 
   .contenedor-lista .buscador-container .crear-coleccion-btn{
-    height: 5vh;
+    height: 30px;
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
     margin-right: 5px;
   }
 
-  .crear-coleccion-btn{
-    background-color: #0fa7b2;
-    border: 2px solid #000;
-  }
-
   .contenedor-lista .buscador-container .buscador{
     width: 50% !important;
-    height: 5vh;
-    width: 15vw;
+    height: 30px;
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
