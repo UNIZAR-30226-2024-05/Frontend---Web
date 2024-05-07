@@ -351,12 +351,25 @@ const Libro = () => {
         try {
             const formData = new FormData();
             formData.append('id', id_libro);
-            formData.append('titulo', nuevoTitulo);
-            formData.append('autor', nuevoAutor);
-            formData.append('descripcion', nuevaDescripcion);
-            formData.append('genero', nuevoGenero);
-            formData.append('image', nuevaPortada);
-            formData.append('capitulos', nuevosCapitulos);
+            
+            if (nuevoTitulo) {
+                formData.append('titulo', nuevoTitulo);
+            }
+            if (nuevoAutor) {
+                formData.append('autor', nuevoAutor);
+            }
+            if (nuevaDescripcion) {
+                formData.append('descripcion', nuevaDescripcion);
+            }
+            if (nuevoGenero) {
+                formData.append('genero', nuevoGenero);
+            }
+            if (nuevaPortada) {
+                formData.append('image', nuevaPortada);
+            }
+            if (nuevosCapitulos) {
+                formData.append('capitulos', nuevosCapitulos);
+            }
             const respuesta = await axios.post(
                 '/audiolibros/actualizar',
                 formData,
