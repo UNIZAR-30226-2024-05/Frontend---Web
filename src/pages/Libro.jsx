@@ -479,8 +479,7 @@ const Libro = () => {
             <div className="info-detalles">
                 {/* Título del libro */}
                 <div className='info-titulo'>
-                    <h1>{titulo}</h1>
-                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditTitulo()} className='libro-editButton'/>)}
+                    <h1>{titulo} {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditTitulo()} className='libro-editButton'/>)}</h1>
                     {role === 'admin' && modoEdicionTitulo && (
                         <>
                         <h3>Introduce el nuevo título</h3>
@@ -495,8 +494,7 @@ const Libro = () => {
                 
                 {/* Descripción del libro */}
                 <div className='info-descripcion'>
-                    <p>{descripcion}</p>
-                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditDescripcion()} className='libro-editButton'/>)}
+                    <p>{descripcion} {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditDescripcion()} className='libro-editButton'/>)}</p>
                     {role === 'admin' && modoEdicionDescripcion && (
                         <>
                         <h3>Introduce la nueva descripción</h3>
@@ -510,8 +508,7 @@ const Libro = () => {
                 
                 {/* Autor del libro */}
                 <div className="info-autor">
-                    <p>Autor: <span onClick={() => handleAutorClick(autor.id)} className='info-linkAutor'>{autor.nombre}</span></p>
-                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditAutor()} className='libro-editButton'/>)}
+                    <p>Autor: <span onClick={() => handleAutorClick(autor.id)} className='info-linkAutor'>{autor.nombre} {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditAutor()} className='libro-editButton'/>)}</span></p>
                     {role === 'admin' && modoEdicionAutor && (
                         <>
                         <h3>Introduce el nuevo autor</h3>
@@ -527,7 +524,6 @@ const Libro = () => {
                 {/* Género del libro */}
                 <div className="info-genero">
                     <p>{generos.length <= 1 ? 'Género: ' : 'Géneros: '}
-                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditGenero()} className='libro-editButton'/>)}
                     {role === 'admin' && modoEdicionGenero && (
                         <>
                         <h3>Introduce el nuevo género</h3>
@@ -540,12 +536,11 @@ const Libro = () => {
                     )}
                     {generos.map((genero, i) => 
                     <span key={i}>{genero.nombre}{i !== generos.length - 1 ? ', ' : ''}</span>
-                    )}</p>
+                    )}{role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditGenero()} className='libro-editButton'/>)}</p>
                 </div>
 
                 <div className="info-capitulos">
-                    <h2 className="tituloCap"> Capítulos</h2>
-                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditCapitulos()} className='libro-editButton'/>)}
+                    <h2 className="tituloCap"> Capítulos {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditCapitulos()} className='libro-editButton'/>)}</h2>
                     {role === 'admin' && modoEdicionCapitulos && (
                         <>
                         <h3>Introduce los nuevos capítulos</h3>
