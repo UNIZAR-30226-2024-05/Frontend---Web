@@ -49,6 +49,10 @@ const Autor = () => {
     const estrellasMedias = puntuacionMedia - estrellasLlenas >= 0.5 ? 1 : 0;
     const estrellasVacias = 5 - estrellasLlenas - estrellasMedias;
 
+    const handleClickLibro = (id_libro) => {
+        navigate(`/libro?id=${id_libro}`);
+    }
+
     return (
         <div className="autor-container">
             <div className="autor-arriba">
@@ -93,7 +97,7 @@ const Autor = () => {
                         <div key={audiolibro.id} className='autor-audiolibro-concreto'>
                             <img className='autor-audiolibro-portada' src={audiolibro.img} alt={audiolibro.titulo} />
                             <div className='autor-audiolibro-info'>
-                                <p className='autor-audiolibro-titulo'><a className='autor-audiolibro-tituloLink' href='/libro'>{audiolibro.titulo}</a></p>
+                                <p className='autor-audiolibro-titulo' onClick={() => handleClickLibro(audiolibro.id)}>{audiolibro.titulo}</p>
                                 <p className='autor-audiolibro-autor'>por <a href='/autor' className='autor-linkAutor'>{nombreAutor}</a></p>
                                 <div className='autor-audiolibro-estrellas'>
                                     {[...Array(Math.floor(audiolibro.puntuacion))].map((_, index) => (
