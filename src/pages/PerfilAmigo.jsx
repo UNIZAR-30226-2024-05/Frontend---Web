@@ -151,9 +151,9 @@ const PerfilAmigo = () => {
                             <div className="amigo-ultima-actividad">
                                 <h3>Última actividad</h3>
                                 <div className="amigo-actividad">
-                                        <img onClick={handleClickLibro} src={portadaUltimaActividad} alt="Portada" /> {/* amigo-foto-link-libro */}
+                                        <img className='amigo-foto-link-libro ' onClick={handleClickLibro} src={portadaUltimaActividad} alt="Portada" /> {/* amigo-foto-link-libro */}
                                     <div className="amigo-actividad-info">
-                                        <p onClick={handleClickLibro}>{tituloUltimaActividad}</p> {/* amigo-click-libro en css */}
+                                        <p className='amigo-click-libro' onClick={handleClickLibro}>{tituloUltimaActividad}</p> {/* amigo-click-libro en css */}
                                         <p>{fechaUltimaActividad}</p>
                                     </div>
                                 </div>
