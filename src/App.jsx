@@ -1,8 +1,8 @@
-import React, { useContext} from 'react';
+import React from 'react';
 import ProtectedRoute from './context/ProtectedRoute';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Biblioteca from './pages/Biblioteca';
 import Amigos from './pages/Amigos';

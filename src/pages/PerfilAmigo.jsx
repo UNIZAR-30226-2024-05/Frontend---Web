@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PerfilAmigo.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import ListaColeccionesAmigo from '../components/ListaColeccionesPerfilAmigo/ListaColeccionesAmigo.jsx';
 import axios from '../api/axios.jsx';
@@ -119,6 +119,10 @@ const PerfilAmigo = () => {
         console.log('Solicitud enviada');
     };
 
+    const handleClickLibro = (id_libro) => {
+        navigate(`/libro?id=${id_libro}`);
+    }
+
     return (
         <div className="amigo-perfil-usuario">
             <div className="amigo-foto-perfil">
@@ -145,11 +149,9 @@ const PerfilAmigo = () => {
                             <div className="amigo-ultima-actividad">
                                 <h3>Última actividad</h3>
                                 <div className="amigo-actividad">
-                                    <Link to="/libro" className="amigo-foto-link-libro">
-                                        <img src={portadaUltimaActividad} alt="Portada" />
-                                    </Link>
+                                        <img onClick={handleClickLibro} src={portadaUltimaActividad} alt="Portada" /> {/* amigo-foto-link-libro */}
                                     <div className="amigo-actividad-info">
-                                        <p><Link to="/libro" className="amigo-link-libro">{tituloUltimaActividad}</Link></p>
+                                        <p onClick={handleClickLibro}>{tituloUltimaActividad}</p> {/* amigo-click-libro en css */}
                                         <p>{fechaUltimaActividad}</p>
                                     </div>
                                 </div>
