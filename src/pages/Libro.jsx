@@ -341,9 +341,42 @@ const Libro = () => {
         setModoEdicionCapitulos(!modoEdicionCapitulos);
     }
 
+    const handleGuardarCambios = async () => {
+        try {
+            const formData = new FormData();
+            formData.append('id', id_libro);
+            formData.append('titulo', nuevoTitulo);
+            formData.append('autor', nuevoAutor);
+            formData.append('descripcion', nuevaDescripcion);
+            formData.append('genero', nuevoGenero);
+            formData.append('image', nuevaPortada);
+            formData.append('capitulos', nuevosCapitulos);
+            const respuesta = await axios.post(
+                '/audiolibros/editar',
+                formData,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' },
+                    withCredentials: true
+                }
+            );
+            console.log(respuesta);
+        } catch (error) {
+            if (!error.response) {
+                console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 409) {
+                console.log('El audiolibro no existe');
+            } else if (error.response.status === 500) {
+                console.log('Error del servidor')
+            } else {
+                console.log('Error');
+            }
+        }
+    }
+
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
+            {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleGuardarCambios}> Guardar cambios</button> )}
             <div className="info-portada">
                 <img src={portada} alt="Portada del libro" />
                 {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditPhoto()} className='libro-editButton'/>)}
@@ -448,24 +481,63 @@ const Libro = () => {
                 <div className='info-titulo'>
                     <h1>{titulo}</h1>
                     {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditTitulo()} className='libro-editButton'/>)}
+                    {role === 'admin' && modoEdicionTitulo && (
+                        <>
+                        <h3>Introduce el nuevo título</h3>
+                        <input
+                            type="text"
+                            value={nuevoTitulo}
+                            onChange={(event) => setNuevoTitulo(event.target.value)}
+                        />
+                        </>
+                    )}
                 </div>
                 
                 {/* Descripción del libro */}
                 <div className='info-descripcion'>
                     <p>{descripcion}</p>
                     {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditDescripcion()} className='libro-editButton'/>)}
+                    {role === 'admin' && modoEdicionDescripcion && (
+                        <>
+                        <h3>Introduce la nueva descripción</h3>
+                        <textarea
+                            value={nuevaDescripcion}
+                            onChange={(event) => setNuevaDescripcion(event.target.value)}
+                        />
+                        </>
+                    )}
                 </div>
                 
                 {/* Autor del libro */}
                 <div className="info-autor">
                     <p>Autor: <span onClick={() => handleAutorClick(autor.id)} className='info-linkAutor'>{autor.nombre}</span></p>
                     {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditAutor()} className='libro-editButton'/>)}
+                    {role === 'admin' && modoEdicionAutor && (
+                        <>
+                        <h3>Introduce el nuevo autor</h3>
+                        <input
+                            type="text"
+                            value={nuevoAutor}
+                            onChange={(event) => setNuevoAutor(event.target.value)}
+                        />
+                        </>
+                    )}
                 </div>
 
                 {/* Género del libro */}
                 <div className="info-genero">
                     <p>{generos.length <= 1 ? 'Género: ' : 'Géneros: '}
                     {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditGenero()} className='libro-editButton'/>)}
+                    {role === 'admin' && modoEdicionGenero && (
+                        <>
+                        <h3>Introduce el nuevo género</h3>
+                        <input
+                            type="text"
+                            value={nuevoGenero}
+                            onChange={(event) => setNuevoGenero(event.target.value)}
+                        />
+                        </>
+                    )}
                     {generos.map((genero, i) => 
                     <span key={i}>{genero.nombre}{i !== generos.length - 1 ? ', ' : ''}</span>
                     )}</p>
@@ -474,6 +546,16 @@ const Libro = () => {
                 <div className="info-capitulos">
                     <h2 className="tituloCap"> Capítulos</h2>
                     {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditCapitulos()} className='libro-editButton'/>)}
+                    {role === 'admin' && modoEdicionCapitulos && (
+                        <>
+                        <h3>Introduce los nuevos capítulos</h3>
+                        <input
+                            type="text"
+                            value={nuevosCapitulos}
+                            onChange={(event) => setNuevosCapitulos(event.target.value)}
+                        />
+                        </>
+                    )}
                     <div className='capitulos'>
                         {capitulos.map((capitulo, i) => (
                             <div key={i}
