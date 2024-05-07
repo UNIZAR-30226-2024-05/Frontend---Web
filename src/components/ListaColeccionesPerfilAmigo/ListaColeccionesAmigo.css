@@ -24,13 +24,10 @@
     align-self: center;
 }
 
-.contenido-colec{
-  text-align: left;
-}
-
 .contenedor-lista .lista .coleccion .contenido-colec {
   display: flex;
   align-items: center;
+  text-align: left;
   flex: 1;
   grid-column: span 1;
 }
@@ -77,9 +74,6 @@
     padding-left: 10px;
     padding-right: 10px;
     margin-right: 5px;
-  }
-
-  .crear-coleccion-btn{
     background-color: #0fa7b2;
     border: 2px solid #000;
   }
