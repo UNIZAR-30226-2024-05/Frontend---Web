@@ -774,7 +774,11 @@ const Libro = () => {
                     )}
                 </div>
                 {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleGuardarCambios()}> Guardar cambios</button> )}
-                {role === 'admin' && (<button className='libro-admin-borrar-libro' onClick={() => handleBorrarLibro()}></button> )}
+                {role === 'admin' && (
+                    <button className='libro-admin-eliminar-autor' onClick={() => estasSeguro()}>
+                        <FontAwesomeIcon icon={faTrash} /> Eliminar autor
+                    </button>
+                )}
             </div>
         </div>  
     );
