@@ -25,5 +25,8 @@
 
 .autores .autores-container .lista {
     margin-left: 26vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 

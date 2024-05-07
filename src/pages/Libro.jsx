@@ -444,7 +444,7 @@ const Libro = () => {
     }
 
     const estasSeguro = () => {
-        if (window.confirm('¿Estás seguro de que quieres eliminar este autor? Se borrarán TODOS sus libros')) {
+        if (window.confirm('¿Estás seguro de que quieres eliminar este libro? ')) {
             handleBorrarLibro();
         }
     }
