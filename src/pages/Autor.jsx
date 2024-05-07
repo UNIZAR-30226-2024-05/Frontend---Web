@@ -22,6 +22,8 @@ const Autor = () => {
     const [puntuacionMedia, setPuntuacionMedia] = useState(3.5);
     const [generoMasPublicado, setGeneroMasPublicado] = useState('');
     const [audiolibros, setAudiolibros] = useState([]);
+
+    
     useEffect(() => {
 
         if (id_autor) {
@@ -153,6 +155,7 @@ const Autor = () => {
     }
 
     return (
+        <>
         <div className="autor-container">
             <div className="autor-arriba">
                 <div className="autor-arriba-derecha">
@@ -256,6 +259,8 @@ const Autor = () => {
                 )}
             </div>
         </div>
+        <Footer />
+        </>
     )
 }
 
