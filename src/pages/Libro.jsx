@@ -236,6 +236,7 @@ const Libro = () => {
         setOtrasColecciones(colecciones.filter(coleccion => coleccion.titulo !== 'Favoritos' && coleccion.titulo !== 'Escuchar mas tarde'));
     }, [colecciones]);
 
+    
     const handleUsuarioClick = (id_user) => {
         navigate(`/perfilamigo?id=${id_user}`);
     }
@@ -298,13 +299,63 @@ const Libro = () => {
         }
     }
 
+    const [modoEdicionFoto, setModoEdicionFoto] = useState(false);
+    const [nuevaPortada, setNuevaPortada] = useState('');
+    const [modoEdicionTitulo, setModoEdicionTitulo] = useState(false);
+    const [nuevoTitulo, setNuevoTitulo] = useState('');
+    const [modoEdicionDescripcion, setModoEdicionDescripcion] = useState(false);
+    const [nuevaDescripcion, setNuevaDescripcion] = useState('');
+    const [modoEdicionAutor, setModoEdicionAutor] = useState(false);
+    const [nuevoAutor, setNuevoAutor] = useState('');
+    const [modoEdicionGenero, setModoEdicionGenero] = useState(false);
+    const [nuevoGenero, setNuevoGenero] = useState('');
+    const [modoEdicionCapitulos, setModoEdicionCapitulos] = useState(false);
+    const [nuevosCapitulos, setNuevosCapitulos] = useState([]);
+
+    const handleEditPhoto = () => {
+        setModoEdicionFoto(!modoEdicionFoto);
+    }
+
+    const handleImagenChange = (event) => {
+        const file = event.target.files[0];
+        setNuevaPortada(file);
+    }
+
+    const handleEditTitulo = () => {
+        setModoEdicionTitulo(!modoEdicionTitulo);
+    }
+
+    const handleEditDescripcion = () => {
+        setModoEdicionDescripcion(!modoEdicionDescripcion);
+    }
+
+    const handleEditAutor = () => {
+        setModoEdicionAutor(!modoEdicionAutor);
+    }
+
+    const handleEditGenero = () => {
+        setModoEdicionGenero(!modoEdicionGenero);
+    }
+
+    const handleEditCapitulos = () => {
+        setModoEdicionCapitulos(!modoEdicionCapitulos);
+    }
+
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
             <div className="info-portada">
                 <img src={portada} alt="Portada del libro" />
                 {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditPhoto()} className='libro-editButton'/>)}
-
+                {role === 'admin' && modoEdicionFoto && (
+                    <>
+                    <h3>Introduce la imagen de la portada</h3>
+                    <input
+                        type="file"
+                        onChange={(event) => handleImagenChange(event)}    
+                    />
+                    </>
+                )}
                 {/* Estrellas de puntuación */}
                 <div className="info-puntuacion">
                     {[...Array(estrellasLlenas)].map((_, index) => (
@@ -414,6 +465,7 @@ const Libro = () => {
                 {/* Género del libro */}
                 <div className="info-genero">
                     <p>{generos.length <= 1 ? 'Género: ' : 'Géneros: '}
+                    {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditGenero()} className='libro-editButton'/>)}
                     {generos.map((genero, i) => 
                     <span key={i}>{genero.nombre}{i !== generos.length - 1 ? ', ' : ''}</span>
                     )}</p>
@@ -576,7 +628,6 @@ const Libro = () => {
                     )}
                 </div>
             </div>
-            <Footer/>
         </div>  
     );
 }

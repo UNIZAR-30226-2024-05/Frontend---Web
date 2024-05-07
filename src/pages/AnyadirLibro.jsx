@@ -6,6 +6,7 @@ const AnyadirLibro = () => {
     const [tituloDecidido, setTituloDecidido] = useState('');
     const [autorDecidido, setAutorDecidido] = useState('');
     const [descripcionDecidida, setDescripcionDecidida] = useState('');
+    const [generoDecidido, setGeneroDecidido] = useState('');
     const [imagenDecidida, setImagenDecidida] = useState(null);
     const [audioCapitulo, setAudioCapitulo] = useState([]);
 
@@ -19,6 +20,10 @@ const AnyadirLibro = () => {
 
     const handleChangeNuevaDescripcion = (event) => {
         setDescripcionDecidida(event.target.value);
+    }
+
+    const handleChangeNuevoGenero = (event) => {
+        setGeneroDecidido(event.target.value);
     }
 
     const handleChangeNuevaImagen = (event) => {
@@ -37,6 +42,7 @@ const AnyadirLibro = () => {
         console.log(tituloDecidido);
         console.log(autorDecidido);
         console.log(descripcionDecidida);
+        console.log(generoDecidido);
         console.log(imagenDecidida);
         console.log(audioCapitulo);
         try {
@@ -44,6 +50,7 @@ const AnyadirLibro = () => {
             formData.append('titulo', tituloDecidido);
             formData.append('nombreAutor', autorDecidido);
             formData.append('descripcion', descripcionDecidida);
+            formData.append('genero', generoDecidido);
             formData.append('image', imagenDecidida);
             formData.append('audios', audioCapitulo);
     
@@ -92,6 +99,13 @@ const AnyadirLibro = () => {
                 placeholder='Descripción del libro'
                 value={descripcionDecidida}
                 onChange={handleChangeNuevaDescripcion}
+            />
+            <h3>Introduce el género</h3>
+            <input
+                className='genero-nuevo-libro'
+                placeholder='Género del libro'
+                value={generoDecidido}
+                onChange={handleChangeNuevoGenero}
             />
             <h3>Introduce la imagen de la portada</h3>
             <input type="file" id="imagen-upload" className="input-file" onChange={handleChangeNuevaImagen} />

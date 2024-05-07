@@ -448,3 +448,8 @@
 .link-usuario {
   cursor: pointer;
 }
+
+.libro-editButtom {
+  cursor: pointer;
+  margin-left: 2%;
+}
