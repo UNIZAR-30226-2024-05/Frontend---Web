@@ -54,7 +54,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
 
 
     const handleUsuarioClick = (id_user) => {
-        navigate('/perfilamigo', { state: { id_user } });
+        navigate(`/perfilamigo?id=${id_user}`);
     };
 
     const tiposOrdenados = ['enviadas', 'recibidas', 'aceptadas', 'rechazadas'];
