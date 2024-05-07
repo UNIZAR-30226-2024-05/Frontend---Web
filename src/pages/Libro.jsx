@@ -443,6 +443,12 @@ const Libro = () => {
         navigate('/');
     }
 
+    const estasSeguro = () => {
+        if (window.confirm('¿Estás seguro de que quieres eliminar este autor? Se borrarán TODOS sus libros')) {
+            handleBorrarLibro();
+        }
+    }
+
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
@@ -776,7 +782,7 @@ const Libro = () => {
                 {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleGuardarCambios()}> Guardar cambios</button> )}
                 {role === 'admin' && (
                     <button className='libro-admin-eliminar-autor' onClick={() => estasSeguro()}>
-                        <FontAwesomeIcon icon={faTrash} /> Eliminar autor
+                        <FontAwesomeIcon icon={faTrash} /> Eliminar libro
                     </button>
                 )}
             </div>
