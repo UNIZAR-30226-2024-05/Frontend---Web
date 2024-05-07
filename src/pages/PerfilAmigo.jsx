@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './PerfilAmigo.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
+import ListaColeccionesAmigo from '../components/ListaColeccionesPerfilAmigo/ListaColeccionesAmigo.jsx';
 import axios from '../api/axios.jsx';
 
 import perro from '../images/fotos-perfil/perro.jpg';
@@ -21,7 +21,7 @@ const PerfilAmigo = () => {
     const navigate = useNavigate();
 
     const location = useLocation();
-    const id_user = location.state?.id_user;
+    const id_user = new URLSearchParams(location.search).get('id');
 
     const [perfil, setPerfil] = useState();
     const [usuario, setUsuario] = useState();
@@ -138,7 +138,7 @@ const PerfilAmigo = () => {
                         {colecciones &&
                             <div className="amigo-colecciones">
                                 <h3 className="colecciones-usuario">Colecciones de {usuario}</h3>
-                                <ListaColecciones className='list' colecciones={colecciones}></ListaColecciones>
+                                <ListaColeccionesAmigo className='list' colecciones={colecciones}></ListaColeccionesAmigo>
                             </div>
                         }
                         {ultimaActividad &&

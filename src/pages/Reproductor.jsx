@@ -24,10 +24,9 @@ const sound2 = {
 const Reproductor = () => {
 
   const location = useLocation();  
-
-  const capitulos = location.state?.capitulos;
-  //console.log(capitulos)
-  const portada = location.state?.portada;
+  const params = new URLSearchParams(location.search);
+  const capitulos = JSON.parse(params.get('capitulos'));
+  const portada = params.get('portada');
 
   const [play, setPlay] = useState(false)
   const [soundInstance, setSoundInstance] = useState(null)

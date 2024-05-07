@@ -45,8 +45,11 @@ const Home = () => {
   };
 
   const handleCapituloClick = (capitulos, portada) => {
-    navigate('/player', {state: {capitulos, portada}});
-  };
+    const params = new URLSearchParams();
+    params.append('capitulos', JSON.stringify(capitulos));
+    params.append('portada', portada);
+    navigate(`/player?${params.toString()}`);
+};
 
   const URL_AUDIOLIBROS = '/audiolibros';
 

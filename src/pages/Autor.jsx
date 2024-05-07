@@ -9,7 +9,7 @@ const Autor = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
-    const id_autor = location.state?.id_autor;
+    const id_autor = new URLSearchParams(location.search).get('id');
     const [autor, setAutor] = useState([]);
     const [nombreAutor, setNombreAutor] = useState('Autor');
     const [textoInformacionAutor, setTextoInformacionAutor] = useState('Información del autor');

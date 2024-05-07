@@ -74,7 +74,10 @@ const Libro = () => {
     };
 
     const handleCapituloClick = (capitulos, portada) => {
-        navigate('/player', {state: {capitulos, portada}});
+        const params = new URLSearchParams();
+        params.append('capitulos', JSON.stringify(capitulos));
+        params.append('portada', portada);
+        navigate(`/player?${params.toString()}`);
     };
 
     console.log(libro);
@@ -134,7 +137,7 @@ const Libro = () => {
                 console.log('Error desconocido');
             }
         }
-        navigate('/libro', { state: { id_libro } });
+        navigate(`/libro?id=${id_libro}`);
     }
     
     const hayReseniasAmigos = () => {
@@ -160,7 +163,7 @@ const Libro = () => {
     };
 
     const handleAutorClick = (id_autor) => {
-        navigate('/autor', {state: {id_autor}});
+        navigate(`/autor?id=${id_autor}`);
     }
     
     const handleMouseEnter = (index) => {
@@ -233,7 +236,7 @@ const Libro = () => {
     }, [colecciones]);
 
     const handleUsuarioClick = (id_user) => {
-        navigate('/perfilamigo', { state: { id_user } });
+        navigate(`/perfilamigo?id=${id_user}`);
     }
 
     const handleBorrarResenia = async (navigate) => {
@@ -261,7 +264,7 @@ const Libro = () => {
                 console.log('Error');
             }
         }
-        navigate('/libro', { state: { id_libro } });
+        navigate(`/libro?id=${id_libro}`);
     }
 
     const [modoEdicion, setModoEdicion] = useState(false);
