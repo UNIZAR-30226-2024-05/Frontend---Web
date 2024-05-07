@@ -177,6 +177,7 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
                             className='boton-opciones' 
                             options={opciones_col_propia} 
                             collectionId={coleccion.id}
+                            colecciones={colecciones}
                             setColecciones={setColecciones}/>
                         </div> : 
                         <div className='boton-container'>
@@ -184,6 +185,7 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
                             className='boton-opciones'
                             options={opciones_col_ajena}
                             collectionId={coleccion.id} 
+                            colecciones={colecciones}
                             setColecciones={setColecciones}/>
                         </div>
                     }

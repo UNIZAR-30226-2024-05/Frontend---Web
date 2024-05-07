@@ -3,7 +3,7 @@ import { MdMoreVert } from 'react-icons/md'; // Importa el ícono de tres puntos
 import './DropdownButtonColecciones.css';
 import axios from '../../api/axios';
 
-const DropdownButtonColecciones = ({ options, collectionId, setColecciones }) => {
+const DropdownButtonColecciones = ({ options, collectionId, colecciones, setColecciones }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -12,17 +12,6 @@ const DropdownButtonColecciones = ({ options, collectionId, setColecciones }) =>
   };
 
   const eliminarColeccionConsulta = async () => {
-
-    const URL_COLECCION = '/colecciones';
-        async function fetchColecciones(){
-            await axios.get(URL_COLECCION, {withCredentials: true})
-            .then(response=>{
-                setColecciones(response.data.collections);
-                console.log(response.data);
-            }).catch(error=>{
-                console.log(error);
-            })
-        }
 
     const URL_CONSULTA = '/colecciones/remove'
     try {
@@ -34,7 +23,7 @@ const DropdownButtonColecciones = ({ options, collectionId, setColecciones }) =>
           }
         );
         console.log(respuesta); /* Solo desarrollo */
-        fetchColecciones();
+        setColecciones(colecciones.filter(c => c.id !== collectionId));
         setIsOpen(false);
     } catch (err) {
         if (!err.response) {
