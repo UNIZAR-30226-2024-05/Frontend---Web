@@ -347,6 +347,7 @@ const Libro = () => {
     }
 
     const handleGuardarCambios = async () => {
+        console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos });
         try {
             const formData = new FormData();
             formData.append('id', id_libro);
@@ -381,7 +382,6 @@ const Libro = () => {
     return (
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
-            {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleGuardarCambios()}> Guardar cambios</button> )}
             <div className="info-portada">
                 <img src={portada} alt="Portada del libro" />
                 {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditPhoto()} className='libro-editButton'/>)}
@@ -709,6 +709,7 @@ const Libro = () => {
                         <p>¡Nadie ha subido una reseña de este libro todavía!</p>
                     )}
                 </div>
+                {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleGuardarCambios()}> Guardar cambios</button> )}
             </div>
         </div>  
     );
