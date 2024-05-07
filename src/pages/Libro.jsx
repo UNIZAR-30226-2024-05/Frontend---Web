@@ -3,6 +3,7 @@ import './Libro.css';
 import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
+import Footer from '../components/Footer/Footer';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faPlay, faEdit, faCaretUp, faCaretDown, faHeart as solidHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -575,7 +576,7 @@ const Libro = () => {
                     )}
                 </div>
             </div>
-            
+            <Footer/>
         </div>  
     );
 }
