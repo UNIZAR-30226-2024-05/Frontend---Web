@@ -135,9 +135,10 @@ const Autor = () => {
 
     const handleEliminarAutor = async () => {
         try {
-            const response = await axios.delete(
-                `/autores/delete/${id_autor}`,
+            const response = await axios.post(
+                'autores/delete', JSON.stringify({id: id_autor}),
                 {
+                    headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
