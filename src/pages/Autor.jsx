@@ -93,6 +93,7 @@ const Autor = () => {
             const response = await axios.post(
                 `/autores/update`, 
                 JSON.stringify({
+                id: id_autor,
                 nombre: nombreNuevo,
                 informacion: informacionNueva,
                 ciudadnacimiento: ciudadNueva
