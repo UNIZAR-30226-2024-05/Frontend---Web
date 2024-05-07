@@ -6,7 +6,7 @@ import AuthContext from '../context/AuthProvider';
 import Footer from '../components/Footer/Footer';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus, faPlay, faEdit, faCaretUp, faCaretDown, faHeart as solidHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faPlay, faEdit, faTrash, faCaretUp, faCaretDown, faHeart as solidHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import axios from '../api/axios';
 
@@ -350,7 +350,7 @@ const Libro = () => {
         console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos });
         try {
             const formData = new FormData();
-            formData.append('id', id_libro);
+            formData.append('audiolibroId', id_libro);
             
             if (nuevoTitulo) {
                 formData.append('titulo', nuevoTitulo);
