@@ -222,6 +222,7 @@ const Autor = () => {
                         </div>
                     ))}
                 </div>
+                {role === 'admin' && (<button className='libro-admin-guardar-cambios' onClick={() => handleEditarDatos()}> Guardar cambios</button> )}
             </div>
         </div>
     )
