@@ -6,6 +6,7 @@ import DropdownButton from '../components/DropdownButton/DropdownButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from '../context/AuthProvider';
+import Footer from '../components/Footer/Footer';
 
 
 const Autor = () => {
