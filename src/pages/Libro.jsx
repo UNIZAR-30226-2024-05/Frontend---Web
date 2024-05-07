@@ -433,40 +433,70 @@ const Libro = () => {
                     </div>
                 </div>
                 {/* Mi puntuación */}
-                <div className='info-mi-puntuacion'>
-                    <h2>¡Puntúa el libro!</h2>
-                    <div className='info-mis-estrellas'>
-                        {[...Array(5)].map((_, index) => (
-                            <span key={index}
-                                className={(index < puntuacionUsuario) ? "info-star-filled" : "info-star-empty"}
-                                onClick={() => handleClickPuntuacion(index)}
-                                onMouseEnter={() => handleMouseEnter(index)}
-                                onMouseLeave={handleMouseLeave}
-                            >&#9733;</span>
-                        ))}
+                {role === 'normal' && (
+
+                    <div className='info-mi-puntuacion'>
+                        <h2>¡Puntúa el libro!</h2>
+                        <div className='info-mis-estrellas'>
+                            {[...Array(5)].map((_, index) => (
+                                <span key={index}
+                                    className={(index < puntuacionUsuario) ? "info-star-filled" : "info-star-empty"}
+                                    onClick={() => handleClickPuntuacion(index)}
+                                    onMouseEnter={() => handleMouseEnter(index)}
+                                    onMouseLeave={handleMouseLeave}
+                                >&#9733;</span>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
                 {/* Mi reseña */}
-                <div>
-                    {tienesResenia() ? (
-                        !modoEdicion ? (
-                            <div className='info-miReseniaExiste'>
-                                <h2 className='info-miResenia-titulo'>Mi reseña <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(navigate)} className='borrar-resenia'/></h2>
-                                <p className="info-texto-resenia">{miResenia.comentario}</p>
-                                <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
-                                <div className='info-estrellas-en-resenias'>
-                                    {[...Array(5)].map((_, index) => (
-                                        <span key={index}
-                                            className={(miResenia && typeof miResenia.puntuacion !== 'undefined' && index < miResenia.puntuacion) ? "info-star-filled" : "info-star-empty"}
-                                        >&#9733;</span>
-                                    ))}
+                {role === 'normal' && (
+                    <div>
+                        {tienesResenia() ? (
+                            !modoEdicion ? (
+                                <div className='info-miReseniaExiste'>
+                                    <h2 className='info-miResenia-titulo'>Mi reseña <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleBorrarResenia(navigate)} className='borrar-resenia'/></h2>
+                                    <p className="info-texto-resenia">{miResenia.comentario}</p>
+                                    <h2 className='info-miResenia-puntuacion'>Mi puntuación</h2>
+                                    <div className='info-estrellas-en-resenias'>
+                                        {[...Array(5)].map((_, index) => (
+                                            <span key={index}
+                                                className={(miResenia && typeof miResenia.puntuacion !== 'undefined' && index < miResenia.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                            >&#9733;</span>
+                                        ))}
+                                    </div>
+                                    <h3>{miResenia.fecha && new Date(miResenia.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
+                                    <button onClick={() => setModoEdicion(true)} className='boton-editar-resenia'>Editar reseña</button>
                                 </div>
-                                <h3>{miResenia.fecha && new Date(miResenia.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
-                                <button onClick={() => setModoEdicion(true)} className='boton-editar-resenia'>Editar reseña</button>
-                            </div>
+                            ) : (
+                                <div className='info-editarResenia'>
+                                    <h2>Editar mi reseña</h2>
+                                    <form onSubmit={handleSubmit} className='info-anadir-mia'>
+                                        <select
+                                            className='info-select-privacidad'
+                                            value={privacidad}
+                                            onChange={handlePrivacidadChange}
+                                            required
+                                        >
+                                            <option value=''>Selecciona una opción</option>
+                                            <option value='0'>Pública</option>
+                                            <option value='1'>Solo amigos</option>
+                                            <option value='2'>Privada</option>
+                                        </select>
+                                        <textarea
+                                            className="info-texto-resenia"
+                                            value={comentario}
+                                            onChange={(event) => setComentario(event.target.value)}
+                                            placeholder="Escribe aquí tu reseña"
+                                            required
+                                        />
+                                        <button className="info-subir-resenia" type="submit" onClick={() => handleEditarResenia()}>Guardar cambios</button>
+                                    </form>
+                                </div>
+                            )
                         ) : (
-                            <div className='info-editarResenia'>
-                                <h2>Editar mi reseña</h2>
+                            <div className='info-mi-resenia-noExiste'>
+                                <h2 className='info-miResenia-titulo'>¡Añade tu reseña y comparte tu opinión!</h2>
                                 <form onSubmit={handleSubmit} className='info-anadir-mia'>
                                     <select
                                         className='info-select-privacidad'
@@ -486,63 +516,40 @@ const Libro = () => {
                                         placeholder="Escribe aquí tu reseña"
                                         required
                                     />
-                                    <button className="info-subir-resenia" type="submit" onClick={() => handleEditarResenia()}>Guardar cambios</button>
                                 </form>
+                                <button className="info-subir-resenia" type="submit" onClick={() => handleEnviarResenia(navigate)}>Publicar reseña</button>
                             </div>
-                        )
-                    ) : (
-                        <div className='info-mi-resenia-noExiste'>
-                            <h2 className='info-miResenia-titulo'>¡Añade tu reseña y comparte tu opinión!</h2>
-                            <form onSubmit={handleSubmit} className='info-anadir-mia'>
-                                <select
-                                    className='info-select-privacidad'
-                                    value={privacidad}
-                                    onChange={handlePrivacidadChange}
-                                    required
-                                >
-                                    <option value=''>Selecciona una opción</option>
-                                    <option value='0'>Pública</option>
-                                    <option value='1'>Solo amigos</option>
-                                    <option value='2'>Privada</option>
-                                </select>
-                                <textarea
-                                    className="info-texto-resenia"
-                                    value={comentario}
-                                    onChange={(event) => setComentario(event.target.value)}
-                                    placeholder="Escribe aquí tu reseña"
-                                    required
-                                />
-                            </form>
-                            <button className="info-subir-resenia" type="submit" onClick={() => handleEnviarResenia(navigate)}>Publicar reseña</button>
-                        </div>
-                    )}
-                </div>
+                        )}
+                    </div>
+                )}
 
 
                 {/* Reseñas de tus amigos y publicas al final*/}
-                <div className="info-resenias-amigos">
-                    <h2>Reseñas de tus amigos</h2>
-                    {hayReseniasAmigos() ? (
-                        <div>
-                            {reseniasAmigos.map((amigo, index) => (
-                                <div key={index} className="info-resenia-amigo">
-                                    <h3 onClick={() => handleUsuarioClick(amigo.user_id)} className='link-usuario'>{amigo.username}</h3>
-                                    <p>{amigo.comentario}</p>
-                                    <div className='info-estrellas-en-resenias'>
-                                        {[...Array(5)].map((_, index) => (
-                                            <span key={index}
-                                                className={(amigo && typeof amigo.puntuacion !== 'undefined' && index < amigo.puntuacion) ? "info-star-filled" : "info-star-empty"}
-                                            >&#9733;</span>
-                                        ))}
+                {role === 'normal' && (
+                    <div className="info-resenias-amigos">
+                        <h2>Reseñas de tus amigos</h2>
+                        {hayReseniasAmigos() ? (
+                            <div>
+                                {reseniasAmigos.map((amigo, index) => (
+                                    <div key={index} className="info-resenia-amigo">
+                                        <h3 onClick={() => handleUsuarioClick(amigo.user_id)} className='link-usuario'>{amigo.username}</h3>
+                                        <p>{amigo.comentario}</p>
+                                        <div className='info-estrellas-en-resenias'>
+                                            {[...Array(5)].map((_, index) => (
+                                                <span key={index}
+                                                    className={(amigo && typeof amigo.puntuacion !== 'undefined' && index < amigo.puntuacion) ? "info-star-filled" : "info-star-empty"}
+                                                >&#9733;</span>
+                                            ))}
+                                        </div>
+                                        <h3>{amigo.fecha &&new Date(amigo.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
                                     </div>
-                                    <h3>{amigo.fecha &&new Date(amigo.fecha).toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' })}</h3>
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <p>¡Ninguno de tus amigos ha subido una reseña de este libro todavía!</p>
-                    )}
-                </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p>¡Ninguno de tus amigos ha subido una reseña de este libro todavía!</p>
+                        )}
+                    </div>
+                )}
 
                 <div className="info-resenias">
                     <h2>Reseñas públicas de la comunidad</h2>

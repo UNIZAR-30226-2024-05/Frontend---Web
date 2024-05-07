@@ -152,6 +152,7 @@
 
   .autor-audiolibro-titulo {
     font-size: 1.5rem;
+    cursor: pointer;
   }
 
   .autor-audiolibro-titulo a:hover {
