@@ -53,18 +53,117 @@ const Autor = () => {
         navigate(`/libro?id=${id_libro}`);
     }
 
+    const [editNombre, setEditNombre] = useState(false);
+    const [nombreNuevo, setNombreNuevo] = useState('');
+    const [editInformacion, setEditInformacion] = useState(false);
+    const [informacionNueva, setInformacionNueva] = useState('');
+    const [editCiudad, setEditCiudad] = useState(false);
+    const [ciudadNueva, setCiudadNueva] = useState('');
+
+    const handleEditNombre = () => {
+        setEditNombre(!editNombre);
+    }
+
+    const handleEditInformacion = () => {
+        setEditInformacion(!editInformacion);
+    }
+
+    const handleEditCiudad = () => {
+        setEditCiudad(!editCiudad);
+    }
+
+    const handleEditarDatos = async () => {
+        console.log({nombreNuevo, informacionNueva, ciudadNueva});
+        if (nombreNuevo ==='') {
+            setNombreNuevo(nombreAutor);
+        }
+        if (informacionNueva === '') {
+            setInformacionNueva(textoInformacionAutor);
+        }
+        if (ciudadNueva === '') {
+            setCiudadNueva(ciudadNacimientoAutor);
+        }
+        try {
+            const response = await axios.post(
+                `/autores/update`, 
+                JSON.stringify({
+                nombre: nombreNuevo,
+                informacion: informacionNueva,
+                ciudadnacimiento: ciudadNueva
+            }),
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            });
+            console.log(response.data);
+            setNombreAutor(nombreNuevo);
+            setTextoInformacionAutor(informacionNueva);
+            setCiudadNacimientoAutor(ciudadNueva);
+            setEditNombre(false);
+            setEditInformacion(false);
+            setEditCiudad(false);
+        }
+        catch(error) {
+            if (!error.response) {
+                console.error('No hay respuesta del servidor');
+            } else if (error.response.status === 404) {
+                console.error('No existe el autor');
+            } else if (error.response.status === 409) {
+                console.error('Estas modificando el nombre a un autor ya existente');
+            } else if (error.response.status === 500) {
+                console.error('Error del servidor');
+            }
+            else {
+                console.error('Error desconocido');
+            }
+        }
+    }
+
     return (
         <div className="autor-container">
             <div className="autor-arriba">
                 <div className="autor-arriba-derecha">
                     <div className='autor-nombre'>
-                        <h1>{nombreAutor}</h1>
+                        <h1>{nombreAutor}{role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditNombre()} className='libro-editButton'/>)}</h1>
+                        {role === 'admin' && editNombre && (
+                            <>
+                                <h3>Introduzca el nuevo nombre</h3>
+                                <input
+                                    placeholder='Nuevo nombre'
+                                    value={nombreNuevo}
+                                    onChange={(event) => setNombreNuevo(event.target.value)}
+                                />
+                            </>
+                        )}
                     </div>
                     <div className='autor-informacion'>
-                        <p>{textoInformacionAutor}</p>
+                        <p>{textoInformacionAutor} {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditInformacion()} className='libro-editButton'/>)}</p>
+                        {role === 'admin' && editInformacion && (
+                            <>
+                                <h3>Introduzca la nueva información</h3>
+                                <input
+                                    placeholder='Nueva información'
+                                    value={informacionNueva}
+                                    onChange={(event) => setInformacionNueva(event.target.value)}
+                                />
+                            </>
+                        
+                        )}
                     </div>
                     <div className='autor-ciudad-nacimiento'>
-                        <p>Ciudad de nacimiento: {ciudadNacimientoAutor}</p>
+                        <p>Ciudad de nacimiento: {ciudadNacimientoAutor}{role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditCiudad()} className='libro-editButton'/>)}</p>
+                        {role === 'admin' && editCiudad && (
+                            <>
+                                <h3>Introduzca la nueva ciudad de nacimiento</h3>
+                                <input
+                                    placeholder='Nueva ciudad de nacimiento'
+                                    value={ciudadNueva}
+                                    onChange={(event) => setCiudadNueva(event.target.value)}
+                                />
+                            </>
+                        )}
                     </div>
 
                     {/* Estrellas de puntuación */}

@@ -26,3 +26,8 @@
 .autores .autores-container .lista {
     margin-left: 26vw;
 }
+
+.libro-editButton {
+    cursor: pointer;
+    margin-left: 10px;
+}
