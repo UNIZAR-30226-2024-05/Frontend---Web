@@ -196,6 +196,11 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
             <h2>Tus clubes</h2>
             {tusClubes.map((club, i) => (
                 <div key={i} className='club'>
+                    {audiolibro.id ? (
+                    <div className='portadas' onClick={() => handleClubClick(club.id)}>
+                            <img src={club.audiolibro.img} alt={club.audiolibro.titulo}></img>
+                    </div>) : (null)
+                    }
                     <div className='contenido-club'>
                         <div className='nombre' onClick={() => handleClubClick(club.id)}>
                             <h1>{club.nombre}</h1>

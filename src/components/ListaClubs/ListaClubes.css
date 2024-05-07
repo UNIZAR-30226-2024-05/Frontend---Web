@@ -28,6 +28,18 @@
   grid-column: span 1;
 }
 
+.contenedor-lista .lista .club .contenido-club .portadas{
+  margin: 10px;
+  cursor: pointer;
+}
+
+.contenedor-lista .lista .club .contenido-club .portadas img{
+    /* Estilos para las imágenes de portada */
+    width: 100px; /* Ancho de la imagen */
+    height: auto; /* Altura automática para mantener la proporción */
+    margin: 10px;
+}
+
 .contenedor-lista .lista .club .contenido-club .nombre {
     /* Estilos para los títulos de las clubes */
     margin: 0; /* Elimina el margen predeterminado */
