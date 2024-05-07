@@ -183,7 +183,7 @@ const ListaColeccionesAmigo = ({colecciones, setColecciones}) => {
                             <DropdownButtonColeccionesAmigo
                             className='boton-opciones'
                             options={opciones_col_ajena}
-                            collectionId={coleccion.id} 
+                            collectionId={coleccion.id}
                             setColecciones={setColecciones}/>
                         </div>
                     }
