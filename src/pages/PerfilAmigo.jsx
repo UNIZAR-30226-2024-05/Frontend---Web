@@ -34,9 +34,10 @@ const PerfilAmigo = () => {
     const [tituloUltimaActividad, setTituloUltimaActividad] = useState('');
     const [fechaUltimaActividad, setFechaUltimaActividad] = useState(null);
 
-    useEffect(async () => {
-        if (id_user) {
-            const URL_PERFIL = `/users/${id_user}`; 
+    useEffect(() => {
+
+        const URL_PERFIL = `/users/${id_user}`; 
+        async function fetchPerfil(){
             try {
                 const response = await axios.get(URL_PERFIL, {withCredentials: true});
                 console.log('Respuesta del servidor:', response.data);
@@ -63,6 +64,10 @@ const PerfilAmigo = () => {
                 // Maneja los errores si ocurrieron
                 console.error('Hubo un error al obtener los datos del perfil:', error);
             }
+        };
+
+        if (id_user) {
+            fetchPerfil();
         } else {
             console.log('No se ha pasado ningún usuario');
             navigate('/');
