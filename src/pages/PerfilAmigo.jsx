@@ -107,15 +107,6 @@ const PerfilAmigo = () => {
         }
     }
 
-    const esAmigo = (estado) => {
-        if (estado === 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
     const [solicitudEnviada, setSolicitudEnviada] = useState(false);
 
     const enviarSolicitud = () => {
@@ -141,16 +132,16 @@ const PerfilAmigo = () => {
                         {solicitudEnviada ? 'Cancelar solicitud' : 'Añadir amigo'}
                     </button>
                 )}
-                {estado === 0 && (
-                    <div className="amigo-colecciones-y-actividad">
-                        {colecciones &&
-                            <div className="amigo-colecciones">
-                                <h3 className="colecciones-usuario">Colecciones de {usuario}</h3>
-                                <ListaColeccionesAmigo className='list' colecciones={colecciones}></ListaColeccionesAmigo>
-                            </div>
-                        }
-
-                        {ultimaActividad ? (
+                
+                <div className="amigo-colecciones-y-actividad">
+                    {colecciones && (
+                        <div className="amigo-colecciones">
+                            <h3 className="colecciones-usuario">Colecciones de {usuario}</h3>
+                            <ListaColeccionesAmigo className='list' colecciones={colecciones}></ListaColeccionesAmigo>
+                        </div>
+                    )}
+                    {estado === 0 && (
+                        ultimaActividad ? (
                             <div className="amigo-ultima-actividad">
                                 <h3>Última actividad</h3>
                                 <div className="amigo-actividad">
@@ -166,9 +157,9 @@ const PerfilAmigo = () => {
                                 <h3>Última actividad</h3>
                                 <p>No hay actividad reciente</p>
                             </div>
-                        )}
-                    </div>
-                )}
+                        )
+                    )}
+                </div>
             </div>
         </div>
     );
