@@ -152,6 +152,7 @@ const PerfilAmigo = () => {
                                 <ListaColeccionesAmigo className='list' colecciones={colecciones}></ListaColeccionesAmigo>
                             </div>
                         }
+                        
                         {ultimaActividad ? (
                             <div className="amigo-ultima-actividad">
                                 <h3>Última actividad</h3>
