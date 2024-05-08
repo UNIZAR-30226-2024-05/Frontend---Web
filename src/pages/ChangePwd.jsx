@@ -98,8 +98,8 @@ export const ChangePwd = () => {
   };
 
   const handleClick = async () => {
-      console.log(param1);
-      console.log(param2);
+      //console.log(param1);
+      //console.log(param2);
       try{
         const respuesta = await axios.post(URL_PASSWD, 
           JSON.stringify({oldPassword: nuevoPwd, newPassword: viejoPwd}),
