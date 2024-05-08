@@ -84,7 +84,7 @@ export const ChangePwd = () => {
         } else if (err.response.status === 500) {
           console.log('Server Error');
         } else {
-          console.log('Fallo en el cambio de foto');
+          console.log('Fallo en el cambio de contraseña');
         }
       }
     //}
