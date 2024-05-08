@@ -30,7 +30,7 @@ const Footer = () => {
           <a href='mailto: narratives.unizar@gmail.com'/>
         </p>
         <h3>¿Dónde nos puedes encontrar?</h3>
-        <p className='dondeEstamos'><FontAwesomeIcon icon={faMapMarkerAlt}/>María de Luna, 3 - 50018 Zaragoza</p>
+        <p className='dondeEstamos'><FontAwesomeIcon icon={faMapMarkerAlt}/> María de Luna, 3 - 50018 Zaragoza</p>
         
       </div>
     </div>
