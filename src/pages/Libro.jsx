@@ -342,9 +342,7 @@ const Libro = () => {
     }
 
     const handleAudiosChange = (event) => {
-        const files = event.target.files;
-        const newChapters = Array.from(files);
-        setNuevosCapitulos(newChapters);
+        setAudioCapitulo(event.target.files);
     }
 
     const handleEliminarCapitulo = (capitulo) => {
@@ -628,7 +626,7 @@ const Libro = () => {
                         <input
                             type="file"
                             multiple
-                            onChange={handleAudiosChange}
+                            onChange={(event) => handleAudiosChange(event.target.value)}
                         />
                         </>
                     )}
