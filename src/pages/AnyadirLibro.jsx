@@ -52,7 +52,7 @@ const AnyadirLibro = () => {
             formData.append('descripcion', descripcionDecidida);
             formData.append('genero', generoDecidido);
             formData.append('image', imagenDecidida);
-            formData.append('audioCapitulo', audioCapitulo);
+            formData.append('audios', audioCapitulo);
     
             const response = await axios.post('/audiolibros/anadir', formData, {
                 headers: {
