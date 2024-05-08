@@ -35,7 +35,7 @@ const AnyadirLibro = () => {
     
 
     const handleAgregarAudioCapitulo = (event) => {
-        setAudioCapitulo(event.target.files);
+        setAudioCapitulo(event.target.files[0]);
     }
 
     const handleSubmit = async () => {
@@ -52,9 +52,7 @@ const AnyadirLibro = () => {
             formData.append('descripcion', descripcionDecidida);
             formData.append('genero', generoDecidido);
             formData.append('image', imagenDecidida);
-            audioCapitulo.forEach(audio => {
-                formData.append('audios', audio);
-            });
+            formData.append('audioCapitulo', audioCapitulo);
     
             const response = await axios.post('/audiolibros/anadir', formData, {
                 headers: {
@@ -117,12 +115,7 @@ const AnyadirLibro = () => {
             )}
 
             <h3>Introduce los audios de cada capítulo</h3>
-            <h3>Introduce los nuevos capítulos</h3>
-            <input
-                type="file"
-                multiple
-                onChange={handleAgregarAudioCapitulo} 
-            />
+            <input type="file" id="audio-upload" className="input-file" onChange={handleAgregarAudioCapitulo} />
 
             <button
                 className='submit-libro-button'
