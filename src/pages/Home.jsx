@@ -122,7 +122,7 @@ const Home = () => {
             <>
               <img className='foto-presentacion' src={logo} alt={'Foto presentación'}></img>
               <div className="texto-presentacion">
-                <h2>¡Bienvenido a Narratives!</h2>
+                <h2>¡Bienvenido, administrador!</h2>
               </div>
             </>
           ) : null}
