@@ -479,3 +479,70 @@
   align-self: center;
   cursor: pointer;
 }
+
+.libro-editar-imagen {
+  width: 20%;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: beige;
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
+  cursor: pointer;
+}
+
+.libro-editar-titulo {
+  width: 50%;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+.libro-editar-autor {
+  width: 50%;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+.libro-editar-descripcion {
+  width: 50%;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+.libro-editar-genero {
+  width: 50%;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+.libro-editar-audios {
+  width: 50%;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}

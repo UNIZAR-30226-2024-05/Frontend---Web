@@ -466,6 +466,7 @@ const Libro = () => {
                     <h3>Introduce la imagen de la portada</h3>
                     <input
                         type="file"
+                        className='libro-editar-imagen'
                         onChange={(event) => handleImagenChange(event)}    
                     />
                     </>
@@ -566,6 +567,7 @@ const Libro = () => {
                         <h3>Introduce el nuevo título</h3>
                         <input
                             type="text"
+                            className='libro-editar-titulo'
                             value={nuevoTitulo}
                             onChange={(event) => setNuevoTitulo(event.target.value)}
                         />
@@ -581,6 +583,7 @@ const Libro = () => {
                         <h3>Introduce la nueva descripción</h3>
                         <textarea
                             value={nuevaDescripcion}
+                            className='libro-editar-descripcion'
                             onChange={(event) => setNuevaDescripcion(event.target.value)}
                         />
                         </>
@@ -595,6 +598,7 @@ const Libro = () => {
                         <h3>Introduce el nuevo autor</h3>
                         <input
                             type="text"
+                            className='libro-editar-autor'
                             value={nuevoAutor}
                             onChange={(event) => setNuevoAutor(event.target.value)}
                         />
@@ -610,6 +614,7 @@ const Libro = () => {
                         <h3>Introduce el nuevo género</h3>
                         <input
                             type="text"
+                            className='libro-editar-genero'
                             value={nuevoGenero}
                             onChange={(event) => setNuevoGenero(event.target.value)}
                         />
@@ -628,6 +633,7 @@ const Libro = () => {
                         <h3>Introduce los nuevos capítulos</h3>
                         <input
                             type="file"
+                            className='libro-editar-capitulos'
                             multiple
                             onChange={handleAudiosChange}
                         />
