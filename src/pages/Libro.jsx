@@ -394,12 +394,9 @@ const Libro = () => {
                 formData.append('image', nuevaPortada);
             }
 
-            if (!nuevosCapitulos) {
-                formData.append('audios', capitulos);
-            }
-            else {           
-                formData.append('audios', nuevosCapitulos);
-            }
+                   
+            formData.append('audios', nuevosCapitulos);
+            
 
             console.log({ formData });
             
