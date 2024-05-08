@@ -15,14 +15,14 @@ const Footer = () => {
       <div className='sobreNosotros'>
         <h3>Sobre nosotros</h3>
         <p>Somos el equipo Carol Shaw de la asignatura de Proyecto Software de Ingeniería Informática en la Escuela de Ingeniería y Arquitectura en Zaragoza. A continuación presentamos a sus miembros:</p>
-        <p className='sobreNosotrs-miembros'><BolaNegra/>Pablo Latre Villacampa</p>
-        <p className='sobreNosotrs-miembros'><BolaNegra/>Ismael Martínez Vicens</p>
-        <p className='sobreNosotrs-miembros'><BolaNegra/>Luis Daniel Gómez Sevilla</p>
-        <p className='sobreNosotrs-miembros'><BolaNegra/>Alicia Lázaro Huerta</p>
-        <p className='sobreNosotrs-miembros'><BolaNegra/>Manel Jordá Puig Rubio</p>
-        <p className='sobreNosotrs-miembros'><BolaNegra/>Elizabeth Lilai Naranjo Ventura</p>
-        <p className='sobreNosotrs-miembros'><BolaNegra/>Curro Valero Casajús</p>
-        <p className='sobreNosotrs-miembros'><BolaNegra/>Daniel Villarreal Gurrea</p>
+        <p className='sobreNosotros-miembros'><BolaNegra/>Pablo Latre Villacampa</p>
+        <p className='sobreNosotros-miembros'><BolaNegra/>Ismael Martínez Vicens</p>
+        <p className='sobreNosotros-miembros'><BolaNegra/>Luis Daniel Gómez Sevilla</p>
+        <p className='sobreNosotros-miembros'><BolaNegra/>Alicia Lázaro Huerta</p>
+        <p className='sobreNosotros-miembros'><BolaNegra/>Manel Jordá Puig Rubio</p>
+        <p className='sobreNosotros-miembros'><BolaNegra/>Elizabeth Lilai Naranjo Ventura</p>
+        <p className='sobreNosotros-miembros'><BolaNegra/>Curro Valero Casajús</p>
+        <p className='sobreNosotros-miembros'><BolaNegra/>Daniel Villarreal Gurrea</p>
       </div>
       <div className='contactos'>
         <h3>Contáctanos</h3>
