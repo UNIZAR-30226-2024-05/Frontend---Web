@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     width: auto;
+    align-self: center;
 }
 
 .lista-autores .lista .autor {
@@ -38,9 +39,4 @@
 
 .lista-autores .lista .autor .nombre-autor {
   color: white;
-}
-
-.lista{
-  display: flex;
-  align-self: center;
 }
