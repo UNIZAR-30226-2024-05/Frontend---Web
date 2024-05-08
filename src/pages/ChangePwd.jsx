@@ -97,18 +97,18 @@ export const ChangePwd = () => {
     }
   };
 
-  const handleClick = async (param1, param2) => {
+  const handleClick = async () => {
       console.log(param1);
       console.log(param2);
       try{
         const respuesta = await axios.post(URL_PASSWD, 
-          JSON.stringify({oldPassword: param1, newPassword: param2}),
+          JSON.stringify({oldPassword: nuevoPwd, newPassword: viejoPwd}),
           {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
           }
         );
-        console.log(param);
+        //console.log(param);
       } catch (err) {
         if (!err.response) {
           console.log('No hay respuesta del servidor');
@@ -156,7 +156,7 @@ export const ChangePwd = () => {
             onChange={handleRePwdChange}>
           </input>
           {rePasswordError && <p className="error-message">{rePasswordError}</p>}
-          <button type="submit" className='submit' onClick={() => handleClick(viejoPwd, nuevoPwd)}>
+          <button type="submit" className='submit' onClick={() => handleClick()}>
             Actualizar contraseña
           </button>
         </form>
