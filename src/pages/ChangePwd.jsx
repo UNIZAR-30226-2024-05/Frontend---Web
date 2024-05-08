@@ -156,7 +156,7 @@ export const ChangePwd = () => {
             onChange={handleRePwdChange}>
           </input>
           {rePasswordError && <p className="error-message">{rePasswordError}</p>}
-          <button type="submit" className='submit' onClick={() => handleClick("viejoPwd", "nuevoPwd")}>
+          <button type="submit" className='submit' onClick={() => handleClick(viejoPwd, nuevoPwd)}>
             Actualizar contraseña
           </button>
         </form>
