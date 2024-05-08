@@ -45,6 +45,35 @@ export const ChangePwd = () => {
     }
   };
 
+
+  const handleViejoPwdChange = (event) => {
+    setViejoPwd(event.target.value);
+    
+
+    const hasNumber = /\d/.test(event.target.value);
+    const hasUpperCases = /[A-Z]/.test(event.target.value);
+    const hasLowerCases = /[a-z]/.test(event.target.value);
+
+    if (event.target.value.length < 8) {
+      setPasswordError('La contraseña debe tener al menos 8 caracteres.');
+      setValidPwd(false);
+    } else if (!hasNumber) {
+      setPasswordError('La contraseña debe tener al menos un número.');
+      setValidPwd(false);
+    } else if (!hasUpperCases) {
+      setPasswordError('La contraseña debe tener al menos una mayúscula.');
+      setValidPwd(false);
+    } else if (!hasLowerCases) {
+      setPasswordError('La contraseña debe tener al menos una minúscula.');
+      setValidPwd(false);
+    } else {
+      setPasswordError('');
+      setValidPwd(true);
+    }
+  };
+
+
+
   const handleRePwdChange = (event) => {
     setRePassword(event.target.value);
 
@@ -103,7 +132,7 @@ export const ChangePwd = () => {
             id="viejoPwd"
             placeholder='Introduce la contraseña vieja'
             value={viejoPwd}
-            onChange={handleNuevoPwdChange}
+            onChange={handleViejoPwdChange}
           />
           <label className='nuevo' htmlFor="nuevoPwd">Nueva contraseña: </label>
           <input
