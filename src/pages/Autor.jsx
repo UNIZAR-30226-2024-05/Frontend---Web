@@ -181,6 +181,7 @@ const Autor = () => {
                                 <h3>Introduzca la nueva información</h3>
                                 <input
                                     placeholder='Nueva información'
+                                    className='autor-nueva-informacion'
                                     value={informacionNueva}
                                     onChange={(event) => setInformacionNueva(event.target.value)}
                                 />
@@ -195,6 +196,7 @@ const Autor = () => {
                                 <h3>Introduzca la nueva ciudad de nacimiento</h3>
                                 <input
                                     placeholder='Nueva ciudad de nacimiento'
+                                    className='autor-nueva-ciudad'
                                     value={ciudadNueva}
                                     onChange={(event) => setCiudadNueva(event.target.value)}
                                 />
@@ -248,7 +250,7 @@ const Autor = () => {
                                 </div>
                             </div>
                             <div className='autor-audiolibro-dropdown'>
-                            {role === 'normal' (<DropdownButton options={['Reproducir', 'Añadir a favoritos', 'Añadir a escuchar más tarde']} />)}
+                            {role === 'normal' ? <DropdownButton options={['Reproducir', 'Añadir a favoritos', 'Añadir a escuchar más tarde']} /> : null}
                             </div>
                         </div>
                     ))}
