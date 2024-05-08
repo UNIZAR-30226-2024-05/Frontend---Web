@@ -12,11 +12,19 @@
 .sobreNosotros,
 .contactos {
   width: 48%; /* Divide el footer en dos columnas */
+  margin-left: 20px;
 }
 
 .contactos {
   order: 1; /* Cambia el orden para que "Contáctanos" aparezca después */
 }
+
+.footer::before {
+    content: '';
+    width: 1px;
+    height: 80%;
+    background-color: white;
+  }
 
 .footer h3 {
   font-size: 1.2rem;
