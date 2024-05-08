@@ -34,6 +34,7 @@ const PerfilAmigo = () => {
     const [portadaUltimaActividad, setPortadaUltimaActividad] = useState(null);
     const [tituloUltimaActividad, setTituloUltimaActividad] = useState('');
     const [fechaUltimaActividad, setFechaUltimaActividad] = useState(null);
+    const [solicitudEnviada, setSolicitudEnviada] = useState(false);
 
     useEffect(() => {
 
@@ -77,48 +78,51 @@ const PerfilAmigo = () => {
         switch(numero) {
             case '0':
                 return perro;
-                break;
             case '1':
                 return gato;
-                break;
             case '2':
                 return rana;
-                break;
             case '3':
                 return leon;
-                break;
             case '4':
                 return pollo;
-                break;
             case '5':
                 return vaca;
-                break;
             case '6':
                 return buho;
-                break;
             case '7':
                 return perezoso;
-                break;
             case '8':
                 return doraemon;
-                break;
             case '9':
                 return pikachu;
-                break;
+            default:
+                return '';
         }
     }
 
-    const [solicitudEnviada, setSolicitudEnviada] = useState(false);
-
     const enviarSolicitud = async () => {
-        setSolicitudEnviada(prevState => !prevState);
         try {
-            const response = await axios.post(
-                '/amistad/send',
-                { other_id: id_user },
-                { withCredentials: true } 
-            );
-            console.log(response.data.message); // Mensaje de éxito
+            // Si la solicitud está enviada, se cancela, de lo contrario se envía una solicitud nueva
+            if (solicitudEnviada) {
+                // Lógica para cancelar la solicitud
+                const response = await axios.post(
+                    '/amistad/cancel',
+                    { other_id: id_user }, 
+                    { withCredentials: true }
+                );
+                console.log(response.data.message); // Mensaje de éxito al cancelar la solicitud
+            } else {
+                // Lógica para enviar la solicitud
+                const response = await axios.post(
+                    '/amistad/send',
+                    { other_id: id_user },
+                    { withCredentials: true } 
+                );
+                console.log(response.data.message); // Mensaje de éxito al enviar la solicitud
+            }
+            // Actualiza el estado de la solicitud enviada
+            setSolicitudEnviada(prevState => !prevState);
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
@@ -126,12 +130,35 @@ const PerfilAmigo = () => {
                 console.error('Error del servidor:', error.message); // Manejar otros errores
             }
         }
-        
     };
 
     const handleClickLibro = () => {
         navigate(`/libro?id=${idUltimaActividad}`);
     }
+
+    const eliminarAmistad = async () => {
+        try {
+            // Lógica para cancelar la amistad
+            const response = await axios.post(
+                '/amistad/remove',
+                { other_id: id_user }, 
+                { withCredentials: true }
+            );
+            console.log(response.data.message); // Mensaje de éxito al cancelar la amistad
+            // Actualiza el estado de la solicitud enviada
+            setSolicitudEnviada(false);
+        } catch (error) {
+            if (error.response) {
+                console.error(error.response.data.error); // Manejar errores específicos del servidor
+            } else if (error.response.data.error === 409) {
+                console.error('No puedes eliminar una amistad con un usuario al que no sigues');
+            }
+            else {
+                console.error('Error del servidor:', error.message); // Manejar otros errores
+            }
+        }
+    };
+    
 
     return (
         <>
@@ -142,7 +169,9 @@ const PerfilAmigo = () => {
             <div className="amigo-info-usuario">
                 <h2>{usuario}</h2>
                 {estado === 0 ? (
-                    <button className="amigo-somos-amigos">Somos amigos</button>
+                    <button className="amigo-somos-amigos" onClick={eliminarAmistad}>
+                        Somos amigos
+                    </button>
                 ) : (
                     <button className='amigo-boton-solicitud' onClick={enviarSolicitud}>
                         {solicitudEnviada ? 'Cancelar solicitud' : 'Añadir amigo'}
