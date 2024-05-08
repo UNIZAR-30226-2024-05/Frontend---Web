@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './PerfilAmigo.css';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer/Footer.jsx';
 
 import ListaColeccionesAmigo from '../components/ListaColeccionesPerfilAmigo/ListaColeccionesAmigo.jsx';
 import axios from '../api/axios.jsx';
@@ -119,6 +120,7 @@ const PerfilAmigo = () => {
     }
 
     return (
+        <>
         <div className="amigo-perfil-usuario">
             <div className="amigo-foto-perfil">
                 <img src={obtenerFotoPerfil(img)} alt="Foto de perfil" />
@@ -140,7 +142,7 @@ const PerfilAmigo = () => {
                             <ListaColeccionesAmigo className='list' colecciones={colecciones}></ListaColeccionesAmigo>
                         </div>
                     )}
-                    {estado === 0 && (
+                    {estado === 0 ? (
                         ultimaActividad ? (
                             <div className="amigo-ultima-actividad">
                                 <h3>Última actividad</h3>
@@ -158,10 +160,17 @@ const PerfilAmigo = () => {
                                 <p>No hay actividad reciente</p>
                             </div>
                         )
+                    ) : (
+                        <div className="amigo-ultima-actividad">
+                            <h3>Última actividad</h3>
+                            <p>No puedes ver la actividad de un usuario al que no sigues</p>
+                        </div>
                     )}
                 </div>
             </div>
         </div>
+        <Footer />
+        </>
     );
 };
 
