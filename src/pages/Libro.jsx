@@ -341,10 +341,12 @@ const Libro = () => {
         setModoEdicionCapitulos(!modoEdicionCapitulos);
     }
 
-    const handleAudiosChange = (files) => {
+    const handleAudiosChange = (event) => {
+        const files = event.target.files;
         const newChapters = Array.from(files);
         setNuevosCapitulos(newChapters);
     }
+    
 
     const handleGuardarCambios = async () => {
         console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos });
