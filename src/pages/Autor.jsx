@@ -88,8 +88,8 @@ const Autor = () => {
                 JSON.stringify({
                     id: id_autor,
                     nombre: nombreNuevo || nombreAutor,
-                    informacion: informacionNueva || textoInformacionAutor,
-                    ciudadnacimiento: ciudadNueva || ciudadNacimientoAutor
+                    info: informacionNueva || textoInformacionAutor,
+                    ciudad: ciudadNueva || ciudadNacimientoAutor
                 }),
                 {
                     headers: {

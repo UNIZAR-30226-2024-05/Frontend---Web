@@ -242,7 +242,7 @@
   }
 
 .autor-nuevo-nombre {
-  width: 50px;
+  width: 50%;
   height: 30px;
   margin-top: 20px;
   border-radius: 10px;
@@ -253,7 +253,7 @@
 }
 
 .autor-nueva-informacion {
-  width: 50px;
+  width: 50%;
   height: 30px;
   margin-top: 20px;
   border-radius: 10px;
@@ -264,7 +264,7 @@
 }
 
 .autor-nueva-ciudad {
-  width: 50px;
+  width: 50%;
   height: 30px;
   margin-top: 20px;
   border-radius: 10px;
