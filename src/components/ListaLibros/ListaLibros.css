@@ -91,7 +91,7 @@
 }
 */
 
-  .buscador-container{
+.contenedor-lista-libros .buscador-container{
     align-items: end;
     right: 0;
     display: flex;
@@ -99,7 +99,7 @@
     padding-bottom: 25px;
   }
 
-  .buscador-container .selector-generos {
+  .contenedor-lista-libros .buscador-container .selector-generos {
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
@@ -107,7 +107,7 @@
     margin-right: 5px;
   }
 
-  .buscador-container .buscador{
+  .contenedor-lista-libros .buscador-container .buscador{
     width: 50% !important;
     height: 30px;
     border-radius: 10px;
@@ -116,7 +116,7 @@
     margin-right: 5px;
   }
   
-  .buscador-container .button-search{
+  .contenedor-lista-libros .buscador-container .button-search{
     height: 30px;
     width: 30px;
     border-radius: 10px;
@@ -124,11 +124,11 @@
   
   @media (max-width: 988px){
     
-    .buscador-container .buscador{
+    .contenedor-lista-libros .buscador-container .buscador{
         width: 100% !important;
     }
     
-    .buscador-container{
+    .contenedor-lista-libros .buscador-container{
         padding-bottom: 15px;
     }
 }
