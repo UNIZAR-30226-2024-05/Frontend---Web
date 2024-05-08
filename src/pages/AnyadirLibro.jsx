@@ -53,6 +53,8 @@ const AnyadirLibro = () => {
             formData.append('genero', generoDecidido);
             formData.append('image', imagenDecidida);
             formData.append('audios', audioCapitulo);
+
+            console.log(formData);
     
             const response = await axios.post('/audiolibros/anadir', formData, {
                 headers: {
@@ -65,6 +67,12 @@ const AnyadirLibro = () => {
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 400) {
+                console.log('Titulo obligatorio');
+            } else if (error.response.status === 404) {
+                console.log('Autor no existente');
+            } else if(error.response.status === 405) {
+                console.log('Genero no existente');
             } else if (error.response.status === 409) {
                 console.log('Ya existe ese audiolibro');
             } else if (error.response.status === 500) {
