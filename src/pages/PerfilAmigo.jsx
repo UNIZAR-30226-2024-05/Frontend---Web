@@ -110,7 +110,7 @@ const PerfilAmigo = () => {
         }
     }
 
-    const esAmigo = (estado) => {
+    const esAmigo = () => {
         if (estado === 0) {
             return true;
         }
