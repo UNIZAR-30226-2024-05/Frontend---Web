@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import './Change.css';
+import axios from '../api/axios';
+import AuthContext from '../context/AuthProvider';
 
 export const ChangePwd = () => {
   const nav = useNavigate();
@@ -12,6 +14,9 @@ export const ChangePwd = () => {
   const [rePassword, setRePassword] = useState('');
   const [rePasswordError, setRePasswordError] = useState('');
   const [validRePwd, setValidRePwd] = useState(false);
+  const { auth , setAuth } = useContext(AuthContext);
+
+  const URL_PASSWD = '/users/change_pass'
 
   const handleNuevoPwdChange = (event) => {
     setNuevoPwd(event.target.value);
@@ -62,6 +67,28 @@ export const ChangePwd = () => {
     }
   };
 
+  const handleClick = async (param) => {
+    //if(param == true){
+      try{
+        const respuesta = await axios.post(URL_PASSWD, 
+          JSON.stringify({param}),
+          {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+          }
+        );
+      } catch (err) {
+        if (!err.response) {
+          console.log('No hay respuesta del servidor');
+        } else if (err.response.status === 500) {
+          console.log('Server Error');
+        } else {
+          console.log('Fallo en el cambio de foto');
+        }
+      }
+    //}
+  }
+
   return (
     <div className='change'>
       <div className='main-element'>
@@ -88,7 +115,7 @@ export const ChangePwd = () => {
             onChange={handleRePwdChange}>
           </input>
           {rePasswordError && <p className="error-message">{rePasswordError}</p>}
-          <button type="submit" className='submit'>
+          <button type="submit" className='submit' onClick={() => handleClick(nuevoPwd)}>
             Actualizar contraseña
           </button>
         </form>
