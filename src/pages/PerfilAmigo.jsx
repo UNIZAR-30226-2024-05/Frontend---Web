@@ -77,7 +77,7 @@ const PerfilAmigo = () => {
         if (estado === 0) {
             return (
                 <button className="amigo-somos-amigos" onClick={eliminarAmistad}>
-                    {estado === 0 ? 'Somos amigos' : 'Añadir amigo'}
+                    {solicitudEnviada ? 'Añadir amigo' : 'Somos amigos'}
                 </button>
             );
         } else if (estado === 1) {
