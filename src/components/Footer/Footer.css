@@ -7,3 +7,25 @@
     font-size: 2rem;
     background: linear-gradient(#4a746d, #0ec3a4);
 }
+
+.sobreNosotros,
+.contactos {
+  width: 48%; /* Divide el footer en dos columnas */
+}
+
+.contactos {
+  order: 1; /* Cambia el orden para que "Contáctanos" aparezca después */
+}
+
+.footer h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer .correo {
+  margin-top: 0;
+}

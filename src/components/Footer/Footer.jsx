@@ -12,26 +12,25 @@ const Footer = () => {
 
   return (
     <div className='footer'>
-      <div>
+      <div className='sobreNosotros'>
         <h3>Sobre nosotros</h3>
-        <p>¿Quiénes somos?</p>
         <p>Somos el equipo Carol Shaw de la asignatura de Proyecto Software de Ingeniería Informática en la Escuela de Ingeniería y Arquitectura en Zaragoza. A continuación presentamos a sus miembros:</p>
-        <p><BolaNegra/>Pablo Latre Villacampa</p>
-        <p><BolaNegra/>Ismael Martínez Vicens</p>
-        <p><BolaNegra/>Luis Daniel Gómez Sevilla</p>
-        <p><BolaNegra/>Alicia Lázaro Huerta</p>
-        <p><BolaNegra/>Manel Jordá Puig Rubio</p>
-        <p><BolaNegra/>Elizabeth Lilai Naranjo Ventura</p>
-        <p><BolaNegra/>Curro Valero Casajús</p>
-        <p><BolaNegra/>Daniel Villarreal Gurrea</p>
+        <p className='sobreNosotrs-miembros'><BolaNegra/>Pablo Latre Villacampa</p>
+        <p className='sobreNosotrs-miembros'><BolaNegra/>Ismael Martínez Vicens</p>
+        <p className='sobreNosotrs-miembros'><BolaNegra/>Luis Daniel Gómez Sevilla</p>
+        <p className='sobreNosotrs-miembros'><BolaNegra/>Alicia Lázaro Huerta</p>
+        <p className='sobreNosotrs-miembros'><BolaNegra/>Manel Jordá Puig Rubio</p>
+        <p className='sobreNosotrs-miembros'><BolaNegra/>Elizabeth Lilai Naranjo Ventura</p>
+        <p className='sobreNosotrs-miembros'><BolaNegra/>Curro Valero Casajús</p>
+        <p className='sobreNosotrs-miembros'><BolaNegra/>Daniel Villarreal Gurrea</p>
       </div>
-      <div>
+      <div className='contactos'>
         <h3>Contáctanos</h3>
-        <p><FontAwesomeIcon icon={faEnvelope} style={{ color: 'black', marginRight: '5px' }} />
+        <p className='correo'><FontAwesomeIcon icon={faEnvelope} style={{ color: 'black', marginRight: '5px' }} />
           <a href='mailto: narratives.unizar@gmail.com'/>
         </p>
         <h3>¿Dónde nos puedes encontrar?</h3>
-        <p><FontAwesomeIcon icon={faMapMarkerAlt}/>María de Luna, 3 - 50018 Zaragoza</p>
+        <p className='dondeEstamos'><FontAwesomeIcon icon={faMapMarkerAlt}/>María de Luna, 3 - 50018 Zaragoza</p>
         
       </div>
     </div>
