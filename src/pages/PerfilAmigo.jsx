@@ -28,7 +28,7 @@ const PerfilAmigo = () => {
     const [img, setImg] = useState(null);
     const [colecciones, setColecciones] = useState([]);
     const [estado, setEstado] = useState([]);
-    const [ultimaActividad, setUltimaActividad] = useState([]);
+    const [ultimaActividad, setUltimaActividad] = useState('');
     const [idUltimaActividad, setIdUltimaActividad] = useState(0);
     const [portadaUltimaActividad, setPortadaUltimaActividad] = useState(null);
     const [tituloUltimaActividad, setTituloUltimaActividad] = useState('');
