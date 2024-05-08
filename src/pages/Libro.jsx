@@ -630,7 +630,7 @@ const Libro = () => {
                         <input
                             type="file"
                             multiple
-                            onChange={(event) => handleAudiosChange(event.target.value)}
+                            onChange={handleAudiosChange}
                         />
                         </>
                     )}
