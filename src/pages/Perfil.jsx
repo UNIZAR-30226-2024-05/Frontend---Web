@@ -75,12 +75,13 @@ export const Perfil = () => {
           <div className='Boton'>
             <button className='BotonFoto' type='button' onClick={() => {navigate("/changefoto")}}>Cambiar la foto</button>
           </div>
+          {/*
           <div className='Boton'>
             <button className='BotonNombre' type='button' onClick={() => {navigate("/changenombre")}}>Cambiar el nombre</button>
-          </div>
+          </div> 
           <div className='Boton'>
             <button className='BotonCorreo' type='button' onClick={() => {navigate("/changecorreo")}}>Cambiar el correo</button>
-          </div>
+          </div> */}
           <div className='Boton'>
             <button className='BotonContrasegna' type='button' onClick={() => {navigate("/changepwd")}}>Cambiar la contraseña</button>
           </div>
