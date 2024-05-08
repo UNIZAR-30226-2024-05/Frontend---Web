@@ -71,7 +71,7 @@ export const ChangePwd = () => {
     //if(param == true){
       try{
         const respuesta = await axios.post(URL_PASSWD, 
-          JSON.stringify({param}),
+          JSON.stringify({param1, param2}),
           {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
@@ -95,6 +95,15 @@ export const ChangePwd = () => {
       <div className='main-element'>
         <h1>Cambiar la contraseña</h1>
         <form className='change-form' onSubmit={handleGuardarNuevoPwd}>
+        <label className='nuevo' htmlFor="nuevoPwd">Contraseña vieja: </label>
+          <input
+            type="password"
+            className='input'
+            id="viejoPwd"
+            placeholder='Introduce la contraseña vieja'
+            value={viejoPwd}
+            onChange={handleNuevoPwdChange}
+          />
           <label className='nuevo' htmlFor="nuevoPwd">Nueva contraseña: </label>
           <input
             type="password"
@@ -116,7 +125,7 @@ export const ChangePwd = () => {
             onChange={handleRePwdChange}>
           </input>
           {rePasswordError && <p className="error-message">{rePasswordError}</p>}
-          <button type="submit" className='submit' onClick={() => handleClick(nuevoPwd)}>
+          <button type="submit" className='submit' onClick={() => handleClick(viejoPwd, nuevoPwd)}>
             Actualizar contraseña
           </button>
         </form>
