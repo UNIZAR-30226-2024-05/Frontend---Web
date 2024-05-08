@@ -73,6 +73,34 @@ const PerfilAmigo = () => {
         }
     }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
     
+    const botonSolicitud = () => {
+        if (estado === 0) {
+            return (
+                <button className="amigo-somos-amigos" onClick={eliminarAmistad}>
+                    Somos amigos
+                </button>
+            );
+        } else if (estado === 1) {
+            return (
+                <button className='amigo-boton-solicitud' onClick={enviarSolicitud}>
+                    {solicitudEnviada ? 'Cancelar solicitud' : 'Añadir amigo'}
+                </button>
+            );
+        } else if (estado === 2) {
+            return (
+                <button className='amigo-boton-solicitud' onClick={enviarSolicitud}>
+                    {solicitudEnviada ? 'Cancelar solicitud' : 'Añadir amigo'}
+                </button>
+            );
+        } else if (estado === 3) {
+            return (
+                <button className='amigo-boton-solicitud' onClick={enviarSolicitud}>
+                    {solicitudEnviada ? 'Cancelar solicitud' : 'Añadir amigo'}
+                </button>
+            );
+        }
+    }
+
     const obtenerFotoPerfil = (numero) => {
         console.log(numero);
         switch(numero) {
@@ -168,16 +196,7 @@ const PerfilAmigo = () => {
             </div>
             <div className="amigo-info-usuario">
                 <h2>{usuario}</h2>
-                {estado === 0 ? (
-                    <button className="amigo-somos-amigos" onClick={eliminarAmistad}>
-                        Somos amigos
-                    </button>
-                ) : (
-                    <button className='amigo-boton-solicitud' onClick={enviarSolicitud}>
-                        {solicitudEnviada ? 'Cancelar solicitud' : 'Añadir amigo'}
-                    </button>
-                )}
-                
+                {botonSolicitud()}                
                 <div className="amigo-colecciones-y-actividad">
                     {colecciones && (
                         <div className="amigo-colecciones">
