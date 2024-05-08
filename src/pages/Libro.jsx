@@ -395,19 +395,20 @@ const Libro = () => {
             }
 
                    
-            formData.append('audios', nuevosCapitulos);
+            nuevosCapitulos.forEach((capitulo, index) => {
+                formData.append(`audio_${index}`, capitulo);
+            });
             
 
             console.log({ formData });
             
             const respuesta = await axios.post(
-                '/audiolibros/actualizar',
-                formData,
-                {
-                    headers: { 'Content-Type': 'multipart/form-data' },
-                    withCredentials: true
-                }
-            );
+                '/audiolibros/actualizar', formData, {
+                    headers: { 'Content-Type': 'multipart/form-data' 
+
+                    },
+                    withCredentials: true   
+            });
             console.log(respuesta);
         } catch (error) {
             if (!error.response) {
