@@ -96,7 +96,7 @@ export const ChangePwd = () => {
       <div className='main-element'>
         <h1>Cambiar la contraseña</h1>
         <form className='change-form' onSubmit={handleGuardarNuevoPwd}>
-        <label className='nuevo' htmlFor="nuevoPwd">Contraseña vieja: </label>
+        <label className='viejo' htmlFor="viejoPwd">Contraseña vieja: </label>
           <input
             type="password"
             className='input'
