@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Biblioteca.css';
 import axios from '../api/axios';
-import ListaLibros from '../components/ListaLibros/ListaLibros';
+import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
 import Footer from '../components/Footer/Footer';
 
 const Biblioteca = () => {
@@ -40,18 +40,18 @@ const Biblioteca = () => {
   }, []);
 
   return (
-    <div className='biblio'>
-      <div className='biblio-container'>
+    <div className='biblioteca'>
+      <div className='biblioteca-container'>
         <h1 className='title'>Biblioteca</h1>
         {loading ? (
           <div className='loading-container'>
             <p>Loading...</p>
           </div>
           ) : (
-            <ListaLibros className='listal' generos={generos} libros={libros} />
+            <ListaColecciones className='lista' generos={generos} libros={libros} />
           )}
       </div>
-      <div className='biblio-footer'>
+      <div className='biblioteca-footer'>
         <Footer className='footer' />
       </div>
     </div>

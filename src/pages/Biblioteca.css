@@ -1,8 +1,8 @@
-.biblio {
+.biblioteca {
     margin-top: 80px;
 }
 
-.biblio .biblio-container {
+.biblioteca .biblioteca-container {
     display: grid;
     grid-template-columns: 1fr;
     align-items: flex-start;
@@ -17,13 +17,13 @@
     font-size: 1.5rem;
 }
 
-.biblio .biblio-footer {
+.biblioteca .biblioteca-footer {
     align-items: center;
     justify-content: center;
     height: auto;
 }
 
-.biblio .biblio-container .title{
+.biblioteca .biblioteca-container .title{
     margin-top: 20px;
     align-self: flex-start;
     justify-self: center;
@@ -31,18 +31,18 @@
     text-align: center;
 }
 
-.biblio .biblio-container .listal {
+.biblioteca .biblioteca-container .lista {
     width: 100%;
 }
 
-.biblio .biblio-container .loading-container {
+.biblioteca .biblioteca-container .loading-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
-.biblio .biblio-footer .footer{
+.biblioteca .biblioteca-footer .footer{
     width: 100%;
     align-self: flex-end;
 }
