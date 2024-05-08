@@ -47,12 +47,9 @@ const PerfilAmigo = () => {
                 setPerfil(response.data);
                 setUsuario(response.data.username);
                 setImg(response.data.img);
-                if (response.data.colecciones) {
-                    setColecciones(response.data.colecciones);
-                }
-                if (response.data.estado) {
-                    setEstado(response.data.estado);
-                }
+                setColecciones(response.data.colecciones);
+                setEstado(response.data.estado);
+
                 if (response.data.ultimo) {
                     setUltimaActividad(response.data.ultimo);
                     setIdUltimaActividad(response.data.ultimo.id)
@@ -110,7 +107,7 @@ const PerfilAmigo = () => {
         }
     }
 
-    const esAmigo = () => {
+    const esAmigo = (estado) => {
         if (estado === 0) {
             return true;
         }
@@ -137,14 +134,14 @@ const PerfilAmigo = () => {
             </div>
             <div className="amigo-info-usuario">
                 <h2>{usuario}</h2>
-                {esAmigo ? (
+                {estado === 0 ? (
                     <button className="amigo-somos-amigos">Somos amigos</button>
                 ) : (
                     <button className='amigo-boton-solicitud' onClick={enviarSolicitud}>
                         {solicitudEnviada ? 'Cancelar solicitud' : 'Añadir amigo'}
                     </button>
                 )}
-                {esAmigo && (
+                {estado === 0 && (
                     <div className="amigo-colecciones-y-actividad">
                         {colecciones &&
                             <div className="amigo-colecciones">
@@ -152,7 +149,7 @@ const PerfilAmigo = () => {
                                 <ListaColeccionesAmigo className='list' colecciones={colecciones}></ListaColeccionesAmigo>
                             </div>
                         }
-                        
+
                         {ultimaActividad ? (
                             <div className="amigo-ultima-actividad">
                                 <h3>Última actividad</h3>
