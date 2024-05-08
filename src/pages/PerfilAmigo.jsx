@@ -152,23 +152,23 @@ const PerfilAmigo = () => {
                                 <ListaColeccionesAmigo className='list' colecciones={colecciones}></ListaColeccionesAmigo>
                             </div>
                         }
-                        {ultimaActividad &&
+                        {ultimaActividad ? (
                             <div className="amigo-ultima-actividad">
                                 <h3>Última actividad</h3>
                                 <div className="amigo-actividad">
-                                        <img className='amigo-foto-link-libro' onClick={handleClickLibro} src={portadaUltimaActividad} alt="Portada" /> {/* amigo-foto-link-libro */}
+                                    <img className='amigo-foto-link-libro' onClick={handleClickLibro} src={portadaUltimaActividad} alt="Portada" />
                                     <div className="amigo-actividad-info">
-                                        <p className='amigo-click-libro' onClick={handleClickLibro}>{tituloUltimaActividad}</p> {/* amigo-click-libro en css */}
+                                        <p className='amigo-click-libro' onClick={handleClickLibro}>{tituloUltimaActividad}</p>
                                         <p>{fechaUltimaActividad}</p>
                                     </div>
                                 </div>
                             </div>
-                        } : (
+                        ) : (
                             <div className="amigo-ultima-actividad">
                                 <h3>Última actividad</h3>
                                 <p>No hay actividad reciente</p>
                             </div>
-                        )
+                        )}
                     </div>
                 )}
             </div>
