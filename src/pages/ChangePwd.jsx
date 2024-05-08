@@ -8,6 +8,7 @@ export const ChangePwd = () => {
   const nav = useNavigate();
   const [pwdActual, setPwdActual] = useState('UsuarioPrueba');
   const [nuevoPwd, setNuevoPwd] = useState('');
+  const [viejoPwd, setViejoPwd] = useState('');
 
   const [passwordError, setPasswordError] = useState('');
   const [validPwd, setValidPwd] = useState(false);
