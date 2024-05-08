@@ -456,6 +456,7 @@ const Libro = () => {
     }
 
     return (
+        <>
         <div className='info-libro'>
             {/* Portada del libro a la izquierda */}
             <div className="info-portada">
@@ -803,6 +804,8 @@ const Libro = () => {
                 )}
             </div>
         </div>  
+        <Footer/>
+        </>
     );
 }
 
