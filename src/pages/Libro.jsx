@@ -346,6 +346,11 @@ const Libro = () => {
         const newChapters = Array.from(files);
         setNuevosCapitulos(newChapters);
     }
+
+    const handleEliminarCapitulo = (capitulo) => {
+        const nuevosCapitulosActualizados = capitulosExistentes.filter(c => c !== capitulo);
+        setCapitulosExistentes(nuevosCapitulosActualizados);
+    }
     
 
     const handleGuardarCambios = async () => {
@@ -390,10 +395,10 @@ const Libro = () => {
             }
 
             if (!nuevosCapitulos) {
-                formData.append('capitulos', capitulos);
+                formData.append('audios', capitulos);
             }
             else {           
-                formData.append('capitulos', nuevosCapitulos);
+                formData.append('audios', nuevosCapitulos);
             }
 
             console.log({ formData });
@@ -616,6 +621,7 @@ const Libro = () => {
                     )}{role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditGenero()} className='libro-editButton'/>)}</p>
                 </div>
 
+                {/* Capitulos del libro */ }
                 <div className="info-capitulos">
                     <h2 className="tituloCap"> Capítulos {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditCapitulos()} className='libro-editButton'/>)}</h2>
                     {role === 'admin' && modoEdicionCapitulos && (
@@ -635,6 +641,9 @@ const Libro = () => {
                             onClick={() => handleCapituloClick(capitulos, portada)}>
                                 <span>{capitulo.numero}</span>
                                 <span>{capitulo.nombre}</span>
+                                {role === 'admin' && modoEdicionCapitulos && (
+                                    <button onClick={() => handleEliminarCapitulo(capitulo)}>Eliminar</button>
+                                )}
                             </div>
                         ))}
                     </div>
