@@ -19,25 +19,26 @@ const Biblioteca = () => {
     'Poesía',
     'Aventuras']);
 
-    const URL_CONSULTA = '/audiolibros';
+    const [colecciones, setColecciones] = useState([]);
+  const [loading, setLoading] = useState(true); /* Poner TRUE en que descomente consulta */
 
-    const [libros, setLibros] = useState([]);
-    const [loading, setLoading] = useState(true);
-
+  
     useEffect( () => {
-      async function fetchLibros(){
-          await axios.get(URL_CONSULTA, {withCredentials: true})
-          .then(response=>{
-              setLibros(response.data.audiolibros);
-              setLoading(false);
-              console.log(response.data);
-          }).catch(error=>{
-              console.log(error);
-              setLoading(false);
-          })
-      }
-      fetchLibros();
-  }, []);
+        const URL_CONSULTA = '/colecciones';
+
+        async function fetchColecciones(){
+            await axios.get(URL_CONSULTA, {withCredentials: true})
+            .then(response=>{
+                setColecciones(response.data.collections);
+                setLoading(false);
+                console.log(response.data);
+            }).catch(error=>{
+                console.log(error);
+                setLoading(false);
+            })
+        }
+        fetchColecciones();
+    }, []);
 
   return (
     <div className='biblioteca'>
@@ -48,7 +49,7 @@ const Biblioteca = () => {
             <p>Loading...</p>
           </div>
           ) : (
-            <ListaColecciones className='lista' generos={generos} libros={libros} />
+            <ListaColecciones className='lista' colecciones={colecciones} setColecciones={setColecciones} />
           )}
       </div>
       <div className='biblioteca-footer'>
