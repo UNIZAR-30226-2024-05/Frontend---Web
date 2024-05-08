@@ -110,9 +110,23 @@ const PerfilAmigo = () => {
 
     const [solicitudEnviada, setSolicitudEnviada] = useState(false);
 
-    const enviarSolicitud = () => {
+    const enviarSolicitud = async () => {
         setSolicitudEnviada(prevState => !prevState);
-        console.log('Solicitud enviada');
+        try {
+            const response = await axios.post(
+                '/amistad/send',
+                { other_id: id_user },
+                { withCredentials: true } 
+            );
+            console.log(response.data.message); // Mensaje de éxito
+        } catch (error) {
+            if (error.response) {
+                console.error(error.response.data.error); // Manejar errores específicos del servidor
+            } else {
+                console.error('Error del servidor:', error.message); // Manejar otros errores
+            }
+        }
+        
     };
 
     const handleClickLibro = () => {
