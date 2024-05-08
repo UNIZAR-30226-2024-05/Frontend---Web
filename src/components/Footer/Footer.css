@@ -4,7 +4,7 @@
     height: 50vh;
     align-items: center;
     justify-content: space-between;
-    font-size: 2rem;
+    font-size: 1.7rem;
     background: linear-gradient(#4a746d, #0ec3a4);
     padding: 20px;
 }
@@ -39,7 +39,7 @@
 
   .sobreNosotros .sobreNosotros-miembros::before {
     content: "\2022"; /* Agrega un punto de lista redondo */
-    color: #0ec3a4; /* Color del punto */
+    color: black; /* Color del punto */
     position: absolute;
     left: 0;
   }
