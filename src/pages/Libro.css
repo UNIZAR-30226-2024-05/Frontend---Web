@@ -515,8 +515,8 @@
 }
 
 .libro-editar-descripcion {
-  width: 50%;
-  height: 30px;
+  width: 70%;
+  height: 50px;
   margin-top: 20px;
   border-radius: 10px;
   padding-left: 10px;
@@ -536,9 +536,7 @@
   margin-bottom: 20px;
 }
 
-.libro-editar-audios {
-  width: 50%;
-  height: 30px;
+.libro-editar-capitulos {
   margin-top: 20px;
   border-radius: 10px;
   padding-left: 10px;
