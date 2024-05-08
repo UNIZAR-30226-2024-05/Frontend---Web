@@ -77,6 +77,7 @@ export const ChangePwd = () => {
             withCredentials: true
           }
         );
+        console.log(param);
       } catch (err) {
         if (!err.response) {
           console.log('No hay respuesta del servidor');
