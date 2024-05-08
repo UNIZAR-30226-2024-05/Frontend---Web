@@ -24,6 +24,10 @@
     width: 1px;
     height: 80%;
     background-color: white;
+    position: absolute; /* Posicionamos la línea */
+    top: 10%; /* Alineamos la línea verticalmente */
+    left: 50%; /* La ubicamos en el medio del footer */
+    transform: translateX(-50%); /* Ajustamos para centrarla */
   }
 
 .footer h3 {
