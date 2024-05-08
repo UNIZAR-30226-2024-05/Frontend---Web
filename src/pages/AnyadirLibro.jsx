@@ -121,7 +121,7 @@ const AnyadirLibro = () => {
             <input
                 type="file"
                 multiple
-                onChange={(event) => handleAgregarAudioCapitulo(event.target.files)}
+                onChange={handleAgregarAudioCapitulo} 
             />
 
             <button
