@@ -14,7 +14,7 @@ export const ChangePwd = () => {
   const [rePassword, setRePassword] = useState('');
   const [rePasswordError, setRePasswordError] = useState('');
   const [validRePwd, setValidRePwd] = useState(false);
-  const { auth , setAuth } = useContext(AuthContext);
+  
 
   const URL_PASSWD = '/users/change_pass'
 
@@ -67,7 +67,7 @@ export const ChangePwd = () => {
     }
   };
 
-  const handleClick = async (param) => {
+  const handleClick = async (param1, param2) => {
     //if(param == true){
       try{
         const respuesta = await axios.post(URL_PASSWD, 
