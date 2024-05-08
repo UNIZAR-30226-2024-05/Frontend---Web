@@ -52,7 +52,9 @@ const AnyadirLibro = () => {
             formData.append('descripcion', descripcionDecidida);
             formData.append('genero', generoDecidido);
             formData.append('image', imagenDecidida);
-            formData.append('audios', audioCapitulo);
+            audioCapitulo.forEach(audio => {
+                formData.append('audios', audio);
+            });
     
             const response = await axios.post('/audiolibros/anadir', formData, {
                 headers: {
@@ -119,7 +121,7 @@ const AnyadirLibro = () => {
             <input
                 type="file"
                 multiple
-                onChange={(event) => handleAgregarAudioCapitulo(event.target.value)}
+                onChange={(event) => handleAgregarAudioCapitulo(event.target.files)}
             />
 
             <button
