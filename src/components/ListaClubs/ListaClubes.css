@@ -1,17 +1,17 @@
-.contenedor-lista {
+.contenedor-lista-clubes {
     /* Estilos para el contenedor de la lista */
     text-align: center;
     padding: 40px 100px;
     max-width: 100% !important;
 }
 
-.contenedor-lista .lista {
+.contenedor-lista-clubes .lista {
     /* Estilos para la lista de clubes */
     display: flex; /* Utiliza flexbox para alinear los clubs horizontalmente */
     flex-direction: column;
 }
 
-.contenedor-lista .lista .club {
+.contenedor-lista-clubes .lista .club {
     /* Estilos para cada club */
     background-color: #0000006e;
     border-radius: 20px;
@@ -21,26 +21,26 @@
     margin-bottom: 3vh;
 }
 
-.contenedor-lista .lista .club .contenido-club {
+.contenedor-lista-clubes .lista .club .contenido-club {
   display: flex;
   align-items: center;
   flex: 1;
   grid-column: span 1;
 }
 
-.contenedor-lista .lista .club .contenido-club .portadas{
+.contenedor-lista-clubes .lista .club .contenido-club .portadas{
   margin: 10px;
   cursor: pointer;
 }
 
-.contenedor-lista .lista .club .contenido-club .portadas img{
+.contenedor-lista-clubes .lista .club .contenido-club .portadas img{
     /* Estilos para las imágenes de portada */
     width: 100px; /* Ancho de la imagen */
     height: auto; /* Altura automática para mantener la proporción */
     margin: 10px;
 }
 
-.contenedor-lista .lista .club .contenido-club .nombre {
+.contenedor-lista-clubes .lista .club .contenido-club .nombre {
     /* Estilos para los títulos de las clubes */
     margin: 0; /* Elimina el margen predeterminado */
     color: white;
@@ -51,7 +51,7 @@
     padding-left: 10%;
 }
 
-.contenedor-lista .lista .club .boton-container {
+.contenedor-lista-clubes .lista .club .boton-container {
   margin-right: 50px;
   margin-left: auto;
   position: relative;
@@ -60,7 +60,7 @@
   grid-column: span 1;
 }
 
-.contenedor-lista .lista .club .boton-container .boton-opciones{
+.contenedor-lista-clubes .lista .club .boton-container .boton-opciones{
   position: absolute; /* Establece el posicionamiento absoluto */
   top: calc(100% + 5px); /* Coloca el menú debajo del botón */
   right: 0; /* Lo alinea con el borde derecho del contenedor del botón */
@@ -68,7 +68,7 @@
   z-index: 1; /* Asegura que esté por encima de otros elementos */
 }
 
-.contenedor-lista .buscador-container{
+.contenedor-lista-clubes .buscador-container{
     align-items: flex-start;
     justify-content: flex-start;
     right: 0;
@@ -77,7 +77,7 @@
     padding-bottom: 25px;
   }
 
-  .contenedor-lista .buscador-container .crear-club-btn{
+  .contenedor-lista-clubes .buscador-container .crear-club-btn{
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
@@ -85,7 +85,7 @@
     margin-right: 2%;
   }
 
-  .contenedor-lista .buscador-container .buscador{
+  .contenedor-lista-clubes .buscador-container .buscador{
     width: 50% !important;
     height: 30px;
     border-radius: 10px;
@@ -94,7 +94,7 @@
     margin-right: 5px;
   }
 
-  .contenedor-lista .crear-club-container{
+  .contenedor-lista-clubes .crear-club-container{
     align-items: flex-start;
     justify-content:space-between;
     right: 0;
@@ -104,14 +104,14 @@
     padding-bottom: 25px;
   }
 
-  .contenedor-lista .submit-club-button{
+  .contenedor-lista-clubes .submit-club-button{
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  .contenedor-lista .crear-club-container .nombre-nuevo-club{
+  .contenedor-lista-clubes .crear-club-container .nombre-nuevo-club{
     width: 75% !important;
     height: 30px;
     border-radius: 10px;
@@ -120,7 +120,7 @@
     margin-right: 5px;
   }
 
-  .contenedor-lista .crear-club-container .descripcion-nuevo-club{
+  .contenedor-lista-clubes .crear-club-container .descripcion-nuevo-club{
     width: 75% !important;
     min-height: 30px; /* Altura mínima del input */
     max-height: 100px; /* Altura máxima del input */
@@ -132,7 +132,7 @@
     margin-right: 5px;
   }
 
-  .contenedor-lista .crear-club-container .selector-libros {
+  .contenedor-lista-clubes .crear-club-container .selector-libros {
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
@@ -153,11 +153,11 @@
   
   @media (max-width: 988px){
     
-    .contenedor-lista .buscador-container .buscador{
+    .contenedor-lista-clubes .buscador-container .buscador{
         width: 100% !important;
     }
     
-    .contenedor-lista .buscador-container{
+    .contenedor-lista-clubes .buscador-container{
         padding-bottom: 15px;
     }
 }

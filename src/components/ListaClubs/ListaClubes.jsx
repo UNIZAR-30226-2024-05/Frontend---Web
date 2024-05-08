@@ -149,7 +149,7 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
     {/* En que se pueda, cambiar todo lo de clubes por una consulta al servidor. */}
 
     return (
-    <div className='contenedor-lista'>
+    <div className='contenedor-lista-clubes'>
         <div className='buscador-container'>
             <button className='crear-club-btn' onClick={showCrearClub}>
                 Crear nuevo club

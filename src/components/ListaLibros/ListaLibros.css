@@ -1,47 +1,47 @@
-.contenedor-lista {
+.contenedor-lista-libros {
     /* Estilos para el contenedor de la lista */
     text-align: center;
     padding: 40px 100px;
     max-width: 100% !important;
 }
 
-.contenedor-lista .lista {
+.contenedor-lista-libros .lista {
     /* Estilos para la lista de libros */
     display: flex; /* Utiliza flexbox para alinear los libros horizontalmente */
     flex-direction: column;
 
 }
 
-.contenedor-lista .lista .libro {
+.contenedor-lista-libros .lista .libro {
     /* Estilos para cada libro */
-    margin-right: 20px; /* Espacio entre los libros */
-    margin-bottom: 20px; /* Espacio debajo de los libros */ 
+    margin-right: 3vh; /* Espacio entre los libros */
+    margin-bottom: 3vh; /* Espacio debajo de los libros */ 
     background-color: #0000006e;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 80% 20%;
 }
 
-.contenedor-lista .lista .libro .contenido-libro {
+.contenedor-lista-libros .lista .libro .contenido-libro {
   display: flex;
   align-items: center;
   flex: 1;
   grid-column: span 1;
 }
 
-.contenedor-lista .lista .libro .contenido-libro .portadas{
+.contenedor-lista-libros .lista .libro .contenido-libro .portadas{
   margin: 10px;
   cursor: pointer;
 }
 
-.contenedor-lista .lista .libro .contenido-libro .portadas img{
+.contenedor-lista-libros .lista .libro .contenido-libro .portadas img{
     /* Estilos para las imágenes de portada */
     width: 100px; /* Ancho de la imagen */
     height: auto; /* Altura automática para mantener la proporción */
     margin: 10px;
 }
 
-.contenedor-lista .lista .libro .contenido-libro .info-libro {
+.contenedor-lista-libros .lista .libro .contenido-libro .info-libro {
     /* Estilos para los títulos de los libros */
     display: flex;
     align-items: flex-start;
@@ -51,29 +51,29 @@
     background: none;
 }
 
-.contenedor-lista .lista .libro .contenido-libro .info-libro .titulo {
+.contenedor-lista-libros .lista .libro .contenido-libro .info-libro .titulo {
   /* Estilos para los títulos de los libros */
   margin: 0; /* Elimina el margen predeterminado */
 }
 
-.contenedor-lista .lista .libro .contenido-libro .info-libro .autor {
+.contenedor-lista-libros .lista .libro .contenido-libro .info-libro .autor {
   /* Estilos para los títulos de los libros */
   margin: 0; /* Elimina el margen predeterminado */
   margin-top: 2vh;
 }
 
-.contenedor-lista .lista .libro .contenido-libro .info-libro .autor .info-linkAutor {
+.contenedor-lista-libros .lista .libro .contenido-libro .info-libro .autor .info-linkAutor {
   /* Estilos para los títulos de los libros */
   color:white;
 }
 
-.contenedor-lista .lista .libro .contenido-libro .info-libro .titulo:hover {
+.contenedor-lista-libros .lista .libro .contenido-libro .info-libro .titulo:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 /* DE MOMENTO EL BOTON QUITADO
 
-.contenedor-lista .lista .libro .boton-container {
+.contenedor-lista-libros .lista .libro .boton-container {
   margin-right: 50px;
   margin-left: auto;
   position: relative;
@@ -82,7 +82,7 @@
   grid-column: span 1;
 }
 
-.contenedor-lista .lista .libro .boton-container .boton-opciones{
+.contenedor-lista-libros .lista .libro .boton-container .boton-opciones{
   position: absolute; /* Establece el posicionamiento absoluto *//*
   top: calc(100% + 5px); /* Coloca el menú debajo del botón *//*
   right: 0; /* Lo alinea con el borde derecho del contenedor del botón *//*

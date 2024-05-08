@@ -61,7 +61,7 @@ const ListaLibros = ({generos, libros}) => {
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
 
     return (
-    <div className='contenedor-lista'>
+    <div className='contenedor-lista-libros'>
         <div className='buscador-container'>
             <select className="selector-generos" onChange={handleGeneroChange} value={generoSeleccionado}>
                 <option value="">Todos los géneros</option>
