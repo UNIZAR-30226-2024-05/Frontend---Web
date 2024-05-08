@@ -40,18 +40,18 @@ const Biblioteca = () => {
   }, []);
 
   return (
-    <div className='biblioteca'>
-      <div className='biblioteca-container'>
+    <div className='biblio'>
+      <div className='biblio-container'>
         <h1 className='title'>Biblioteca</h1>
         {loading ? (
           <div className='loading-container'>
             <p>Loading...</p>
           </div>
           ) : (
-            <ListaLibros className='lista' generos={generos} libros={libros} />
+            <ListaLibros className='listal' generos={generos} libros={libros} />
           )}
       </div>
-      <div className='biblioteca-footer'>
+      <div className='biblio-footer'>
         <Footer className='footer' />
       </div>
     </div>
