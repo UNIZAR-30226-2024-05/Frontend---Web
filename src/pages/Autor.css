@@ -240,3 +240,36 @@
     align-self: center;
     cursor: pointer;
   }
+
+.autor-nuevo-nombre {
+  width: 40px;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+.autor-nueva-informacion {
+  width: 40px;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+.autor-nueva-ciudad {
+  width: 40px;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}

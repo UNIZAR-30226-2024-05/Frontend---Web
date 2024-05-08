@@ -35,7 +35,7 @@ const AnyadirLibro = () => {
     
 
     const handleAgregarAudioCapitulo = (event) => {
-        setAudioCapitulo(event.target.files[0]);
+        setAudioCapitulo(event.target.files);
     }
 
     const handleSubmit = async () => {
