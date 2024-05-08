@@ -102,7 +102,7 @@ export const ChangePwd = () => {
       console.log(param2);
       try{
         const respuesta = await axios.post(URL_PASSWD, 
-          JSON.stringify({param1, param2}),
+          JSON.stringify({oldPassword: param1, newPassword: param2}),
           {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
