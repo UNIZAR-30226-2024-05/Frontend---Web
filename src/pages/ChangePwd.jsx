@@ -45,6 +45,35 @@ export const ChangePwd = () => {
     }
   };
 
+
+  const handleViejoPwdChange = (event) => {
+    setViejoPwd(event.target.value);
+    
+
+    const hasNumber = /\d/.test(event.target.value);
+    const hasUpperCases = /[A-Z]/.test(event.target.value);
+    const hasLowerCases = /[a-z]/.test(event.target.value);
+
+    if (event.target.value.length < 8) {
+      setPasswordError('La contraseña debe tener al menos 8 caracteres.');
+      setValidPwd(false);
+    } else if (!hasNumber) {
+      setPasswordError('La contraseña debe tener al menos un número.');
+      setValidPwd(false);
+    } else if (!hasUpperCases) {
+      setPasswordError('La contraseña debe tener al menos una mayúscula.');
+      setValidPwd(false);
+    } else if (!hasLowerCases) {
+      setPasswordError('La contraseña debe tener al menos una minúscula.');
+      setValidPwd(false);
+    } else {
+      setPasswordError('');
+      setValidPwd(true);
+    }
+  };
+
+
+
   const handleRePwdChange = (event) => {
     setRePassword(event.target.value);
 
@@ -69,7 +98,8 @@ export const ChangePwd = () => {
   };
 
   const handleClick = async (param1, param2) => {
-    //if(param == true){
+      console.log(param1);
+      console.log(param2);
       try{
         const respuesta = await axios.post(URL_PASSWD, 
           JSON.stringify({param1, param2}),
@@ -96,14 +126,14 @@ export const ChangePwd = () => {
       <div className='main-element'>
         <h1>Cambiar la contraseña</h1>
         <form className='change-form' onSubmit={handleGuardarNuevoPwd}>
-        <label className='nuevo' htmlFor="nuevoPwd">Contraseña vieja: </label>
+        <label className='viejo' htmlFor="viejoPwd">Contraseña vieja: </label>
           <input
             type="password"
             className='input'
             id="viejoPwd"
             placeholder='Introduce la contraseña vieja'
             value={viejoPwd}
-            onChange={handleNuevoPwdChange}
+            onChange={handleViejoPwdChange}
           />
           <label className='nuevo' htmlFor="nuevoPwd">Nueva contraseña: </label>
           <input
