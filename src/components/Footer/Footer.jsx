@@ -24,6 +24,7 @@ const Footer = () => {
         <h3>Contáctanos</h3>
         <p className='correo'><FontAwesomeIcon icon={faEnvelope} style={{ color: 'black', marginRight: '5px' }} />
           <a href='mailto: narratives.unizar@gmail.com'/>
+          narratives.unizar@gmail.com
         </p>
         <h3>¿Dónde nos puedes encontrar?</h3>
         <p className='dondeEstamos'><FontAwesomeIcon icon={faMapMarkerAlt}/> María de Luna, 3 - 50018 Zaragoza</p>
