@@ -140,6 +140,7 @@ const PerfilAmigo = () => {
                     { withCredentials: true }
                 );
                 console.log(response.data.message); // Mensaje de éxito al cancelar la solicitud
+                setSolicitudEnviada(false);
             } else {
                 // Lógica para enviar la solicitud
                 const response = await axios.post(
@@ -148,9 +149,10 @@ const PerfilAmigo = () => {
                     { withCredentials: true } 
                 );
                 console.log(response.data.message); // Mensaje de éxito al enviar la solicitud
+                setSolicitudEnviada(true);
             }
             // Actualiza el estado de la solicitud enviada
-            setSolicitudEnviada(prevState => !prevState);
+
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
