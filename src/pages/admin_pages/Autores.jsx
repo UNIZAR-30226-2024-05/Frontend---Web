@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Autores.css';
-import axios from '../api/axios';
-import ListaAutores from '../components/ListaAutores/ListaAutores';
-import Footer from '../components/Footer/Footer';
+import axios from '../../api/axios';
+import ListaAutores from '../../components/ListaAutores/ListaAutores';
+import Footer from '../../components/Footer/Footer';
 
 const Autores = () => {
     const URL_CONSULTA = '/autores/lista';
