@@ -98,7 +98,8 @@ export const ChangePwd = () => {
   };
 
   const handleClick = async (param1, param2) => {
-    //if(param == true){
+      console.log(param1);
+      console.log(param2);
       try{
         const respuesta = await axios.post(URL_PASSWD, 
           JSON.stringify({param1, param2}),
