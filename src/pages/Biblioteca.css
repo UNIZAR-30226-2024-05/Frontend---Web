@@ -9,7 +9,6 @@
     justify-content: center;
     height: auto;
     min-height:calc(100vh - 80px);
-    width: auto;
     /*background: #0ec3a4;*/
     background: linear-gradient(#7f9894, #21ad96);
     background-position: center;
