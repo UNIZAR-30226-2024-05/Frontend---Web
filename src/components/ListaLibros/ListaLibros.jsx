@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ListaLibros.css';
-import DropdownButtonBiblioteca from './DropdownButtonBiblioteca';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
@@ -98,13 +97,6 @@ const ListaLibros = ({generos, libros}) => {
                             </div>
                         </div>
                     </div>
-                    { /* Quito el boton de momento, confirmar eliminación más adelante */ 
-                    /*
-                    <div className='boton-container'>
-                        <DropdownButtonBiblioteca className='boton-opciones' />
-                    </div>
-                    */
-                    }
                 </div>
               ))}
         </div>
