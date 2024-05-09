@@ -15,7 +15,7 @@
 
 .contenedor-lista-libros .lista .libro {
     /* Estilos para cada libro */
-    margin-right: 3vh; /* Espacio entre los libros */
+    margin-top: 3vh; /* Espacio entre los libros */
     margin-bottom: 3vh; /* Espacio debajo de los libros */ 
     background-color: #0000006e;
     border-radius: 20px;
