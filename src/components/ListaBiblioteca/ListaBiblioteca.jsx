@@ -81,14 +81,11 @@ const ListaBiblioteca = ({generos, libros}) => {
             {listaShow.map((libro, i) => (
                 <div key={i}
                 className='libro'>
-                    <div className='contenido-libro'>
-                        <div className='portadas' onClick={() => handleLibroClick(libro.id)}>
-                            <img src={libro.img} alt={libro.titulo}></img>
-                        </div>
-                        <div className='titulo' onClick={() => handleLibroClick(libro.id)}>
-                            <h1>{libro.titulo}</h1>
-                        </div>
-                        
+                    <div className='portadas' onClick={() => handleLibroClick(libro.id)}>
+                        <img src={libro.img} alt={libro.titulo}></img>
+                    </div>
+                    <div className='titulo' onClick={() => handleLibroClick(libro.id)}>
+                        <h1>{libro.titulo}</h1>
                     </div>
                 </div>
               ))}

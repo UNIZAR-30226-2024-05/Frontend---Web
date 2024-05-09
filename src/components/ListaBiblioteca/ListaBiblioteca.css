@@ -19,33 +19,28 @@
     margin-bottom: 3vh; /* Espacio debajo de los libros */ 
     background-color: #0000006e;
     border-radius: 20px;
+    width: 100%;
     display: grid;
-    grid-template-columns: 95%;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 70% 30%;
+    align-items: center;
+
 }
 
-.contenedor-lista-biblioteca .lista .libro .contenido-libro {
-  display: grid;
-  grid-template-columns: 25% 75%;
-  grid-template-rows: 70% 30%;
-  align-items: center;
-  flex: 1;
-  grid-column: span 1;
-}
-
-.contenedor-lista-biblioteca .lista .libro .contenido-libro .portadas{
+.contenedor-lista-biblioteca .lista .libro .portadas{
   margin: 20px;
   grid-row: span 2;
   grid-column: span 1;
 }
 
-.contenedor-lista-biblioteca .lista .libro .contenido-libro .portadas img{
+.contenedor-lista-biblioteca .lista .libro .portadas img{
     /* Estilos para las imágenes de portada */
     width: 100px; /* Ancho de la imagen */
     height: auto; /* Altura automática para mantener la proporción */
     cursor: pointer;
 }
 
-.contenedor-lista-biblioteca .lista .libro .contenido-libro .titulo {
+.contenedor-lista-biblioteca .lista .libro .titulo {
     grid-row: span 1;
     grid-column: span 1;
     color: white;
@@ -53,7 +48,7 @@
     background: none;
 }
 
-.contenedor-lista-biblioteca .lista .libro .contenido-libro .autor {
+.contenedor-lista-biblioteca .lista .libro .autor {
     grid-row: span 1;
     grid-column: span 1;
     color: white;
@@ -62,7 +57,7 @@
 }
 
 
-.contenedor-lista-biblioteca .lista .libro .contenido-libro .titulo:hover {
+.contenedor-lista-biblioteca .lista .libro .titulo:hover {
   cursor: pointer;
   text-decoration: underline;
 }
