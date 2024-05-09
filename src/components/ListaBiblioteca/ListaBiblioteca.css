@@ -29,6 +29,7 @@
 
 .contenedor-lista-biblioteca .lista .libro .portadas{
   margin: 20px;
+  justify-self: flex-start;
   grid-row: span 2;
   grid-column: span 1;
 }
@@ -46,7 +47,14 @@
     color: white;
     text-decoration: none;
     background: none;
+    font-size: 2rem;
+    font-weight: bold;
     word-wrap: break-word;
+}
+
+.contenedor-lista-biblioteca .lista .libro .titulo span,
+.contenedor-lista-biblioteca .lista .libro .autor span {
+    cursor: pointer;
 }
 
 .contenedor-lista-biblioteca .lista .libro .autor {
@@ -55,13 +63,11 @@
     color: black;
     text-decoration: none;
     background: none;
-    cursor: pointer;
     word-wrap: break-word;
 }
 
 
 .contenedor-lista-biblioteca .lista .libro .titulo:hover {
-  cursor: pointer;
   text-decoration: underline;
 }
 
