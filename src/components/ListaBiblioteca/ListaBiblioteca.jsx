@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './ListaBiblioteca.css';
+import './ListaLibros.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
@@ -56,7 +56,6 @@ const ListaBiblioteca = ({generos, libros}) => {
         navigate(`/autor?id=${id_autor}`);
     }
 
-
     return (
     <div className='contenedor-lista-biblioteca'>
         <div className='buscador-container'>
@@ -78,19 +77,19 @@ const ListaBiblioteca = ({generos, libros}) => {
 
         </div>
 
-        <div className='lista-biblio'>
+        <div className='lista'>
             {listaShow.map((libro, i) => (
                 <div key={i}
-                className='libro-biblio'>
+                className='libro'>
                     <div className='contenido-libro'>
-                        <div className='portada-libro' onClick={() => handleLibroClick(libro.id)}>
+                        <div className='portadas' onClick={() => handleLibroClick(libro.id)}>
                             <img src={libro.img} alt={libro.titulo}></img>
                         </div>
-                        <div className='info-libro'>
-                            <div className='titulo-libro' onClick={() => handleLibroClick(libro.id)}>
-                                <h1>{libro.titulo}</h1>
-                            </div>
-                            
+                        <div className='titulo' onClick={() => handleLibroClick(libro.id)}>
+                            <h1>{libro.titulo}</h1>
+                        </div>
+                        <div className='autor'>
+                            <span onClick={() => handleAutorClick(libro.autor_id)} className='info-linkAutor'>{libro.autor}</span>
                         </div>
                     </div>
                 </div>
