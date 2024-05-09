@@ -20,7 +20,7 @@
     background-color: #0000006e;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 95%;
 }
 
 .contenedor-lista-biblioteca .lista .libro .contenido-libro {

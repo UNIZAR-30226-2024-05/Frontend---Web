@@ -88,9 +88,7 @@ const ListaBiblioteca = ({generos, libros}) => {
                         <div className='titulo' onClick={() => handleLibroClick(libro.id)}>
                             <h1>{libro.titulo}</h1>
                         </div>
-                        <div className='autor'>
-                            <span onClick={() => handleAutorClick(libro.autor_id)} className='info-linkAutor'>{libro.autor}</span>
-                        </div>
+                        
                     </div>
                 </div>
               ))}
