@@ -1,11 +1,11 @@
-.contenedor-lista-libros {
+.contenedor-lista-biblioteca {
     /* Estilos para el contenedor de la lista */
     text-align: center;
     padding: 40px 100px;
     max-width: 100% !important;
 }
 
-.contenedor-lista-libros .lista {
+.contenedor-lista-biblioteca .lista-biblio {
     /* Estilos para la lista de libros */
     display: flex; /* Utiliza flexbox para alinear los libros horizontalmente */
     flex-direction: column;
@@ -13,7 +13,7 @@
 
 }
 
-.contenedor-lista-libros .lista .libro {
+.contenedor-lista-biblioteca .lista-biblio .libro-biblio {
     /* Estilos para cada libro */
     margin-top: 3vh; /* Espacio entre los libros */
     margin-bottom: 3vh; /* Espacio debajo de los libros */ 
@@ -23,25 +23,25 @@
     grid-template-columns: 80% 20%;
 }
 
-.contenedor-lista-libros .lista .libro .contenido-libro {
+.contenedor-lista-biblioteca .lista-biblio .libro-biblio .contenido-libro {
   display: flex;
   align-items: center;
   flex: 1;
   grid-column: span 1;
 }
 
-.contenedor-lista-libros .lista .libro .contenido-libro .portadas{
+.contenedor-lista-biblioteca .lista-biblio .libro-biblio .contenido-libro .portada-libro{
   margin: 20px;
 }
 
-.contenedor-lista-libros .lista .libro .contenido-libro .portadas img{
+.contenedor-lista-biblioteca .lista-biblio .libro-biblio .contenido-libro .portada-libro img{
     /* Estilos para las imágenes de portada */
     width: 100px; /* Ancho de la imagen */
     height: auto; /* Altura automática para mantener la proporción */
     cursor: pointer;
 }
 
-.contenedor-lista-libros .lista .libro .contenido-libro .info-libro {
+.contenedor-lista-biblioteca .lista-biblio .libro-biblio .contenido-libro .info-libro {
     /* Estilos para los títulos de los libros */
     display: flex;
     align-items: flex-start;
@@ -51,29 +51,28 @@
     background: none;
 }
 
-.contenedor-lista-libros .lista .libro .contenido-libro .info-libro .titulo {
+.contenedor-lista-biblioteca .lista-biblio .libro-biblio .contenido-libro .info-libro .titulo-libro {
   /* Estilos para los títulos de los libros */
   margin: 0; /* Elimina el margen predeterminado */
-  width: auto;
 }
 
-.contenedor-lista-libros .lista .libro .contenido-libro .info-libro .autor {
+.contenedor-lista-biblioteca .lista-biblio .libro-biblio .contenido-libro .info-libro .autor-libro {
   /* Estilos para los títulos de los libros */
   margin: 0; /* Elimina el margen predeterminado */
   margin-top: 2vh;
 }
 
-.contenedor-lista-libros .lista .libro .contenido-libro .info-libro .autor .info-linkAutor {
+.contenedor-lista-biblioteca .lista-biblio .libro-biblio .contenido-libro .info-libro .autor-libro .info-linkAutor {
   /* Estilos para los títulos de los libros */
   color:white;
 }
 
-.contenedor-lista-libros .lista .libro .contenido-libro .info-libro .titulo:hover {
+.contenedor-lista-biblioteca .lista-biblio .libro-biblio .contenido-libro .info-libro .titulo-libro:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-.contenedor-lista-libros .buscador-container{
+.contenedor-lista-biblioteca .buscador-container{
     align-items: end;
     right: 0;
     display: flex;
@@ -81,7 +80,7 @@
     padding-bottom: 25px;
   }
 
-  .contenedor-lista-libros .buscador-container .selector-generos {
+  .contenedor-lista-biblioteca .buscador-container .selector-generos {
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
@@ -89,7 +88,7 @@
     margin-right: 5px;
   }
 
-  .contenedor-lista-libros .buscador-container .buscador{
+  .contenedor-lista-biblioteca .buscador-container .buscador{
     width: 50% !important;
     height: 30px;
     border-radius: 10px;
@@ -98,7 +97,7 @@
     margin-right: 5px;
   }
   
-  .contenedor-lista-libros .buscador-container .button-search{
+  .contenedor-lista-biblioteca .buscador-container .button-search{
     height: 30px;
     width: 30px;
     border-radius: 10px;
@@ -106,11 +105,11 @@
   
   @media (max-width: 988px){
     
-    .contenedor-lista-libros .buscador-container .buscador{
+    .contenedor-lista-biblioteca .buscador-container .buscador{
         width: 100% !important;
     }
     
-    .contenedor-lista-libros .buscador-container{
+    .contenedor-lista-biblioteca .buscador-container{
         padding-bottom: 15px;
     }
 }

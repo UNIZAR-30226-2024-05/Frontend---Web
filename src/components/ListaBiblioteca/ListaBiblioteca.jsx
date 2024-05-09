@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
 
-const ListaLibros = ({generos, libros}) => {
-
+const ListaBiblioteca = ({generos, libros}) => {
     const [listaLibros, setListaLibros] = useState(libros);
     const [listaShow, setListaShow] = useState(libros);
     const [busqueda, setBusqueda] = useState('');
@@ -57,10 +56,9 @@ const ListaLibros = ({generos, libros}) => {
         navigate(`/autor?id=${id_autor}`);
     }
 
-    {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
 
     return (
-    <div className='contenedor-lista-libros'>
+    <div className='contenedor-lista-biblioteca'>
         <div className='buscador-container'>
             <select className="selector-generos" onChange={handleGeneroChange} value={generoSeleccionado}>
                 <option value="">Todos los géneros</option>
@@ -80,19 +78,19 @@ const ListaLibros = ({generos, libros}) => {
 
         </div>
 
-        <div className='lista'>
+        <div className='lista-biblio'>
             {listaShow.map((libro, i) => (
                 <div key={i}
-                className='libro'>
+                className='libro-biblio'>
                     <div className='contenido-libro'>
-                        <div className='portadas' onClick={() => handleLibroClick(libro.id)}>
+                        <div className='portada-libro' onClick={() => handleLibroClick(libro.id)}>
                             <img src={libro.img} alt={libro.titulo}></img>
                         </div>
                         <div className='info-libro'>
-                            <div className='titulo' onClick={() => handleLibroClick(libro.id)}>
+                            <div className='titulo-libro' onClick={() => handleLibroClick(libro.id)}>
                                 <h1>{libro.titulo}</h1>
                             </div>
-                            <div className='autor'>
+                            <div className='autor-libro'>
                                 <span onClick={() => handleAutorClick(libro.autor_id)} className='info-linkAutor'>{libro.autor}</span>
                             </div>
                         </div>
@@ -105,4 +103,4 @@ const ListaLibros = ({generos, libros}) => {
   )
 }
 
-export default ListaLibros
+export default ListaBiblioteca
