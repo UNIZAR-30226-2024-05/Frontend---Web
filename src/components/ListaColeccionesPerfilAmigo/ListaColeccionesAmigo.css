@@ -65,11 +65,11 @@
     right: 0;
     display: flex;
     justify-content: center;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
   }
 
   .contenedor-lista-amigo .buscador-container .buscador{
-    width: 50% !important;
+    width: 100% !important;
     height: 5vh;
     width: 15vw;
     border-radius: 10px;
@@ -77,14 +77,3 @@
     padding-right: 10px;
     margin-right: 5px;
   }
-  
-  @media (max-width: 988px){
-    
-    .contenedor-lista-amigo .buscador-container .buscador{
-        width: 100% !important;
-    }
-    
-    .contenedor-lista-amigo .buscador-container{
-        padding-bottom: 15px;
-    }
-}
