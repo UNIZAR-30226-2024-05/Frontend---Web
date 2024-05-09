@@ -86,7 +86,12 @@ const ListaBiblioteca = ({generos, libros}) => {
                         <div className='portada-libro' onClick={() => handleLibroClick(libro.id)}>
                             <img src={libro.img} alt={libro.titulo}></img>
                         </div>
-                        
+                        <div className='info-libro'>
+                            <div className='titulo-libro' onClick={() => handleLibroClick(libro.id)}>
+                                <h1>{libro.titulo}</h1>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
               ))}
