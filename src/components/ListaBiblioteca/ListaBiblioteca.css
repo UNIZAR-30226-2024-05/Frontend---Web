@@ -46,14 +46,17 @@
     color: white;
     text-decoration: none;
     background: none;
+    word-wrap: break-word;
 }
 
 .contenedor-lista-biblioteca .lista .libro .autor {
     grid-row: span 1;
     grid-column: span 1;
-    color: white;
+    color: black;
     text-decoration: none;
     background: none;
+    cursor: pointer;
+    word-wrap: break-word;
 }
 
 
