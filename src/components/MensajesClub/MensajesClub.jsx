@@ -6,7 +6,7 @@ import { faArrowRight, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const MensajesClub = ({ club, setClub }) => {
 
-    const [listaMensajes, setListaMensajes] = useState(club.messages);
+    const [listaMensajes, setListaMensajes] = useState(club?.messages || []);
     const [nuevoMensaje, setNuevoMensaje] = useState('');
 
     /* Actualiza info al actualizar la lista de mensajes */
