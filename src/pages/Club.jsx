@@ -19,9 +19,9 @@ const Club = () => {
       async function fetchLibros(){
           await axios.get(URL_CLUB, {withCredentials: true})
           .then(response=>{
-              setClub(response.data);
+              setClub(response.data.club);
               setLoading(false);
-              console.log(response.data);
+              console.log(response.data.club);
           }).catch(error=>{
               console.log(error);
               setLoading(false);
