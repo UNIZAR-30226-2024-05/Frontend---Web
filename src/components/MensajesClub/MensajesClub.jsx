@@ -11,7 +11,7 @@ const MensajesClub = ({ club, setClub }) => {
 
     /* Actualiza info al actualizar la lista de mensajes */
     useEffect(() => {
-        setColeccion({...club, messages: listaMensajes})
+        setClub({...club, messages: listaMensajes})
         filtrar(busqueda);
       }, [listaMensajes]);
 
