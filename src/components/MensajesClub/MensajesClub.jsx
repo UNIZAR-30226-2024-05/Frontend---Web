@@ -11,10 +11,10 @@ const MensajesClub = ({ club, setClub }) => {
 
     /* Actualiza info al actualizar la lista de mensajes */
     useEffect(() => {
+        console.log(listaMensajes);
         setClub({...club, messages: listaMensajes});
         console.log({club});
-      }, [listaMensajes]);
-
+    }, [listaMensajes]);
     
       const handleChangeNewMsg = event => {
         setNuevoMensaje(event.target.value);
@@ -22,11 +22,13 @@ const MensajesClub = ({ club, setClub }) => {
 
     async function enviarMensaje() {
         console.log({nuevoMensaje});
+        setListaMensajes(...listaMensajes, nuevoMensaje);
         setNuevoMensaje('');
     }
 
     const handleEnviarMensaje = () => {
         enviarMensaje();
+        
     }
 
 
@@ -34,19 +36,6 @@ const MensajesClub = ({ club, setClub }) => {
 
     return (
     <div className='contenedor-mensajes'>
-        <div className='cabecera-container'>
-            
-            <input className='escribir-msg'
-                placeholder='Escriba el mensaje'
-                value={nuevoMensaje}
-                onChange={handleChangeNewMsg}
-            />
-            <button className='button-send' onClick={handleEnviarMensaje}>
-                <FontAwesomeIcon icon={faArrowRight} />
-            </button>
-
-        </div>
-
         <div className='lista'>
             {listaMensajes.map((msg, i) => (
                 <div key={i}
@@ -58,6 +47,18 @@ const MensajesClub = ({ club, setClub }) => {
                     </div>
                 </div>
               ))}
+        </div>
+        <div className='cabecera-container'>
+            
+            <input className='escribir-msg'
+                placeholder='Escriba el mensaje'
+                value={nuevoMensaje}
+                onChange={handleChangeNewMsg}
+            />
+            <button className='button-send' onClick={handleEnviarMensaje}>
+                <FontAwesomeIcon icon={faArrowRight} />
+            </button>
+
         </div>
         
     </div>
