@@ -1,0 +1,48 @@
+.club {
+    margin-top: 80px;
+}
+
+.club .club-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    justify-content: center;
+    height: auto;
+    min-height:calc(100vh - 80px);
+    /*background: #0ec3a4;*/
+    background: linear-gradient(#7f9894, #21ad96);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 1.5rem;
+}
+
+.club .club-footer {
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.club .club-container .title{
+    margin-top: 20px;
+    align-self: flex-start;
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+}
+
+.club .club-container .lista {
+    width: 100%;
+}
+
+.club .club-container .loading-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.club .club-footer .footer{
+    width: 100%;
+    align-self: flex-end;
+}

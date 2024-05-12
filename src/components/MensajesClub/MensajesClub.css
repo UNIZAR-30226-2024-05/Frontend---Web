@@ -1,0 +1,59 @@
+.contenedor-mensajes {
+    /* Estilos para el contenedor de la lista */
+    text-align: center;
+    padding: 40px 100px;
+    max-width: 100% !important;
+}
+
+.contenedor-mensajes .lista {
+    /* Estilos para la lista de mensajes */
+    display: flex; /* Utiliza flexbox para alinear los mensajes horizontalmente */
+    flex-direction: column;
+
+}
+
+.contenedor-mensajes .lista .mensaje {
+    /* Estilos para cada mensaje */
+    margin-right: 20px; /* Espacio entre los mensajes */
+    margin-bottom: 20px; /* Espacio debajo de los mensajes */ 
+    background-color: #0000006e;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.contenedor-mensajes .lista .mensaje .contenido-msg {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  grid-column: span 1;
+}
+
+.contenedor-mensajes .lista .mensaje .contenido-msg .texto-msg{
+  margin: 10px;
+  cursor: pointer;
+}
+
+
+  .cabecera-container{
+    align-items: end;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+  }
+
+  .cabecera-container .escribir-msg{
+    width: 100% !important;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+  }
+  
+  .cabecera-container .button-send{
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+  }
