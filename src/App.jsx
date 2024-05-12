@@ -13,6 +13,7 @@ import RedesSociales from './pages/RedesSociales';
 import SobreNosotros from './pages/SobreNosotros'; 
 import Registrar from './pages/Registrar';
 import Clubes from './pages/Clubes';
+import Club from './pages/Club';
 import Colecciones from './pages/Colecciones';
 import Coleccion from './pages/Coleccion';
 import Perfil from './pages/Perfil';
@@ -46,6 +47,7 @@ function App() {
       <Route path='/aboutus' element={<SobreNosotros />}/>
       <Route path='/register' element={<Registrar />}/>
       <Route path='/clubes' element={<ProtectedRoute element={Clubes} />}/>
+      <Route path='/club' element={<ProtectedRoute element={Club} />}/>
       <Route path='/colecciones' element={<ProtectedRoute element={Colecciones} />}/>
       <Route path='/coleccion' element={<ProtectedRoute element={Coleccion} />}/>
       <Route path='/perfil' element={<ProtectedRoute element={Perfil} />}/>

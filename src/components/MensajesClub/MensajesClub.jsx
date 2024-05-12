@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MensajesClub.css';
-import DropdownButtonColeccion from './DropdownButtonColeccion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faSearch } from '@fortawesome/free-solid-svg-icons';
-import Cookie from 'js-cookie';
 
 const MensajesClub = ({ club, setClub }) => {
 
