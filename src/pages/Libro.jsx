@@ -494,7 +494,7 @@ const Libro = () => {
                     { /* Botón de "Reproducir" con icono de play */}
                     <div className="info-reproducir">
                         <div className="info-linkReproducir"
-                        onClick={() => handleCapituloClick(capitulos, portada, 1)}>
+                        onClick={() => handleCapituloClick(capitulos, portada, 0)}>
                             <FontAwesomeIcon icon={faPlay} /> Escuchar audiolibro
                         </div>
                     </div>
@@ -644,7 +644,7 @@ const Libro = () => {
                         {capitulos.map((capitulo, i) => (
                             <div key={i}
                             className='capitulo'
-                            onClick={() => handleCapituloClick(capitulos, portada, capitulo.numero)}>
+                            onClick={() => handleCapituloClick(capitulos, portada, i)}>
                                 <span>{capitulo.numero}</span>
                                 <span>{capitulo.nombre}</span>
                                 {role === 'admin' && modoEdicionCapitulos && (
