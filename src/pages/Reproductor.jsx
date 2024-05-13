@@ -204,6 +204,7 @@ function skipCancion(capitulos, numCap) {
 
 function prevCancion(capitulos, numCap) {
   // Actualiza el índice
+  console.log("Para ver que se la pasa a prev", numCap);
   if (numCap < limitInf) {
     setNumCap(numCap - 1);
     console.log("Después de actualizar numCap en prevCancion", numCap);
