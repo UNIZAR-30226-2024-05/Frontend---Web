@@ -396,9 +396,13 @@ const Libro = () => {
 
                    
             
-            nuevosCapitulos.forEach(audio => {
-                formData.append('audios', audio);
-            });
+            if (Array.isArray(nuevosCapitulos)) {
+                nuevosCapitulos.forEach(audio => {
+                    formData.append('audios', audio);
+                });
+            } else {
+                console.log('nuevosCapitulos no es una matriz válida');
+            }
             
 
             console.log({ formData });
