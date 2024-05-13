@@ -3,7 +3,8 @@
     text-align: center;
     padding: 40px 100px;
     height: 70vh;
-    overflow-y: scroll;
+    overflow: hidden;
+    position: relative;
     max-width: 100% !important;
 }
 
@@ -11,6 +12,7 @@
     /* Estilos para la lista de mensajes */
     display: flex; /* Utiliza flexbox para alinear los mensajes horizontalmente */
     flex-direction: column;
+    overflow-y: scroll;
 
 }
 
