@@ -37,7 +37,7 @@ const Reproductor = () => {
     setLimitSup(capitulos.length-1);
     console.log(limitSup);
   
-  }, )
+  },)
 
 
   function obtenerCapiulo(capitulos, numCap){
@@ -95,9 +95,9 @@ const Reproductor = () => {
   
   
 function skipCancion(capitulos, numCap) {
-  console.log(capitulos);
-  console.log(capitulos.length);
-  console.log(limitSup);
+  //console.log(capitulos);
+  //console.log(capitulos.length);
+  //console.log(limitSup);
   if(numCap < limitSup){
     // Pausa el audio actual
     soundInstance.pause();
