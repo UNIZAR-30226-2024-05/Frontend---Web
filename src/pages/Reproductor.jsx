@@ -39,6 +39,11 @@ const Reproductor = () => {
   
   },)
 
+  useEffect(() => {
+    console.log("Nuevo valor de numCap", numCap);
+  
+  },[numCap])
+
 
   function obtenerCapiulo(capitulos, numCap){
     if(numCap >= 0 && numCap < capitulos.length){
