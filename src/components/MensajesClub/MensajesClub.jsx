@@ -10,10 +10,14 @@ const MensajesClub = ({ club, setClub }) => {
     const [nuevoMensaje, setNuevoMensaje] = useState('');
     const messagesEndRef = useRef(null);
 
-    useEffect(() => {
+    const scrollToBottom = () => {
         if (messagesEndRef.current) {
             messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
         }
+    };
+
+    useEffect(() => {
+        scrollToBottom();
     }, [listaMensajes]);
 
     /* Actualiza info al actualizar la lista de mensajes */
