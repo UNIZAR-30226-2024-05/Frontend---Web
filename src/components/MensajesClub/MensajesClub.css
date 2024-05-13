@@ -5,6 +5,7 @@
     height: 65vh;
     overflow: hidden;
     position: relative;
+    align-items: flex-start;
     max-width: 100% !important;
 }
 
