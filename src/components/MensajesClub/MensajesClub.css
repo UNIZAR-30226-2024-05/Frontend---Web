@@ -2,6 +2,7 @@
     /* Estilos para el contenedor de la lista */
     text-align: center;
     padding: 40px 100px;
+    height: 70vh;
     max-width: 100% !important;
 }
 
@@ -35,7 +36,7 @@
 }
 
 
-  .cabecera-container{
+  .escribir-msg-container{
     align-items: end;
     right: 0;
     display: flex;
@@ -43,7 +44,7 @@
     padding-bottom: 15px;
   }
 
-  .cabecera-container .escribir-msg{
+  .escribir-msg-container .escribir-msg{
     width: 100% !important;
     height: 30px;
     border-radius: 10px;
@@ -52,7 +53,7 @@
     margin-right: 5px;
   }
   
-  .cabecera-container .button-send{
+  .escribir-msg-container .button-send{
     height: 30px;
     width: 30px;
     border-radius: 10px;

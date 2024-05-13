@@ -48,7 +48,7 @@ const MensajesClub = ({ club, setClub }) => {
                 </div>
               ))}
         </div>
-        <div className='cabecera-container'>
+        <div className='escribir-msg-container'>
             
             <input className='escribir-msg'
                 placeholder='Escriba el mensaje'
