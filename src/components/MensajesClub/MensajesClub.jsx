@@ -12,7 +12,7 @@ const MensajesClub = ({ club, setClub }) => {
 
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
-            messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+            messagesEndRef.current.scrollTop = 0;
         }
     };
 
