@@ -116,7 +116,7 @@ const Reproductor = () => {
   
 function skipCancion(capitulo, numCap) {
   console.log(capitulos);
-  if(numCap < (capitulos.length - 1)){
+  if(numCap < (capitulos.length() - 1)){
     // Pausa el audio actual
     if (soundInstance){
       soundInstance.pause();
