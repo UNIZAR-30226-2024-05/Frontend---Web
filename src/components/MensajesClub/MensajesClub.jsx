@@ -31,6 +31,9 @@ const MensajesClub = ({ club, setClub }) => {
         
     }
 
+    const content = document.querySelector('.content');
+    content.scrollTop = content.scrollHeight;
+
 
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
 
