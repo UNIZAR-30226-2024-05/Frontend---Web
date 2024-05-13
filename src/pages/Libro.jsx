@@ -406,9 +406,7 @@ const Libro = () => {
             
             const respuesta = await axios.post(
                 '/audiolibros/actualizar', formData, {
-                    headers: { 'Content-Type': 'multipart/form-data' 
-
-                    },
+                    headers: { 'Content-Type': 'multipart/form-data' },
                     withCredentials: true   
             });
             console.log(respuesta);
