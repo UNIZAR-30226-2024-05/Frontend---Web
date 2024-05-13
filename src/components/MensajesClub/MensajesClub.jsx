@@ -7,7 +7,7 @@ import { faArrowRight, faSearch } from '@fortawesome/free-solid-svg-icons';
 const MensajesClub = ({ club, setClub }) => {
 
     const [listaMensajes, setListaMensajes] = useState(club.messages);
-    const [nuevoMensaje, setNuevoMensaje] = useState('');
+    const [nuevoMensaje, setNuevoMensaje] = useState([]);
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -28,7 +28,7 @@ const MensajesClub = ({ club, setClub }) => {
     }, [listaMensajes]);
     
       const handleChangeNewMsg = event => {
-        setNuevoMensaje(event.target.value);
+        setNuevoMensaje([event.target.value]);
     } 
 
     async function enviarMensaje() {
