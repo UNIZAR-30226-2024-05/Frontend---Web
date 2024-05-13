@@ -28,7 +28,7 @@ const MensajesClub = ({ club, setClub }) => {
     }, [listaMensajes]);
     
       const handleChangeNewMsg = event => {
-        setNuevoMensaje([event.target.value]);
+        setNuevoMensaje({mensaje: event.target.value});
     } 
 
     async function enviarMensaje() {
