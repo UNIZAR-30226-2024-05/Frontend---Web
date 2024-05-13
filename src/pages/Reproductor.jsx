@@ -135,6 +135,7 @@ function skipCancion(capitulos, numCap) {
   
 } */
 
+/*
 function skipCancion(capitulos, numCap) {
   // Actualiza el índice
   setNumCap(numCap + 1);
@@ -165,7 +166,53 @@ function skipCancion(capitulos, numCap) {
   }
 }
 
+*/
 
+// Función para crear el audio basado en el nuevo numCap
+function crearNuevoAudio(numCap) {
+  try {
+    console.log("Antes de crear audio", numCap);
+    const newSoundInstance = new Howl({
+      src: [obtenerCapiulo(capitulos, numCap).audio],
+      autoplay: false, // No autoplay
+      onend: () => {
+        setPlay(false);
+      }
+    });
+    setSoundInstance(newSoundInstance);
+  } catch (error) {
+    console.error('Error al crear la instancia de sonido:', error);
+  }
+}
+
+// useEffect para ejecutar la función de creación de audio cuando numCap se actualice
+useEffect(() => {
+  crearNuevoAudio(numCap);
+}, [numCap]);
+
+// Función skipCancion que actualiza numCap y espera a que numCap se actualice antes de crear el audio
+function skipCancion(capitulos, numCap) {
+  // Actualiza el índice
+  setNumCap(numCap + 1);
+  if (numCap < limitSup) {
+    console.log("Después de actualizar numCap en skipCancion", numCap);
+  } else {
+    console.log("Has llegado al fin del vector");
+  }
+}
+
+
+function skipCancion(capitulos, numCap) {
+  // Actualiza el índice
+  setNumCap(numCap - 1);
+  if (numCap < limitSup) {
+    console.log("Después de actualizar numCap en skipCancion", numCap);
+  } else {
+    console.log("Has llegado al fin del vector");
+  }
+}
+
+/*
   
   function prevCancion(capitulos,numCap){
     if(numCap > limitInf){
@@ -196,6 +243,7 @@ function skipCancion(capitulos, numCap) {
     
   }
   
+  */
 
   //Función para subir o bajar el volumen
   function handleVolume(e){
