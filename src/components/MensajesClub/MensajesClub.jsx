@@ -14,7 +14,7 @@ const MensajesClub = ({ club, setClub }) => {
         if (messagesEndRef.current) {
             messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
         }
-    }, []);
+    }, [listaMensajes]);
 
     /* Actualiza info al actualizar la lista de mensajes */
     useEffect(() => {
