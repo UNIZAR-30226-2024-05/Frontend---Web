@@ -394,15 +394,20 @@ const Libro = () => {
                 formData.append('image', nuevaPortada);
             }
 
-                   
+            if (!nuevosCapitulos) {
+                formData.append('audios', capitulos);
+            }
+            else {
+                formData.append('audios', nuevosCapitulos);
+            }
             
-            if (Array.isArray(nuevosCapitulos)) {
+            /*if (Array.isArray(nuevosCapitulos)) {
                 nuevosCapitulos.forEach(audio => {
                     formData.append('audios', audio);
                 });
             } else {
                 console.log('nuevosCapitulos no es una matriz válida');
-            }
+            }*/
             
 
             console.log({ formData });
