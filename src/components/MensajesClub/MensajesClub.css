@@ -12,6 +12,7 @@
     /* Estilos para la lista de mensajes */
     display: flex; /* Utiliza flexbox para alinear los mensajes horizontalmente */
     flex-direction: column;
+    justify-content: flex-end;
     overflow-y: scroll;
     height: 100%;
 }
