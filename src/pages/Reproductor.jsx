@@ -193,8 +193,8 @@ useEffect(() => {
 // Función skipCancion que actualiza numCap y espera a que numCap se actualice antes de crear el audio
 function skipCancion(capitulos, numCap) {
   // Actualiza el índice
-  setNumCap(numCap + 1);
   if (numCap < limitSup) {
+    setNumCap(numCap + 1);
     console.log("Después de actualizar numCap en skipCancion", numCap);
   } else {
     console.log("Has llegado al fin del vector");
@@ -204,8 +204,8 @@ function skipCancion(capitulos, numCap) {
 
 function prevCancion(capitulos, numCap) {
   // Actualiza el índice
-  setNumCap(numCap - 1);
   if (numCap < limitInf) {
+    setNumCap(numCap - 1);
     console.log("Después de actualizar numCap en prevCancion", numCap);
   } else {
     console.log("Has llegado al fin del vector");
