@@ -33,8 +33,8 @@ const Reproductor = () => {
 
 
   useEffect(() => {
-    setLimitInf = 0;
-    setLimitSup = capitulos.length-1;
+    setLimitInf(0);
+    setLimitSup(apitulos.length-1);
   
   }, [])
 
