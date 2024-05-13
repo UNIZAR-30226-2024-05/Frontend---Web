@@ -356,7 +356,7 @@ const Libro = () => {
     const handleGuardarCambios = async () => {
         console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos });
         
-            const formData = new FormData();
+            /*const formData = new FormData();
             formData.append('audiolibroId', id_libro);
 
             if (!nuevoTitulo) {
@@ -401,20 +401,21 @@ const Libro = () => {
                 formData.append('audios', nuevosCapitulos);
             }
             
-            /*if (Array.isArray(nuevosCapitulos)) {
-                nuevosCapitulos.forEach(audio => {
-                    formData.append('audios', audio);
-                });
-            } else {
-                console.log('nuevosCapitulos no es una matriz válida');
-            }*/
-            
 
-            console.log({ formData });
+            console.log({ formData });*/
         try {    
+            const requestData = {
+                audiolibroId: id_libro,
+                titulo: nuevoTitulo,
+                autor: nuevoAutor,
+                descripcion: nuevaDescripcion,
+                genero: nuevoGenero,
+                image: nuevaPortada,
+                audios: nuevosCapitulos
+            }
             const respuesta = await axios.post(
-                '/audiolibros/actualizar', formData, {
-                    headers: { 'Content-Type': 'multipart/form-data' },
+                '/audiolibros/actualizar', requestData, {
+                    headers: { 'Content-Type': 'application/json' },
                     withCredentials: true   
             });
             console.log(respuesta);
