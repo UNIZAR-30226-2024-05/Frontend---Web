@@ -12,7 +12,7 @@ const MensajesClub = ({ club, setClub }) => {
 
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
-            messagesEndRef.current.scrollTop = 0;
+            messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
         }
     };
 
@@ -28,12 +28,12 @@ const MensajesClub = ({ club, setClub }) => {
     }, [listaMensajes]);
     
       const handleChangeNewMsg = event => {
-        setNuevoMensaje({mensaje: event.target.value});
+        setNuevoMensaje(event.target.value);
     } 
 
     async function enviarMensaje() {
         console.log({nuevoMensaje});
-        setListaMensajes([...listaMensajes, nuevoMensaje]);
+        setListaMensajes([...listaMensajes, {mensaje: nuevoMensaje}]);
         setNuevoMensaje('');
     }
 
