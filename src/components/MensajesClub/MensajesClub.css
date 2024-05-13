@@ -3,6 +3,7 @@
     text-align: center;
     padding: 40px 100px;
     height: 70vh;
+    overflow-y: scroll;
     max-width: 100% !important;
 }
 
