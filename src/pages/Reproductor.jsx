@@ -122,6 +122,7 @@ function skipCancion(capitulos, numCap) {
 
     // Actualiza el índice
     setNumCap(numCap + 1);
+    console.log(numCap);
   }
   else{
     console.log("Has llegado al fin del vector");
