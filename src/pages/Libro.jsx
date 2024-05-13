@@ -74,10 +74,11 @@ const Libro = () => {
         });
     };
 
-    const handleCapituloClick = (capitulos, portada) => {
+    const handleCapituloClick = (capitulos, portada, numCap) => {
         const params = new URLSearchParams();
         params.append('capitulos', JSON.stringify(capitulos));
         params.append('portada', portada);
+        params.append('cap', numCap);
         navigate(`/player?${params.toString()}`);
     };
 
@@ -492,9 +493,10 @@ const Libro = () => {
 
                     { /* Botón de "Reproducir" con icono de play */}
                     <div className="info-reproducir">
-                        <a href="/player" className="info-linkReproducir">
+                        <div className="info-linkReproducir"
+                        onClick={() => handleCapituloClick(capitulos, portada, 0)}>
                             <FontAwesomeIcon icon={faPlay} /> Escuchar audiolibro
-                        </a>
+                        </div>
                     </div>
 
                     { /* Botón de "Añadir a favoritos" */}
@@ -642,7 +644,7 @@ const Libro = () => {
                         {capitulos.map((capitulo, i) => (
                             <div key={i}
                             className='capitulo'
-                            onClick={() => handleCapituloClick(capitulos, portada)}>
+                            onClick={() => handleCapituloClick(capitulos, portada, i)}>
                                 <span>{capitulo.numero}</span>
                                 <span>{capitulo.nombre}</span>
                                 {role === 'admin' && modoEdicionCapitulos && (

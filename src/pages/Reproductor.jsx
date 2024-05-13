@@ -27,19 +27,27 @@ const Reproductor = () => {
   const params = new URLSearchParams(location.search);
   const capitulos = JSON.parse(params.get('capitulos'));
   const portada = params.get('portada');
+  //const numCap = params.get('cap');
 
+
+
+  const [numCap, setNumCap] = useState(params.get('cap'));
   const [play, setPlay] = useState(false)
   const [soundInstance, setSoundInstance] = useState(null)
   const [currentTime, setCurrentTime] = useState(null);
   const [duracion, setDuracion ] = useState(null);
   const MAX = 20;
-  const [indice, setIndice] = useState(0)
+  //const [indice, setIndice] = useState(0)
   const sonidoRef = useRef<HTMLAudioElement>(null)
 
 
-  function obtenerCapiulo(capitulos, indice){
-    if(indice >= 0 && indice < capitulos.length){
-      return capitulos[indice];
+
+  
+
+
+  function obtenerCapiulo(capitulos, numCap){
+    if(numCap >= 0 && numCap < capitulos.length){
+      return capitulos[numCap];
     }
   }
   
@@ -104,53 +112,65 @@ const Reproductor = () => {
   
   
   
-function skipCancion(capitulo, indice) {
-  // Pausa el audio actual
-  soundInstance.pause();
-  setCurrentTime(soundInstance.seek());
-  setPlay(false);
-  
-  // Crea una nueva instancia de sonido para el siguiente capítulo
-  try {
-    const newSoundInstance = new Howl({
-      src: [obtenerCapiulo(capitulos,indice+1).audio],
-      autoplay: false, // No autoplay
-      onend: () => {
-        setPlay(false);
-      }
-    });
-    setSoundInstance(newSoundInstance);
-  } catch (error) {
-    console.error('Error al crear la instancia de sonido:', error);
+function skipCancion(capitulo, numCap) {
+  console.log(capitulos);
+  if(numCap < (capitulos.length - 1)){
+    // Pausa el audio actual
+    soundInstance.pause();
+    setCurrentTime(soundInstance.seek());
+    setPlay(false);
+
+    // Crea una nueva instancia de sonido para el siguiente capítulo
+    try {
+      const newSoundInstance = new Howl({
+        src: [obtenerCapiulo(capitulos,numCap+1).audio],
+        autoplay: false, // No autoplay
+        onend: () => {
+          setPlay(false);
+        }
+      });
+      setSoundInstance(newSoundInstance);
+    } catch (error) {
+      console.error('Error al crear la instancia de sonido:', error);
+    }
+
+    // Actualiza el índice
+    setNumCap(numCap + 1);
+  }
+  else{
+    console.log("Has llegado al fin del vector");
   }
   
-  // Actualiza el índice
-  setIndice(indice + 1);
 }
 
   
-  function prevCancion(capitulos,indice){
-    // Pausa el audio actual
-  soundInstance.pause();
-  setCurrentTime(soundInstance.seek());
-  setPlay(false);
-  
-  // Crea una nueva instancia de sonido para el siguiente capítulo
-  try {
-    const newSoundInstance = new Howl({
-      src: [obtenerCapiulo(capitulos,indice-1).audio],
-      autoplay: false, // No autoplay
-      onend: () => {
-        setPlay(false);
+  function prevCancion(capitulos,numCap){
+    if(numCap > 0){
+      // Pausa el audio actual
+      soundInstance.pause();
+      setCurrentTime(soundInstance.seek());
+      setPlay(false);
+
+      // Crea una nueva instancia de sonido para el siguiente capítulo
+      try {
+        const newSoundInstance = new Howl({
+          src: [obtenerCapiulo(capitulos,numCap-1).audio],
+          autoplay: false, // No autoplay
+          onend: () => {
+            setPlay(false);
+          }
+        });
+        setSoundInstance(newSoundInstance);
+      } catch (error) {
+        console.error('Error al crear la instancia de sonido:', error);
       }
-    });
-    setSoundInstance(newSoundInstance);
-  } catch (error) {
-    console.error('Error al crear la instancia de sonido:', error);
-  }
-  
-  // Actualiza el índice
-  setIndice(indice - 1);
+      // Actualiza el índice
+      setNumCap(numCap - 1);  
+    }
+    else{
+      console.log("Has llegado al principio del vector.")
+    }
+    
   }
   
 
@@ -179,20 +199,20 @@ function skipCancion(capitulo, indice) {
     <main>
       <div className='player'>
         <img className='portada'src={portada} />
-        <h2 margin-top='5%' className='cap'>{capitulos[indice].nombre}</h2>
+        <h2 margin-top='5%' className='cap'>{capitulos[numCap].nombre}</h2>
         {/*Botones para el control de la cancion*/}
         <div className='botones'>
-          <button className='anteriorCancion' type='button' onClick={() => prevCancion(capitulos, indice)}>
+          <button className='anteriorCancion' type='button' onClick={() => prevCancion(capitulos, numCap)}>
             <ChevronDoubleLeft margin-top='2%' size={40}/>
           </button>
-          <button className='boton' type='button' onClick={() => toggleAudio(obtenerCapiulo(capitulos, indice))}>
+          <button className='boton' type='button' onClick={() => toggleAudio(obtenerCapiulo(capitulos, numCap))}>
               {!play ? (
                   <Play  margin-top='2%' size={40}/>
               ) : (
                   <Pause margin-top='2%' size={40}/>
               )}
           </button>
-          <button className='siguienteCancion' type='button' onClick={() => skipCancion(capitulos, indice)}>
+          <button className='siguienteCancion' type='button' onClick={() => skipCancion(capitulos, numCap)}>
             <ChevronDoubleRight margin-top='2%' size={40}/>
           </button>
         </div>
