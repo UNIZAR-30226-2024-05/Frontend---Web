@@ -343,7 +343,7 @@ const Libro = () => {
     }
 
     const handleAudiosChange = (event) => {
-        setNuevosCapitulos(event.target.event);
+        setNuevosCapitulos(event.target.files);
     }
 
     const handleEliminarCapitulo = (capitulo) => {
@@ -394,11 +394,9 @@ const Libro = () => {
             }
 
                    
-            /*nuevosCapitulos.forEach((capitulo, index) => {
-                formData.append(`audio_${index}`, capitulo);
-            });*/
+            
             nuevosCapitulos.forEach(audio => {
-                formData.append(`audio_${index}`, capitulo);
+                formData.append(`audios`, audio);
             });
             
 
