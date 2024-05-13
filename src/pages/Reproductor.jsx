@@ -73,8 +73,10 @@ const Reproductor = () => {
   function toggleAudio(capitulo) {
     if (play) {
       // Pausa el audio y almacena la posición de reproducción actual
-      soundInstance.pause();
-      setCurrentTime(soundInstance.seek());
+      if (soundInstance){
+        soundInstance.pause();
+        setCurrentTime(soundInstance.seek());
+      }
       setPlay(false);
     } else {
       // Comprueba si hay una posición de reproducción almacenada
@@ -116,8 +118,10 @@ function skipCancion(capitulo, numCap) {
   console.log(capitulos);
   if(numCap < (capitulos.length - 1)){
     // Pausa el audio actual
-    soundInstance.pause();
+    if (soundInstance){
+      soundInstance.pause();
     setCurrentTime(soundInstance.seek());
+    }
     setPlay(false);
 
     // Crea una nueva instancia de sonido para el siguiente capítulo
