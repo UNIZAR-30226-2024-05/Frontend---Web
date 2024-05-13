@@ -137,6 +137,7 @@ function skipCancion(capitulos, numCap) {
 
 function skipCancion(capitulos, numCap) {
   if (numCap < limitSup) {
+    /*
     // Descarga la instancia de sonido actual si está definida
     if (soundInstance) {
       soundInstance.unload();
@@ -155,7 +156,7 @@ function skipCancion(capitulos, numCap) {
     } catch (error) {
       console.error('Error al crear la instancia de sonido:', error);
     }
-
+    */
     // Actualiza el índice
     setNumCap(numCap + 1);
   } else {
