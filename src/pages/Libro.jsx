@@ -396,7 +396,7 @@ const Libro = () => {
             /*nuevosCapitulos.forEach((capitulo, index) => {
                 formData.append(`audio_${index}`, capitulo);
             });*/
-            audioCapitulo.forEach(audio => {
+            nuevosCapitulos.forEach(audio => {
                 formData.append('audios', audio);
             });
             
