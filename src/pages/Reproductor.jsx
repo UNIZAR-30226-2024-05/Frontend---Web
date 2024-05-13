@@ -27,8 +27,11 @@ const Reproductor = () => {
   const params = new URLSearchParams(location.search);
   const capitulos = JSON.parse(params.get('capitulos'));
   const portada = params.get('portada');
-  const numCap = params.get('cap');
+  //const numCap = params.get('cap');
 
+
+
+  const [numCap, setNumCap] = useState(cap);
   const [play, setPlay] = useState(false)
   const [soundInstance, setSoundInstance] = useState(null)
   const [currentTime, setCurrentTime] = useState(null);
@@ -126,7 +129,7 @@ function skipCancion(capitulo, numCap) {
   }
   
   // Actualiza el índice
-  setIndice(numCap + 1);
+  setNumCap(numCap + 1);
 }
 
   
