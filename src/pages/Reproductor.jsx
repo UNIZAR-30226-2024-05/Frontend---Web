@@ -274,7 +274,7 @@ function prevCancion(capitulos, numCap) {
     <main>
       <div className='player'>
         <img className='portada'src={portada} />
-        <h2 margin-top='5%' className='cap'>{capitulos[numCap].nombre}</h2>
+        <h2 margin-top='5%' className='cap'>{capitulos && capitulos[numCap] && capitulos[numCap].nombre}</h2>
         {/*Botones para el control de la cancion*/}
         <div className='botones'>
           <button className='anteriorCancion' type='button' onClick={() => prevCancion(capitulos, numCap)}>
