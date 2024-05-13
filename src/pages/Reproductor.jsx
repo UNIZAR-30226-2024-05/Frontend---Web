@@ -31,7 +31,7 @@ const Reproductor = () => {
 
 
 
-  const [numCap, setNumCap] = useState(cap);
+  const [numCap, setNumCap] = useState(params.get('cap'));
   const [play, setPlay] = useState(false)
   const [soundInstance, setSoundInstance] = useState(null)
   const [currentTime, setCurrentTime] = useState(null);
@@ -39,6 +39,10 @@ const Reproductor = () => {
   const MAX = 20;
   //const [indice, setIndice] = useState(0)
   const sonidoRef = useRef<HTMLAudioElement>(null)
+
+
+
+  useEffect( () => )
 
 
   function obtenerCapiulo(capitulos, numCap){
@@ -109,52 +113,63 @@ const Reproductor = () => {
   
   
 function skipCancion(capitulo, numCap) {
-  // Pausa el audio actual
-  soundInstance.pause();
-  setCurrentTime(soundInstance.seek());
-  setPlay(false);
-  
-  // Crea una nueva instancia de sonido para el siguiente capítulo
-  try {
-    const newSoundInstance = new Howl({
-      src: [obtenerCapiulo(capitulos,numCap+1).audio],
-      autoplay: false, // No autoplay
-      onend: () => {
-        setPlay(false);
-      }
-    });
-    setSoundInstance(newSoundInstance);
-  } catch (error) {
-    console.error('Error al crear la instancia de sonido:', error);
+  if(numCap < (capitulos.length() - 1)){
+    // Pausa el audio actual
+    soundInstance.pause();
+    setCurrentTime(soundInstance.seek());
+    setPlay(false);
+
+    // Crea una nueva instancia de sonido para el siguiente capítulo
+    try {
+      const newSoundInstance = new Howl({
+        src: [obtenerCapiulo(capitulos,numCap+1).audio],
+        autoplay: false, // No autoplay
+        onend: () => {
+          setPlay(false);
+        }
+      });
+      setSoundInstance(newSoundInstance);
+    } catch (error) {
+      console.error('Error al crear la instancia de sonido:', error);
+    }
+
+    // Actualiza el índice
+    setNumCap(numCap + 1);
+  }
+  else{
+    console.log("Has llegado al fin del vector");
   }
   
-  // Actualiza el índice
-  setNumCap(numCap + 1);
 }
 
   
   function prevCancion(capitulos,numCap){
-    // Pausa el audio actual
-  soundInstance.pause();
-  setCurrentTime(soundInstance.seek());
-  setPlay(false);
-  
-  // Crea una nueva instancia de sonido para el siguiente capítulo
-  try {
-    const newSoundInstance = new Howl({
-      src: [obtenerCapiulo(capitulos,numCap-1).audio],
-      autoplay: false, // No autoplay
-      onend: () => {
-        setPlay(false);
+    if(numCap > 0){
+      // Pausa el audio actual
+      soundInstance.pause();
+      setCurrentTime(soundInstance.seek());
+      setPlay(false);
+
+      // Crea una nueva instancia de sonido para el siguiente capítulo
+      try {
+        const newSoundInstance = new Howl({
+          src: [obtenerCapiulo(capitulos,numCap-1).audio],
+          autoplay: false, // No autoplay
+          onend: () => {
+            setPlay(false);
+          }
+        });
+        setSoundInstance(newSoundInstance);
+      } catch (error) {
+        console.error('Error al crear la instancia de sonido:', error);
       }
-    });
-    setSoundInstance(newSoundInstance);
-  } catch (error) {
-    console.error('Error al crear la instancia de sonido:', error);
-  }
-  
-  // Actualiza el índice
-  setIndice(numCap - 1);
+      // Actualiza el índice
+      setNumCap(numCap - 1);  
+    }
+    else{
+      console.log("Has llegado al principio del vector.")
+    }
+    
   }
   
 
