@@ -37,7 +37,7 @@ const Reproductor = () => {
     setLimitSup(capitulos.length-1);
     console.log(limitSup);
   
-  }, [])
+  }, )
 
 
   function obtenerCapiulo(capitulos, numCap){
