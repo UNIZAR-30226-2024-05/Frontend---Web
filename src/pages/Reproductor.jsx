@@ -27,19 +27,20 @@ const Reproductor = () => {
   const params = new URLSearchParams(location.search);
   const capitulos = JSON.parse(params.get('capitulos'));
   const portada = params.get('portada');
+  const numCap = params.get('cap');
 
   const [play, setPlay] = useState(false)
   const [soundInstance, setSoundInstance] = useState(null)
   const [currentTime, setCurrentTime] = useState(null);
   const [duracion, setDuracion ] = useState(null);
   const MAX = 20;
-  const [indice, setIndice] = useState(0)
+  //const [indice, setIndice] = useState(0)
   const sonidoRef = useRef<HTMLAudioElement>(null)
 
 
-  function obtenerCapiulo(capitulos, indice){
-    if(indice >= 0 && indice < capitulos.length){
-      return capitulos[indice];
+  function obtenerCapiulo(capitulos, numCap){
+    if(numCap >= 0 && numCap < capitulos.length){
+      return capitulos[numCap];
     }
   }
   
@@ -104,7 +105,7 @@ const Reproductor = () => {
   
   
   
-function skipCancion(capitulo, indice) {
+function skipCancion(capitulo, numCap) {
   // Pausa el audio actual
   soundInstance.pause();
   setCurrentTime(soundInstance.seek());
@@ -113,7 +114,7 @@ function skipCancion(capitulo, indice) {
   // Crea una nueva instancia de sonido para el siguiente capítulo
   try {
     const newSoundInstance = new Howl({
-      src: [obtenerCapiulo(capitulos,indice+1).audio],
+      src: [obtenerCapiulo(capitulos,numCap+1).audio],
       autoplay: false, // No autoplay
       onend: () => {
         setPlay(false);
@@ -125,11 +126,11 @@ function skipCancion(capitulo, indice) {
   }
   
   // Actualiza el índice
-  setIndice(indice + 1);
+  setIndice(numCap + 1);
 }
 
   
-  function prevCancion(capitulos,indice){
+  function prevCancion(capitulos,numCap){
     // Pausa el audio actual
   soundInstance.pause();
   setCurrentTime(soundInstance.seek());
@@ -138,7 +139,7 @@ function skipCancion(capitulo, indice) {
   // Crea una nueva instancia de sonido para el siguiente capítulo
   try {
     const newSoundInstance = new Howl({
-      src: [obtenerCapiulo(capitulos,indice-1).audio],
+      src: [obtenerCapiulo(capitulos,numCap-1).audio],
       autoplay: false, // No autoplay
       onend: () => {
         setPlay(false);
@@ -150,7 +151,7 @@ function skipCancion(capitulo, indice) {
   }
   
   // Actualiza el índice
-  setIndice(indice - 1);
+  setIndice(numCap - 1);
   }
   
 
@@ -179,20 +180,20 @@ function skipCancion(capitulo, indice) {
     <main>
       <div className='player'>
         <img className='portada'src={portada} />
-        <h2 margin-top='5%' className='cap'>{capitulos[indice].nombre}</h2>
+        <h2 margin-top='5%' className='cap'>{capitulos[numCap].nombre}</h2>
         {/*Botones para el control de la cancion*/}
         <div className='botones'>
-          <button className='anteriorCancion' type='button' onClick={() => prevCancion(capitulos, indice)}>
+          <button className='anteriorCancion' type='button' onClick={() => prevCancion(capitulos, numCap)}>
             <ChevronDoubleLeft margin-top='2%' size={40}/>
           </button>
-          <button className='boton' type='button' onClick={() => toggleAudio(obtenerCapiulo(capitulos, indice))}>
+          <button className='boton' type='button' onClick={() => toggleAudio(obtenerCapiulo(capitulos, numCap))}>
               {!play ? (
                   <Play  margin-top='2%' size={40}/>
               ) : (
                   <Pause margin-top='2%' size={40}/>
               )}
           </button>
-          <button className='siguienteCancion' type='button' onClick={() => skipCancion(capitulos, indice)}>
+          <button className='siguienteCancion' type='button' onClick={() => skipCancion(capitulos, numCap)}>
             <ChevronDoubleRight margin-top='2%' size={40}/>
           </button>
         </div>
