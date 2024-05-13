@@ -98,6 +98,7 @@ function skipCancion(capitulos, numCap) {
   //console.log(capitulos);
   //console.log(capitulos.length);
   //console.log(limitSup);
+  console.log(numCap);
   if(numCap < limitSup){
     // Pausa el audio actual
     soundInstance.pause();
