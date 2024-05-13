@@ -343,6 +343,7 @@ const Libro = () => {
     }
 
     const handleAudiosChange = (event) => {
+        console.log(event.target.files);
         setNuevosCapitulos(event.target.files);
     }
 
@@ -396,7 +397,7 @@ const Libro = () => {
                    
             
             nuevosCapitulos.forEach(audio => {
-                formData.append(`audios`, audio);
+                formData.append('audios', audio);
             });
             
 
