@@ -343,7 +343,7 @@ const Libro = () => {
     }
 
     const handleAudiosChange = (event) => {
-        setNuevosCapitulos(event.target.files);
+        setNuevosCapitulos(event.target.event);
     }
 
     const handleEliminarCapitulo = (capitulo) => {
