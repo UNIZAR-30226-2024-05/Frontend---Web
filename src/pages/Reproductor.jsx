@@ -192,23 +192,27 @@ useEffect(() => {
 
 // Función skipCancion que actualiza numCap y espera a que numCap se actualice antes de crear el audio
 function skipCancion(capitulos, numCap) {
+  console.log("Para ver que se la pasa a skip", numCap);
+  console.log("Para ver que limite es el superior", limitSup);
   // Actualiza el índice
-  setNumCap(numCap + 1);
   if (numCap < limitSup) {
+    setNumCap(numCap + 1);
     console.log("Después de actualizar numCap en skipCancion", numCap);
   } else {
-    console.log("Has llegado al fin del vector");
+    console.log("Has llegado al fin del vector por arriba");
   }
 }
 
 
 function prevCancion(capitulos, numCap) {
   // Actualiza el índice
-  setNumCap(numCap - 1);
-  if (numCap < limitInf) {
+  console.log("Para ver que se la pasa a prev", numCap);
+  console.log("Para ver que limite es el inferior", limitInf);
+  if (numCap > limitInf) {
+    setNumCap(numCap - 1);
     console.log("Después de actualizar numCap en prevCancion", numCap);
   } else {
-    console.log("Has llegado al fin del vector");
+    console.log("Has llegado al fin del vector por abajo");
   }
 }
 
@@ -270,7 +274,7 @@ function prevCancion(capitulos, numCap) {
     <main>
       <div className='player'>
         <img className='portada'src={portada} />
-        <h2 margin-top='5%' className='cap'>{capitulos[numCap].nombre}</h2>
+        <h2 margin-top='5%' className='cap'>{capitulos && capitulos[numCap] && capitulos[numCap].nombre}</h2>
         {/*Botones para el control de la cancion*/}
         <div className='botones'>
           <button className='anteriorCancion' type='button' onClick={() => prevCancion(capitulos, numCap)}>
