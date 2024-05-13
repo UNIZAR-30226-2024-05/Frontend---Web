@@ -8,18 +8,7 @@ import { Howl } from "howler"
 import {motion} from "framer-motion"
 
 
-/*
-const sound = {
-    title: "Capitulo",
-    waveType: "/Cancion.mp3",
-    imageUrl: portada
-};
 
-const sound2 = {
-  title: "Capitulo",
-  waveType: "/Cancion2.mp3",
-  imageUrl: portada2
-}*/
 
 const Reproductor = () => {
 
@@ -27,7 +16,7 @@ const Reproductor = () => {
   const params = new URLSearchParams(location.search);
   const capitulos = JSON.parse(params.get('capitulos'));
   const portada = params.get('portada');
-  //const numCap = params.get('cap');
+  
 
 
 
@@ -37,12 +26,17 @@ const Reproductor = () => {
   const [currentTime, setCurrentTime] = useState(null);
   const [duracion, setDuracion ] = useState(null);
   const MAX = 20;
-  //const [indice, setIndice] = useState(0)
+  const [limitInf, setLimitInf ] = useState(null);
+  const [limitSup, setLimitSup ] = useState(null);
   const sonidoRef = useRef<HTMLAudioElement>(null)
 
 
 
+  useEffect(() => {
+    setLimitInf = 0;
+    setLimitSup = capitulos.length-1;
   
+  }, [])
 
 
   function obtenerCapiulo(capitulos, numCap){
@@ -51,23 +45,6 @@ const Reproductor = () => {
     }
   }
   
-  /*
-  const updateProgress = () => {
-    //if (soundInstance && soundInstance.playing()) {
-      setCurrentTime(soundInstance.seek());
-      requestAnimationFrame(updateProgress);
-    //}
-  };
-
-  useEffect(() => {
-    if (soundInstance && soundInstance.playing()) {
-      requestAnimationFrame(updateProgress);
-    }
-    return () => {
-      cancelAnimationFrame(updateProgress);
-    };
-  }, [soundInstance]); */
-
 
   //Función para cambiar el icono de play
   function toggleAudio(capitulo) {
@@ -111,16 +88,17 @@ const Reproductor = () => {
       //requestAnimationFrame(updateProgress);
     }
   }
+
+ 
   
   
   
 function skipCancion(capitulos, numCap) {
   console.log(capitulos);
   console.log(capitulos.length);
-  console.log(capitulos.length-1);
-  if(numCap < (capitulos.length-1)){
+  console.log(limitSup);
+  if(numCap < limitSup){
     // Pausa el audio actual
-    
     soundInstance.pause();
     setCurrentTime(soundInstance.seek());
     
@@ -151,7 +129,7 @@ function skipCancion(capitulos, numCap) {
 
   
   function prevCancion(capitulos,numCap){
-    if(numCap > 0){
+    if(numCap > limitInf){
       // Pausa el audio actual
       soundInstance.pause();
       setCurrentTime(soundInstance.seek());
