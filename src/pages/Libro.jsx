@@ -406,13 +406,13 @@ const Libro = () => {
         try {    
             const requestData = {
                 audiolibroId: id_libro,
-                titulo: nuevoTitulo,
-                autor: nuevoAutor,
-                descripcion: nuevaDescripcion,
-                genero: nuevoGenero,
-                image: nuevaPortada,
-                audios: nuevosCapitulos
-            }
+                titulo: nuevoTitulo || titulo,
+                autor: nuevoAutor || autor.nombre,
+                descripcion: nuevaDescripcion || descripcion,
+                genero: nuevoGenero || generos[0].nombre,
+                image: nuevaPortada || portada,
+                audios: nuevosCapitulos,
+            };
             const respuesta = await axios.post(
                 '/audiolibros/actualizar', requestData, {
                     headers: { 'Content-Type': 'application/json' },
