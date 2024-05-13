@@ -13,7 +13,7 @@
     display: flex; /* Utiliza flexbox para alinear los mensajes horizontalmente */
     flex-direction: column;
     overflow-y: scroll;
-
+    height: 100%;
 }
 
 .contenedor-mensajes .lista .mensaje {

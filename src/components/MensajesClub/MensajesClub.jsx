@@ -22,7 +22,7 @@ const MensajesClub = ({ club, setClub }) => {
 
     async function enviarMensaje() {
         console.log({nuevoMensaje});
-        setListaMensajes(...listaMensajes, nuevoMensaje);
+        setListaMensajes([...listaMensajes, nuevoMensaje]);
         setNuevoMensaje('');
     }
 
