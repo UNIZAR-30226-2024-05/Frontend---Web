@@ -193,7 +193,7 @@ useEffect(() => {
 // Función skipCancion que actualiza numCap y espera a que numCap se actualice antes de crear el audio
 function skipCancion(capitulos, numCap) {
   console.log("Para ver que se la pasa a prev", numCap);
-  console.log("Para ver que limite es el inferior", limitSup);
+  console.log("Para ver que limite es el superior", limitSup);
   // Actualiza el índice
   if (numCap < limitSup) {
     setNumCap(numCap + 1);
