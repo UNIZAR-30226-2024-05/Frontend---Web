@@ -356,7 +356,7 @@ const Libro = () => {
     const handleGuardarCambios = async () => {
         console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos });
         
-            /*const formData = new FormData();
+            const formData = new FormData();
             formData.append('audiolibroId', id_libro);
 
             if (!nuevoTitulo) {
@@ -398,24 +398,16 @@ const Libro = () => {
                 formData.append('audios', capitulos);
             }
             else {
-                formData.append('audios', nuevosCapitulos);
+                for (let i = 0; i < nuevosCapitulos.length; i++) {
+                    formData.append(`audios`, nuevosCapitulos[i]);
+                }
             }
             
-
-            console.log({ formData });*/
-        try {    
-            const requestData = {
-                audiolibroId: id_libro,
-                titulo: nuevoTitulo || titulo,
-                autor: nuevoAutor || autor.nombre,
-                descripcion: nuevaDescripcion || descripcion,
-                genero: nuevoGenero || generos[0].nombre,
-                image: nuevaPortada || portada,
-                audios: nuevosCapitulos,
-            };
+            console.log({ formData });
+        try {
             const respuesta = await axios.post(
-                '/audiolibros/actualizar', requestData, {
-                    headers: { 'Content-Type': 'application/json' },
+                '/audiolibros/actualizar', formData, {
+                    headers: { 'Content-Type': 'multipart/form-data' },
                     withCredentials: true   
             });
             console.log(respuesta);
