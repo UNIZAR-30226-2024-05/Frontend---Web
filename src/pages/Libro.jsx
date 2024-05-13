@@ -355,7 +355,7 @@ const Libro = () => {
 
     const handleGuardarCambios = async () => {
         console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos });
-        try {
+        
             const formData = new FormData();
             formData.append('audiolibroId', id_libro);
 
@@ -402,7 +402,7 @@ const Libro = () => {
             
 
             console.log({ formData });
-            
+        try {    
             const respuesta = await axios.post(
                 '/audiolibros/actualizar', formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
