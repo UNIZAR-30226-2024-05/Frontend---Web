@@ -42,7 +42,7 @@ const Reproductor = () => {
 
 
 
-  useEffect( () => )
+  
 
 
   function obtenerCapiulo(capitulos, numCap){
