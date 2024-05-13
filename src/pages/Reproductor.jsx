@@ -114,7 +114,7 @@ const Reproductor = () => {
   
   
   
-function skipCancion(capitulo, numCap) {
+function skipCancion(capitulos, numCap) {
   console.log(capitulos);
   console.log(capitulos.length);
   console.log(capitulos.length-1);
