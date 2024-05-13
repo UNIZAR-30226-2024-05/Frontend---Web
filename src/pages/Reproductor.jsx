@@ -136,6 +136,7 @@ function skipCancion(capitulos, numCap) {
 } */
 
 function skipCancion(capitulos, numCap) {
+  console.log("Principio de skip", numCap);
   if (numCap < limitSup) {
     /*
     // Descarga la instancia de sonido actual si está definida
