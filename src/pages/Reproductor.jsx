@@ -136,9 +136,11 @@ function skipCancion(capitulos, numCap) {
 } */
 
 function skipCancion(capitulos, numCap) {
-  console.log("Principio de skip", numCap);
+  //console.log("Principio de skip", numCap);
+  // Actualiza el índice
+  setNumCap(numCap + 1);
   if (numCap < limitSup) {
-    /*
+    
     // Descarga la instancia de sonido actual si está definida
     if (soundInstance) {
       soundInstance.unload();
@@ -147,7 +149,7 @@ function skipCancion(capitulos, numCap) {
     // Crea una nueva instancia de sonido para el siguiente capítulo
     try {
       const newSoundInstance = new Howl({
-        src: [obtenerCapiulo(capitulos, numCap + 1).audio],
+        src: [obtenerCapiulo(capitulos, numCap).audio],
         autoplay: false, // No autoplay
         onend: () => {
           setPlay(false);
@@ -157,9 +159,7 @@ function skipCancion(capitulos, numCap) {
     } catch (error) {
       console.error('Error al crear la instancia de sonido:', error);
     }
-    */
-    // Actualiza el índice
-    setNumCap(numCap + 1);
+
   } else {
     console.log("Has llegado al fin del vector");
   }
