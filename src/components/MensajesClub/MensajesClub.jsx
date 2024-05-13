@@ -8,6 +8,13 @@ const MensajesClub = ({ club, setClub }) => {
 
     const [listaMensajes, setListaMensajes] = useState(club.messages);
     const [nuevoMensaje, setNuevoMensaje] = useState('');
+    const messagesEndRef = useRef(null);
+
+    useEffect(() => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+        }
+    }, []);
 
     /* Actualiza info al actualizar la lista de mensajes */
     useEffect(() => {
@@ -30,14 +37,6 @@ const MensajesClub = ({ club, setClub }) => {
         enviarMensaje();
         
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const content = document.querySelector('.content');
-        if (content) {
-            content.scrollTop = content.scrollHeight;
-        }
-    });
-
 
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
 
