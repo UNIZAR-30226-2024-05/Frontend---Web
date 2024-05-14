@@ -13,6 +13,7 @@ import pikachu from "../images/fotos-perfil/pikachu.jpg";
 import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 import AuthContext from '../context/AuthProvider';
+import ErrorNoSesion from '../components/ErrorNoSesion/ErrorNoSesion';
 
 
 
@@ -77,6 +78,9 @@ export const Changefoto = () => {
       } catch (err) {
         if (!err.response) {
           console.log('No hay respuesta del servidor');
+        } else if (err.response.status === 401) {
+          console.log('No autorizado');
+          return <ErrorNoSesion/>
         } else if (err.response.status === 500) {
           console.log('Server Error');
         } else {

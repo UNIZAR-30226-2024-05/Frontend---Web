@@ -23,15 +23,21 @@ export const Perfil = () => {
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    axios.get(URL_PERFIL, {withCredentials: true})
-    .then(response => {
-      setPerfil(response.data);
-      setUsername(response.data.username);
-      console.log(response.data);
-    }).catch(err => {
-      console.log(err)
-    });
-  }, [])
+    axios.get(URL_PERFIL, { withCredentials: true })
+      .then(response => {
+        setPerfil(response.data);
+        setUsername(response.data.username);
+        console.log(response.data);
+      })
+      .catch(err => {
+        if (err.response && err.response.status === 401) { 
+          console.log('No autorizado');
+          return <ErrorNoSesion/>
+        }
+      });
+  }, []);
+
+  
 
   const obtenerPerfil = () => {
     switch(perfil.img){
