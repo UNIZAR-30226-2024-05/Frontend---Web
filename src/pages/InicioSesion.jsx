@@ -37,7 +37,7 @@ const InicioSesion = () => {
     setSocket(newSocket);
     console.log('Prueba');
     console.log(newSocket);
-    //setAuth(auth => ({...auth, socket: newSocket}));
+    setAuth({...auth, socket: newSocket});
 
     newSocket.on('peticionReceived', (data) => {
       // Actualiza la interfaz de usuario con la notificación recibida
