@@ -2,11 +2,11 @@ import { Play, Pause, ChevronDoubleLeft, ChevronDoubleRight, CakeOutline } from 
 import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
 import { useState, useRef, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-//import "./Reproductor.css"
+import "./Player.css"
 import { Howl } from "howler"
 import {motion} from "framer-motion"
 
-const Player = ({audioElem,isplaying, setisplaying, currentSong}) => {
+const Player = ({audioElem,isplaying, setisplaying, currentSong, portada}) => {
 
     const PlayPause = () => {
         setisplaying(!isplaying);
@@ -14,6 +14,7 @@ const Player = ({audioElem,isplaying, setisplaying, currentSong}) => {
 
     return(
         <div className="PlayerContainer">
+            <img className='imagen' src={portada} />
             <div className="title">
                 <p>currentSong.nombre</p>
             </div>

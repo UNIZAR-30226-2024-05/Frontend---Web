@@ -282,12 +282,13 @@ function prevCancion(capitulos, numCap) {
   } 
 
   */
-
+  
   const [params, setParams] = useState(new URLSearchParams(location.search));
   const [numCap, setNumCap] = useState(params.get('cap'));
   const [capitulos, setCapitulos] = useState(JSON.parse(params.get('capitulos')));
   const [isplaying, setisplaying] = useState(false);
   const [currentSong, setCurrentSong] = useState(capitulos[numCap]);
+  const [portada, setPortada] = useState(params.get('portada'));
 
   const audioElem = useRef();
 
@@ -313,7 +314,7 @@ function prevCancion(capitulos, numCap) {
       <div className='reproductor'>
         <audio src={currentSong.audio} ref={audioElem} onTimeUpdate={onPlaying}/>
         <Player capitulos={capitulos} setCapitulos={setCapitulos} isplaying={isplaying} setisplaying={setisplaying} 
-        audioElem={audioElem} currentSong={currentSong}/>
+        audioElem={audioElem} currentSong={currentSong} portada={portada}/>
       </div>
     </main>
     
