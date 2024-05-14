@@ -39,3 +39,5 @@ const Player = ({audioElem,isplaying, setisplaying, currentSong}) => {
         
     )
 }
+
+export default Player
