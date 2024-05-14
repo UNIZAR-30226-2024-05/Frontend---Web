@@ -48,6 +48,11 @@ const Libro = () => {
         }
     }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
 
+    useEffect(() => {
+        const urlsCapitulos = capitulos.map(capitulo => capitulo.audio);
+        setCapitulosExistentes(urlsCapitulos);
+    }, [capitulos]);
+
     const obtenerDatosLibro = () => {
         const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
 
