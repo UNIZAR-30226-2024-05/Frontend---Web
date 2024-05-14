@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './PerfilAmigo.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer/Footer.jsx';
+import ErrorNoSesion from '../components/ErrorNoSesion/ErrorNoSesion.jsx';
 
 import ListaColeccionesAmigo from '../components/ListaColeccionesPerfilAmigo/ListaColeccionesAmigo.jsx';
 import axios from '../api/axios.jsx';
@@ -59,9 +60,15 @@ const PerfilAmigo = () => {
                     setTituloUltimaActividad(response.data.ultimo.titulo);
                     setFechaUltimaActividad(response.data.ultimo.fecha);
                 }
-            } catch (error) {
-                // Maneja los errores si ocurrieron
-                console.error('Hubo un error al obtener los datos del perfil:', error);
+            } catch (err) {
+                if (err.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion/>
+                } else if (err.response.status === 500) {
+                    console.log('Server Error');
+                } else {
+                    console.log('Fallo en la carga del perfil del usuario');
+                }
             }
         };
 

@@ -5,6 +5,7 @@ import './ListaAmigos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cookie from 'js-cookie';
+import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 
 
 import perro from '../../images/fotos-perfil/perro.jpg';
@@ -109,7 +110,11 @@ const ListaAmigos = ({usuarios}) => {
             setListaUsuarios(updatedAmigos);
         } catch (error) {
             if (error.response) {
-                console.error(error.response.data.error); // Manejar errores específicos del servidor
+                console.error(error.response.data.error);
+                if (error.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion />
+                }
             } else {
                 console.error('Error del servidor:', error.message); // Manejar otros errores
             }
@@ -135,6 +140,10 @@ const ListaAmigos = ({usuarios}) => {
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
+                if (error.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion />
+                }
             } else {
                 console.error('Error del servidor:', error.message); // Manejar otros errores
             }
@@ -160,6 +169,10 @@ const ListaAmigos = ({usuarios}) => {
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
+                if (error.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion />
+                }
             } else {
                 console.error('Error del servidor:', error.message); // Manejar otros errores
             }
@@ -185,6 +198,10 @@ const ListaAmigos = ({usuarios}) => {
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
+                if (error.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion />
+                }
             } else {
                 console.error('Error del servidor:', error.message); // Manejar otros errores
             }
@@ -210,6 +227,10 @@ const ListaAmigos = ({usuarios}) => {
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
+                if (error.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion />
+                }
             } else {
                 console.error('Error del servidor:', error.message); // Manejar otros errores
             }

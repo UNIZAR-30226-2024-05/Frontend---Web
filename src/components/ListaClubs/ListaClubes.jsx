@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';
 import AuthContext from '../../context/AuthProvider';
 import DropdownButtonClubes from './DropdownButtonClubes';
+import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 
 const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) => {
 
@@ -80,6 +81,10 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
             console.log(response.data);
         }).catch(error=>{
             console.log(error);
+            if (error.response && error.response.status === 401) { 
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+            }
         })
     }
 
@@ -92,6 +97,10 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
             console.log(response.data);
         }).catch(error=>{
             console.log(error);
+            if (error.response && error.response.status === 401) { 
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+            }
         })
     }
 
@@ -117,6 +126,9 @@ const ListaClubes = ({clubes, setClubes, otrosClubes, setOtrosClubes, libros}) =
             } catch (err) {
                 if (!err.response) {
                     setErrMsg('No hay respuesta del servidor');
+                } else if (err.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion/>
                 } else if (err.response.status === 500){
                     setErrMsg('Server error');
                 } else {

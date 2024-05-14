@@ -37,6 +37,9 @@ const DropdownButtonColeccion = ({libro, coleccion, setListaLibros}) => {
               console.log('No hay respuesta del servidor');
             } else if (err.response.status === 400) {
               console.log('No propietario'); 
+            } else if (err.response.status === 401) {
+              console.log('No autorizado');
+              return <ErrorNoSesion/>
             } else {
               console.log('Error');
             }

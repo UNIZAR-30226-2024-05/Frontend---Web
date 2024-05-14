@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MdMoreVert } from 'react-icons/md'; // Importa el ícono de tres puntos
 import './DropdownButtonColecciones.css';
 import axios from '../../api/axios';
+import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 
 const DropdownButtonColecciones = ({ options, collectionId, colecciones, setColecciones }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +29,9 @@ const DropdownButtonColecciones = ({ options, collectionId, colecciones, setCole
     } catch (err) {
         if (!err.response) {
             console.log('No hay respuesta del servidor');
+        } else if (err.response.status === 401) {
+          console.log('No autorizado');
+          return <ErrorNoSesion/>
         } else if (err.response.status === 500){
             console.log('Server error');
         } else {

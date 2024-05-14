@@ -4,6 +4,7 @@ import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
 import Footer from '../components/Footer/Footer';
+import ErrorNoSesion from '../components/ErrorNoSesion/ErrorNoSesion';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faPlay, faEdit, faTrash, faCaretUp, faCaretDown, faHeart as solidHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -74,9 +75,13 @@ const Libro = () => {
             setReseniasComunidad(response.data.public_reviews);
             console.log(response.data);
         })
-        .catch(error => {
+        .catch(err => {
             // Maneja los errores si ocurrieron
-            console.error('Hubo un error al obtener el audiolibro:', error);
+            console.err('Hubo un error al obtener el audiolibro:', error);
+            if (err.response && err.response.status === 401) { 
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+              }
         });
     };
 
@@ -205,6 +210,9 @@ const Libro = () => {
                   setErrMsg ('No hay respuesta del servidor');
                 } else if (err.response.status === 400) {
                   setErrMsg ('No propietario'); 
+                } else if (err.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion/>
                 } else {
                   setErrMsg ('Error');
                 }
@@ -226,6 +234,9 @@ const Libro = () => {
                   console.log('No hay respuesta del servidor');
                 } else if (err.response.status === 400) {
                   console.log('No propietario'); 
+                } else if (err.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion/>
                 } else {
                   console.log('Error');
                 }
@@ -263,6 +274,9 @@ const Libro = () => {
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 401) {
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
             } else if (error.response.status === 403) {
                 console.log('No propietario');
             } else if (error.response.status === 404) {
@@ -294,6 +308,9 @@ const Libro = () => {
         catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 401) {
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
             } else if (error.response.status === 403) {
                 console.log('No propietario');
             } else if (error.response.status === 404) {
@@ -439,7 +456,10 @@ const Libro = () => {
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
-            } else if (error.response.status === 409) {
+            } else if (error.response.status === 401) {
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+             }else if (error.response.status === 409) {
                 console.log('El audiolibro no existe');
             } else if (error.response.status === 500) {
                 console.log('Error del servidor')
@@ -463,6 +483,9 @@ const Libro = () => {
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 401) {
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
             } else if (error.response.status === 409) {
                 console.log('El audiolibro no existe')
             }else if (error.response.status === 500){
