@@ -401,8 +401,17 @@ const Libro = () => {
                 formData.append('audios', capitulos);
             }
             else {
-                for (let i = 0; i < todosLosCapitulos.length; i++) {
-                    formData.append(`audios`, todosLosCapitulos[i]);
+                for (let i = 0; i < nuevosCapitulos.length; i++) {
+                    formData.append(`audios`, nuevosCapitulos[i]);
+                }
+            }
+
+            if (!capitulosExistentes) {
+                formData.append('audios', capitulos);
+            }
+            else {
+                for (let i = 0; i < capitulosExistentes.length; i++) {
+                    formData.append('audiosUrls', capitulosExistentes[i]);
                 }
             }
             
