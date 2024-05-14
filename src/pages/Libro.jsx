@@ -358,7 +358,7 @@ const Libro = () => {
                 nuevosCapitulosActualizados.push(nuevosCapitulos[i]);       
             }
         }
-        setNuevosCapitulos(nuevosCapitulosActualizados);
+        setCapitulosExistentes(nuevosCapitulosActualizados);
     }
     
     
