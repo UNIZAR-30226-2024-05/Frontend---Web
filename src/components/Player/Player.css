@@ -7,18 +7,24 @@
     margin-top: 40px;
 }
 
-.Navigation, .NavigationWrapper{
-    background-color: rgba(119, 119, 119, 0.781);
-    height: 5px;
-    border-radius: 30px;
-    cursor: pointer;
-}
+.Navigation{
+    width: 100%;
+    .NavigationWrapper
+    {
+        min-width: 100%;
+        background-color: rgba(119, 119, 119, 0.781);
+        height: 5px;
+        border-radius: 30px;
+        cursor: pointer;
+        
+        .seekbar{
+            width: 0;
+            height: 100%;
+            background-color: rgb(24, 128, 3);
+            border-radius: 30px;
+        }
 
-.Navigation, .NavigationWrapper, .seekbar{
-    width: 0;
-    height: 10%;
-    background-color: rgb(24, 128, 3);
-    border-radius: 30px;
+    }
 }
 .progressbar{
     margin-top: 2%;
