@@ -663,8 +663,8 @@ const Libro = () => {
                                 {role === 'admin' && modoEdicionCapitulos && (
                                     <button onClick={(e) => {
                                         e.stopPropagation();
-                                        console.log(capitulo.url_audio);
-                                        handleEliminarCapitulo(capitulo.url_audio);
+                                        console.log(capitulo.audio);
+                                        handleEliminarCapitulo(capitulo.audio);
                                     }}>Eliminar</button>
                                 )}
                             </div>
