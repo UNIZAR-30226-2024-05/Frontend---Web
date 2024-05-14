@@ -51,7 +51,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                 </button>
                 <Play className="play" margin-top='2%' size={40} onClick={PlayPause}/>
                 <button type="button" >
-                    <ChevronDoubleRight className="skip" margin-top='2%' size={40} onClick={skipBack}/>
+                    <ChevronDoubleRight className="skip" margin-top='2%' size={40} onClick={skiptoNext}/>
                 </button>
             </div>
         </div>

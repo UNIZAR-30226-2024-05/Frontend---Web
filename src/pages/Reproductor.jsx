@@ -309,7 +309,7 @@ function prevCancion(capitulos, numCap) {
     const ct = audioElem.current.currentTime;
 
     setCurrentSong({ ...currentSong, "progress":ct / duration * 100, "length":duration })
-    console.log(duration, ct);
+    //console.log(duration, ct);
   }
 
   return (
