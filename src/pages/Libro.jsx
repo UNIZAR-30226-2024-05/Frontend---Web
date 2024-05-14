@@ -350,7 +350,7 @@ const Libro = () => {
     }
 
     const handleEliminarCapitulo = (url) => {
-        const nuevosCapitulosActualizados = capitulosExistentes.filter(capitulo => capitulo.audio !== url);
+        const nuevosCapitulosActualizados = capitulosExistentes.filter(capitulos => capitulos.audio !== url);
         setCapitulosExistentes(nuevosCapitulosActualizados);
     }
     
