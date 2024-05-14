@@ -16,7 +16,7 @@ const Player = ({audioElem,isplaying, setisplaying, currentSong, portada}) => {
         <div className="PlayerContainer">
             <img className='imagen' src={portada} />
             <div className="title">
-                <p>currentSong.nombre</p>
+                <p>{currentSong.nombre}</p>
             </div>
             <div className="Navigation">
                 <div className="NavigationWrapper">
@@ -33,7 +33,7 @@ const Player = ({audioElem,isplaying, setisplaying, currentSong, portada}) => {
                     }
                 </button>
                 <button className="skip" type="button">
-                    <ChevronDoubleLeft margin-top='2%' size={40}/>
+                    <ChevronDoubleRight margin-top='2%' size={40}/>
                 </button>
             </div>
         </div>
