@@ -36,6 +36,7 @@ const MensajesClub = ({ club, setClub }) => {
 
     const enviarMensaje = () => {
         console.log('Por dios funciona');
+        console.log(socket);
         if (socket) {
             // Emitir el evento 'message' al servidor con los datos del mensaje y el ID del club
             socket.emit('message', { club_id: club.id, msg: nuevoMensaje });
