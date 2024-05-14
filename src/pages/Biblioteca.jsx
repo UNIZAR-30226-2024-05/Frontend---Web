@@ -34,6 +34,10 @@ const Biblioteca = () => {
           }).catch(error=>{
               console.log(error);
               setLoading(false);
+              if (error.response && error.response.status === 401) { 
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+              }
           })
       }
       fetchLibros();

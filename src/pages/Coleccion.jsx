@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import axios from '../api/axios';
 import Footer from '../components/Footer/Footer';
 import ListaColeccion from '../components/ListaColeccion/ListaColeccion';
+import ErrorNoSesion from '../components/ErrorNoSesion/ErrorNoSesion';
 
 const Coleccion = () => {
 
@@ -25,6 +26,10 @@ const Coleccion = () => {
           }).catch(error=>{
               console.log(error);
               setLoading(false);
+              if (error.response && error.response.status === 401) { 
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+              }
           })
       }
       fetchLibros();

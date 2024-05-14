@@ -3,6 +3,7 @@ import './Colecciones.css';
 import axios from '../api/axios';
 import ListaColecciones from '../components/ListaColecciones/ListaColecciones';
 import Footer from '../components/Footer/Footer';
+import ErrorNoSesion from '../components/ErrorNoSesion/ErrorNoSesion';
 
 const Colecciones = () => {
  
@@ -32,6 +33,10 @@ const Colecciones = () => {
             }).catch(error=>{
                 console.log(error);
                 setLoading(false);
+                if (error.response && error.response.status === 401) { 
+                  console.log('No autorizado');
+                  return <ErrorNoSesion/>
+                }
             })
         }
         fetchColecciones();

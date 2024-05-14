@@ -4,6 +4,7 @@ import foto1 from '../images/1.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
 import Footer from '../components/Footer/Footer';
+import ErrorNoSesion from '../components/ErrorNoSesion/ErrorNoSesion';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faPlay, faEdit, faTrash, faCaretUp, faCaretDown, faHeart as solidHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +15,7 @@ const Libro = () => {
 
     const navigate = useNavigate();
     const { auth } = useContext(AuthContext);
+    const { username } = auth;
     const { role } = auth;
 
     const location = useLocation();
@@ -47,6 +49,11 @@ const Libro = () => {
         }
     }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
 
+    useEffect(() => {
+        const urlsCapitulos = capitulos.map(capitulo => capitulo.audio);
+        setCapitulosExistentes(urlsCapitulos);
+    }, [capitulos]);
+
     const obtenerDatosLibro = () => {
         const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
 
@@ -68,9 +75,13 @@ const Libro = () => {
             setReseniasComunidad(response.data.public_reviews);
             console.log(response.data);
         })
-        .catch(error => {
+        .catch(err => {
             // Maneja los errores si ocurrieron
-            console.error('Hubo un error al obtener el audiolibro:', error);
+            console.err('Hubo un error al obtener el audiolibro:', error);
+            if (err.response && err.response.status === 401) { 
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+              }
         });
     };
 
@@ -199,6 +210,9 @@ const Libro = () => {
                   setErrMsg ('No hay respuesta del servidor');
                 } else if (err.response.status === 400) {
                   setErrMsg ('No propietario'); 
+                } else if (err.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion/>
                 } else {
                   setErrMsg ('Error');
                 }
@@ -220,6 +234,9 @@ const Libro = () => {
                   console.log('No hay respuesta del servidor');
                 } else if (err.response.status === 400) {
                   console.log('No propietario'); 
+                } else if (err.response.status === 401) {
+                    console.log('No autorizado');
+                    return <ErrorNoSesion/>
                 } else {
                   console.log('Error');
                 }
@@ -257,6 +274,9 @@ const Libro = () => {
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 401) {
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
             } else if (error.response.status === 403) {
                 console.log('No propietario');
             } else if (error.response.status === 404) {
@@ -288,6 +308,9 @@ const Libro = () => {
         catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 401) {
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
             } else if (error.response.status === 403) {
                 console.log('No propietario');
             } else if (error.response.status === 404) {
@@ -312,6 +335,9 @@ const Libro = () => {
     const [nuevoGenero, setNuevoGenero] = useState('');
     const [modoEdicionCapitulos, setModoEdicionCapitulos] = useState(false);
     const [nuevosCapitulos, setNuevosCapitulos] = useState([]);
+    const urlsCapitulos = capitulos.map(capitulo => capitulo.audio);
+    const [capitulosExistentes, setCapitulosExistentes] = useState(urlsCapitulos);
+
 
     const handleEditPhoto = () => {
         setModoEdicionFoto(!modoEdicionFoto);
@@ -347,14 +373,21 @@ const Libro = () => {
         setNuevosCapitulos(event.target.files);
     }
 
-    const handleEliminarCapitulo = (capitulo) => {
-        const nuevosCapitulosActualizados = capitulosExistentes.filter(c => c !== capitulo);
+    const handleEliminarCapitulo = (url) => {
+        const nuevosCapitulosActualizados = [];
+        for (let i = 0; i < capitulosExistentes.length; i++) {
+            if (capitulosExistentes[i] !== url) {
+                nuevosCapitulosActualizados.push(capitulosExistentes[i]);     
+            }
+        }
         setCapitulosExistentes(nuevosCapitulosActualizados);
     }
     
+    
+    
 
     const handleGuardarCambios = async () => {
-        console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos });
+        console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos, capitulosExistentes });
         
             const formData = new FormData();
             formData.append('audiolibroId', id_libro);
@@ -402,6 +435,15 @@ const Libro = () => {
                     formData.append(`audios`, nuevosCapitulos[i]);
                 }
             }
+
+            if (!capitulosExistentes) {
+                formData.append('audios', capitulos);
+            }
+            else {
+                for (let i = 0; i < capitulosExistentes.length; i++) {
+                    formData.append('audiosUrls', capitulosExistentes[i]);
+                }
+            }
             
             console.log({ formData });
         try {
@@ -414,7 +456,10 @@ const Libro = () => {
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
-            } else if (error.response.status === 409) {
+            } else if (error.response.status === 401) {
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+             }else if (error.response.status === 409) {
                 console.log('El audiolibro no existe');
             } else if (error.response.status === 500) {
                 console.log('Error del servidor')
@@ -438,6 +483,9 @@ const Libro = () => {
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 401) {
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
             } else if (error.response.status === 409) {
                 console.log('El audiolibro no existe')
             }else if (error.response.status === 500){
@@ -632,7 +680,7 @@ const Libro = () => {
                     <h2 className="tituloCap"> Capítulos {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditCapitulos()} className='libro-editButton'/>)}</h2>
                     {role === 'admin' && modoEdicionCapitulos && (
                         <>
-                        <h3>Introduce los nuevos capítulos</h3>
+                        <h3>Introduce los nuevos capítulos (máximo 1MB)</h3>
                         <input
                             type="file"
                             className='libro-editar-capitulos'
@@ -649,7 +697,10 @@ const Libro = () => {
                                 <span>{capitulo.numero}</span>
                                 <span>{capitulo.nombre}</span>
                                 {role === 'admin' && modoEdicionCapitulos && (
-                                    <button onClick={() => handleEliminarCapitulo(capitulo)}>Eliminar</button>
+                                    <button onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleEliminarCapitulo(capitulo.audio);
+                                    }}>Eliminar</button>
                                 )}
                             </div>
                         ))}

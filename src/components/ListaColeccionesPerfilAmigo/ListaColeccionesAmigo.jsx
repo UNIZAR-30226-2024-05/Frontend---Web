@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';
 import AuthContext from '../../context/AuthProvider';
 import DropdownButtonColeccionesAmigo from './DropdownButtonColeccionesAmigo';
+import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 
 const ListaColeccionesAmigo = ({colecciones, setColecciones}) => {
 
@@ -54,6 +55,10 @@ const ListaColeccionesAmigo = ({colecciones, setColecciones}) => {
         }).catch(error=>{
             console.log(error);
             setLoading(false);
+            if (error.response && error.response.status === 401) { 
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+            }
         })
     }
 

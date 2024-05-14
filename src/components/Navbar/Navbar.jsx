@@ -8,6 +8,7 @@ import './Navbar.css';
 import { IconContext } from 'react-icons';
 import logo from '../../images/logo.png';
 import AuthContext from '../../context/AuthProvider';
+import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 import ListaAmigosSidebar from '../ListaAmigosSidebar/ListaAmigosSidebar';
 import vaca from '../../images/fotos-perfil/vaca.jpg';
 import perro from "../../images/fotos-perfil/perro.jpg"
@@ -46,6 +47,10 @@ function Navbar() {
             }).catch(error=>{
                 console.log(error);
                 setLoading(false);
+                if (erro.response && erro.response.status === 401) { 
+                    console.log('No autorizado');
+                    return <ErrorNoSesion/>
+                }
             })
         }
         fetchAmigos();
