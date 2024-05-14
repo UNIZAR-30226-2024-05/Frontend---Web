@@ -14,11 +14,14 @@ export const AuthProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
+        console.log('Entra al useEffect')
         if (auth.username && !socket) {
             // Establecer la conexión con el servidor de Socket.io
+            console.log('Entra al if')
             const newSocket = io("https://server.narratives.es", {
                 withCredentials: true,
             });
+            console.log(newSocket)
             setSocket(newSocket);
         }
         else if (!auth.username && socket) {
