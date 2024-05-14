@@ -314,7 +314,7 @@ function prevCancion(capitulos, numCap) {
   return (
     <main>
       <div className='reproductor'>
-        <audio src={currentSong.audio} ref={audioElem} onTimeUpdate={onPlaying}/>
+        <audio src={currentSong.audio} ref={audioElem}/>
         <Player capitulos={capitulos} setCapitulos={setCapitulos} isplaying={isplaying} setisplaying={setisplaying} 
         audioElem={audioElem} currentSong={currentSong} portada={portada}/>
       </div>

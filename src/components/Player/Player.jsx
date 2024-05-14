@@ -27,11 +27,7 @@ const Player = ({audioElem,isplaying, setisplaying, currentSong, portada}) => {
                 <button className="prev" type="button">
                     <ChevronDoubleLeft margin-top='2%' size={40}/>
                 </button>
-                <button className="action" type="button">
-                    {isplaying ? <Play  margin-top='2%' size={40} onClick={PlayPause}/>
-                        : <Pause margin-top='2%' size={40}/>
-                    }
-                </button>
+                <Play className="play" margin-top='2%' size={40} onClick={PlayPause}/>
                 <button className="skip" type="button">
                     <ChevronDoubleRight margin-top='2%' size={40}/>
                 </button>
