@@ -634,7 +634,7 @@ const Libro = () => {
                     <h2 className="tituloCap"> Capítulos {role === 'admin' && (<FontAwesomeIcon icon={faEdit} onClick={() => handleEditCapitulos()} className='libro-editButton'/>)}</h2>
                     {role === 'admin' && modoEdicionCapitulos && (
                         <>
-                        <h3>Introduce los nuevos capítulos</h3>
+                        <h3>Introduce los nuevos capítulos (máximo 1MB)</h3>
                         <input
                             type="file"
                             className='libro-editar-capitulos'
@@ -651,7 +651,10 @@ const Libro = () => {
                                 <span>{capitulo.numero}</span>
                                 <span>{capitulo.nombre}</span>
                                 {role === 'admin' && modoEdicionCapitulos && (
-                                    <button onClick={() => handleEliminarCapitulo(capitulo)}>Eliminar</button>
+                                    <button onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleEliminarCapitulo(capitulo);
+                                    }}>Eliminar</button>
                                 )}
                             </div>
                         ))}
