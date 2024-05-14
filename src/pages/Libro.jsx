@@ -352,6 +352,8 @@ const Libro = () => {
     }
 
     const handleEliminarCapitulo = (url) => {
+        console.log(url);
+        console.log("he llegado al handleEliminarCapitulo");
         const nuevosCapitulosActualizados = [];
         for (let i = 0; i < capitulosExistentes.length; i++) {
             if (capitulosExistentes[i] !== url) {
