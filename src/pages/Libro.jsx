@@ -355,7 +355,8 @@ const Libro = () => {
         const nuevosCapitulosActualizados = [];
         for (let i = 0; i < capitulosExistentes.length; i++) {
             if (capitulosExistentes[i] !== url) {
-                nuevosCapitulosActualizados.push(capitulosExistentes[i]);       
+                nuevosCapitulosActualizados.push(capitulosExistentes[i]);   
+                console.log(capitulosExistentes[i]);    
             }
         }
         setCapitulosExistentes(nuevosCapitulosActualizados);
