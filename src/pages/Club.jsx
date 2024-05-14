@@ -14,8 +14,7 @@ const Club = () => {
     const [club, setClub] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const { auth } = useContext(AuthContext);
-    const { socket } = auth;
+    const { socket } = useContext(AuthContext);
 
     useEffect( () => {
         const URL_CLUB = `/club/datos/${id_club}`
