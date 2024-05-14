@@ -6,12 +6,13 @@ import { useLocation } from 'react-router-dom';
 import "./Reproductor.css"
 import { Howl } from "howler"
 import {motion} from "framer-motion"
+import Player from '../components/Player'
 
 
 
 
 const Reproductor = () => {
-
+/*
   const location = useLocation();  
   const params = new URLSearchParams(location.search);
   const capitulos = JSON.parse(params.get('capitulos'));
@@ -98,7 +99,7 @@ const Reproductor = () => {
  
   
   
-/*
+
 function skipCancion(capitulos, numCap) {
   //console.log(capitulos);
   //console.log(capitulos.length);
@@ -133,9 +134,9 @@ function skipCancion(capitulos, numCap) {
     console.log("Has llegado al fin del vector");
   }
   
-} */
+} 
 
-/*
+
 function skipCancion(capitulos, numCap) {
   // Actualiza el índice
   setNumCap(numCap + 1);
@@ -166,7 +167,7 @@ function skipCancion(capitulos, numCap) {
   }
 }
 
-*/
+
 
 // Función para crear el audio basado en el nuevo numCap
 function crearNuevoAudio(numCap) {
@@ -227,8 +228,7 @@ function prevCancion(capitulos, numCap) {
   }
 }
 
-/*
-  
+
   function prevCancion(capitulos,numCap){
     if(numCap > limitInf){
       // Pausa el audio actual
@@ -258,7 +258,7 @@ function prevCancion(capitulos, numCap) {
     
   }
   
-  */
+  
 
   //Función para subir o bajar el volumen
   function handleVolume(e){
@@ -281,40 +281,38 @@ function prevCancion(capitulos, numCap) {
     }
   } 
 
+  */
+
+  const [numCap, setNumCap] = useState(params.get('cap'));
+  const [capitulos, setCapitulos] = useState(JSON.parse(params.get('capitulos')));
+  const [isplaying, setisplaying] = useState(false);
+  const [currentSong, setCurrentSong] = useState(capitulos[numCap]);
+
+  const audioElem = useRef();
+
+  useEffect(() => {
+    if(isplaying){
+      audioElem.current.play();
+    }
+    else{
+      audioElem.current.pause();
+    }
+  }, [isplaying])
+
+
+  const onPlaying = () => {
+    const duration = audioElem.current.duration;
+    const ct = audioElem.current.currentTime;
+
+    console.log(duration, ct);
+  }
+
   return (
     <main>
-      <div className='player'>
-        <img className='portada'src={portada} />
-        <h2 margin-top='5%' className='cap'>{capitulos && capitulos[numCap] && capitulos[numCap].nombre}</h2>
-        {/*Botones para el control de la cancion*/}
-        <div className='botones'>
-          <button className='anteriorCancion' type='button' onClick={() => prevCancion(capitulos, numCap)}>
-            <ChevronDoubleLeft margin-top='2%' size={40}/>
-          </button>
-          <button className='boton' type='button' onClick={() => toggleAudio(obtenerCapiulo(capitulos, numCap))}>
-              {!play ? (
-                  <Play  margin-top='2%' size={40}/>
-              ) : (
-                  <Pause margin-top='2%' size={40}/>
-              )}
-          </button>
-          <button className='siguienteCancion' type='button' onClick={() => skipCancion(capitulos, numCap)}>
-            <ChevronDoubleRight margin-top='2%' size={40}/>
-          </button>
-        </div>
-        <div className='progressbar-container'>
-          <div className='progressbar'>
-            <motion.div className='bar'
-            animate={{width: `${progreso(currentTime, duracion)}%`}}
-            transition={{duration: 0.5}}
-                />
-          </div>
-        </div>
-        {/*Barra e icono para cambiar el volumen */}
-        <div className='volumen'>
-          <input className='barraVol' type='range' min={0} max={MAX} onChange={(e) => handleVolume(e)}/>
-          <SpeakerWaveIcon className='altavoz' color='black' height="20px"/>
-        </div>
+      <div className='reproductor'>
+        <audio src={currentSong.audio} ref={audioElem} onTimeUpdate={onPlaying}/>
+        <Player capitulos={capitulos} setCapitulos={setCapitulos} isplaying={isplaying} setisplaying={setisplaying} 
+        audioElem={audioElem} currentSong={currentSong}/>
       </div>
     </main>
     
