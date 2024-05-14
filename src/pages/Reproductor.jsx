@@ -290,6 +290,8 @@ function prevCancion(capitulos, numCap) {
   const [currentSong, setCurrentSong] = useState(capitulos[numCap]);
   const [portada, setPortada] = useState(params.get('portada'));
 
+  console.log("Audio", currentSong.audio);
+
   const audioElem = useRef();
 
   useEffect(() => {
