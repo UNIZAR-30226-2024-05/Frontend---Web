@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './InicioSesion.css';
 import AuthContext from '../context/AuthProvider';
 import axios from '../api/axios';
-import io from 'socket.io-client';
 
 const URL_LOGIN = '/users/login';
 
@@ -13,7 +12,6 @@ const InicioSesion = () => {
   const { auth, setAuth } = useContext(AuthContext);
   const [success, setSuccess] = useState(false);
   const [errMsg, setErrMsg] = useState('');
-  const [socket, setSocket] = useState(null); 
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -28,27 +26,6 @@ const InicioSesion = () => {
       setSuccess(true);
     }
   }, [auth]);
-
-  const connectToSocket = () => {
-    // Establecer la conexión con el servidor de Socket.io
-    const newSocket = io("https://server.narratives.es", {
-      withCredentials: true,
-    });
-    setSocket(newSocket);
-    console.log('Prueba');
-    console.log(newSocket);
-    setAuth({...auth, socket: newSocket});
-
-    newSocket.on('peticionReceived', (data) => {
-      // Actualiza la interfaz de usuario con la notificación recibida
-      console.log(data);
-    });
-
-    // Escuchar eventos desde el servidor de Socket.io
-    /*socket.on('message', (data) => {
-      console.log('Mensaje recibido desde el servidor:', data);
-    });*/
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault(); //Evita que refresque la página
@@ -70,10 +47,6 @@ const InicioSesion = () => {
 
       setUsername('');
       setPassword('');
-
-      // Conexión al socket después del inicio de sesión exitoso
-      connectToSocket();
-
     } catch (err) {
       if (!err.response) {
         setErrMsg ('No hay respuesta del servidor');

@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import io from 'socket.io-client';
 
 const AuthContext = createContext({});
 
@@ -9,6 +10,21 @@ export const AuthProvider = ({ children }) => {
         const savedAuth = localStorage.getItem('auth');
         return savedAuth ? JSON.parse(savedAuth) : {};
     });
+
+    const [socket, setSocket] = useState(null);
+
+    useEffect(() => {
+        if (auth.username && !socket) {
+            // Establecer la conexión con el servidor de Socket.io
+            const newSocket = io("https://server.narratives.es", {
+                withCredentials: true,
+            });
+            setSocket(newSocket);
+        }
+        else if (!auth.username && socket) {
+            socket.disconnect();
+        }
+    }, [auth]);
 
     // Almacenar la sesión en el almacenamiento local al cambiar
     useEffect(() => {
