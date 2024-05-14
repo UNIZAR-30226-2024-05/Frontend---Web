@@ -313,7 +313,7 @@ const Libro = () => {
     const [nuevoGenero, setNuevoGenero] = useState('');
     const [modoEdicionCapitulos, setModoEdicionCapitulos] = useState(false);
     const [nuevosCapitulos, setNuevosCapitulos] = useState([]);
-    const [capitulosExistentes, setCapitulosExistentes] = useState(capitulos && capitulos.url_audio ? capitulos.url_audio : []);
+    const [capitulosExistentes, setCapitulosExistentes] = useState(capitulos);
 
     const handleEditPhoto = () => {
         setModoEdicionFoto(!modoEdicionFoto);
@@ -349,10 +349,11 @@ const Libro = () => {
         setNuevosCapitulos(event.target.files);
     }
 
-    const handleEliminarCapitulo = (capitulo) => {
-        const nuevosCapitulosActualizados = capitulosExistentes.filter(url => url !== capitulo.url_audio);
+    const handleEliminarCapitulo = (url) => {
+        const nuevosCapitulosActualizados = capitulosExistentes.filter(capitulo => capitulo.url_audio !== url);
         setCapitulosExistentes(nuevosCapitulosActualizados);
     }
+    
     
 
     const handleGuardarCambios = async () => {
@@ -662,7 +663,7 @@ const Libro = () => {
                                 {role === 'admin' && modoEdicionCapitulos && (
                                     <button onClick={(e) => {
                                         e.stopPropagation();
-                                        handleEliminarCapitulo(capitulo);
+                                        handleEliminarCapitulo(capitulo.url_audio);
                                     }}>Eliminar</button>
                                 )}
                             </div>
