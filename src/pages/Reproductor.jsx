@@ -196,7 +196,17 @@ function skipCancion(capitulos, numCap) {
   console.log("Para ver que limite es el superior", limitSup);
   // Actualiza el índice
   if (numCap < limitSup) {
-    setNumCap(numCap + 1);
+      // Actualiza el índice
+      setNumCap(prevNumCap => {
+        const newNumCap = prevNumCap + 1;
+        if (newNumCap <= limitSup) {
+          console.log("Actualizado + 1", newNumCap);
+          return newNumCap;
+        } else {
+          console.log("Error");
+          return prevNumCap; // No actualices numCap si has alcanzado el límite superior
+        }
+      });
     console.log("Después de actualizar numCap en skipCancion", numCap);
   } else {
     console.log("Has llegado al fin del vector por arriba");
