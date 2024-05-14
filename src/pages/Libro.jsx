@@ -312,6 +312,7 @@ const Libro = () => {
     const [nuevoGenero, setNuevoGenero] = useState('');
     const [modoEdicionCapitulos, setModoEdicionCapitulos] = useState(false);
     const [nuevosCapitulos, setNuevosCapitulos] = useState([]);
+    const [capitulosExistentes, setCapitulosExistentes] = useState(capitulos);
 
     const handleEditPhoto = () => {
         setModoEdicionFoto(!modoEdicionFoto);
@@ -355,6 +356,7 @@ const Libro = () => {
 
     const handleGuardarCambios = async () => {
         console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos });
+        const todosLosCapitulos = [...capitulosExistentes, ...nuevosCapitulos]
         
             const formData = new FormData();
             formData.append('audiolibroId', id_libro);
@@ -398,8 +400,8 @@ const Libro = () => {
                 formData.append('audios', capitulos);
             }
             else {
-                for (let i = 0; i < nuevosCapitulos.length; i++) {
-                    formData.append(`audios`, nuevosCapitulos[i]);
+                for (let i = 0; i < todosLosCapitulos.length; i++) {
+                    formData.append(`audios`, todosLosCapitulos[i]);
                 }
             }
             
