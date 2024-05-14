@@ -8,8 +8,18 @@ import {motion} from "framer-motion"
 
 const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos}) => {
 
+    const clickRef = useRef();
+
     const PlayPause = () => {
         setisplaying(!isplaying);
+    }
+
+    const checkWidth = (e) => {
+        let width = clickRef.current.clientWidth;
+        const offset = e.nativeEvent.offsetX;
+
+        const divprogress = offset / width * 100;
+        audioElem.current.currentTime = divprogress / 100 * currentSong.length;
     }
 
     const skipBack = () => {
@@ -41,7 +51,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                 <p>{currentSong.nombre}</p>
             </div>
             <div className="Navigation">
-                <div className="NavigationWrapper">
+                <div className="NavigationWrapper" onClick={checkWidth} ref={clickRef}>
                     <div className="seekbar" style={{width: `${currentSong.progress+"%"}`}}></div>
                 </div>
             </div>
