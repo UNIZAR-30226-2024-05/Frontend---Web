@@ -352,10 +352,10 @@ const Libro = () => {
     }
 
     const handleEliminarCapitulo = (url) => {
-        console.log(url);
         console.log("he llegado al handleEliminarCapitulo");
         const nuevosCapitulosActualizados = [];
         for (let i = 0; i < capitulosExistentes.length; i++) {
+            console.log(capitulosExistentes[i]);
             if (capitulosExistentes[i] !== url) {
                 nuevosCapitulosActualizados.push(capitulosExistentes[i]);   
                 console.log(capitulosExistentes[i]);    
@@ -674,7 +674,6 @@ const Libro = () => {
                                 {role === 'admin' && modoEdicionCapitulos && (
                                     <button onClick={(e) => {
                                         e.stopPropagation();
-                                        console.log(capitulo.audio);
                                         handleEliminarCapitulo(capitulo.audio);
                                     }}>Eliminar</button>
                                 )}
