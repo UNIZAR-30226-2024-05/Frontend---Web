@@ -8,13 +8,17 @@
 }
 
 .Navigation, .NavigationWrapper{
-    height: 15vh;
-    width: 35vw;
+    background-color: rgba(119, 119, 119, 0.781);
+    height: 5px;
+    border-radius: 30px;
+    cursor: pointer;
 }
 
 .Navigation, .NavigationWrapper, .seekbar{
-    width: 5vw;
-    height: 2vh;
+    width: 0;
+    height: 100%;
+    background-color: rgb(24, 128, 3);
+    border-radius: 30px;
 }
 .progressbar{
     margin-top: 2%;
