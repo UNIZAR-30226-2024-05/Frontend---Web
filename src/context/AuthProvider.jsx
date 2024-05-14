@@ -11,7 +11,12 @@ export const AuthProvider = ({ children }) => {
         return savedAuth ? JSON.parse(savedAuth) : {};
     });
 
-    const [socket, setSocket] = useState(null);
+    const [socket, setSocket] = useState(() => {
+        // Inicializar el estado 'auth' con el valor guardado en el localStorage si existe,
+        // de lo contrario, inicializarlo como un objeto vacío.
+        const savedSock = localStorage.getItem('socket');
+        return savedSock ? JSON.parse(savedAuth) : {};
+    });
 
     useEffect(() => {
         console.log('Entra al useEffect')
