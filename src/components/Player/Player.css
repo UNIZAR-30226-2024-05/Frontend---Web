@@ -1,0 +1,49 @@
+.Controlls{
+    display: flex;
+    flex-direction: row;
+}
+
+.prev, .action, .sig{
+    margin-top: 40px;
+}
+
+.progressbar{
+    margin-top: 2%;
+    width: 450px;
+    height: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: stretch;
+
+    border-radius: 60px;
+    background-color: #494b52;
+    box-shadow: 0px 0px 20px #111;
+
+    overflow: hidden;
+}
+
+.bar{
+    
+
+    background-color: rgb(255, 174, 105);
+}
+.volumen{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 40px;
+}
+
+
+.portada{
+    margin-top: 10px;
+    width: max-content;
+    height: 65vh;
+}
+
+.barraVol{
+    margin-top: 30px;
+}

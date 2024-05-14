@@ -3,7 +3,7 @@ import { Play, Pause, ChevronDoubleLeft, ChevronDoubleRight, CakeOutline } from 
 import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
 import { useState, useRef, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-//import "./Reproductor.css"
+import "./Reproductor.css"
 import { Howl } from "howler"
 import {motion} from "framer-motion"
 import Player from '../components/Player/Player'
