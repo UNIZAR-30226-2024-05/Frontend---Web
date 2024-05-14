@@ -353,6 +353,7 @@ const Libro = () => {
 
     const handleEliminarCapitulo = (url) => {
         console.log("he llegado al handleEliminarCapitulo");
+        console.log(capitulosExistentes);
         const nuevosCapitulosActualizados = [];
         for (let i = 0; i < capitulosExistentes.length; i++) {
             console.log(capitulosExistentes[i]);
