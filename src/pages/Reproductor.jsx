@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import "./Reproductor.css"
 import { Howl } from "howler"
 import {motion} from "framer-motion"
-import Player from '../components/Player'
+import Player from '../components/Player/Player'
 
 
 
