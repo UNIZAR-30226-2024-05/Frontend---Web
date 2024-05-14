@@ -209,8 +209,18 @@ function prevCancion(capitulos, numCap) {
   console.log("Para ver que se la pasa a prev", numCap);
   console.log("Para ver que limite es el inferior", limitInf);
   if (numCap > limitInf) {
-    setNumCap(numCap - 1);
-    console.log("Después de actualizar numCap en prevCancion", numCap);
+    // Actualiza el índice
+    setNumCap(prevNumCap => {
+      const newNumCap = prevNumCap + 1;
+      if (newNumCap <= limitSup) {
+        console.log("Cap actualizado", newNumCap);
+        return newNumCap;
+      } else {
+        console.log("Error en setNumCap");
+        return prevNumCap; // No actualices numCap si has alcanzado el límite superior
+      }
+    });
+      console.log("Después de actualizar numCap en prevCancion", numCap);
   } else {
     console.log("Has llegado al fin del vector por abajo");
   }
