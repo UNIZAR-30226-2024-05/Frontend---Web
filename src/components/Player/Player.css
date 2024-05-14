@@ -7,6 +7,15 @@
     margin-top: 40px;
 }
 
+.Navigation, .NavigationWrapper{
+    height: 15vh;
+    width: 35vw;
+}
+
+.Navigation, .NavigationWrapper, .seekbar{
+    width: 5vw;
+    height: 2vh;
+}
 .progressbar{
     margin-top: 2%;
     width: 450px;
