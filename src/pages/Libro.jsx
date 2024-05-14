@@ -356,8 +356,7 @@ const Libro = () => {
     
 
     const handleGuardarCambios = async () => {
-        console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos });
-        const todosLosCapitulos = [...capitulosExistentes, ...nuevosCapitulos]
+        console.log({ id_libro, nuevoTitulo, nuevoAutor, nuevaDescripcion, nuevoGenero, nuevaPortada, nuevosCapitulos, capitulosExistentes });
         
             const formData = new FormData();
             formData.append('audiolibroId', id_libro);
