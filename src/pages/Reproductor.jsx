@@ -199,6 +199,7 @@ function skipCancion(capitulos, numCap) {
       // Actualiza el índice
       setNumCap(prevNumCap => {
         const newNumCap = prevNumCap + 1;
+        console.log("newNumCap", newNumCap);
         if (newNumCap <= limitSup) {
           console.log("Actualizado + 1", newNumCap);
           return newNumCap;
