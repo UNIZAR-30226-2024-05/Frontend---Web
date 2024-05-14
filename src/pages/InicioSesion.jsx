@@ -52,7 +52,7 @@ const InicioSesion = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); //Evita que refresque la página
     
     try {
       const respuesta = await axios.post(URL_LOGIN, 
