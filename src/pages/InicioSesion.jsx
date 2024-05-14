@@ -33,13 +33,11 @@ const InicioSesion = () => {
     // Establecer la conexión con el servidor de Socket.io
     const newSocket = io("https://server.narratives.es", {
       withCredentials: true,
-      extraHeaders: {
-        "my-custom-header": "abcd"
-      }
     });
     setSocket(newSocket);
     console.log('Prueba');
-    setAuth(auth => ({...auth, socket: newSocket}))
+    console.log(newSocket);
+    //setAuth(auth => ({...auth, socket: newSocket}));
 
     newSocket.on('peticionReceived', (data) => {
       // Actualiza la interfaz de usuario con la notificación recibida
