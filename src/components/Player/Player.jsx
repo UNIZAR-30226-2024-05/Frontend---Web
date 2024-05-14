@@ -20,7 +20,7 @@ const Player = ({audioElem,isplaying, setisplaying, currentSong, portada}) => {
             </div>
             <div className="Navigation">
                 <div className="NavigationWrapper">
-                    <div className="seekbar" style={{width:'50%'}}></div>
+                    <div className="seekbar" style={{width: `${currentSong.progress+"%"}`}}></div>
                 </div>
             </div>
             <div className="Controlls">
