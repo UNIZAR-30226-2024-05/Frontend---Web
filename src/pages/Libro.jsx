@@ -313,7 +313,7 @@ const Libro = () => {
     const [nuevoGenero, setNuevoGenero] = useState('');
     const [modoEdicionCapitulos, setModoEdicionCapitulos] = useState(false);
     const [nuevosCapitulos, setNuevosCapitulos] = useState([]);
-    const [capitulosExistentes, setCapitulosExistentes] = useState(capitulos.url_audio);
+    const [capitulosExistentes, setCapitulosExistentes] = useState(capitulos && capitulos.url_audio ? capitulos.url_audio : []);
 
     const handleEditPhoto = () => {
         setModoEdicionFoto(!modoEdicionFoto);
@@ -350,7 +350,7 @@ const Libro = () => {
     }
 
     const handleEliminarCapitulo = (capitulo) => {
-        const nuevosCapitulosActualizados = capitulosExistentes.filter(c => c !== capitulo.url_audio);
+        const nuevosCapitulosActualizados = capitulosExistentes.filter(url => url !== capitulo.url_audio);
         setCapitulosExistentes(nuevosCapitulosActualizados);
     }
     
