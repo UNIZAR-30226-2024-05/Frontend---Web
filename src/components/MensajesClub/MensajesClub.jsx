@@ -35,6 +35,7 @@ const MensajesClub = ({ club, setClub }) => {
     } 
 
     const enviarMensaje = () => {
+        console.log('Por dios funciona');
         if (socket) {
             // Emitir el evento 'message' al servidor con los datos del mensaje y el ID del club
             socket.emit('message', { club_id: club.id, msg: nuevoMensaje });
@@ -47,7 +48,6 @@ const MensajesClub = ({ club, setClub }) => {
 
     const handleEnviarMensaje = () => {
         enviarMensaje();
-        
     }
 
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
