@@ -25,12 +25,12 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     const skiptoNext = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
-        if(index > capitulos.length-1){
+        if(index < capitulos.length-1){
             setCurrentSong(capitulos[index + 1])
             audioElem.current.currentTime = 0;
         }
         else{
-            console.log("Has llegado al limite inferior")
+            console.log("Has llegado al limite superior")
         }
     }
 
