@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './MensajesClub.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import AuthContext from '../../context/AuthProvider';
 
 const MensajesClub = ({ club, setClub }) => {
 
     const [listaMensajes, setListaMensajes] = useState(club.messages);
     const [nuevoMensaje, setNuevoMensaje] = useState([]);
     const messagesEndRef = useRef(null);
+
+    const { auth } = useContext(AuthContext)
+    const { user_id, socket } = auth;
 
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
@@ -31,11 +34,16 @@ const MensajesClub = ({ club, setClub }) => {
         setNuevoMensaje(event.target.value);
     } 
 
-    async function enviarMensaje() {
-        console.log({nuevoMensaje});
-        setListaMensajes([...listaMensajes, {mensaje: nuevoMensaje}]);
-        setNuevoMensaje('');
-    }
+    const enviarMensaje = () => {
+        if (socket) {
+            // Emitir el evento 'message' al servidor con los datos del mensaje y el ID del club
+            socket.emit('message', { club_id: club.id, msg: nuevoMensaje });
+            // Actualizar la lista de mensajes localmente
+            setListaMensajes([...listaMensajes, { mensaje: nuevoMensaje, user_id }]);
+            // Limpiar el campo del nuevo mensaje
+            setNuevoMensaje('');
+        }
+    };
 
     const handleEnviarMensaje = () => {
         enviarMensaje();
@@ -52,7 +60,7 @@ const MensajesClub = ({ club, setClub }) => {
                 className='mensaje'>
                     <div className='contenido-msg'>
                         <div className='texto-msg'>
-                            <span>{msg.mensaje}</span>
+                        <span>{msg.user_id}</span><span>{msg.mensaje}</span>
                         </div>
                     </div>
                 </div>

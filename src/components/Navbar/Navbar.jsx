@@ -85,6 +85,10 @@ function Navbar() {
             const respuesta = await axios.post(URL_LOGOUT, null, {withCredentials: true});
             console.log(JSON.stringify(respuesta?.data));
 
+            if(auth.socket){
+                console.log('Cerrando el socket...');
+                auth.socket.disconnect();
+            }
             // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
             setAuth({});
             window.location.href = '/login'; // Redirige a la página de inicio de sesión

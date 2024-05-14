@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './InicioSesion.css';
 import AuthContext from '../context/AuthProvider';
 import axios from '../api/axios';
-import io from 'socket.io-client'; // Importa socket.io-client
+import io from 'socket.io-client';
 
 const URL_LOGIN = '/users/login';
 
@@ -13,7 +13,7 @@ const InicioSesion = () => {
   const { auth, setAuth } = useContext(AuthContext);
   const [success, setSuccess] = useState(false);
   const [errMsg, setErrMsg] = useState('');
-  const [socket, setSocket] = useState(null); // Estado para el socket
+  const [socket, setSocket] = useState(null); 
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -31,16 +31,17 @@ const InicioSesion = () => {
 
   const connectToSocket = () => {
     // Establecer la conexión con el servidor de Socket.io
-    const socket = io("https://server.narratives.es", {
+    const newSocket = io("https://server.narratives.es", {
       withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd"
       }
     });
-    setSocket(socket);
+    setSocket(newSocket);
     console.log('Prueba');
+    setAuth(prevAuth => ({...prevAuth, socket: newSocket}))
 
-    socket.on('peticionReceived', (data) => {
+    newSocket.on('peticionReceived', (data) => {
       // Actualiza la interfaz de usuario con la notificación recibida
       console.log(data);
     });
