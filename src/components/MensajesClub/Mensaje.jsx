@@ -8,7 +8,7 @@ const Mensaje = ({ mensaje }) => {
     const { user_id } = auth;
 
     return (
-      <div>
+      <>
         {mensaje.user_id === user_id ? (
             <div className="msg-container-propio">
                 <div className='texto-msg'>
@@ -23,7 +23,7 @@ const Mensaje = ({ mensaje }) => {
                 </div>
             </div>
         )}
-      </div>
+      </>
     );
 };
 
