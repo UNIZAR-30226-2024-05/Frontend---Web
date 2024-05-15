@@ -160,7 +160,6 @@ const Libro = () => {
                 setNuevaResenia(respuesta.data);
                 if (respuesta.data.visibilidad === '0') {
                     setNuevaReseniaPublica(respuesta.data);
-                    console.log('Reseña pública añadida');
                 }
             } else {
                 console.error('La respuesta del servidor no tiene los datos esperados');
@@ -331,6 +330,9 @@ const Libro = () => {
             setMiResenia(edicionResenia);
             setMiReseniaId(edicionResenia.id);
             setModoEdicion(false);
+            if (edicionResenia.visibilidad === '0') {
+                setReseniasComunidad([...reseniasComunidad, edicionResenia]);
+            }
         }
     }, [edicionResenia]);
 
@@ -348,6 +350,9 @@ const Libro = () => {
             console.log(respuesta);
             if (respuesta && respuesta.data) {
                 setEdicionResenia(respuesta.data);
+                if (respuesta.data.visibilidad === '0') {
+                    setNuevaReseniaPublica(respuesta.data);
+                }
             } else {
                 console.error('La respuesta del servidor no tiene los datos esperados');
             }
