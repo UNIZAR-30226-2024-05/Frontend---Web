@@ -331,6 +331,7 @@ const Libro = () => {
             setMiReseniaId(edicionResenia.id);
             setModoEdicion(false);
             if (edicionResenia.visibilidad === '0') {
+                console.log('nueva resenia publica');
                 setReseniasComunidad([...reseniasComunidad, edicionResenia]);
             }
         }
@@ -352,6 +353,7 @@ const Libro = () => {
                 setEdicionResenia(respuesta.data);
                 if (respuesta.data.visibilidad === '0') {
                     setNuevaReseniaPublica(respuesta.data);
+                    console.log('nueva resenia publica');
                 }
             } else {
                 console.error('La respuesta del servidor no tiene los datos esperados');
