@@ -48,6 +48,9 @@
 .contenedor-mensajes .lista .mensaje-ajeno .username-msg {
   width: fit-content;
 }
+.contenedor-mensajes .lista .mensaje-ajeno .username-msg span{
+  cursor: pointer;
+}
 
 .contenedor-mensajes .lista .mensaje-ajeno .ajeno-msg {
   margin-right: 2vw; /* Espacio entre los mensajes */

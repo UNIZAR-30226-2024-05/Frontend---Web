@@ -3,7 +3,6 @@ import './MensajesClub.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from '../../context/AuthProvider';
-import Mensaje from './Mensaje';
 
 const MensajesClub = ({ club, setClub }) => {
 
@@ -13,6 +12,7 @@ const MensajesClub = ({ club, setClub }) => {
 
     const { auth, socket } = useContext(AuthContext);
     const { user_id } = auth;
+    const [prevUser_id, setPrevUser_id] = useState(null);
 
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
@@ -55,22 +55,29 @@ const MensajesClub = ({ club, setClub }) => {
         enviarMensaje();
     }
 
+    const handleClickUsuario = (id_user) => {
+        navigate(`/perfilamigo?id=${id_user}`);
+    }
+
     {/* En que se pueda, cambiar todo lo de libros por una consulta al servidor. */}
 
     return (
     <div className='contenedor-mensajes'>
         <div className='lista'>
-            {listaMensajes.map((msg, i) => (
+            {listaMensajes.map((msg, i) => {
+                // Actualizar prevUser_id después de cada iteración
+                setPrevUser_id(msg.user_id);
+                return (
                 <div key={i} className={msg.user_id === user_id ? 'mensaje-propio' : 'mensaje-ajeno'}>
-                    {msg.user_id !== user_id &&
+                    {msg.user_id !== user_id && msg.user_id !== prevUser_id &&
                     <div className='username-msg'>
-                        <span>{msg.username}</span>
+                        <span onClick={handleClickUsuario(msg.user_id)}>{msg.username}:</span>
                     </div>}
                     <div className='ajeno-msg'>
                         <span>{msg.mensaje}</span>
                     </div>
-                </div>
-            ))}
+                </div>);
+            })}
         </div>
         <div className='escribir-msg-container'>
             
