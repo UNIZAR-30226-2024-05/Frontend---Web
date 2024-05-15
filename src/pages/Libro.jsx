@@ -54,15 +54,6 @@ const Libro = () => {
         setCapitulosExistentes(urlsCapitulos);
     }, [capitulos]);
 
-    const [nuevaResenia, setNuevaResenia] = useState(''); // para actualizar la página cuando se añade una nueva reseña
-
-    useEffect(() => {
-        if (nuevaResenia) {
-            setMiResenia(nuevaResenia);
-            setMiReseniaId(nuevaResenia.id);
-        }
-    }, [nuevaResenia]);
-
 
     const obtenerDatosLibro = () => {
         const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
@@ -136,6 +127,15 @@ const Libro = () => {
             setPrivacidad('2');
         }
     }
+
+    const [nuevaResenia, setNuevaResenia] = useState(''); // para actualizar la página cuando se añade una nueva reseña
+
+    useEffect(() => {
+        if (nuevaResenia) {
+            setMiResenia(nuevaResenia);
+            setMiReseniaId(nuevaResenia.id);
+        }
+    }, [nuevaResenia]);
     
 
     const handleEnviarResenia = async (navigate) => {
@@ -150,7 +150,8 @@ const Libro = () => {
                 }
             );
             console.log(respuesta);
-            setNuevaResenia(respuesta.data);
+            console.log(respuesta.data);
+            //setNuevaResenia(respuesta.data);
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
