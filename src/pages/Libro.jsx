@@ -106,7 +106,7 @@ const Libro = () => {
         // URL base de búsqueda en Amazon
         const urlBase = 'https://www.amazon.es/s?k=';
         // Generar el enlace completo
-        const enlaceAmazon = `${urlBase}${tituloFormateado}"+"${autorFormateado}`;
+        const enlaceAmazon = `${urlBase}${tituloFormateado}+${autorFormateado}`;
         return enlaceAmazon;
     };
 
