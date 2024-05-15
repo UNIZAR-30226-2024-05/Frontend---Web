@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
             const newSocket = io("https://server.narratives.es", {
                 withCredentials: true,
             });
-            console.log(newSocket)
+            console.log(newSocket);
             setSocket(newSocket);
         }
         else if (!auth.username && socket) {
