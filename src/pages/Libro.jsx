@@ -113,6 +113,9 @@ const Libro = () => {
     const [mostrarColecciones, setMostrarColecciones] = useState(false);
 
     const tienesResenia = () => {
+        if (quieroBorrar) {
+            return false;
+        }
         return miResenia && Object.keys(miResenia).length > 0;
     }
 
@@ -134,7 +137,9 @@ const Libro = () => {
         if (nuevaResenia) {
             setMiResenia(nuevaResenia);
             setMiReseniaId(nuevaResenia.id);
-            setReseniasComunidad([...reseniasComunidad, nuevaReseniaPublica]);
+            if (nuevaResenia.visibilidad === 0) {
+                setReseniasComunidad([...reseniasComunidad, nuevaReseniaPublica]);
+            }
         }
     }, [nuevaResenia]);
     
@@ -151,7 +156,6 @@ const Libro = () => {
                 }
             );
             console.log(respuesta);
-            //setNuevaResenia(respuesta.data);
             if (respuesta && respuesta.data) {
                 setNuevaResenia(respuesta.data);
                 if (respuesta.data.visibilidad === 0) {
@@ -280,6 +284,7 @@ const Libro = () => {
         navigate(`/perfilamigo?id=${id_user}`);
     }
 
+    const [quieroBorrar, setQuieroBorrar] = useState(false);
     
     const handleBorrarResenia = async (navigate) => {
         console.log(miReseniaId);
@@ -294,7 +299,7 @@ const Libro = () => {
             );
             console.log(respuesta);
             if (respuesta && respuesta.data) {
-                setNuevaResenia(respuesta.data);
+                setQuieroBorrar(true);
             } else {
                 console.error('La respuesta del servidor no tiene los datos esperados');
             }
