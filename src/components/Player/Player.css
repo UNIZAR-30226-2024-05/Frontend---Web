@@ -5,9 +5,7 @@
     margin-top: 1vh;
 }
 
-.prev, .play, .sig{
-    margin-top: 40px;
-}
+
 
 .PlayerContainer{
     display: flex;
