@@ -46,7 +46,9 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     return(
         <div className="PlayerContainer">
-            <img className='imagen' src={portada} />
+            <div className="Imagen">
+                <img className='imagen' src={portada} />
+            </div>
             <div className="title">
                 <p>{currentSong.nombre}</p>
             </div>
