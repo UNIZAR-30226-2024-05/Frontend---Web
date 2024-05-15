@@ -12,7 +12,6 @@ const MensajesClub = ({ club, setClub }) => {
     const messagesEndRef = useRef(null);
 
     const { auth, socket } = useContext(AuthContext)
-    const { user_id } = auth;
 
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
@@ -32,7 +31,7 @@ const MensajesClub = ({ club, setClub }) => {
     useEffect(() => {
         console.log(listaMensajes);
         setClub({...club, messages: listaMensajes});
-        console.log({club});
+        console.log(club);
     }, [listaMensajes]);
     
       const handleChangeNewMsg = event => {
