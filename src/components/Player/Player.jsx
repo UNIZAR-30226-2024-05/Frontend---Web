@@ -60,7 +60,8 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                     <ChevronDoubleLeft className="prev" margin-top='2%' size={40} onClick={skipBack}/>
                 </button>
                 <button type="button">
-                    <Play className="play" margin-top='2%' size={40} onClick={PlayPause}/>
+                    {isplaying ? <Play className="play" margin-top='2%' size={40} onClick={PlayPause}/>
+                    : <Pause className="pause" margin-top='2%' size={40} onClick={PlayPause}/>}
                 </button>
                 <button type="button" >
                     <ChevronDoubleRight className="skip" margin-top='2%' size={40} onClick={skiptoNext}/>
