@@ -57,6 +57,7 @@ const Club = () => {
     <div className='club'>
       <div className='club-container'>
         <h1 className='title'>{club?.nombre}</h1>
+        <h1 className='descripcion'>{club?.descripcion}</h1>
       {loading ? (
           <div className='loading-container'>
             <p>Loading...</p>
