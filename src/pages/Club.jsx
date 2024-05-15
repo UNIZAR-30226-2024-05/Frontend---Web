@@ -36,6 +36,7 @@ const Club = () => {
         socket.on('message', (data) => {
             // Maneja el evento recibido
             console.log('Evento recibido:', data);
+            setClub(club => ({ ...club, messages: [...club.messages, data] }));
         });
         }
 

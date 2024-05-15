@@ -21,6 +21,10 @@ const MensajesClub = ({ club, setClub }) => {
     };
 
     useEffect(() => {
+        setListaMensajes(club.messages);
+    }, [club]);
+
+    useEffect(() => {
         scrollToBottom();
     }, [listaMensajes]);
 
@@ -42,8 +46,6 @@ const MensajesClub = ({ club, setClub }) => {
         if (socket) {
             // Emitir el evento 'message' al servidor con los datos del mensaje y el ID del club
             socket.emit('message', { club_id: club.id, msg: nuevoMensaje });
-            // Actualizar la lista de mensajes localmente
-            setListaMensajes([...listaMensajes, { mensaje: nuevoMensaje, user_id }]);
             // Limpiar el campo del nuevo mensaje
             setNuevoMensaje('');
         }
