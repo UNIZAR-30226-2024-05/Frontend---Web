@@ -22,6 +22,7 @@
 .contenedor-mensajes .lista .mensaje-propio {
     /* Estilos para cada mensaje */
     margin-right: 2vw; /* Espacio entre los mensajes */
+    margin-left: 4vw;
     margin-bottom: 3vh; /* Espacio debajo de los mensajes */
     padding-left: 0.5vw;
     padding-right: 2vw;
@@ -42,7 +43,6 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  /*grid-template-columns: 80% 20%;*/
 }
 
 .contenedor-mensajes .lista .mensaje-ajeno .username-msg {
@@ -54,7 +54,6 @@
 
 .contenedor-mensajes .lista .mensaje-ajeno .ajeno-msg {
   margin-right: 2vw; /* Espacio entre los mensajes */
-  margin-bottom: 3vh; /* Espacio debajo de los mensajes */ 
   padding-left: 2vw;
   padding-right: 2vw;
   border-radius: 20px;
