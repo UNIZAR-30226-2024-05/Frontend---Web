@@ -29,10 +29,6 @@ export const AuthProvider = ({ children }) => {
         }
     }, [auth]);
 
-    useEffect(() => {
-        console.log(socket);
-    }, [socket]);
-
     // Almacenar la sesión en el almacenamiento local al cambiar
     useEffect(() => {
         localStorage.setItem('auth', JSON.stringify(auth));
@@ -61,7 +57,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return(
-        <AuthContext.Provider value={{ auth, setAuth, updateUsername, updateMail}}>
+        <AuthContext.Provider value={{ auth, setAuth, socket, updateUsername, updateMail}}>
             {children}
         </AuthContext.Provider>
     )
