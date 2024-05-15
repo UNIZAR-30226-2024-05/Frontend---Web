@@ -94,7 +94,7 @@ const Libro = () => {
         navigate(`/player?${params.toString()}`);
     };
 
-    console.log(libro);
+    //console.log(libro);
     const estrellasLlenas = Math.floor(puntuacion);
     const estrellasMedias = puntuacion - estrellasLlenas >= 0.5 ? 1 : 0;
     const estrellasVacias = 5 - estrellasLlenas - estrellasMedias;
@@ -209,7 +209,6 @@ const Libro = () => {
     };
     
     const handleMouseLeave = () => {
-        preventDefault();
         setPuntuacionUsuario(puntuacionGuardada);
     };
 
