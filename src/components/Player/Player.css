@@ -16,7 +16,6 @@
     width: 22vw;
     align-self: center;
     margin-top: 1vh;
-    margin-bottom: 2vh;
     .NavigationWrapper
     {
         min-width: 100%;
@@ -43,35 +42,8 @@
     margin-bottom: 2vh;
 }
 
-.progressbar{
-    margin-top: 2%;
-    width: 450px;
-    height: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: stretch;
 
-    border-radius: 60px;
-    background-color: #494b52;
-    box-shadow: 0px 0px 20px #111;
 
-    overflow: hidden;
-}
-
-.bar{
-    
-
-    background-color: rgb(255, 174, 105);
-}
-.volumen{
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: 0px;
-    margin-right: 5px;
-    margin-left: 5px;
-    margin-bottom: 40px;
-}
 
 
 .imagen{
@@ -79,9 +51,5 @@
     width: max-content;
     height: 65vh;
     align-self: center;
-}
-
-.barraVol{
-    margin-top: 30px;
 }
 
