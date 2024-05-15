@@ -37,7 +37,7 @@ const Club = () => {
             // Maneja el evento recibido
             console.log('Evento recibido:', data);
             console.log(data.club_id);
-            console.log(club.id);
+            console.log(club);
             if(data.club_id === club.id){
               setClub(club => ({ ...club, messages: [...club.messages, data] }));
             }
