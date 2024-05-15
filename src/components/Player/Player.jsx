@@ -16,7 +16,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         const offset = e.nativeEvent.offsetX;
 
         const divprogress = offset / width * 100;
-        audioElem.current.currentTime = divprogress / 100 * currentSong.length;
+        audioElem.current.currentTime = divprogress;
         console.log(width);
         console.log(offset);
         console.log(divprogress);
