@@ -137,7 +137,7 @@ const Libro = () => {
         if (nuevaResenia) {
             setMiResenia(nuevaResenia);
             setMiReseniaId(nuevaResenia.id);
-            if (nuevaResenia.visibilidad === 0) {
+            if (nuevaResenia.visibilidad === '0') {
                 setReseniasComunidad([...reseniasComunidad, nuevaReseniaPublica]);
             }
         }
