@@ -324,6 +324,15 @@ const Libro = () => {
     }
 
     const [modoEdicion, setModoEdicion] = useState(false);
+    const [edicionResenia, setEdicionResenia] = useState('');
+
+    useEffect(() => {
+        if (edicionResenia) {
+            setMiResenia(edicionResenia);
+            setMiReseniaId(edicionResenia.id);
+            setModoEdicion(false);
+        }
+    }, [edicionResenia]);
 
     const handleEditarResenia = async () => {
         console.log({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad });
@@ -338,7 +347,7 @@ const Libro = () => {
             );
             console.log(respuesta);
             if (respuesta && respuesta.data) {
-                setNuevaResenia(respuesta.data);
+                setEdicionResenia(respuesta.data);
             } else {
                 console.error('La respuesta del servidor no tiene los datos esperados');
             }
