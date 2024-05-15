@@ -112,4 +112,8 @@
     .contenedor-lista-biblioteca .buscador-container{
         padding-bottom: 15px;
     }
+
+    .contenedor-lista-biblioteca .lista .libro {
+      grid-template-columns: 20% 80%;
+    }
 }
