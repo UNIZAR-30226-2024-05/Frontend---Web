@@ -74,7 +74,7 @@ const MensajesClub = ({ club, setClub }) => {
                 value={nuevoMensaje}
                 onChange={handleChangeNewMsg}
             />
-            <button className='button-send' onClick={handleEnviarMensaje}>
+            <button className='button-send' disabled={!nuevoMensaje.trim()} onClick={handleEnviarMensaje}>
                 <FontAwesomeIcon icon={faArrowRight} />
             </button>
 
