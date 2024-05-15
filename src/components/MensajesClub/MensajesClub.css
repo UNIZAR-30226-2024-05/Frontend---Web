@@ -1,14 +1,14 @@
 .contenedor-mensajes {
     /* Estilos para el contenedor de la lista */
     text-align: center;
-    padding: 20px 50px;
-    margin: 20px 50px;
+    padding: 20px 30px;
+    margin: 20px 70px;
     height: 70vh;
     overflow: hidden;
     position: relative;
     max-width: 100% !important;
     border-radius: 50px;
-    background: #44d47bd5;
+    background: #ffffff;
 }
 
 .contenedor-mensajes .lista {
@@ -23,7 +23,7 @@
     /* Estilos para cada mensaje */
     margin-right: 2vw; /* Espacio entre los mensajes */
     margin-bottom: 3vh; /* Espacio debajo de los mensajes */ 
-    background-color: #0000006e;
+    background-color: #00000081;
     border-radius: 20px;
     display: flex;
     /*grid-template-columns: 80% 20%;*/
