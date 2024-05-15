@@ -16,6 +16,7 @@
     display: flex; /* Utiliza flexbox para alinear los mensajes horizontalmente */
     flex-direction: column;
     overflow-y: scroll;
+    scroll-behavior: smooth;
     height: 60vh;
 }
 
