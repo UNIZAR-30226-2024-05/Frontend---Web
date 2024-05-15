@@ -30,7 +30,7 @@
     border-radius: 20px;
     display: flex;
     text-align: right;
-    /*grid-template-columns: 80% 20%;*/
+    align-self: flex-end;
 }
 
 .contenedor-mensajes .lista .mensaje-ajeno {

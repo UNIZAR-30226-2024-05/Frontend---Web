@@ -66,7 +66,7 @@ const MensajesClub = ({ club, setClub }) => {
                         <span>{msg.mensaje}</span>
                     ) : (
                         <>
-                            <span>{msg.user}</span>
+                            <span>{msg.username}</span>
                             <span>{msg.mensaje}</span>
                         </>
                     )}  
