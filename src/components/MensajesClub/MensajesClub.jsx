@@ -66,7 +66,7 @@ const MensajesClub = ({ club, setClub }) => {
 
     return (
     <div className='contenedor-mensajes'>
-        <div className='lista'>
+        <div className='lista' ref={messagesEndRef}>
             {listaMensajes.map((msg, i) => (
                 <div key={i} className={msg.user_id === user_id ? 'mensaje-propio' : 'mensaje-ajeno'}>
                     {(msg.user_id !== user_id) && (msg.user_id !== listaMensajes[i-1]?.user_id) &&
