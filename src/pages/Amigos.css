@@ -17,17 +17,17 @@
 
 .amigos-lista {
     display: flex;
-    width: 50%;
+    width: 80%;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
-    margin-right: 15%;
+    margin-right: 50px;
 }
 
 .amigos-titulo {
     font-size: 3rem;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .amigos-peticiones {

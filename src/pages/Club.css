@@ -34,11 +34,14 @@
 
 .club .club-container .descripcion{
     margin-top: 0;
+    margin-left: 80px;
+    margin-right: 80px;
     align-self: flex-start;
     justify-self: center;
     width: 100%;
     text-align: center;
-    font-size: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: normal;
 }
 
 .club .club-container .lista {

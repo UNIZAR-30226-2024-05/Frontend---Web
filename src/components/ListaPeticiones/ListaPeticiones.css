@@ -1,11 +1,11 @@
-.contenedor-lista {
+.contenedor-lista-peticiones {
     /* Estilos para el contenedor de la lista */
     text-align: center;
-    padding: 0px 100px;
+    padding: 0px 20px;
     width: 100%;
   }
   
-  .contenedor-lista .lista {
+  .contenedor-lista-peticiones .lista {
     /* Estilos para la lista de libros */
     display: flex; /* Utiliza flexbox para alinear los libros horizontalmente */
     flex-direction: column;
@@ -19,7 +19,7 @@
     text-align: left;
   }
   
-  .contenedor-lista .lista .peticion {
+  .contenedor-lista-peticiones .lista .peticion {
     /* Estilos para cada peticion */
     margin-bottom: 20px; /* Espacio debajo de las peticiones */
     width: 80%;
@@ -27,12 +27,12 @@
     border-radius: 20px;
   }
   
-  .contenedor-lista .lista .peticion .contenido-peticion {
+  .contenedor-lista-peticiones .lista .peticion .contenido-peticion {
     display: flex;
     justify-content: space-between;
   }
   
-  .contenedor-lista .lista .peticion .contenido-peticion .peticion-username {
+  .contenedor-lista-peticiones .lista .peticion .contenido-peticion .peticion-username {
     /* Estilos para los nombres de usuario */
     margin: 10px; /* Margen alrededor del nombre de usuario */
     color: black;
