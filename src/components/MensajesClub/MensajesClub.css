@@ -19,11 +19,7 @@
     height: 60vh;
 }
 
-.contenedor-mensajes .lista .mensaje {
-
-}
-
-.contenedor-mensajes .lista .mensaje .mensaje-propio {
+.contenedor-mensajes .lista .mensaje-propio {
     /* Estilos para cada mensaje */
     margin-right: 2vw; /* Espacio entre los mensajes */
     margin-bottom: 3vh; /* Espacio debajo de los mensajes */
@@ -37,18 +33,29 @@
     align-self: flex-end;
 }
 
-.contenedor-mensajes .lista .mensaje .mensaje-ajeno {
+.contenedor-mensajes .lista .mensaje-ajeno {
   /* Estilos para cada mensaje */
   margin-right: 2vw; /* Espacio entre los mensajes */
   margin-bottom: 3vh; /* Espacio debajo de los mensajes */ 
   padding-left: 2vw;
   padding-right: 2vw;
-  width: fit-content;
-  background-color: #9d9d9d;
-  border-radius: 20px;
+
   display: flex;
   text-align: left;
   /*grid-template-columns: 80% 20%;*/
+}
+
+.contenedor-mensajes .lista .mensaje-ajeno .username-msg {}
+
+.contenedor-mensajes .lista .mensaje-ajeno .ajeno-msg {
+  margin-right: 2vw; /* Espacio entre los mensajes */
+  margin-bottom: 3vh; /* Espacio debajo de los mensajes */ 
+  padding-left: 2vw;
+  padding-right: 2vw;
+  width: fit-content;
+  display: flex;
+  text-align: left;
+  background-color: #9d9d9d;
 }
 /*
 .contenedor-mensajes .lista .mensaje .contenido-msg {
