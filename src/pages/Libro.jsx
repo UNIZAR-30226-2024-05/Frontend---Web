@@ -54,6 +54,8 @@ const Libro = () => {
         setCapitulosExistentes(urlsCapitulos);
     }, [capitulos]);
 
+    const [nuevaResenia, setNuevaResenia] = useState(''); // para actualizar la página cuando se añade una nueva reseña
+
     useEffect(() => {
         if (nuevaResenia) {
             setMiResenia(nuevaResenia);
@@ -134,7 +136,7 @@ const Libro = () => {
             setPrivacidad('2');
         }
     }
-    const [nuevaResenia, setNuevaResenia] = useState('');
+    
 
     const handleEnviarResenia = async (navigate) => {
         try {
