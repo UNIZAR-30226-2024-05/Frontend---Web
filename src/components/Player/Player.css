@@ -14,6 +14,7 @@
 
 .Navigation{
     width: 22vw;
+    align-self: center;
     .NavigationWrapper
     {
         min-width: 100%;
@@ -31,6 +32,11 @@
 
     }
 }
+
+.title{
+    align-self: center;
+}
+
 .progressbar{
     margin-top: 2%;
     width: 450px;
@@ -66,8 +72,13 @@
     margin-top: 10px;
     width: max-content;
     height: 65vh;
+    align-self: center;
 }
 
 .barraVol{
     margin-top: 30px;
+}
+
+.button{
+    align-self: center;
 }
