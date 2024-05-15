@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     height: calc(100vh - 80px);
+    background: linear-gradient(#7f9894, #acd1cb);
 }
 
 .changefoto .choose{
