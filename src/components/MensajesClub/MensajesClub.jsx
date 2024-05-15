@@ -68,7 +68,7 @@ const MensajesClub = ({ club, setClub }) => {
         <div className='lista'>
             {listaMensajes.map((msg, i) => (
                 <div key={i} className={msg.user_id === user_id ? 'mensaje-propio' : 'mensaje-ajeno'}>
-                    {(msg.user_id !== user_id) && ( i > 1 ) && (msg.user_id !== listaMensajes[i-2].user_id) &&
+                    {(msg.user_id !== user_id) && (msg.user_id !== listaMensajes[i-1]?.user_id) &&
                     <div className='username-msg'>
                         <span>{msg.username}:</span>
                     </div>}
