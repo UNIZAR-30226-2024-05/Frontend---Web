@@ -763,7 +763,6 @@ const Libro = () => {
                                     className={(index < puntuacionUsuario) ? "info-star-filled" : "info-star-empty"}
                                     onClick={() => handleClickPuntuacion(index)}
                                     onMouseEnter={() => {
-                                        preventDefault();
                                         handleMouseEnter(index)}}
                                     onMouseLeave={handleMouseLeave}
                                 >&#9733;</span>
@@ -809,7 +808,6 @@ const Libro = () => {
                                             className="info-texto-resenia"
                                             value={comentario}
                                             onChange={(event) => {
-                                                event.preventDefault();
                                                 setComentario(event.target.value)}}
                                             placeholder="Escribe aquí tu reseña"
                                             required
