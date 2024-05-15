@@ -68,7 +68,7 @@ const MensajesClub = ({ club, setClub }) => {
         <div className='lista'>
             {listaMensajes.map((msg, i) => (
                 <div key={i} className={msg.user_id === user_id ? 'mensaje-propio' : 'mensaje-ajeno'}>
-                    {msg.user_id !== user_id && msg.user_id !== listaMensajes[i-1].user_id &&
+                    {(msg.user_id !== user_id) && ( i > 0 ) && (msg.user_id !== listaMensajes[i-1].user_id) &&
                     <div className='username-msg'>
                         <span onClick={handleClickUsuario(msg.user_id)}>{msg.username}:</span>
                     </div>}
