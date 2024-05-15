@@ -1,10 +1,7 @@
 import { Play, Pause, ChevronDoubleLeft, ChevronDoubleRight, CakeOutline } from "heroicons-react"
 import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
 import { useState, useRef, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
 import "./Player.css"
-import { Howl } from "howler"
-import {motion} from "framer-motion"
 
 const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos}) => {
 
@@ -20,6 +17,10 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
         const divprogress = offset / width * 100;
         audioElem.current.currentTime = divprogress / 100 * currentSong.length;
+        console.log(width);
+        console.log(offset);
+        console.log(divprogress);
+        console.log(audioElem.current.currentTime);
     }
 
     const skipBack = () => {
