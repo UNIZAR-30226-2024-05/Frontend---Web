@@ -1,6 +1,7 @@
 .Controlls{
     display: flex;
     flex-direction: row;
+    align-self: center;
 }
 
 .prev, .play, .sig{
@@ -79,6 +80,3 @@
     margin-top: 30px;
 }
 
-.button{
-    align-self: center;
-}
