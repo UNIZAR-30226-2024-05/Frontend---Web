@@ -33,7 +33,7 @@ const Club = () => {
       fetchLibros();
       // Agrega la lógica de escucha del socket aquí
       if (socket) {
-        socket.on('nombre_del_evento', (data) => {
+        socket.on('message', (data) => {
             // Maneja el evento recibido
             console.log('Evento recibido:', data);
         });
@@ -42,7 +42,7 @@ const Club = () => {
     // Limpia el evento de escucha cuando el componente se desmonta
     return () => {
         if (socket) {
-            socket.off('nombre_del_evento');
+            socket.off('message');
         }
         };
     }, [id_club, socket]);

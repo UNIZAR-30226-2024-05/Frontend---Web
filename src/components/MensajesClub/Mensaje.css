@@ -5,7 +5,7 @@
     justify-content: flex-end;
   }
 
-  .mgs-container-ajeno {
+.mgs-container-ajeno {
     display: flex;
     align-items: center;
     flex: 1;
