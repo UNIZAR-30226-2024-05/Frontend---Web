@@ -3,6 +3,7 @@ import './MensajesClub.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from '../../context/AuthProvider';
+import Mensaje from './Mensaje';
 
 const MensajesClub = ({ club, setClub }) => {
 
@@ -60,11 +61,7 @@ const MensajesClub = ({ club, setClub }) => {
             {listaMensajes.map((msg, i) => (
                 <div key={i}
                 className='mensaje'>
-                    <div className='contenido-msg'>
-                        <div className='texto-msg'>
-                        <span>{msg.user_id}</span><span>{msg.mensaje}</span>
-                        </div>
-                    </div>
+                    <Mensaje mensaje={msg}/>
                 </div>
               ))}
         </div>

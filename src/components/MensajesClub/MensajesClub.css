@@ -18,14 +18,14 @@
 
 .contenedor-mensajes .lista .mensaje {
     /* Estilos para cada mensaje */
-    margin-right: 20px; /* Espacio entre los mensajes */
-    margin-bottom: 20px; /* Espacio debajo de los mensajes */ 
+    margin-right: 2vw; /* Espacio entre los mensajes */
+    margin-bottom: 3vh; /* Espacio debajo de los mensajes */ 
     background-color: #0000006e;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 80% 20%;
 }
-
+/*
 .contenedor-mensajes .lista .mensaje .contenido-msg {
   display: flex;
   align-items: center;
@@ -37,7 +37,7 @@
   margin: 10px;
   cursor: pointer;
 }
-
+*/
 
   .escribir-msg-container{
     align-items: end;
