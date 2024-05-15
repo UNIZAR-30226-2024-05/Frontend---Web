@@ -7,6 +7,11 @@
     margin-top: 40px;
 }
 
+.PlayerContainer{
+    display: flex;
+    flex-direction: column;
+}
+
 .Navigation{
     width: 22vw;
     .NavigationWrapper
