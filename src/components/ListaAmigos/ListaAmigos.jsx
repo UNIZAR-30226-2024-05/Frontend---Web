@@ -29,7 +29,7 @@ const ListaAmigos = ({usuarios}) => {
     useEffect(() => {
         filtrar(busqueda);
       }, [listaUsuarios]);
-      
+
 
     const handleChangeBusqueda = (event) => {
         setBusqueda(event.target.value);
@@ -109,6 +109,7 @@ const ListaAmigos = ({usuarios}) => {
                 return amigo;
             });
             setListaUsuarios(updatedAmigos);
+            filtrar(busqueda);
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error);
