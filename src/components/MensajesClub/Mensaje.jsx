@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import AuthContext from '../../context/AuthProvider';
+import './Mensaje.css';
 
 const Mensaje = ({ mensaje }) => {
 

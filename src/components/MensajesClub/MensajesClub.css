@@ -22,8 +22,8 @@
     margin-bottom: 3vh; /* Espacio debajo de los mensajes */ 
     background-color: #0000006e;
     border-radius: 20px;
-    display: grid;
-    grid-template-columns: 80% 20%;
+    display: flex;
+    /*grid-template-columns: 80% 20%;*/
 }
 /*
 .contenedor-mensajes .lista .mensaje .contenido-msg {
