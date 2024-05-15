@@ -139,6 +139,7 @@ const ListaAmigos = ({usuarios}) => {
                 return amigo;
             });
             setListaUsuarios(updatedAmigos);
+            filtrar(busqueda);
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
@@ -168,6 +169,7 @@ const ListaAmigos = ({usuarios}) => {
                 return amigo;
             });
             setListaUsuarios(updatedAmigos);
+            filtrar(busqueda);
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
@@ -197,6 +199,7 @@ const ListaAmigos = ({usuarios}) => {
                 return amigo;
             });
             setListaUsuarios(updatedAmigos);
+            filtrar(busqueda);
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
@@ -226,6 +229,7 @@ const ListaAmigos = ({usuarios}) => {
                 return amigo;
             });
             setListaUsuarios(updatedAmigos);
+            filtrar(busqueda);
         } catch (error) {
             if (error.response) {
                 console.error(error.response.data.error); // Manejar errores específicos del servidor
