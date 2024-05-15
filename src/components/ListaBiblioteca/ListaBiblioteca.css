@@ -114,6 +114,6 @@
     }
 
     .contenedor-lista-biblioteca .lista .libro {
-      grid-template-columns: 20% 80%;
+      grid-template-columns: 30% 70%;
     }
 }
