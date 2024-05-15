@@ -11,7 +11,8 @@ const MensajesClub = ({ club, setClub }) => {
     const [nuevoMensaje, setNuevoMensaje] = useState('');
     const messagesEndRef = useRef(null);
 
-    const { auth, socket } = useContext(AuthContext)
+    const { auth, socket } = useContext(AuthContext);
+    const { user_id } = auth;
 
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
