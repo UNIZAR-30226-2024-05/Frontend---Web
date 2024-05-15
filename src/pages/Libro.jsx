@@ -134,10 +134,11 @@ const Libro = () => {
         if (nuevaResenia) {
             setMiResenia(nuevaResenia);
             setMiReseniaId(nuevaResenia.id);
+            setReseniasComunidad([...reseniasComunidad, nuevaReseniaPublica]);
         }
     }, [nuevaResenia]);
     
-
+    conts [nuevaReseniaPublica, setNuevaReseniaPublica] = useState(''); // para actualizar la página cuando se añade una nueva reseña
     const handleEnviarResenia = async (navigate) => {
         try {
             console.log({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad });
@@ -153,6 +154,9 @@ const Libro = () => {
             //setNuevaResenia(respuesta.data);
             if (respuesta && respuesta.data) {
                 setNuevaResenia(respuesta.data);
+                if (respuesta.data.visibilidad === 0) {
+                    setNuevaReseniaPublica(respuesta.data);
+                }
             } else {
                 console.error('La respuesta del servidor no tiene los datos esperados');
             }
@@ -276,6 +280,7 @@ const Libro = () => {
         navigate(`/perfilamigo?id=${id_user}`);
     }
 
+    
     const handleBorrarResenia = async (navigate) => {
         console.log(miReseniaId);
         try {
@@ -317,7 +322,7 @@ const Libro = () => {
     const handleEditarResenia = () => {
         console.log({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad });
         try {
-            const respuesta = axios.post(
+            const respuesta = await axios.post(
                 '/review/edit_review',
                 JSON.stringify({ id_review: miResenia.id, comentario, puntuacion: puntuacionGuardada, visibilidad: privacidad }),
                 {
