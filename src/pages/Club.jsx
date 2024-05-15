@@ -36,9 +36,11 @@ const Club = () => {
         socket.on('message', (data) => {
             // Maneja el evento recibido
             console.log('Evento recibido:', data);
-            setClub(club => ({ ...club, messages: [...club.messages, data] }));
+            if(data.club_id === club.id){
+              setClub(club => ({ ...club, messages: [...club.messages, data] }));
+            }
         });
-        }
+      }
 
     // Limpia el evento de escucha cuando el componente se desmonta
     return () => {
