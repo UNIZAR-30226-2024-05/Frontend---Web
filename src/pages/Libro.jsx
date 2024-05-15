@@ -63,7 +63,7 @@ const Libro = () => {
             setLibro(response.data);
             setTitulo(response.data.audiolibro.titulo);
             setDescripcion(response.data.audiolibro.descripcion);
-            setPuntuacion(3); /* La consulta no lo devuelve */
+            setPuntuacion(response.data.audiolibro.puntuacion); 
             setAutor(response.data.autor);
             setGeneros(response.data.generos);
             setPortada(response.data.audiolibro.img);

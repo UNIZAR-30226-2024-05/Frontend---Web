@@ -29,6 +29,7 @@ const ListaAmigos = ({usuarios}) => {
     useEffect(() => {
         filtrar(busqueda);
       }, [listaUsuarios]);
+      
 
     const handleChangeBusqueda = (event) => {
         setBusqueda(event.target.value);
