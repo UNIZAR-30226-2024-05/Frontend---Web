@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import './MensajesClub.css';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from '../../context/AuthProvider';
@@ -54,6 +55,8 @@ const MensajesClub = ({ club, setClub }) => {
     const handleEnviarMensaje = () => {
         enviarMensaje();
     }
+
+    const navigate = useNavigate();
 
     const handleClickUsuario = (id_user) => {
         navigate(`/perfilamigo?id=${id_user}`);
