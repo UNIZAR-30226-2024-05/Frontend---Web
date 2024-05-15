@@ -58,7 +58,7 @@ const ListaPeticiones = ({ peticiones, enviadas, recibidas, aceptadas, rechazada
 
     const tiposOrdenados = ['enviadas', 'recibidas', 'aceptadas', 'rechazadas'];
     return (
-        <div className='contenedor-lista'>
+        <div className='contenedor-lista-peticiones'>
             <div className='buscador-listaPeticiones-container'>
                 <input
                     className='buscador'
