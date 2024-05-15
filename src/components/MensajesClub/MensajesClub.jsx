@@ -48,6 +48,7 @@ const MensajesClub = ({ club, setClub }) => {
             socket.emit('message', { club_id: club.id, msg: nuevoMensaje });
             // Limpiar el campo del nuevo mensaje
             setNuevoMensaje('');
+            scrollToBottom();
         }
     };
 

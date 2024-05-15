@@ -65,9 +65,6 @@ const Club = () => {
             <MensajesClub className='lista' club={club} setClub={setClub} />
           )}
       </div>
-      <div className='club-footer'>
-        <Footer className='footer' />
-      </div>
     </div>
   );
 }
