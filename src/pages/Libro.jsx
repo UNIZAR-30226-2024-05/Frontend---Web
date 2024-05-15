@@ -138,7 +138,7 @@ const Libro = () => {
         }
     }, [nuevaResenia]);
     
-    conts [nuevaReseniaPublica, setNuevaReseniaPublica] = useState(''); // para actualizar la página cuando se añade una nueva reseña
+    const [nuevaReseniaPublica, setNuevaReseniaPublica] = useState(''); // para actualizar la página cuando se añade una nueva reseña
     const handleEnviarResenia = async (navigate) => {
         try {
             console.log({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad });
