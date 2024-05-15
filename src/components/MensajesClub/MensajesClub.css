@@ -1,11 +1,14 @@
 .contenedor-mensajes {
     /* Estilos para el contenedor de la lista */
     text-align: center;
-    padding: 40px 100px;
-    height: 80vh;
+    padding: 20px 50px;
+    margin: 20px 50px;
+    height: 70vh;
     overflow: hidden;
     position: relative;
     max-width: 100% !important;
+    border-radius: 50px;
+    background: #44d47bd5;
 }
 
 .contenedor-mensajes .lista {
@@ -40,11 +43,11 @@
 */
 
   .escribir-msg-container{
-    align-items: end;
+    align-items: center;
     right: 0;
     display: flex;
     justify-content: center;
-    height: 10vh;
+    height: 8vh;
   }
 
   .escribir-msg-container .escribir-msg{
