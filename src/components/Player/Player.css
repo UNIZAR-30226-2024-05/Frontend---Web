@@ -36,6 +36,8 @@
 
 .title{
     align-self: center;
+    font-size: medium;
+    height: 5vh;
 }
 
 .progressbar{
