@@ -8,7 +8,7 @@
     position: relative;
     max-width: 100% !important;
     border-radius: 50px;
-    background: #ffffff;
+    background: #e1e8e7;
 }
 
 .contenedor-mensajes .lista {
@@ -19,28 +19,32 @@
     height: 60vh;
 }
 
-.contenedor-mensajes .lista .mensaje-propio {
+.contenedor-mensajes .lista .mensaje {
+
+}
+
+.contenedor-mensajes .lista .mensaje .mensaje-propio {
     /* Estilos para cada mensaje */
     margin-right: 2vw; /* Espacio entre los mensajes */
     margin-bottom: 3vh; /* Espacio debajo de los mensajes */
-    padding-left: 2vw;
+    padding-left: 0.5vw;
     padding-right: 2vw;
     width: fit-content;
-    background-color: #00000081;
+    background-color: #43db54;
     border-radius: 20px;
     display: flex;
     text-align: right;
     align-self: flex-end;
 }
 
-.contenedor-mensajes .lista .mensaje-ajeno {
+.contenedor-mensajes .lista .mensaje .mensaje-ajeno {
   /* Estilos para cada mensaje */
   margin-right: 2vw; /* Espacio entre los mensajes */
   margin-bottom: 3vh; /* Espacio debajo de los mensajes */ 
   padding-left: 2vw;
   padding-right: 2vw;
   width: fit-content;
-  background-color: #00000081;
+  background-color: #9d9d9d;
   border-radius: 20px;
   display: flex;
   text-align: left;
