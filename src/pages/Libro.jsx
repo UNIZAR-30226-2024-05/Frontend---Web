@@ -319,7 +319,7 @@ const Libro = () => {
 
     const [modoEdicion, setModoEdicion] = useState(false);
 
-    const handleEditarResenia = () => {
+    const handleEditarResenia = async () => {
         console.log({ id_libro, comentario, puntuacion: puntuacionGuardada, privacidad });
         try {
             const respuesta = await axios.post(
