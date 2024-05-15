@@ -31,27 +31,28 @@ const Club = () => {
           })
       }
       fetchLibros();
-      // Agrega la lógica de escucha del socket aquí
+    }, []);
+
+    useEffect(() => {
       if (socket) {
-        socket.on('message', (data) => {
-            // Maneja el evento recibido
-            console.log('Evento recibido:', data);
-            console.log(data.club_id);
-            console.log(response.data.club);
-            if(data.club_id === club.id){
-              setClub(club => ({ ...club, messages: [...club.messages, data] }));
-            }
-        });
+          socket.on('message', (data) => {
+              // Maneja el evento recibido
+              console.log('Evento recibido:', data);
+              console.log(data.club_id);
+              console.log(club.id);
+              if (data.club_id === club.id) {
+                  setClub(prevClub => ({ ...prevClub, messages: [...prevClub.messages, data] }));
+              }
+          });
       }
-
-    // Limpia el evento de escucha cuando el componente se desmonta
-    return () => {
-        if (socket) {
-            socket.off('message');
-        }
-        };
-    }, [id_club, socket]);
-
+  
+      // Limpia la escucha del socket cuando el componente se desmonta
+      return () => {
+          if (socket) {
+              socket.off('message');
+          }
+      };
+  }, [club, socket]);
 
 
   return (
