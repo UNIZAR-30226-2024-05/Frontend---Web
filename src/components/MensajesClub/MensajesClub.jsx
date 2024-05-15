@@ -8,7 +8,7 @@ import Mensaje from './Mensaje';
 const MensajesClub = ({ club, setClub }) => {
 
     const [listaMensajes, setListaMensajes] = useState(club.messages);
-    const [nuevoMensaje, setNuevoMensaje] = useState([]);
+    const [nuevoMensaje, setNuevoMensaje] = useState('');
     const messagesEndRef = useRef(null);
 
     const { auth, socket } = useContext(AuthContext)
