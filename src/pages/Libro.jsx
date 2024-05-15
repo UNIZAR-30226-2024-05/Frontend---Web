@@ -152,6 +152,11 @@ const Libro = () => {
             console.log(respuesta);
             console.log(respuesta.data);
             //setNuevaResenia(respuesta.data);
+            if (respuesta && respuesta.data) {
+                setNuevaResenia(respuesta.data);
+            } else {
+                console.error('La respuesta del servidor no tiene los datos esperados');
+            }
         } catch (error) {
             if (!error.response) {
                 console.log('No hay respuesta del servidor');
