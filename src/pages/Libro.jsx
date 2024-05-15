@@ -158,7 +158,7 @@ const Libro = () => {
             console.log(respuesta);
             if (respuesta && respuesta.data) {
                 setNuevaResenia(respuesta.data);
-                if (respuesta.data.visibilidad === 0) {
+                if (respuesta.data.visibilidad === '0') {
                     setNuevaReseniaPublica(respuesta.data);
                     console.log('Reseña pública añadida');
                 }
