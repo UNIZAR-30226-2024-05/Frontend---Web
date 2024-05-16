@@ -297,8 +297,8 @@ function prevCancion(capitulos, numCap) {
 
   useEffect(() => {
     if(isplaying){
-      console.log("Tiempo inicial", tiempoInicial);
-      audioElem.current.currentTime = tiempoInicial;
+      //console.log("Tiempo inicial", tiempoInicial);
+      //audioElem.current.currentTime = tiempoInicial;
       audioElem.current.play();
     }
     else{
