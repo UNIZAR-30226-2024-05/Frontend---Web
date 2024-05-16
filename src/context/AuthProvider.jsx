@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
     });
 
     const [socket, setSocket] = useState(null);
+    const [refreshFriends, setRefreshFriends] = useState(false);
 
     useEffect(() => {
         console.log('Entra al useEffect')
@@ -57,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return(
-        <AuthContext.Provider value={{ auth, setAuth, socket, updateUsername, updateMail}}>
+        <AuthContext.Provider value={{ auth, setAuth, socket, refreshFriends, setRefreshFriends, updateUsername, updateMail}}>
             {children}
         </AuthContext.Provider>
     )

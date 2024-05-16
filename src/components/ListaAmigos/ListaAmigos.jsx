@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import AuthContext from '../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';
 import './ListaAmigos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
-import Cookie from 'js-cookie';
 import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 
 
@@ -21,6 +21,8 @@ import pikachu from '../../images/fotos-perfil/pikachu.jpg';
 
 const ListaAmigos = ({usuarios, setUsuarios}) => {
     
+    const { setRefreshFriends } = useContext(AuthContext);
+
     const navigate = useNavigate();
     const [listaUsuarios, setListaUsuarios] = useState(usuarios);
     const [listaShow, setListaShow] = useState(usuarios);
@@ -144,6 +146,7 @@ const ListaAmigos = ({usuarios, setUsuarios}) => {
                 }
                 return amigo;
             });
+            setRefreshFriends(true);
             setListaUsuarios(updatedAmigos);
             filtrar(busqueda);
         } catch (error) {
@@ -204,6 +207,7 @@ const ListaAmigos = ({usuarios, setUsuarios}) => {
                 }
                 return amigo;
             });
+            setRefreshFriends(true);
             setListaUsuarios(updatedAmigos);
             filtrar(busqueda);
         } catch (error) {

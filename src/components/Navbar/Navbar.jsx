@@ -30,7 +30,7 @@ function Navbar() {
     const [sidebar, setSidebar] = useState(false);
 
     // Variables para conocer el contexto (Usuario conectado o no)
-    const { auth , setAuth , socket } = useContext(AuthContext);
+    const { auth, setAuth, socket, refreshFriends, setRefreshFriends } = useContext(AuthContext);
     const { username, img, role } = auth;
 
     const [ amigos, setAmigos ] = useState([]);
@@ -56,6 +56,13 @@ function Navbar() {
     useEffect(() => {
         fetchAmigos();
     }, [username]);
+
+    useEffect(() => {
+        if (refreshFriends){
+            fetchAmigos();
+            setRefreshFriends(false);
+        }
+    }, [refreshFriends]);
 
     useEffect(() => {
         if (socket) {
