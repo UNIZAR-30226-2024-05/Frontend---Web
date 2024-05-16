@@ -57,7 +57,7 @@ const Home = () => {
       if (elemento.genero === genero3)
         {return elemento;}
     });
-    setCarr3(car4);
+    setCarr3(car3);
     var car4 = books.filter((elemento) => {
       if (elemento.genero === genero4)
         {return elemento;}
