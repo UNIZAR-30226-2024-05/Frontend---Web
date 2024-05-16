@@ -12,10 +12,6 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const showCrearMarcapaginas = () => {
         setCrearMarcapaginas(!crearMarcapaginas)
     };
-    
-    const params = new URLSearchParams(location.search);
-    const time = JSON.parse(params.get('time'));
-    const dist = JSON.parse(params.get('dist'));
 
     const [intervalId, setIntervalId] = useState(null);
 
