@@ -573,6 +573,10 @@
   background-color: beige;
 }
 
+.info-desplegable-marcapaginas a {
+  display: block;
+}
+
 .info-marcapaginas-item {
   padding: 10px;
   font-size: 1.2rem;
