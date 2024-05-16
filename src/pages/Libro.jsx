@@ -35,6 +35,7 @@ const Libro = () => {
     const [reseniasComunidad, setReseniasComunidad] = useState([]);
     const [privacidad, setPrivacidad] = useState('');
     const [comentario, setComentario] = useState('');
+    const [ultimaActividad, setUltimaActividad] = useState(null);
 
     const [capitulos, setCapitulos] = useState([]);
 
@@ -77,6 +78,7 @@ const Libro = () => {
             setReseniasAmigos(response.data.friends_reviews);
             setReseniasComunidad(response.data.public_reviews);
             setMarcapaginas(response.data.mp_personalizados);
+            setUltimaActividad(response.data.ultimo_momento);
             console.log(response.data);
         })
         .catch(err => {
@@ -89,11 +91,12 @@ const Libro = () => {
         });
     };
 
-    const handleCapituloClick = (capitulos, portada, numCap) => {
+    const handleCapituloClick = (capitulos, portada, numCap, time) => {
         const params = new URLSearchParams();
         params.append('capitulos', JSON.stringify(capitulos));
         params.append('portada', portada);
         params.append('cap', numCap);
+        params.append('time', time);
         navigate(`/player?${params.toString()}`);
     };
 
@@ -585,13 +588,26 @@ const Libro = () => {
         }
     }
 
+    const timeStringToSeconds = (timeString) => {
+        const [hours, minutes, seconds] = timeString.split(':').map(Number);
+        return hours * 3600 + minutes * 60 + seconds;
+    };
+
     const handleClickMarcapaginas = (marcapaginas) => {
-        /*const params = new URLSearchParams();
-        params.append('capitulos', JSON.stringify(marcapaginas.capitulos));
-        params.append('portada', portada);
-        params.append('cap', marcapaginas.capitulo);
-        navigate(`/player?${params.toString()}`);*/
+        var cap_marca = capitulos.filter((cap) => {
+            return cap.id === marcapaginas.capitulo;
+        });
+        const time = timeStringToSeconds(marcapaginas.fecha);
         console.log(marcapaginas);
+        handleCapituloClick(capitulos, portada, cap_marca.numero - 1, time);
+    }
+
+    const handleReproducirUltimoMomento = () => {
+        var ult_cap = capitulos.filter((cap) => {
+            return cap.id === ultimaActividad.capitulo;
+        });
+        const time = timeStringToSeconds(ultimaActividad.fecha);
+        handleCapituloClick(capitulos, portada, ult_cap.numero - 1, time);
     }
 
     return (
@@ -634,7 +650,7 @@ const Libro = () => {
                     { /* Botón de "Reproducir" con icono de play */}
                     <div className="info-reproducir">
                         <div className="info-linkReproducir"
-                        onClick={() => handleCapituloClick(capitulos, portada, 0)}>
+                        onClick={() => handleReproducirUltimoMomento()}>
                             <FontAwesomeIcon icon={faPlay} /> Escuchar audiolibro
                         </div>
                     </div>
@@ -818,7 +834,7 @@ const Libro = () => {
                         {capitulos.map((capitulo, i) => (
                             <div key={i}
                             className='capitulo'
-                            onClick={() => handleCapituloClick(capitulos, portada, i)}>
+                            onClick={() => handleCapituloClick(capitulos, portada, i, 0)}>
                                 <span>{capitulo.numero}</span>
                                 <span>{capitulo.nombre}</span>
                                 {role === 'admin' && modoEdicionCapitulos && (

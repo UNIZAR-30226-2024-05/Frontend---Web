@@ -286,6 +286,7 @@ function prevCancion(capitulos, numCap) {
   const [params, setParams] = useState(new URLSearchParams(location.search));
   const [numCap, setNumCap] = useState(params.get('cap'));
   const [capitulos, setCapitulos] = useState(JSON.parse(params.get('capitulos')));
+  const [tiempoInicial, setTiempoInicial] = useState(params.get('time'));
   const [isplaying, setisplaying] = useState(false);
   const [currentSong, setCurrentSong] = useState(capitulos[numCap]);
   const [portada, setPortada] = useState(params.get('portada'));
