@@ -57,7 +57,7 @@ const Amigos = () => {
           console.log('Evento recibido:', data);
           setUsuarios((prevUsuarios) => {
             return prevUsuarios.map((user) => {
-                if (user.user_id === data.user_id) {
+                if (user.id === data.user_id) {
                     return { ...user, estado: 3 };
                 }
                 return user;
@@ -69,7 +69,7 @@ const Amigos = () => {
           console.log('Evento recibido:', data);
           setUsuarios((prevUsuarios) => {
             return prevUsuarios.map((user) => {
-                if (user.user_id === data.user_id) {
+                if (user.id === data.user_id) {
                     return { ...user, estado: 0 };
                 }
                 return user;
@@ -82,7 +82,7 @@ const Amigos = () => {
           console.log(data.user_id);
           setUsuarios((prevUsuarios) => {
             return prevUsuarios.map((user) => {
-                if (user.user_id === data.user_id) {
+                if (user.id === data.user_id) {
                     return { ...user, estado: 1 };
                 }
                 return user;
