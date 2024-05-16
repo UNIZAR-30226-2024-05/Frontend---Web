@@ -100,24 +100,10 @@ const ListaAmigosSidebar = ({amigos}) => {
         const handleIrUltimaLectura = (id_audiolibro) => {
             console.log('Ir a la ultima lectura') /* PROVISIONAL */
             navigate(`/libro?id=${id_audiolibro}`);
-        }
-
-        /*
-        const eliminarAmigo = (index) => {
-            try {
-                const token = Cookie.get('token');
-                const response = axios.post('/amistad/remove', { other_id: amigos[index].id }, { headers: { 'Authorization': `Bearer ${token}` } });
-                console.log(response.data.message); // Mensaje de éxito
-            }
-            catch (error) {
-                if (error.response) {
-                    console.error(error.response.data.error); // Manejar errores específicos del servidor
-                } else {
-                    console.error('Error del servidor:', error.message); // Manejar otros errores
-                }
-            }
+            if (location.pathname === '/libro') {
+                window.location.reload();
+              }
         };
-        */
 
         return (
             <div className='lista-amigos-sidebar'>
