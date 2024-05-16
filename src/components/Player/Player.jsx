@@ -3,7 +3,7 @@ import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
 import { useState, useRef, useContext, useEffect } from 'react';
 import "./Player.css"
 
-const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos, setCurrentTime}) => {
+const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos, jumpToTime}) => {
 
     const clickRef = useRef();
 
@@ -18,7 +18,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         const divprogress = offset / width * 100;
         const aux = divprogress / 100;
         const aux2 = aux * currentSong.length;
-        setCurrentTime(aux2);
+        jumpToTime(aux2);
         audioElem.current.currentTime = divprogress / 100 * currentSong.length;
         console.log(width);
         console.log(offset);

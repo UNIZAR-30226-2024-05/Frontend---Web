@@ -289,17 +289,14 @@ function prevCancion(capitulos, numCap) {
   const [isplaying, setisplaying] = useState(false);
   const [currentSong, setCurrentSong] = useState(capitulos[numCap]);
   const [portada, setPortada] = useState(params.get('portada'));
-  const [currentTime, setCurrentTime] = useState(null);
 
   console.log("Audio", currentSong.audio);
 
   const audioElem = useRef();
 
-  useEffect(() => {
-    if (currentTime!== null){
-      audioElem.current.currentTime = currentTime;
-    }
-  }, [currentTime])
+  const jumpToTime = (time) => {
+    audioElem.current.currentTime = time;
+  }
 
   useEffect(() => {
     if(isplaying){
@@ -325,7 +322,7 @@ function prevCancion(capitulos, numCap) {
         <audio src={currentSong.audio} ref={audioElem} onTimeUpdate={onPlaying}/>
         <Player capitulos={capitulos} setCapitulos={setCapitulos} isplaying={isplaying} setisplaying={setisplaying} 
         audioElem={audioElem} currentSong={currentSong} portada={portada} setCurrentSong={setCurrentSong}
-        setCurrentTime={setCurrentTime}/>
+        jumpToTime={jumpToTime}/>
       </div>
     </main>
     
