@@ -15,14 +15,15 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     
     const params = new URLSearchParams(location.search);
     const timeNew = JSON.parse(params.get('timeNew'));
-    const esDist = JSON.parse(params.get('esDist'));
+    const dist = JSON.parse(params.get('dist'));
 
     const [intervalId, setIntervalId] = useState(null);
 
     const [nuevoMarcapaginas, setNuevoMarcapaginas] = useState('');
 
     const PlayPause = () => {
-        if(esDist){
+        if(dist == 1){
+            console.log("Ha entrado");
             audioElem.current.currentTime = timeNew;
         }
         else if (!isplaying) {
