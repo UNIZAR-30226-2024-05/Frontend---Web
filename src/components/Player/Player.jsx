@@ -7,9 +7,47 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     const clickRef = useRef();
 
+    const [intervalId, setIntervalId] = useState(null);
+
     const PlayPause = () => {
+        if (!isplaying) {
+            // Iniciar intervalo de posteo cada 5 segundos
+            const id = setInterval(postFunction, 5000);
+            setIntervalId(id);
+        } else {
+            // Detener intervalo al pausar la reproducción
+            clearInterval(intervalId);
+        }
         setisplaying(!isplaying);
+    };
+
+    const URL_ULTIMA = '/marcapaginas/listening';
+    async function ultimaActividad(){
+        const capitulo = ;
+        const tiempo = audioElem.current.currentTime;
+        await axios.post(URL_ULTIMA,
+            JSON.stringify({capitulo, tiempo}),
+        {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+        }).then(response=>{
+            console.log(response.data);
+        }).catch(error=>{
+            console.log(error);
+        })
     }
+
+    const postFunction = () => {
+        ultimaActividad();
+        console.log("Post enviado");
+    };
+
+    useEffect(() => {
+        // Limpiar intervalo cuando se desmonta el componente
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, []);
 
     const checkWidth = (e) => {
         if (!isNaN(audioElem.current.duration)) {
