@@ -18,10 +18,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         const divprogress = offset / width * 100;
         const aux = divprogress / 100;
         const aux2 = aux * currentSong.length;
-        console.log(divprogress / 100 * currentSong.length);
-        console.log(aux);
-        console.log(aux2);
-        audioElem.current.currentTime = aux2;
+        audioElem.current.currentTime = audioElem.current.currentTime;
         console.log(width);
         console.log(offset);
         console.log(divprogress);
@@ -32,7 +29,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const skipBack = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index > 0){
-            audioElem.current.currentTime = 0;
+            //audioElem.current.currentTime = 0;
             setCurrentSong(capitulos[index - 1]);
         }
         else{
@@ -43,7 +40,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const skiptoNext = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index < capitulos.length-1){
-            audioElem.current.currentTime = 0;
+            //audioElem.current.currentTime = 0;
             setCurrentSong(capitulos[index + 1]);
         }
         else{
