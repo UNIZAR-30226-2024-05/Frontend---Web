@@ -143,8 +143,8 @@ const ListaAmigosSidebar = ({amigos}) => {
                                 
                                 <img 
                                 className='ultima-lectura'
-                                src={foto1} /* FALTA LA PORTADA DE LA ULTIMA */
-                                onClick={() => handleIrUltimaLectura(/* FALTA EL ID DEL AUDIOLIBRO DEL AMIGO */)}
+                                src={amigo.ultimo.img} /* FALTA LA PORTADA DE LA ULTIMA */
+                                onClick={() => handleIrUltimaLectura(amigo.ultimo.id_audiolibro)}
                                 onMouseEnter={(event) => handleMouseEnterUltimaLectura(event, 'Ultima Lectura')} /* CAMBIAR CUANDO TENGA LA CONSULTA */
                                 onMouseLeave={handleMouseLeaveUltimaLectura} />
                             </div>
