@@ -8,7 +8,17 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     const clickRef = useRef();
 
+    const [crearMarcapaginas, setCrearMarcapaginas] = useState(false);
+    const showCrearMarcapaginas = () => {
+        setCrearMarcapaginas(!crearMarcapaginas)
+        setErrMsg('');
+    };
+    
+    
+
     const [intervalId, setIntervalId] = useState(null);
+
+    const [nuevoMarcapaginas, setNuevoMarcapaginas] = useState('');
 
     const PlayPause = () => {
         if (!isplaying) {
@@ -55,6 +65,29 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
             clearInterval(intervalId);
         };
     }, []);
+
+
+
+    const URL_CREAR = 'marcapaginas/create'
+    async function handleNuevoMarcapaginas(){
+        const capitulo = currentSong.id;
+        const tiempo = audioElem.current.currentTime;
+        await axios.post(URL_ULTIMA,
+            JSON.stringify({titulo:nuevoMarcapaginas, capitulo, tiempo}),
+        {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+        }).then(response=>{
+            console.log(response.data);
+        }).catch(error=>{
+            console.log(error);
+        })
+    }
+
+    const handleNuevoMarcapaginas = (event) => {
+        setNuevoMarcapaginas(event.target.value);
+    }
+
 
     useEffect(() => {
         const handleChapterEnd = () => {
@@ -136,7 +169,16 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                 <button type="button" >
                     <ChevronDoubleRight className="skip" margin-top='2%' size={40} onClick={skiptoNext}/>
                 </button>
-                <button type ="button" className="Marcapag" margin-top='2%' size={40} margin-legt={2}>Crear Marcapaginas</button>
+                <button type ="button" className="Marcapag" margin-top='2%' size={40} onClick={showCrearMarcapaginas}>Crear Marcapaginas</button>
+                { crearMarcapaginas ? (
+                    <div className='crear-marcapaginas-container'>
+                        <input className="nombre-nuevo-marcapginas" placeholder='Cómo quiere llamar a su nueva colección'
+                        value={nuevoMarcapaginas}
+                        onChange={handleNuevoMarcapaginas}>
+                            <button className="submit-marcapaginas-button" onClick={handleClickSubmitMarcapaginas}>Enter</button>
+                        </input>
+                    </div>
+                ) : null }
             </div>
         </div>
         
