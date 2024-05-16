@@ -15,18 +15,22 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         if (!isNaN(audioElem.current.duration)) {
         let width = clickRef.current.clientWidth;
         const offset = e.nativeEvent.offsetX;
-        const divprogress = offset / width;
-        audioElem.current.currentTime = divprogress * currentSong.length;
+        const divprogress = offset / width * 100;
+        const newTime = divprogress * currentSong.length;
+        audioElem.current.currentTime = newTime;
         console.log(width);
         console.log(offset);
         console.log(divprogress);
         console.log(currentSong.length);
         console.log(audioElem.current.currentTime);
+        console.log("New current time:", newTime);
+        } else {
+            console.log("El audio no está completamente cargado.");
         }
     }
 
     const skipBack = () => {
-        const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
+        const index = capitulos.findIndex(x => x.nombre === currentSong.nombre); 
         if(index > 0){
             setCurrentSong(capitulos[index - 1]);
         }
@@ -36,7 +40,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     }
 
     const skiptoNext = () => {
-        const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
+        const index = capitulos.findIndex(x => x.nombre === currentSong.nombre); 
         if(index < capitulos.length-1){
             setCurrentSong(capitulos[index + 1]);
         }
