@@ -703,7 +703,7 @@ const Libro = () => {
                                             <FontAwesomeIcon icon={faCaretUp} /> : 
                                             <FontAwesomeIcon icon={faCaretDown} />
                                         }
-                                        <span>Ver mis marcapáginas</span>
+                                        <span font-size='2vh'>Ver mis marcapáginas</span>
                                         {mostrarMarcapaginas && (
                                         <div className="info-desplegable-marcapaginas">
                                             {marcapaginas?.map((uno, index) => (
