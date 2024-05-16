@@ -59,7 +59,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                 <p>{currentSong.nombre}</p>
             </div>
             <div className="Navigation">
-                <div className="NavigationWrapper" onClick={checkWidth} ref={clickRef}>
+                <div className="NavigationWrapper" onMouseDown={checkWidth} ref={clickRef}>
                     <div className="seekbar" style={{width: `${currentSong.progress+"%"}`}}></div>
                 </div>
             </div>
