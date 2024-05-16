@@ -55,6 +55,7 @@ const Amigos = () => {
       if (socket) {
         const handlePeticionReceived = (data) => {
           console.log('Evento recibido:', data);
+          console.log(usuarios);
           setUsuarios((prevUsuarios) => {
             return prevUsuarios.map((user) => {
               if (user.user_id === data.user_id) {
@@ -81,6 +82,7 @@ const Amigos = () => {
     if (socket) {
       const handlePeticionAccepted = (data) => {
         console.log('Evento recibido:', data);
+        console.log(usuarios);
         setUsuarios((prevUsuarios) => {
           return prevUsuarios.map((user) => {
             if (user.user_id === data.user_id) {
@@ -106,6 +108,7 @@ useEffect(() => {
   if (socket) {
     const handlePeticionRejected = (data) => {
       console.log('Evento recibido:', data);
+      console.log(usuarios);
       setUsuarios((prevUsuarios) => {
         return prevUsuarios.map((user) => {
           if (user.user_id === data.user_id) {

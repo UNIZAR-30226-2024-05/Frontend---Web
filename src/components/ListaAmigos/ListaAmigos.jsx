@@ -28,6 +28,8 @@ const ListaAmigos = ({usuarios, setUsuarios}) => {
 
     useEffect(() => {
         setListaUsuarios(listaUsuarios);
+        console.log(usuarios);
+        console.log(listaUsuarios);
         filtrar(busqueda);
       }, [usuarios]);
 
