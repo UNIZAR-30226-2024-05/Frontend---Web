@@ -38,6 +38,8 @@ const Libro = () => {
 
     const [capitulos, setCapitulos] = useState([]);
 
+    const [marcapaginas, setMarcapaginas] = useState(0);
+
     useEffect(() => {
 
         if (id_libro) {
@@ -74,6 +76,7 @@ const Libro = () => {
             setMiReseniaId(response.data.own_review.id);
             setReseniasAmigos(response.data.friends_reviews);
             setReseniasComunidad(response.data.public_reviews);
+            setMarcapaginas(response.data.mp_personalizados);
             console.log(response.data);
         })
         .catch(err => {
@@ -647,6 +650,30 @@ const Libro = () => {
 
                                 ))}
                             </div>
+                        )}
+                    </div>
+
+                    { /* Para ver tus marcapáginas */}
+                    <div className='libro-mostrarMarcapaginas'>
+                        {marcapaginas > 0 ?(
+                            <button className='libro-marcapaginas' onClick={() => navigate(`/marcapaginas?id=${id_libro}`)}>
+                                Ver mis marcapáginas
+                                <div>
+                                    {marcapaginas.map((marcapagina, i) => (
+                                        <div key={i}
+                                        className='marcapaginas-concreto'
+                                        onClick = {() => handleCapituloClick(capitulos, portada, marcapagina.capitulo)}>
+                                            <span>marcapagina.titulo</span>
+                                            <span>marcapagina.capitulo</span>
+                                            <span>marcapagina.fecha</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </button>
+                        ) : (
+                            <button className='libro-marcapaginas' onClick={() => navigate(`/marcapaginas?id=${id_libro}`)}>
+                                No tienes marcapáginas
+                            </button>
                         )}
                     </div>
                     </>
