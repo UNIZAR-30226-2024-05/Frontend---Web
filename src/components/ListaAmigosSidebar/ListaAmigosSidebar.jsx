@@ -28,7 +28,14 @@ const ListaAmigosSidebar = ({amigos, setSidebar}) => {
         }
 
         const handleNombreClick = (id_user) => {
-            navigate(`/perfilamigo?id=${id_user}`);
+            if (location.pathname === '/perfilamigo') {
+                navigate(`/perfilamigo?id=${id_user}`);
+                window.location.reload();
+              }
+              else{
+                navigate(`/perfilamigo?id=${id_user}`);
+                setSidebar(false);
+              }
         }
 
         let timer;
