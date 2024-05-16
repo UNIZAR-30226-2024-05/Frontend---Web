@@ -107,7 +107,7 @@ const handleCapituloClick = () => {
         <> {/* Cabecera si está logueado */}
           {role === 'normal' ? (
             <>
-            {!ultimoLibro ? <> {/* Cabecera si no está logueado */}
+            {!ultimoLibro?.id_audiolibro ? <> {/* Cabecera si no está logueado */}
               <img className='foto-presentacion' src={logo} alt={'Foto presentación'}></img>
               <div className="texto-presentacion">
                 <h2>¡Bienvenido a Narratives!</h2>
@@ -130,8 +130,8 @@ const handleCapituloClick = () => {
           ) : null}
         </>
       )}
-      
-      <Carrusel title={'Seguir Escuchando'} libros={books}/>
+      {seguirEscuchando.length === 0 ? null :
+      <Carrusel title={'Seguir Escuchando'} libros={books}/>}
       <Carrusel title={genero1} libros={carr1}/>
       <Carrusel title={genero2} libros={carr2}/>
       <Carrusel title={genero3} libros={carr3}/>
