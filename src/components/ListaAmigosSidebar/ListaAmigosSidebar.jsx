@@ -99,9 +99,12 @@ const ListaAmigosSidebar = ({amigos}) => {
 
         const handleIrUltimaLectura = (id_audiolibro) => {
             console.log('Ir a la ultima lectura') /* PROVISIONAL */
-            navigate(`/libro?id=${id_audiolibro}`);
             if (location.pathname === '/libro') {
+                navigate(`/libro?id=${id_audiolibro}`)
                 window.location.reload();
+              }
+              else{
+                navigate(`/libro?id=${id_audiolibro}`);
               }
         };
 
