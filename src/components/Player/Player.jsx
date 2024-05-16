@@ -14,7 +14,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     };
     
     const params = new URLSearchParams(location.search);
-    const timeNew = JSON.parse(params.get('timeNew'));
+    const time = JSON.parse(params.get('time'));
     const dist = JSON.parse(params.get('dist'));
 
     const [intervalId, setIntervalId] = useState(null);
@@ -24,7 +24,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const PlayPause = () => {
         if(dist == 1){
             console.log("Ha entrado");
-            audioElem.current.currentTime = timeNew;
+            audioElem.current.currentTime = time;
         }
         else if (!isplaying) {
             // Iniciar intervalo de posteo cada 10 segundos
