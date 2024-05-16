@@ -107,7 +107,7 @@ const Home = () => {
       axios.get('/home', { withCredentials: true })
         .then(response => {
           setUltimoLibro(response.data.ultimoLibro);
-          console.log(response.data.message);
+          console.log(response.data);
         })
         .catch(error => {
           console.error('Hubo un error al obtener los datos del usuario:', error);
