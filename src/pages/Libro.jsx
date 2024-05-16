@@ -584,6 +584,15 @@ const Libro = () => {
         }
     }
 
+    const handleClickMarcapaginas = (marcapaginas) => {
+        /*const params = new URLSearchParams();
+        params.append('capitulos', JSON.stringify(marcapaginas.capitulos));
+        params.append('portada', portada);
+        params.append('cap', marcapaginas.capitulo);
+        navigate(`/player?${params.toString()}`);*/
+        console.log(marcapaginas);
+    }
+
     return (
         <>
         <div className='info-libro'>
@@ -703,7 +712,10 @@ const Libro = () => {
                                                     <span>{uno.titulo}</span>
                                                     <span>{uno.capitulo}</span>
                                                     <span>{uno.fecha}</span>
-                                                    <FontAwesomeIcon icon={faTrash} onClick={() => handleEliminarMarcapaginas(uno.id_marcapaginas)} />
+                                                    <FontAwesomeIcon icon={faTrash} onClick={(e) => {
+                                                        e.stopPropagation(); // Detiene la propagación del evento
+                                                        handleEliminarMarcapaginas(uno.id_marcapaginas);
+                                                    }} />
                                                 </button>
                                             ))}
                                         </div>
