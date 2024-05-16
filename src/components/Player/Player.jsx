@@ -5,7 +5,7 @@ import "./Player.css"
 
 const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos}) => {
 
-    const clickRef = useRef();
+    const clickRef = useRef(null);
 
     const [cambiarIcono, setCambiarIcono] = useState(false);
 
