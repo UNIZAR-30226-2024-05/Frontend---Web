@@ -11,13 +11,17 @@ const Biblioteca = () => {
     'Romance',
     'Terror',
     'Ciencia ficción',
+    'Infantil',
+    'Autoayuda',
+    'Poesía',
+    'Aventuras']);
+
+/*
     'Historico',
     'Infantil',
     'Mitología',
     'Humor',
-    'Autoayuda',
-    'Poesía',
-    'Aventuras']);
+*/
 
     const URL_CONSULTA = '/audiolibros';
 

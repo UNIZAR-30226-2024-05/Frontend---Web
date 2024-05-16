@@ -104,14 +104,17 @@ const generos = [
   'Romance',
   'Terror',
   'Ciencia ficción',
-  'Historico',
   'Infantil',
-  'Mitología',
-  'Humor',
   'Autoayuda',
   'Poesía',
   'Aventuras'
 ];
+
+/*
+  'Historico',
+  'Mitología',
+  'Humor',
+*/
 
 const elegirGenerosAleatorios = () => {
   const generosAleatorios = [];
