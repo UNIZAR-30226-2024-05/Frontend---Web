@@ -38,7 +38,7 @@ const Libro = () => {
 
     const [capitulos, setCapitulos] = useState([]);
 
-    const [marcapaginas, setMarcapaginas] = useState(0);
+    const [marcapaginas, setMarcapaginas] = useState([]);
 
     useEffect(() => {
 
@@ -687,7 +687,7 @@ const Libro = () => {
 
                     { /* Para ver tus marcapáginas */}
                     <div className='libro-mostrarMarcapaginas'>
-                        {marcapaginas > 0 ?(
+                        {marcapaginas && marcapaginas.length > 0 ?(
                             <button className='libro-btnMarcapaginas' onClick={() => setMostrarMarcapaginas(!mostrarMarcapaginas)}>
                                 {mostrarMarcapaginas ? 
                                             <FontAwesomeIcon icon={faCaretUp} /> : 
