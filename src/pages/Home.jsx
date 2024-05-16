@@ -164,10 +164,10 @@ const elegirGenerosAleatorios = () => {
       {seguirEscuchando.length === 0 ? null :
         <CarruselSE title={'Seguir Escuchando'} libros={seguirEscuchando}/>
       }
-      <Carrusel title={genero1} libros={carr1}/>
-      <Carrusel title={genero2} libros={carr2}/>
-      <Carrusel title={genero3} libros={carr3}/>
-      <Carrusel title={genero4} libros={carr4}/>
+      <Carrusel title={generosRandom[0]} libros={carr1}/>
+      <Carrusel title={generosRandom[1]} libros={carr2}/>
+      <Carrusel title={generosRandom[2]} libros={carr3}/>
+      <Carrusel title={generosRandom[3]} libros={carr4}/>
       <Footer />
     </div>
   );
