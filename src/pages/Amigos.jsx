@@ -149,7 +149,7 @@ useEffect(() => {
                 ) : (
                 <>
                   <h1 className='amigos-titulo'>Tus amigos</h1>
-                  <ListaAmigos usuarios={usuarios} className='lista'></ListaAmigos>
+                  <ListaAmigos className='lista' usuarios={usuarios} setUsuarios={setUsuarios}></ListaAmigos>
                 </>)}
               </div>
             </div>

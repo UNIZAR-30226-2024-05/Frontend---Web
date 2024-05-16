@@ -19,7 +19,7 @@ import perezoso from '../../images/fotos-perfil/perezoso.jpg';
 import doraemon from '../../images/fotos-perfil/doraemon.jpg';
 import pikachu from '../../images/fotos-perfil/pikachu.jpg';
 
-const ListaAmigos = ({usuarios}) => {
+const ListaAmigos = ({usuarios, setUsuarios}) => {
     
     const navigate = useNavigate();
     const [listaUsuarios, setListaUsuarios] = useState(usuarios);
@@ -27,6 +27,12 @@ const ListaAmigos = ({usuarios}) => {
     const [busqueda, setBusqueda] = useState('');
 
     useEffect(() => {
+        setListaUsuarios(listaUsuarios);
+        filtrar(busqueda);
+      }, [usuarios]);
+
+    useEffect(() => {
+        setUsuarios(listaUsuarios);
         filtrar(busqueda);
       }, [listaUsuarios]);
 
