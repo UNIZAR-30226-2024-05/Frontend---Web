@@ -33,8 +33,10 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const skipBack = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index > 0){
+            if(isplaying){
+                audioElem.current.currentTime = 0;
+            }
             setCurrentSong(capitulos[index - 1])
-            audioElem.current.currentTime = 0;
         }
         else{
             console.log("Has llegado al limite inferior")
@@ -44,8 +46,10 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const skiptoNext = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index < capitulos.length-1){
+            if(isplaying){
+                audioElem.current.currentTime = 0;
+            }
             setCurrentSong(capitulos[index + 1])
-            audioElem.current.currentTime = 0;
         }
         else{
             console.log("Has llegado al limite superior")
@@ -68,7 +72,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                     <ChevronDoubleLeft className="prev" margin-top='2%' size={40} onClick={skipBack}/>
                 </button>
                 <button type="button">
-                    {isplaying ? <Pause className="pause" margin-top='2%' size={40} onClick={PlayPause}/>
+                    {cambiarIcono ? <Pause className="pause" margin-top='2%' size={40} onClick={PlayPause}/>
                     : <Play className="play" margin-top='2%' size={40} onClick={PlayPause}/>}
                 </button>
                 <button type="button" >
