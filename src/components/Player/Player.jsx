@@ -11,7 +11,6 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const [crearMarcapaginas, setCrearMarcapaginas] = useState(false);
     const showCrearMarcapaginas = () => {
         setCrearMarcapaginas(!crearMarcapaginas)
-        setErrMsg('');
     };
     
     
