@@ -5,7 +5,7 @@ import "./Player.css"
 
 const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos}) => {
 
-    const clickRef = useRef(null);
+    const clickRef = useRef();
 
     const [cambiarIcono, setCambiarIcono] = useState(false);
 
@@ -28,7 +28,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         console.log(offset);
         console.log(divprogress);
         console.log(currentSong.length);
-        console.log(audioElem.current.currentTime);
+        console.log(audioElem.current);
     }
 
     const skipBack = () => {
