@@ -94,6 +94,34 @@ const handleCapituloClick = () => {
   navigate(`/libro?id=${ultimoLibro.id_audiolibro}`);
 };
 
+const generos = [
+  'Misterio',
+  'Fantasía',
+  'Romance',
+  'Terror',
+  'Ciencia ficción',
+  'Historico',
+  'Infantil',
+  'Mitología',
+  'Humor',
+  'Autoayuda',
+  'Poesía',
+  'Aventuras'
+];
+
+const elegirGenerosAleatorios = () => {
+  const generosAleatorios = [];
+  const copiaGeneros = [...generos]; // Creamos una copia de la lista de géneros
+
+  // Elegimos 4 géneros aleatorios
+  for (let i = 0; i < 4; i++) {
+      const indiceAleatorio = Math.floor(Math.random() * copiaGeneros.length);
+      generosAleatorios.push(copiaGeneros.splice(indiceAleatorio, 1)[0]); // Eliminamos el género elegido para que no se repita
+  }
+
+  return generosAleatorios;
+};
+
   return (
     <div className='home'>
       {!username ? (
