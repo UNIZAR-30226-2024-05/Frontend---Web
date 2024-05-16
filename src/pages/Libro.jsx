@@ -554,6 +554,36 @@ const Libro = () => {
 
     const [mostrarMarcapaginas, setMostrarMarcapaginas] = useState(false);
 
+    const handleEliminarMarcapaginas = async (id_marcapaginas) => {
+        try {
+            const respuesta = await axios.post(
+                '/marcapaginas/delete',
+                JSON.stringify({ marcapaginasID: id_marcapaginas }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(respuesta);
+            obtenerDatosLibro();
+        } catch (error) {
+            if (!error.response) {
+                console.log('No hay respuesta del servidor');
+            } else if (error.response.status === 401) {
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+            } else if (error.response.status === 403) {
+                console.log('No propietario');
+            } else if (error.response.status === 404) {
+                console.log('El marcapáginas no existe')
+            }else if (error.response.status === 500){
+                console.log('Server error');
+            } else {
+                console.log('Error');
+            }
+        }
+    }
+
     return (
         <>
         <div className='info-libro'>
@@ -673,13 +703,14 @@ const Libro = () => {
                                                     <span>{uno.titulo}</span>
                                                     <span>{uno.capitulo}</span>
                                                     <span>{uno.fecha}</span>
+                                                    <FontAwesomeIcon icon={faTrash} onClick={() => handleEliminarMarcapaginas(uno.id_marcapaginas)} />
                                                 </button>
                                             ))}
                                         </div>
                                     )}
                             </button>
                         ) : (
-                            <button className='libro-btnMarcapaginas' onClick={() => navigate(`/marcapaginas?id=${id_libro}`)}>
+                            <button className='libro-btnMarcapaginas'>
                                 No tienes marcapáginas
                             </button>
                         )}
