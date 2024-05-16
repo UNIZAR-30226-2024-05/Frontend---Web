@@ -71,7 +71,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                 <button type="button" >
                     <ChevronDoubleRight className="skip" margin-top='2%' size={40} onClick={skiptoNext}/>
                 </button>
-                <button type ="button" className="Marcapag" margin-top='2%' size={40}/>
+                <button type ="button" className="Marcapag" margin-top='2%' size={40}>Crear Marcapaginas</button>
             </div>
         </div>
         
