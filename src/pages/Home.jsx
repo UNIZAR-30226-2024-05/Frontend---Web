@@ -129,7 +129,7 @@ const Home = () => {
         <> {/* Cabecera si está logueado */}
           {role === 'normal' ? (
             <>
-              <img className='foto-presentacion' src={ultimoLibro.img} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick(ultimoLibro.id_capitulo, ultimoLibro.img)}></img>
+              <img className='foto-presentacion' src={ultimoLibro && ultimoLibro.img} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick(ultimoLibro.id_capitulo, ultimoLibro && ultimoLibro.img)}></img>
               <div className="texto-presentacion">
                 <h2>Continua tu lectura</h2>
                 <span>Pincha en la portada para continuar por donde lo dejaste.</span>
