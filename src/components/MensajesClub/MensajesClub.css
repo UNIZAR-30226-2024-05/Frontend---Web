@@ -3,7 +3,7 @@
     text-align: center;
     padding: 20px 30px;
     margin: 20px 70px;
-    height: 70vh;
+    height: 69vh;
     overflow: hidden;
     position: relative;
     max-width: 100% !important;
@@ -17,7 +17,7 @@
     flex-direction: column;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    height: 60vh;
+    height: 59vh;
 }
 
 .contenedor-mensajes .lista .mensaje-propio {

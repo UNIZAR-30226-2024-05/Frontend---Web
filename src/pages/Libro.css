@@ -242,23 +242,23 @@
 .info-detalles {
   justify-content: center;
   width: 55%;
-  margin-top: 6%; 
+  margin-top: 6vh; 
 }
 
 .info-titulo {
   font-size: 1.8rem;
-  margin-bottom: 2%;
+  margin-bottom: 2vh;
 }
 
 .info-descripcion {
   font-size: 1.3rem;
-  margin-bottom: 2%;
+  margin-bottom: 2vh;
 }
 
 .info-autor {
-  margin-top: 5%;
+  margin-top: 5vh;
   font-size: 1.7rem;
-  margin-bottom: 2%;
+  margin-bottom: 2vh;
 }
 
 .info-linkAutor {
@@ -272,13 +272,13 @@
 }
 
 .info-genero {
-  margin-bottom: 5%;
+  margin-bottom: 5vh;
   font-size: 1.7rem;
 }
 
 /* Bloque con todos los capitulos del libro*/
 .info-capitulos {
-  margin-top: 5%;
+  margin-top: 5vh;
   font-size: 1.7rem;
   background-color: beige;
   border: none; 
@@ -300,7 +300,7 @@
 
 /* Mi puntuacion */
 .info-mi-puntuacion {
-  margin-top: 5%;
+  margin-top: 5vh;
   font-size: 1.7rem;
   padding: 10px;
   border: 3px solid beige; /* Añade un borde para mejorar la apariencia */
@@ -414,7 +414,7 @@
 
 /* Las segundas que aparecen son las reseñas de los amigos*/
 .info-resenias-amigos{
-  margin-top: 5%;
+  margin-top: 5vh;
 }
 
 /* Caja de cada reseña*/
@@ -431,7 +431,8 @@
 }
 
 .info-resenias {
-  margin-top: 5%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 .info-resenia-usuario {
