@@ -157,7 +157,7 @@ const Home = () => {
           ) : null}
         </>
       )}
-      {seguirEscuchando.length !== 0 ?
+      {seguirEscuchando.length() !== 0 ?
         <Carrusel title={'Seguir Escuchando'} libros={books}/>
         : null 
       }
