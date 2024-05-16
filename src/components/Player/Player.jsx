@@ -23,21 +23,19 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         const offset = e.nativeEvent.offsetX;
 
         const divprogress = offset / width * 100;
-        audioElem.current.currentTime = (divprogress / 100.0) * currentSong.length;
+        audioElem.current.currentTime = divprogress / 100.0 * currentSong.length;
         console.log(width);
         console.log(offset);
         console.log(divprogress);
-        console.log(currentSong.length);
         console.log(audioElem.current.currentTime);
     }
 
     const skipBack = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index > 0){
-            if(isplaying){
-                audioElem.current.currentTime = 0;
-            }
-            setCurrentSong(capitulos[index - 1])
+            
+            setCurrentSong(capitulos[index - 1]);
+            audioElem.current.currentTime = 0;
         }
         else{
             console.log("Has llegado al limite inferior")
@@ -47,10 +45,9 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const skiptoNext = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index < capitulos.length-1){
-            if(isplaying){
-                audioElem.current.currentTime = 0;
-            }
-            setCurrentSong(capitulos[index + 1])
+            
+            setCurrentSong(capitulos[index + 1]);
+            audioElem.current.currentTime = 0;
         }
         else{
             console.log("Has llegado al limite superior")
