@@ -3,7 +3,7 @@ import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
 import { useState, useRef, useContext, useEffect } from 'react';
 import "./Player.css"
 
-const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos}) => {
+const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos, setCurrentTime}) => {
 
     const clickRef = useRef();
 
@@ -18,7 +18,8 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         const divprogress = offset / width * 100;
         const aux = divprogress / 100;
         const aux2 = aux * currentSong.length;
-        audioElem.current.currentTime = audioElem.current.currentTime;
+        setCurrentTime(aux2);
+        audioElem.current.currentTime = divprogress / 100 * currentSong.length;
         console.log(width);
         console.log(offset);
         console.log(divprogress);
@@ -29,7 +30,6 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const skipBack = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index > 0){
-            //audioElem.current.currentTime = 0;
             setCurrentSong(capitulos[index - 1]);
         }
         else{
@@ -40,7 +40,6 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const skiptoNext = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index < capitulos.length-1){
-            //audioElem.current.currentTime = 0;
             setCurrentSong(capitulos[index + 1]);
         }
         else{
