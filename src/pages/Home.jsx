@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Carrusel from '../components/Carrusel/Carrusel';
+import CarruselSE from '../components/Carrusel/CarruselSE';
 import './Home.css';
 import logo from '../images/logo.png';
 import Footer from '../components/Footer/Footer';
@@ -37,29 +38,31 @@ const Home = () => {
   const [carr2, setCarr2] = useState([]);
   const [carr3, setCarr3] = useState([]);
   const [carr4, setCarr4] = useState([]);
-  const genero1 = 'Terror';
+  /*const genero1 = 'Terror';
   const genero2 = 'Poesía';
   const genero3 = 'Romance';
-  const genero4 = 'Romance';
+  const genero4 = 'Romance';*/
 
   useEffect(() => {
+    const generosRandom = elegirGenerosAleatorios();
+
     var car1 = books.filter((elemento) => {
-      if (elemento.genero === genero1)
+      if (elemento.genero === generosRandom[0])
         {return elemento;}
     });
     setCarr1(car1);
     var car2 = books.filter((elemento) => {
-      if (elemento.genero === genero2)
+      if (elemento.genero === generosRandom[1])
         {return elemento;}
     });
     setCarr2(car2);
     var car3 = books.filter((elemento) => {
-      if (elemento.genero === genero3)
+      if (elemento.genero === generosRandom[2])
         {return elemento;}
     });
     setCarr3(car3);
     var car4 = books.filter((elemento) => {
-      if (elemento.genero === genero4)
+      if (elemento.genero === generosRandom[3])
         {return elemento;}
     });
     setCarr4(car4);
@@ -159,7 +162,8 @@ const elegirGenerosAleatorios = () => {
         </>
       )}
       {seguirEscuchando.length === 0 ? null :
-      <Carrusel title={'Seguir Escuchando'} libros={books}/>}
+        <CarruselSE title={'Seguir Escuchando'} libros={seguirEscuchando}/>
+      }
       <Carrusel title={genero1} libros={carr1}/>
       <Carrusel title={genero2} libros={carr2}/>
       <Carrusel title={genero3} libros={carr3}/>
