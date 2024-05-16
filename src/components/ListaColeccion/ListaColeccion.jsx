@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ListaColeccion.css';
+import AuthContext from '../../context/AuthProvider';
 import DropdownButtonColeccion from './DropdownButtonColeccion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import Cookie from 'js-cookie';
 
 const ListaColeccion = ({ coleccion, setColeccion }) => {
+
+    const { auth } = useContext(AuthContext);
+    const { user_id } = auth;
 
     const [listaLibros, setListaLibros] = useState(coleccion.audiolibros);
     const [listaShow, setListaShow] = useState(coleccion.audiolibros);
@@ -84,6 +87,7 @@ const ListaColeccion = ({ coleccion, setColeccion }) => {
                             <h1>{libro.titulo}</h1>
                         </div>
                     </div>
+                    {user_id === coleccion.propietario &&
                     <div className='boton-container'>
                         <DropdownButtonColeccion 
                         className='boton-opciones' 
@@ -91,6 +95,7 @@ const ListaColeccion = ({ coleccion, setColeccion }) => {
                         coleccion={coleccion} 
                         setListaLibros={setListaLibros}/>
                     </div>
+                    }
                 </div>
               ))}
         </div>
