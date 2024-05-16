@@ -1,11 +1,18 @@
 import { Play, Pause, ChevronDoubleLeft, ChevronDoubleRight, CakeOutline } from "heroicons-react"
 import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useContext, useEffect } from 'react';
 import "./Player.css"
 
 const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos}) => {
 
     const clickRef = useRef();
+
+    const [cambiarIcono, setCambiarIcono] = useState(false);
+
+
+    useEffect(() => {
+        setCambiarIcono(true);
+    }, [currentSong])
 
     const PlayPause = () => {
         setisplaying(!isplaying);
@@ -61,8 +68,9 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                     <ChevronDoubleLeft className="prev" margin-top='2%' size={40} onClick={skipBack}/>
                 </button>
                 <button type="button">
-                    {isplaying ? <Play className="play" margin-top='2%' size={40} onClick={PlayPause}/>
-                    : <Pause className="pause" margin-top='2%' size={40} onClick={PlayPause}/>}
+                    {cambiarIcono && <Pause className="pause" margin-top='2%' size={40} onClick={PlayPause}/>}
+                    {isplaying ? <Pause className="pause" margin-top='2%' size={40} onClick={PlayPause}/>
+                    : <Play className="play" margin-top='2%' size={40} onClick={PlayPause}/>}
                 </button>
                 <button type="button" >
                     <ChevronDoubleRight className="skip" margin-top='2%' size={40} onClick={skiptoNext}/>

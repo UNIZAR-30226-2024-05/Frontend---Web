@@ -5,7 +5,7 @@
   align-items: center;
   height: calc(100vh - 80px);
   /* width: auto; */
-  background-image: url('../images/fondo-pagina-login.jpg');
+  background-image: url('../images/Biblioteca.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -50,6 +50,7 @@
   padding: 2px 5px;
   justify-self: center;
   align-self: center;
+  color: #000;
 }
 
 .link-login {
