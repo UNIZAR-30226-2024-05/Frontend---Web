@@ -55,7 +55,7 @@ const PerfilAmigo = () => {
 
                 if (response.data.ultimo) {
                     setUltimaActividad(response.data.ultimo);
-                    setIdUltimaActividad(response.data.ultimo.id)
+                    setIdUltimaActividad(response.data.ultimo.id_audiolibro)
                     setPortadaUltimaActividad(response.data.ultimo.img);
                     setTituloUltimaActividad(response.data.ultimo.titulo);
                     setFechaUltimaActividad(response.data.ultimo.fecha);
