@@ -110,7 +110,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                 audioElem.current.removeEventListener('ended', handleChapterEnd);
             };
         }
-      }, [currentSong, capitulos]);
+      }, [currentSong, capitulos, audioElem]);
 
 
     const checkWidth = (e) => {
