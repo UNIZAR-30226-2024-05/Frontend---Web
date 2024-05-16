@@ -93,7 +93,12 @@ const Home = () => {
       if (elemento.genero === genero3)
         {return elemento;}
     });
-    setCarr3(car3);
+    setCarr3(car4);
+    var car4 = books.filter((elemento) => {
+      if (elemento.genero === genero4)
+        {return elemento;}
+    });
+    setCarr4(car4);
   }, [books])
 
   // Variables para conocer el contexto (Usuario conectado o no)
@@ -102,20 +107,24 @@ const Home = () => {
   const { role } = auth;
 
   const [ultimoLibro, setUltimoLibro] = useState('');
+  const [seguirEscuchando, setSeguirEscuchando] = useState([]);
 
 
   useEffect(() => {
     if (username) {
       axios.get('/home', { withCredentials: true })
         .then(response => {
-          setUltimoLibro(response.data.ultimo);
+          setUltimoLibro(response.data?.ultimo);
+          setSeguirEscuchando(response.data?.seguir_escuchando);
           console.log(response.data);
+          console.log(response.data?.seguir_escuchando);
+          console.log(response.data?.ultimo);
         })
         .catch(error => {
           console.error('Hubo un error al obtener los datos del usuario:', error);
         });
     }
-}, [username]);
+}, []);
 
 
   return (
@@ -131,6 +140,7 @@ const Home = () => {
         <> {/* Cabecera si está logueado */}
           {role === 'normal' ? (
             <>
+            {!ultimoLibro ? <span>hola</span> : null}
               <img className='foto-presentacion' src={ultimoLibro && ultimoLibro.img} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick(ultimoLibro.id_capitulo, ultimoLibro && ultimoLibro.img)}></img>
               <div className="texto-presentacion">
                 <h2>Continua tu lectura</h2>
@@ -147,7 +157,11 @@ const Home = () => {
           ) : null}
         </>
       )}
-      <Carrusel title={'Todos'} libros={books}/>
+      {seguirEscuchando.length !== 0 ?
+        <Carrusel title={'Seguir Escuchando'} libros={books}/>
+        : null 
+      }
+      <Carrusel title={'Seguir Escuchando'} libros={books}/>
       <Carrusel title={genero1} libros={carr1}/>
       <Carrusel title={genero2} libros={carr2}/>
       <Carrusel title={genero3} libros={carr3}/>
