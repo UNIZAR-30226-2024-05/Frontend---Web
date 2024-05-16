@@ -15,11 +15,8 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         if (!isNaN(audioElem.current.duration)) {
         let width = clickRef.current.clientWidth;
         const offset = e.nativeEvent.offsetX;
-
-        const divprogress = offset / width * 100;
-        const aux = divprogress / 100;
-        const aux2 = aux * currentSong.length;
-        audioElem.current.currentTime = divprogress / 100 * currentSong.length;
+        const divprogress = offset / width;
+        audioElem.current.currentTime = divprogress * currentSong.length;
         console.log(width);
         console.log(offset);
         console.log(divprogress);
