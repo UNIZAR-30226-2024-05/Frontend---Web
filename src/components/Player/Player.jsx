@@ -23,7 +23,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         const offset = e.nativeEvent.offsetX;
 
         const divprogress = offset / width * 100;
-        audioElem.current.currentTime = divprogress / 100.0 * currentSong.length;
+        audioElem.current.currentTime = divprogress / 100 * currentSong.length;
         console.log(width);
         console.log(offset);
         console.log(divprogress);
@@ -63,20 +63,20 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                 <p>{currentSong.nombre}</p>
             </div>
             <div className="Navigation">
-                <div className="NavigationWrapper" onClick={() => checkWidth} ref={clickRef}>
+                <div className="NavigationWrapper" onClick={checkWidth} ref={clickRef}>
                     <div className="seekbar" style={{width: `${currentSong.progress+"%"}`}}></div>
                 </div>
             </div>
             <div className="Controlls">
                 <button type="button" >
-                    <ChevronDoubleLeft className="prev" margin-top='2%' size={40} onClick={() => skipBack}/>
+                    <ChevronDoubleLeft className="prev" margin-top='2%' size={40} onClick={skipBack}/>
                 </button>
                 <button type="button">
-                    {isplaying ? <Pause className="pause" margin-top='2%' size={40} onClick={() => PlayPause}/>
-                    : <Play className="play" margin-top='2%' size={40} onClick={() => PlayPause}/>}
+                    {isplaying ? <Pause className="pause" margin-top='2%' size={40} onClick={PlayPause}/>
+                    : <Play className="play" margin-top='2%' size={40} onClick={PlayPause}/>}
                 </button>
                 <button type="button" >
-                    <ChevronDoubleRight className="skip" margin-top='2%' size={40} onClick={() => skiptoNext}/>
+                    <ChevronDoubleRight className="skip" margin-top='2%' size={40} onClick={skiptoNext}/>
                 </button>
             </div>
         </div>
