@@ -14,35 +14,6 @@ import foto1 from '../images/1.png';
 const Home = () => {
 
   const navigate = useNavigate();
-  const id_libro = 1;
-  const [capitulos, setCapitulos] = useState([]);
-  const [portada, setPortada] = useState();
-
-  useEffect(() => {
-
-    if (id_libro) {
-        obtenerDatosLibro();
-    }
-    else {
-        console.log('No se ha pasado ningún libro');
-        navigate('/');
-    }
-  }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
-
-  const obtenerDatosLibro = () => {
-    const URL_AUDIOLIBRO = `/audiolibros/${id_libro}`;
-    axios.get(URL_AUDIOLIBRO, {withCredentials: true})
-    .then(response => {
-        // Actualiza el estado de los libros con los datos de los audiolibros recibidos
-        setCapitulos(response.data.capitulos);
-        setPortada(response.data.audiolibro.img);
-        console.log(response.data);
-    })
-    .catch(error => {
-        // Maneja los errores si ocurrieron
-        console.error('Hubo un error al obtener el audiolibro:', error);
-    });
-  };
 
   const URL_AUDIOLIBROS = '/audiolibros';
 
