@@ -72,9 +72,11 @@ const Home = () => {
   const [carr1, setCarr1] = useState([]);
   const [carr2, setCarr2] = useState([]);
   const [carr3, setCarr3] = useState([]);
+  const [carr4, setCarr4] = useState([]);
   const genero1 = 'Terror';
   const genero2 = 'Poesía';
   const genero3 = 'Romance';
+  const genero4 = 'Romance';
 
   useEffect(() => {
     var car1 = books.filter((elemento) => {
@@ -149,6 +151,7 @@ const Home = () => {
       <Carrusel title={genero1} libros={carr1}/>
       <Carrusel title={genero2} libros={carr2}/>
       <Carrusel title={genero3} libros={carr3}/>
+      <Carrusel title={genero4} libros={carr4}/>
       <Footer />
     </div>
   );

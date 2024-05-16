@@ -78,7 +78,7 @@ const Libro = () => {
             setReseniasAmigos(response.data.friends_reviews);
             setReseniasComunidad(response.data.public_reviews);
             setMarcapaginas(response.data.mp_personalizados);
-            setUltimaActividad(response.data.ultimo_momento);
+            setUltimaActividad(response.data?.ultimo_momento);
             console.log(response.data);
         })
         .catch(err => {
@@ -604,11 +604,16 @@ const Libro = () => {
     }
 
     const handleReproducirUltimoMomento = () => {
-        var ult_cap = capitulos.filter((cap) => {
-            return cap.id === ultimaActividad.capitulo;
-        });
-        const time = timeStringToSeconds(ultimaActividad.fecha);
-        handleCapituloClick(capitulos, portada, ult_cap[0].numero - 1, time);
+        if(ultimaActividad){
+            var ult_cap = capitulos.filter((cap) => {
+                return cap.id === ultimaActividad.capitulo;
+            });
+            const time = timeStringToSeconds(ultimaActividad.fecha);
+            handleCapituloClick(capitulos, portada, ult_cap[0].numero - 1, time); 
+        }
+        else{
+        handleCapituloClick(capitulos, portada, 0, 0);
+        }
     }
 
     return (
