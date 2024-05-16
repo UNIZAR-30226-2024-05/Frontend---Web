@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './AnyadirAutor.css';
 import axios from '../../api/axios';
+import Footer from '../../components/Footer/Footer';
 
 const AnyadirAutor = () => {
     const [nombreDecidido, setnombreDecidido] = useState('');
@@ -47,6 +48,7 @@ const AnyadirAutor = () => {
     }
 
     return (
+        <>
         <div className='anyadir-autor-container'>
             <h2>Añadir un nuevo autor</h2>
             <h3>Introduce su nombre</h3>
@@ -78,6 +80,8 @@ const AnyadirAutor = () => {
                 Añadir autor
             </button>
         </div>
+        <Footer />
+        </>
     );
 }
 

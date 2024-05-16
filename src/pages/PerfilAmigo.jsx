@@ -170,7 +170,6 @@ const PerfilAmigo = () => {
     };
 
     const handleClickLibro = (id_libro) => {
-        console.log("Id del libro", id_libro);
         navigate(`/libro?id=${id_libro}`);
     }
 
