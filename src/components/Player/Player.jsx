@@ -28,7 +28,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         console.log(offset);
         console.log(divprogress);
         console.log(currentSong.length);
-        console.log(audioElem.current);
+        console.log(audioElem.current.currentTime);
     }
 
     const skipBack = () => {

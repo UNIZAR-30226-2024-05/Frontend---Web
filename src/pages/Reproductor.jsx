@@ -301,7 +301,7 @@ function prevCancion(capitulos, numCap) {
     else{
       audioElem.current.pause();
     }
-  }, [isplaying])
+  }, [isplaying, currentSong])
 
 
   const onPlaying = () => {
