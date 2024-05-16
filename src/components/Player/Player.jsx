@@ -77,8 +77,11 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const URL_CREAR = 'marcapaginas/create'
     async function handleClickSubmitMarcapaginas(){
         const capitulo = currentSong.id;
-        const tiempo = audioElem.current.currentTime;
-        await axios.post(URL_ULTIMA,
+        const horas = parseInt(audioElem.current.currentTime / 3600);
+        const minutos = parseInt((audioElem.current.currentTime - horas * 3600) / 60);
+        const segundos = parseInt(audioElem.current.currentTime - horas * 3600 - minutos * 60);
+        const tiempo = `${horas}:${minutos}:${segundos}`;
+        await axios.post(URL_CREAR,
             JSON.stringify({titulo:nuevoMarcapaginas, capitulo, tiempo}),
         {
             headers: { 'Content-Type': 'application/json' },
