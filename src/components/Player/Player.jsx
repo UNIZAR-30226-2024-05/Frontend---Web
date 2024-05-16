@@ -34,7 +34,9 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     const URL_ULTIMA = '/marcapaginas/listening';
     async function ultimaActividad(){
-        if(audioElem.current.currentTime !== null){
+        console.log(audioElem.current.currentTime);
+        if(audioElem.current.currentTime){
+            console.log(audioElem.current.currentTime);
             const capitulo = currentSong.id;
             const horas = parseInt(audioElem.current.currentTime / 3600);
             const minutos = parseInt((audioElem.current.currentTime - horas * 3600) / 60);
@@ -72,11 +74,11 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
 
 
-    const URL_CREAR = '/marcapaginas/create'
+    const URL_CREAR = 'marcapaginas/create'
     async function handleClickSubmitMarcapaginas(){
         const capitulo = currentSong.id;
         const tiempo = audioElem.current.currentTime;
-        await axios.post(URL_CREAR,
+        await axios.post(URL_ULTIMA,
             JSON.stringify({titulo:nuevoMarcapaginas, capitulo, tiempo}),
         {
             headers: { 'Content-Type': 'application/json' },
@@ -184,8 +186,9 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                     <div className='crear-marcapaginas-container'>
                         <input className="nombre-nuevo-marcapginas" placeholder='Cómo quiere llamar a su nueva colección'
                         value={nuevoMarcapaginas}
-                        onChange={handleNuevoMarcapaginas}/>
-                        <button className="submit-marcapaginas-button" onClick={handleClickSubmitMarcapaginas}>Enter</button>
+                        onChange={handleNuevoMarcapaginas}>
+                            <button className="submit-marcapaginas-button" onClick={handleClickSubmitMarcapaginas}>Enter</button>
+                        </input>
                     </div>
                 ) : null }
             </div>
