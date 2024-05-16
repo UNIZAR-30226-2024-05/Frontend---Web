@@ -53,21 +53,19 @@ const Amigos = () => {
     // Socket Recibir Petición
     useEffect(() => {
       if (socket) {
-        socket.on('peticionReceived', (data) => {
-          // Maneja el evento recibido
+        const handlePeticionReceived = (data) => {
           console.log('Evento recibido:', data);
-            setUsuarios((prevUsuarios) => {
-              return prevUsuarios.map((user) => {
-                if (user.user_id === data.user_id) {
-                  // Encontramos al usuario, actualizamos su estado y sus mensajes
-                  return {...user, estado: 2};
-                }
-                // Retornamos el usuario sin cambios si no es el usuario correcto
-                return user;
-              });
+          setUsuarios((prevUsuarios) => {
+            return prevUsuarios.map((user) => {
+              if (user.user_id === data.user_id) {
+                return { ...user, estado: 2 };
+              }
+              return user;
             });
-        });
-      }
+          });
+        };
+  
+        socket.on('peticionReceived', handlePeticionReceived);
   
         // Limpia la escucha del socket cuando el componente se desmonta
         return () => {
@@ -75,26 +73,25 @@ const Amigos = () => {
               socket.off('peticionReceived');
           }
       };
-  }, [usuarios, socket]);
+    }
+  }, [socket]);
 
   // Socket Petición Aceptada
   useEffect(() => {
     if (socket) {
-      socket.on('peticionAccepted', (data) => {
-        // Maneja el evento recibido
+      const handlePeticionAccepted = (data) => {
         console.log('Evento recibido:', data);
-          setUsuarios((prevUsuarios) => {
-            return prevUsuarios.map((user) => {
-              if (user.user_id === data.user_id) {
-                // Encontramos al usuario, actualizamos su estado y sus mensajes
-                return {...user, estado: 0};
-              }
-              // Retornamos el usuario sin cambios si no es el usuario correcto
-              return user;
-            });
+        setUsuarios((prevUsuarios) => {
+          return prevUsuarios.map((user) => {
+            if (user.user_id === data.user_id) {
+              return { ...user, estado: 0 };
+            }
+            return user;
           });
-      });
-    }
+        });
+      };
+
+      socket.on('peticionAccpeted', handlePeticionAccepted);
 
       // Limpia la escucha del socket cuando el componente se desmonta
       return () => {
@@ -102,25 +99,24 @@ const Amigos = () => {
             socket.off('peticionAccepted');
         }
     };
-}, [usuarios, socket]);
+  }
+}, [socket]);
 
 useEffect(() => {
   if (socket) {
-    socket.on('peticionRejected', (data) => {
-      // Maneja el evento recibido
+    const handlePeticionRejected = (data) => {
       console.log('Evento recibido:', data);
-        setUsuarios((prevUsuarios) => {
-          return prevUsuarios.map((user) => {
-            if (user.user_id === data.user_id) {
-              // Encontramos al usuario, actualizamos su estado y sus mensajes
-              return {...user, estado: 1};
-            }
-            // Retornamos el usuario sin cambios si no es el usuario correcto
-            return user;
-          });
+      setUsuarios((prevUsuarios) => {
+        return prevUsuarios.map((user) => {
+          if (user.user_id === data.user_id) {
+            return { ...user, estado: 1 };
+          }
+          return user;
         });
-    });
-  }
+      });
+    };
+
+    socket.on('peticionRejected', handlePeticionRejected);
 
     // Limpia la escucha del socket cuando el componente se desmonta
     return () => {
@@ -128,7 +124,8 @@ useEffect(() => {
           socket.off('peticionRejected');
       }
   };
-}, [usuarios, socket]);
+}
+}, [socket]);
 
     const [tipos, setTipos] = useState([
         'recibidas',
