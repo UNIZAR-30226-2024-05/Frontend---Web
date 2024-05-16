@@ -44,13 +44,6 @@ const Home = () => {
     });
   };
 
-  const handleCapituloClick = (capitulos, portada) => {
-    const params = new URLSearchParams();
-    params.append('capitulos', JSON.stringify(capitulos));
-    params.append('portada', portada);
-    navigate(`/player?${params.toString()}`);
-};
-
   const URL_AUDIOLIBROS = '/audiolibros';
 
   const [books, setBooks] = useState([]);
@@ -126,6 +119,9 @@ const Home = () => {
     }
 }, []);
 
+const handleCapituloClick = () => {
+  navigate(`/libro?id=${ultimoLibro.id_audiolibro}`);
+};
 
   return (
     <div className='home'>
@@ -140,12 +136,18 @@ const Home = () => {
         <> {/* Cabecera si está logueado */}
           {role === 'normal' ? (
             <>
-            {!ultimoLibro ? <span>hola</span> : null}
-              <img className='foto-presentacion' src={ultimoLibro && ultimoLibro.img} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick(ultimoLibro.id_capitulo, ultimoLibro && ultimoLibro.img)}></img>
+            {!ultimoLibro ? <> {/* Cabecera si no está logueado */}
+              <img className='foto-presentacion' src={logo} alt={'Foto presentación'}></img>
+              <div className="texto-presentacion">
+                <h2>¡Bienvenido a Narratives!</h2>
+              </div>
+              </> : <>
+              <img className='foto-presentacion' src={ultimoLibro.img} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick()}></img>
               <div className="texto-presentacion">
                 <h2>Continua tu lectura</h2>
                 <span>Pincha en la portada para continuar por donde lo dejaste.</span>
               </div>
+              </>}
             </>
           ) : role === 'admin' ? (
             <>
