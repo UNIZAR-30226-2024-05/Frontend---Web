@@ -50,85 +50,57 @@ const Amigos = () => {
       fetchPeticiones();
     }, []);
 
-    // Socket Recibir Petición
+    // Socket event listeners
     useEffect(() => {
       if (socket) {
-        const handlePeticionReceived = (data) => {
-          console.log('Evento recibido:', data);
-          console.log(usuarios);
-          setUsuarios((prevUsuarios) => {
-            return prevUsuarios.map((user) => {
-              if (user.user_id === data.user_id) {
-                return { ...user, estado: 2 };
-              }
-              return user;
-            });
-          });
-        };
-  
-        socket.on('peticionReceived', handlePeticionReceived);
-  
-        // Limpia la escucha del socket cuando el componente se desmonta
-        return () => {
-          if (socket) {
-              socket.off('peticionReceived');
-          }
-      };
-    }
-  }, [socket]);
+          const handlePeticionReceived = (data) => {
+              console.log('Evento recibido:', data);
+              setUsuarios((prevUsuarios) => {
+                  return prevUsuarios.map((user) => {
+                      if (user.user_id === data.user_id) {
+                          return { ...user, estado: 2 };
+                      }
+                      return user;
+                  });
+              });
+          };
 
-  // Socket Petición Aceptada
-  useEffect(() => {
-    if (socket) {
-      const handlePeticionAccepted = (data) => {
-        console.log('Evento recibido:', data);
-        console.log(usuarios);
-        setUsuarios((prevUsuarios) => {
-          return prevUsuarios.map((user) => {
-            if (user.user_id === data.user_id) {
-              return { ...user, estado: 0 };
-            }
-            return user;
-          });
-        });
-      };
+          const handlePeticionAccepted = (data) => {
+              console.log('Evento recibido:', data);
+              setUsuarios((prevUsuarios) => {
+                  return prevUsuarios.map((user) => {
+                      if (user.user_id === data.user_id) {
+                          return { ...user, estado: 0 };
+                      }
+                      return user;
+                  });
+              });
+          };
 
-      socket.on('peticionAccpeted', handlePeticionAccepted);
+          const handlePeticionRejected = (data) => {
+              console.log('Evento recibido:', data);
+              setUsuarios((prevUsuarios) => {
+                  return prevUsuarios.map((user) => {
+                      if (user.user_id === data.user_id) {
+                          return { ...user, estado: 1 };
+                      }
+                      return user;
+                  });
+              });
+          };
 
-      // Limpia la escucha del socket cuando el componente se desmonta
-      return () => {
-        if (socket) {
-            socket.off('peticionAccepted');
-        }
-    };
-  }
-}, [socket]);
+          socket.on('peticionReceived', handlePeticionReceived);
+          socket.on('peticionAccepted', handlePeticionAccepted);
+          socket.on('peticionRejected', handlePeticionRejected);
 
-useEffect(() => {
-  if (socket) {
-    const handlePeticionRejected = (data) => {
-      console.log('Evento recibido:', data);
-      console.log(usuarios);
-      setUsuarios((prevUsuarios) => {
-        return prevUsuarios.map((user) => {
-          if (user.user_id === data.user_id) {
-            return { ...user, estado: 1 };
-          }
-          return user;
-        });
-      });
-    };
-
-    socket.on('peticionRejected', handlePeticionRejected);
-
-    // Limpia la escucha del socket cuando el componente se desmonta
-    return () => {
-      if (socket) {
-          socket.off('peticionRejected');
+          // Limpia la escucha del socket cuando el componente se desmonta
+          return () => {
+              socket.off('peticionReceived', handlePeticionReceived);
+              socket.off('peticionAccepted', handlePeticionAccepted);
+              socket.off('peticionRejected', handlePeticionRejected);
+          };
       }
-  };
-}
-}, [socket]);
+  }, [socket]);
 
     const [tipos, setTipos] = useState([
         'recibidas',
