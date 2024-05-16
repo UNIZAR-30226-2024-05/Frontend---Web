@@ -97,6 +97,7 @@ const Libro = () => {
         params.append('portada', portada);
         params.append('cap', numCap);
         params.append('time', time);
+        params.append('dist', dist);
         navigate(`/player?${params.toString()}`);
     };
 

@@ -13,7 +13,9 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         setCrearMarcapaginas(!crearMarcapaginas)
     };
     
-    
+    const params = new URLSearchParams(location.search);
+    const timeNew = JOIN.parse(params.get('timeNew'));
+    const esDist = JOIN.parse(params.get('esDist'));
 
     const [intervalId, setIntervalId] = useState(null);
 
