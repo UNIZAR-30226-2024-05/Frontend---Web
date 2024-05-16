@@ -59,6 +59,8 @@ const Amigos = () => {
           setUsuarios((prevUsuarios) => {
               console.log('Usuarios antes de la actualización:', prevUsuarios);
               const updatedUsuarios = prevUsuarios.map((user) => {
+                consolse.log(user.user_id);
+                consolse.log(user);
                   if (user.user_id === data.user_id) {
                       return { ...user, estado: 2 };
                   }
@@ -75,6 +77,8 @@ const Amigos = () => {
           setUsuarios((prevUsuarios) => {
               console.log('Usuarios antes de la actualización:', prevUsuarios);
               const updatedUsuarios = prevUsuarios.map((user) => {
+                  consolse.log(user.user_id);
+                  consolse.log(user);  
                   if (user.user_id === data.user_id) {
                       return { ...user, estado: 0 };
                   }
@@ -91,6 +95,8 @@ const Amigos = () => {
           setUsuarios((prevUsuarios) => {
               console.log('Usuarios antes de la actualización:', prevUsuarios);
               const updatedUsuarios = prevUsuarios.map((user) => {
+                  consolse.log(user.user_id);
+                  consolse.log(user);
                   if (user.user_id === data.user_id) {
                       return { ...user, estado: 1 };
                   }
