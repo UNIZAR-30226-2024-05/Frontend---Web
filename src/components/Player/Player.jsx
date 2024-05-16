@@ -23,7 +23,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     const URL_ULTIMA = '/marcapaginas/listening';
     async function ultimaActividad(){
-        const capitulo = ;
+        const capitulo = currentSong.id;
         const tiempo = audioElem.current.currentTime;
         await axios.post(URL_ULTIMA,
             JSON.stringify({capitulo, tiempo}),
