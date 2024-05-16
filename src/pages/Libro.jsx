@@ -38,6 +38,8 @@ const Libro = () => {
 
     const [capitulos, setCapitulos] = useState([]);
 
+    const [marcapaginas, setMarcapaginas] = useState(0);
+
     useEffect(() => {
 
         if (id_libro) {
@@ -74,6 +76,7 @@ const Libro = () => {
             setMiReseniaId(response.data.own_review.id);
             setReseniasAmigos(response.data.friends_reviews);
             setReseniasComunidad(response.data.public_reviews);
+            setMarcapaginas(response.data.mp_personalizados);
             console.log(response.data);
         })
         .catch(err => {
@@ -549,6 +552,8 @@ const Libro = () => {
         }
     }
 
+    const [mostrarMarcapaginas, setMostrarMarcapaginas] = useState(false);
+
     return (
         <>
         <div className='info-libro'>
@@ -647,6 +652,36 @@ const Libro = () => {
 
                                 ))}
                             </div>
+                        )}
+                    </div>
+
+                    { /* Para ver tus marcapáginas */}
+                    <div className='libro-mostrarMarcapaginas'>
+                        {marcapaginas > 0 ?(
+                            <button className='libro-btnMarcapaginas' onClick={() => setMostrarMarcapaginas(!mostrarMarcapaginas)}>
+                                {mostrarMarcapaginas ? 
+                                            <FontAwesomeIcon icon={faCaretUp} /> : 
+                                            <FontAwesomeIcon icon={faCaretDown} />
+                                        }
+                                        <span>Ver mis marcapáginas</span>
+                                        {mostrarMarcapaginas && (
+                                        <div className="info-desplegable-marcapaginas">
+                                            {marcapaginas?.map((uno, index) => (
+                                                <button className="info-marcapaginas-item"
+                                                    key={index}
+                                                    onClick={() => handleClickMarcapaginas(uno)}>
+                                                    <span>{uno.titulo}</span>
+                                                    <span>{uno.capitulo}</span>
+                                                    <span>{uno.fecha}</span>
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+                            </button>
+                        ) : (
+                            <button className='libro-btnMarcapaginas' onClick={() => navigate(`/marcapaginas?id=${id_libro}`)}>
+                                No tienes marcapáginas
+                            </button>
                         )}
                     </div>
                     </>

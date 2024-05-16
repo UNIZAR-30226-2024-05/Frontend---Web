@@ -526,3 +526,59 @@
   margin-bottom: 20px;
 }
 
+.libro-mostrarMarcapaginas {
+  margin-top: 30px;
+  width: 50%;
+  height: 50px;
+  background-color: beige;
+  border: none; 
+  border-radius: 10px;
+  padding: 2px 5px;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer; 
+  color: #000; 
+  position: relative;
+}
+
+.libro-btnMarcapaginas {
+  text-decoration: none;
+  color: inherit; 
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  border: none;
+  font-size: 1.2rem;
+  overflow: hidden;
+}
+
+.libro-btnMarcapaginas svg {
+  margin-right: 10px;
+}
+
+.info-deplegable-marcapaginas {
+  position: absolute;
+  margin-left: 130%;
+  margin-top: 50px;
+  width: 50%;
+  border: 3px solid black;
+  white-space: nowrap;
+  background-color: beige;
+}
+
+.info-marcapaginas-item {
+  padding: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+  border: 1px solid black;
+}
