@@ -297,6 +297,7 @@ function prevCancion(capitulos, numCap) {
 
   useEffect(() => {
     if(isplaying){
+      audioElem.current.currentTime = time;
       audioElem.current.play();
     }
     else{
