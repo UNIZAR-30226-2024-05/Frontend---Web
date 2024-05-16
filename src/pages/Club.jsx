@@ -3,7 +3,6 @@ import './Club.css';
 import { useLocation } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
 import axios from '../api/axios';
-import Footer from '../components/Footer/Footer';
 import MensajesClub from '../components/MensajesClub/MensajesClub';
 
 const Club = () => {
