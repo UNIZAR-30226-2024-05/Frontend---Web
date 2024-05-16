@@ -45,6 +45,17 @@
     margin-bottom: 20px;
 }
 
+.genero-nuevo-libro {
+    width: 50% !important;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+}
+
 .imagen-nuevo-libro {
     width: 50% !important;
     height: 30px;
