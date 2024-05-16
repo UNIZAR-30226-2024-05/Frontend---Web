@@ -1,6 +1,6 @@
 import { Play, Pause, ChevronDoubleLeft, ChevronDoubleRight, CakeOutline } from "heroicons-react"
 import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useContext, useEffect } from 'react';
 import "./Player.css"
 
 const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos}) => {
@@ -8,6 +8,11 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const clickRef = useRef();
 
     const [cambiarIcono, setCambiarIcono] = useState(false);
+
+
+    useEffect(() => {
+        setCambiarIcono(true);
+    }, [currentSong])
 
     const PlayPause = () => {
         setisplaying(!isplaying);
@@ -28,7 +33,6 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const skipBack = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index > 0){
-            setCambiarIcono(true);
             setCurrentSong(capitulos[index - 1])
             audioElem.current.currentTime = 0;
         }
@@ -40,7 +44,6 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const skiptoNext = () => {
         const index = capitulos.findIndex(x => x.nombre == currentSong.nombre); 
         if(index < capitulos.length-1){
-            setCambiarIcono(true);
             setCurrentSong(capitulos[index + 1])
             audioElem.current.currentTime = 0;
         }
@@ -65,6 +68,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                     <ChevronDoubleLeft className="prev" margin-top='2%' size={40} onClick={skipBack}/>
                 </button>
                 <button type="button">
+                    {cambiarIcono && <Pause className="pause" margin-top='2%' size={40} onClick={PlayPause}/>}
                     {isplaying ? <Pause className="pause" margin-top='2%' size={40} onClick={PlayPause}/>
                     : <Play className="play" margin-top='2%' size={40} onClick={PlayPause}/>}
                 </button>
