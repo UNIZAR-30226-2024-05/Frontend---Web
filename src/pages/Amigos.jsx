@@ -89,15 +89,43 @@ const Amigos = () => {
         });
       };
 
+      const handlePeticionCancelled = (data) => {
+        console.log('Evento recibido:', data);
+        setUsuarios((prevUsuarios) => {
+          return prevUsuarios.map((user) => {
+              if (user.id === data.user_id) {
+                  return { ...user, estado: 1 };
+              }
+              return user;
+          });
+      });
+    };
+
+    const handleFriendshipRemoved = (data) => {
+      console.log('Evento recibido:', data);
+      setUsuarios((prevUsuarios) => {
+        return prevUsuarios.map((user) => {
+            if (user.id === data.user_id) {
+                return { ...user, estado: 1 };
+            }
+            return user;
+        });
+    });
+  };
+
           socket.on('peticionReceived', handlePeticionReceived);
           socket.on('peticionAccepted', handlePeticionAccepted);
           socket.on('peticionRejected', handlePeticionRejected);
+          socket.on('peticionCancelled', handlePeticionCancelled);
+          socket.on('friendshipRemoved', handleFriendshipRemoved);
 
           // Limpia la escucha del socket cuando el componente se desmonta
           return () => {
               socket.off('peticionReceived', handlePeticionReceived);
               socket.off('peticionAccepted', handlePeticionAccepted);
               socket.off('peticionRejected', handlePeticionRejected);
+              socket.off('peticionCancelled', handlePeticionCancelled);
+              socket.off('friendshipRemoved', handleFriendshipRemoved);
           };
       }
   }, [socket]);

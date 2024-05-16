@@ -71,10 +71,17 @@ function Navbar() {
                 fetchAmigos();
             }
 
+            const handleFriendshipRemoved = (data) => {
+                console.log('Evento recibido:', data);
+                fetchAmigos();
+            }
+
         socket.on('peticionAccepted', handlePeticionAccepted);
+        socket.on('friendshipRemoved', handleFriendshipRemoved);
         // Limpia la escucha del socket cuando el componente se desmonta
         return () => {
             socket.off('peticionAccepted', handlePeticionAccepted);
+            socket.off('friendshipRemoved', handleFriendshipRemoved);
         };
         }
     }, [socket]);

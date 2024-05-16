@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 
-
 import perro from '../../images/fotos-perfil/perro.jpg';
 import gato from '../../images/fotos-perfil/gato.jpg';
 import rana from '../../images/fotos-perfil/rana.jpg';
