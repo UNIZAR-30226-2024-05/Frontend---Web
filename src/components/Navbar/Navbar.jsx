@@ -30,31 +30,47 @@ function Navbar() {
     const [sidebar, setSidebar] = useState(false);
 
     // Variables para conocer el contexto (Usuario conectado o no)
-    const { auth , setAuth } = useContext(AuthContext);
+    const { auth , setAuth , socket } = useContext(AuthContext);
     const { username, img, role } = auth;
 
     const [ amigos, setAmigos ] = useState([]);
     const [ loading, setLoading ] = useState(true);
 
+    const URL_CONSULTA = '/amistad/amigos';
+    async function fetchAmigos(){
+        await axios.get(URL_CONSULTA, { withCredentials: true })
+        .then(response=>{
+            setAmigos(response.data.amigos);
+            setLoading(false);
+            console.log(response.data);
+        }).catch(error=>{
+            console.log(error);
+            setLoading(false);
+            if (error.response && error.response.status === 401) { 
+                console.log('No autorizado');
+                return <ErrorNoSesion/>
+            }
+        })
+    }
+
     useEffect(() => {
-        const URL_CONSULTA = '/amistad/amigos';
-        async function fetchAmigos(){
-            await axios.get(URL_CONSULTA, { withCredentials: true })
-            .then(response=>{
-                setAmigos(response.data.amigos);
-                setLoading(false);
-                console.log(response.data);
-            }).catch(error=>{
-                console.log(error);
-                setLoading(false);
-                if (erro.response && erro.response.status === 401) { 
-                    console.log('No autorizado');
-                    return <ErrorNoSesion/>
-                }
-            })
-        }
         fetchAmigos();
     }, [username]);
+
+    useEffect(() => {
+        if (socket) {
+            const handlePeticionAccepted = (data) => {
+                console.log('Evento recibido:', data);
+                fetchAmigos();
+            }
+
+        socket.on('peticionAccepted', handlePeticionAccepted);
+        // Limpia la escucha del socket cuando el componente se desmonta
+        return () => {
+            socket.off('peticionAccepted', handlePeticionAccepted);
+        };
+        }
+    }, [socket]);
 
 
     //Poner la foto de perfil correcta

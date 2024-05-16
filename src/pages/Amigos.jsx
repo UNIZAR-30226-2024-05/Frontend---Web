@@ -79,7 +79,6 @@ const Amigos = () => {
 
       const handlePeticionRejected = (data) => {
           console.log('Evento recibido:', data);
-          console.log(data.user_id);
           setUsuarios((prevUsuarios) => {
             return prevUsuarios.map((user) => {
                 if (user.id === data.user_id) {

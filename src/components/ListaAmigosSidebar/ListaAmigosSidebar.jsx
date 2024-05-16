@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ListaAmigosSidebar.css';
 import foto1 from '../../images/1.png';
-import Cookie from 'js-cookie';
 
 const ListaAmigosSidebar = ({amigos}) => {
 
