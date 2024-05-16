@@ -43,8 +43,9 @@ const Home = () => {
   const genero3 = 'Romance';
   const genero4 = 'Romance';*/
 
+  const generosRandom = elegirGenerosAleatorios();
+
   useEffect(() => {
-    const generosRandom = elegirGenerosAleatorios();
 
     var car1 = books.filter((elemento) => {
       if (elemento.genero === generosRandom[0])
