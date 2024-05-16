@@ -12,6 +12,37 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import foto1 from '../images/1.png';
 
+const generos = [
+  'Misterio',
+  'Fantasía',
+  'Romance',
+  'Terror',
+  'Ciencia ficción',
+  'Infantil',
+  'Autoayuda',
+  'Poesía',
+  'Aventuras'
+];
+
+/*
+  'Historico',
+  'Mitología',
+  'Humor',
+*/
+
+const elegirGenerosAleatorios = () => {
+  const generosAleatorios = [];
+  const copiaGeneros = [...generos]; // Creamos una copia de la lista de géneros
+
+  // Elegimos 4 géneros aleatorios
+  for (let i = 0; i < 4; i++) {
+      const indiceAleatorio = Math.floor(Math.random() * copiaGeneros.length);
+      generosAleatorios.push(copiaGeneros.splice(indiceAleatorio, 1)[0]); // Eliminamos el género elegido para que no se repita
+  }
+
+  return generosAleatorios;
+};
+
 const Home = () => {
 
   const navigate = useNavigate();
@@ -43,7 +74,7 @@ const Home = () => {
   const genero3 = 'Romance';
   const genero4 = 'Romance';*/
 
-  const generosRandom = useState(elegirGenerosAleatorios());
+  const [generosRandom] = useState(elegirGenerosAleatorios());
 
   useEffect(() => {
 
@@ -67,7 +98,7 @@ const Home = () => {
         {return elemento;}
     });
     setCarr4(car4);
-  }, [books])
+  }, [books, generosRandom])
 
   // Variables para conocer el contexto (Usuario conectado o no)
   const { auth } = useContext(AuthContext);
@@ -96,37 +127,6 @@ const Home = () => {
 
 const handleCapituloClick = () => {
   navigate(`/libro?id=${ultimoLibro.id_audiolibro}`);
-};
-
-const generos = [
-  'Misterio',
-  'Fantasía',
-  'Romance',
-  'Terror',
-  'Ciencia ficción',
-  'Infantil',
-  'Autoayuda',
-  'Poesía',
-  'Aventuras'
-];
-
-/*
-  'Historico',
-  'Mitología',
-  'Humor',
-*/
-
-const elegirGenerosAleatorios = () => {
-  const generosAleatorios = [];
-  const copiaGeneros = [...generos]; // Creamos una copia de la lista de géneros
-
-  // Elegimos 4 géneros aleatorios
-  for (let i = 0; i < 4; i++) {
-      const indiceAleatorio = Math.floor(Math.random() * copiaGeneros.length);
-      generosAleatorios.push(copiaGeneros.splice(indiceAleatorio, 1)[0]); // Eliminamos el género elegido para que no se repita
-  }
-
-  return generosAleatorios;
 };
 
   return (
