@@ -99,6 +99,23 @@ const Home = () => {
   const { username } = auth;
   const { role } = auth;
 
+  const [ultimoLibro, setUltimoLibro] = useState();
+
+
+  useEffect(() => {
+    if (username) {
+      axios.get('/home', { withCredentials: true })
+        .then(response => {
+          setUltimoLibro(response.data.ultimoLibro);
+          console.log(response.data.message);
+        })
+        .catch(error => {
+          console.error('Hubo un error al obtener los datos del usuario:', error);
+        });
+    }
+}, [username]);
+
+
   return (
     <div className='home'>
       {!username ? (
@@ -112,7 +129,7 @@ const Home = () => {
         <> {/* Cabecera si está logueado */}
           {role === 'normal' ? (
             <>
-              <img className='foto-presentacion' src={foto1} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick(capitulos, portada)}></img>
+              <img className='foto-presentacion' src={ultimoLibro.img} alt={'Portada-ultimo-leido'} onClick={() => handleCapituloClick(ultimoLibro.id_capitulo, ultimoLibro.img)}></img>
               <div className="texto-presentacion">
                 <h2>Continua tu lectura</h2>
                 <span>Pincha en la portada para continuar por donde lo dejaste.</span>
