@@ -715,7 +715,7 @@ const Libro = () => {
                                                     <span>{uno.fecha}</span>
                                                     <FontAwesomeIcon icon={faTrash} onClick={(e) => {
                                                         e.stopPropagation(); // Detiene la propagación del evento
-                                                        handleEliminarMarcapaginas(uno.id_marcapaginas);
+                                                        handleEliminarMarcapaginas(uno.id);
                                                     }} />
                                                 </button>
                                             ))}
