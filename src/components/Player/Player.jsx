@@ -67,11 +67,11 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
 
 
-    const URL_CREAR = 'marcapaginas/create'
+    const URL_CREAR = '/marcapaginas/create'
     async function handleClickSubmitMarcapaginas(){
         const capitulo = currentSong.id;
         const tiempo = audioElem.current.currentTime;
-        await axios.post(URL_ULTIMA,
+        await axios.post(URL_CREAR,
             JSON.stringify({titulo:nuevoMarcapaginas, capitulo, tiempo}),
         {
             headers: { 'Content-Type': 'application/json' },
@@ -173,9 +173,8 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
                     <div className='crear-marcapaginas-container'>
                         <input className="nombre-nuevo-marcapginas" placeholder='Cómo quiere llamar a su nueva colección'
                         value={nuevoMarcapaginas}
-                        onChange={handleNuevoMarcapaginas}>
-                            <button className="submit-marcapaginas-button" onClick={handleClickSubmitMarcapaginas}>Enter</button>
-                        </input>
+                        onChange={handleNuevoMarcapaginas}/>
+                        <button className="submit-marcapaginas-button" onClick={handleClickSubmitMarcapaginas}>Enter</button>
                     </div>
                 ) : null }
             </div>
