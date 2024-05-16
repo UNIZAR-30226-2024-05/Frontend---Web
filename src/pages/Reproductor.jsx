@@ -295,7 +295,9 @@ function prevCancion(capitulos, numCap) {
   const audioElem = useRef();
 
   const jumpToTime = (time) => {
+    console.log(audioElem.current.currentTime);
     audioElem.current.currentTime = time;
+    console.log(audioElem.current.currentTime);
   }
 
   useEffect(() => {
