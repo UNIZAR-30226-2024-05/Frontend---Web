@@ -97,8 +97,9 @@ const ListaAmigosSidebar = ({amigos}) => {
             }
         };
 
-        const handleIrUltimaLectura = () => {
+        const handleIrUltimaLectura = (id_audiolibro) => {
             console.log('Ir a la ultima lectura') /* PROVISIONAL */
+            navigate(`/libro?id=${id_audiolibro}`);
         }
 
         /*
@@ -142,8 +143,8 @@ const ListaAmigosSidebar = ({amigos}) => {
                                 
                                 <img 
                                 className='ultima-lectura'
-                                src={foto1}
-                                onClick={() => handleIrUltimaLectura()}
+                                src={foto1} /* FALTA LA PORTADA DE LA ULTIMA */
+                                onClick={() => handleIrUltimaLectura(/* FALTA EL ID DEL AUDIOLIBRO DEL AMIGO */)}
                                 onMouseEnter={(event) => handleMouseEnterUltimaLectura(event, 'Ultima Lectura')} /* CAMBIAR CUANDO TENGA LA CONSULTA */
                                 onMouseLeave={handleMouseLeaveUltimaLectura} />
                             </div>
