@@ -27,6 +27,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         console.log(width);
         console.log(offset);
         console.log(divprogress);
+        console.log(currentSong.length);
         console.log(audioElem.current.currentTime);
     }
 
