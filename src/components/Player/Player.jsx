@@ -34,7 +34,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     const URL_ULTIMA = '/marcapaginas/listening';
     async function ultimaActividad(){
-        if(audioElem.current.currentTime){
+        if(audioElem.current.currentTime !== null){
             const capitulo = currentSong.id;
             const horas = parseInt(audioElem.current.currentTime / 3600);
             const minutos = parseInt((audioElem.current.currentTime - horas * 3600) / 60);
