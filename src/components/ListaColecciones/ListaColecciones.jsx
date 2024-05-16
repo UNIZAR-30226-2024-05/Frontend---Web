@@ -125,7 +125,7 @@ const ListaColecciones = ({colecciones, setColecciones}) => {
     {/* En que se pueda, cambiar todo lo de colecciones por una consulta al servidor. */}
 
     return (
-    <div className='contenedor-lista'>
+    <div className='contenedor-lista-colecciones'>
         <div className='buscador-container'>
             <button className='crear-coleccion-btn' onClick={showCrearColeccion}>
                 Crear nueva coleccion

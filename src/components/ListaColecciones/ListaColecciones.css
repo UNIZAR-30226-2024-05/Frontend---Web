@@ -1,18 +1,18 @@
-.contenedor-lista {
+.contenedor-lista-colecciones {
     /* Estilos para el contenedor de la lista */
     text-align: center;
     padding: 40px 100px;
     max-width: 100% !important;
 }
 
-.contenedor-lista .lista {
+.contenedor-lista-colecciones .lista {
     /* Estilos para la lista de colecs */
     display: flex; /* Utiliza flexbox para alinear los colecs horizontalmente */
     flex-direction: column;
 
 }
 
-.contenedor-lista .lista .coleccion {
+.contenedor-lista-colecciones .lista .coleccion {
     /* Estilos para cada coleccion */
     background-color: #0000006e;
     border-radius: 20px;
@@ -22,14 +22,14 @@
     margin-bottom: 3vh;
 }
 
-.contenedor-lista .lista .coleccion .contenido-colec {
+.contenedor-lista-colecciones .lista .coleccion .contenido-colec {
   display: flex;
   align-items: center;
   flex: 1;
   grid-column: span 1;
 }
 
-.contenedor-lista .lista .coleccion .contenido-colec .nombre {
+.contenedor-lista-colecciones .lista .coleccion .contenido-colec .nombre {
     /* Estilos para los títulos de las colecciones */
     margin: 0; /* Elimina el margen predeterminado */
     color: white;
@@ -40,7 +40,7 @@
     padding-left: 10%;
 }
 
-.contenedor-lista .lista .coleccion .boton-container {
+.contenedor-lista-colecciones .lista .coleccion .boton-container {
   margin-right: 50px;
   margin-left: auto;
   position: relative;
@@ -49,7 +49,7 @@
   grid-column: span 1;
 }
 
-.contenedor-lista .lista .coleccion .boton-container .boton-opciones{
+.contenedor-lista-colecciones .lista .coleccion .boton-container .boton-opciones{
   position: absolute; /* Establece el posicionamiento absoluto */
   top: calc(100% + 5px); /* Coloca el menú debajo del botón */
   right: 0; /* Lo alinea con el borde derecho del contenedor del botón */
@@ -57,7 +57,7 @@
   z-index: 1; /* Asegura que esté por encima de otros elementos */
 }
 
-.contenedor-lista .buscador-container{
+.contenedor-lista-colecciones .buscador-container{
     align-items: end;
     right: 0;
     display: flex;
@@ -65,7 +65,7 @@
     padding-bottom: 25px;
   }
 
-  .contenedor-lista .buscador-container .crear-coleccion-btn{
+  .contenedor-lista-colecciones .buscador-container .crear-coleccion-btn{
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
@@ -73,7 +73,7 @@
     margin-right: 5px;
   }
 
-  .contenedor-lista .buscador-container .buscador{
+  .contenedor-lista-colecciones .buscador-container .buscador{
     width: 50% !important;
     height: 30px;
     border-radius: 10px;
@@ -82,7 +82,7 @@
     margin-right: 5px;
   }
 
-  .contenedor-lista .crear-coleccion-container{
+  .contenedor-lista-colecciones .crear-coleccion-container{
     align-items: end;
     right: 0;
     display: flex;
@@ -90,14 +90,14 @@
     padding-bottom: 25px;
   }
 
-  .contenedor-lista .crear-coleccion-container .submit-coleccion-button{
+  .contenedor-lista-colecciones .crear-coleccion-container .submit-coleccion-button{
     height: 30px;
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  .contenedor-lista .crear-coleccion-container .nombre-nueva-coleccion{
+  .contenedor-lista-colecciones .crear-coleccion-container .nombre-nueva-coleccion{
     width: 50% !important;
     height: 30px;
     border-radius: 10px;
@@ -118,11 +118,11 @@
   
   @media (max-width: 988px){
     
-    .contenedor-lista .buscador-container .buscador{
+    .contenedor-lista-colecciones .buscador-container .buscador{
         width: 100% !important;
     }
     
-    .contenedor-lista .buscador-container{
+    .contenedor-lista-colecciones .buscador-container{
         padding-bottom: 15px;
     }
 }
