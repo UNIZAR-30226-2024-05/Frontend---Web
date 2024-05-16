@@ -719,7 +719,7 @@ const Libro = () => {
                                             <FontAwesomeIcon icon={faCaretUp} /> : 
                                             <FontAwesomeIcon icon={faCaretDown} />
                                         }
-                                        <span>Ver mis marcapáginas</span>
+                                        <span font-size='2vh'>Ver mis marcapáginas</span>
                                         {mostrarMarcapaginas && (
                                         <div className="info-desplegable-marcapaginas">
                                             {marcapaginas?.map((uno, index) => (
@@ -727,11 +727,9 @@ const Libro = () => {
                                                     key={index}
                                                     onClick={() => handleClickMarcapaginas(uno)}>
                                                     <span>{uno.titulo}</span>
-                                                    <span>{uno.capitulo}</span>
-                                                    <span>{uno.fecha}</span>
                                                     <FontAwesomeIcon icon={faTrash} onClick={(e) => {
                                                         e.stopPropagation(); // Detiene la propagación del evento
-                                                        handleEliminarMarcapaginas(uno.id_marcapaginas);
+                                                        handleEliminarMarcapaginas(uno.id);
                                                     }} />
                                                 </button>
                                             ))}
