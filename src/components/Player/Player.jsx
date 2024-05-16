@@ -22,12 +22,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const [nuevoMarcapaginas, setNuevoMarcapaginas] = useState('');
 
     const PlayPause = () => {
-        if(dist == 1){
-            console.log("Ha entrado");
-            console.log("Tiempo", time);
-            audioElem.current.currentTime = time;
-        }
-        else if (!isplaying) {
+        if (!isplaying) {
             // Iniciar intervalo de posteo cada 10 segundos
             const id = setInterval(postFunction, 10000);
             setIntervalId(id);
