@@ -19,7 +19,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     }
 
     const checkWidth = (e) => {
-        let width = clickRef.current.clientWidth;
+        const width = clickRef.current.clientWidth;
         const offset = e.nativeEvent.offsetX;
 
         const divprogress = offset / width * 100;
