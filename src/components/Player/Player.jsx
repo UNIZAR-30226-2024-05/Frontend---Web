@@ -24,6 +24,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const PlayPause = () => {
         if(dist == 1){
             console.log("Ha entrado");
+            console.log("Tiempo", time);
             audioElem.current.currentTime = time;
         }
         else if (!isplaying) {
