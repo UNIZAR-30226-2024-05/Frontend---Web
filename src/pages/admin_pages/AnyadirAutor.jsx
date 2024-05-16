@@ -50,7 +50,7 @@ const AnyadirAutor = () => {
     return (
         <>
         <div className='anyadir-autor-container'>
-            <h2>Añadir un nuevo autor</h2>
+            <h2 className='anyadir-autor-titulo'>Añadir un nuevo autor</h2>
             <h3>Introduce su nombre</h3>
             <input
                 className='nombre-nuevo-autor'

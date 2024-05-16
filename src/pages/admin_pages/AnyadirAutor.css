@@ -8,6 +8,10 @@
     background: linear-gradient(#7f9894, #acd1cb);
 }
 
+.anyadir-autor-titulo {
+    margin-bottom: 20px;
+}
+
 .nombre-nuevo-autor {
     width: 50% !important;
     height: 30px;
@@ -27,6 +31,7 @@
     padding-right: 10px;
     margin-right: 5px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .ciudad-nuevo-autor {
@@ -37,6 +42,7 @@
     padding-right: 10px;
     margin-right: 5px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .submit-autor-button {
