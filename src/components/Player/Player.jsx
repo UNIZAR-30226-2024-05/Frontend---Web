@@ -34,23 +34,28 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     const URL_ULTIMA = '/marcapaginas/listening';
     async function ultimaActividad(){
-        const capitulo = currentSong.id;
-        const horas = parseInt(audioElem.current.currentTime / 3600);
-        const minutos = parseInt((audioElem.current.currentTime - horas * 3600) / 60);
-        const segundos = parseInt(audioElem.current.currentTime - horas * 3600 - minutos * 60);
-        const tiempo = `${horas}:${minutos}:${segundos}`;
-        console.log(capitulo);
-        console.log(tiempo);
-        await axios.post(URL_ULTIMA,
-            JSON.stringify({capitulo, tiempo}),
-        {
-            headers: { 'Content-Type': 'application/json' },
-            withCredentials: true
-        }).then(response=>{
-            console.log(response.data);
-        }).catch(error=>{
-            console.log(error);
-        })
+        if(audioElem.current.currentTime){
+            const capitulo = currentSong.id;
+            const horas = parseInt(audioElem.current.currentTime / 3600);
+            const minutos = parseInt((audioElem.current.currentTime - horas * 3600) / 60);
+            const segundos = parseInt(audioElem.current.currentTime - horas * 3600 - minutos * 60);
+            const tiempo = `${horas}:${minutos}:${segundos}`;
+            console.log(capitulo);
+            console.log(tiempo);
+            await axios.post(URL_ULTIMA,
+                JSON.stringify({capitulo, tiempo}),
+            {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+            }).then(response=>{
+                console.log(response.data);
+            }).catch(error=>{
+                console.log(error);
+            })
+        }
+        else{
+            cancelInterval(intervalId);
+        }
     }
 
     const postFunction = () => {
@@ -99,14 +104,20 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
           }
         };
       
-        // Agregar el evento 'ended' al elemento <audio>
-        audioElem.current.addEventListener('ended', handleChapterEnd);
+        const audioElement = audioElem.current;
+        if(audioElement){
+            // Agregar el evento 'ended' al elemento <audio>
+            audioElem.current.addEventListener('ended', handleChapterEnd);
       
-        // Limpiar el evento al desmontar el componente
-        return () => {
-          audioElem.current.removeEventListener('ended', handleChapterEnd);
-        };
-      }, [currentSong, capitulos]);
+            // Limpiar el evento al desmontar el componente
+            return () => {
+                if (audioElem.current){
+                    audioElem.current.removeEventListener('ended', handleChapterEnd);
+                }
+            };
+        }
+      }, [currentSong, capitulos, audioElem]);
+
 
     const checkWidth = (e) => {
         if (!isNaN(audioElem.current.duration)) {
