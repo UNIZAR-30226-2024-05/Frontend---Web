@@ -99,14 +99,14 @@ const Home = () => {
   const { username } = auth;
   const { role } = auth;
 
-  const [ultimoLibro, setUltimoLibro] = useState();
+  const [ultimoLibro, setUltimoLibro] = useState('');
 
 
   useEffect(() => {
     if (username) {
       axios.get('/home', { withCredentials: true })
         .then(response => {
-          setUltimoLibro(response.data.seguir_escuchando);
+          setUltimoLibro(response.data.ultimo);
           console.log(response.data);
         })
         .catch(error => {
