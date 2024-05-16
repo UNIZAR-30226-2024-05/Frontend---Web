@@ -43,6 +43,11 @@ const elegirGenerosAleatorios = () => {
   return generosAleatorios;
 };
 
+const obtenerMejoresLibros = (libros, cantidad = 20) => {
+  const librosOrdenados = libros.sort((a, b) => b.puntuacion - a.puntuacion);
+  return librosOrdenados.slice(0, cantidad);
+};
+
 const Home = () => {
 
   const navigate = useNavigate();
@@ -64,19 +69,19 @@ const Home = () => {
       });
   }, []); // La dependencia vacía [] asegura que este efecto se ejecute solo una vez al montar el componente
 
-  
+  const [carrVal, setCarrVal] = useState([]);
   const [carr1, setCarr1] = useState([]);
   const [carr2, setCarr2] = useState([]);
   const [carr3, setCarr3] = useState([]);
   const [carr4, setCarr4] = useState([]);
-  /*const genero1 = 'Terror';
-  const genero2 = 'Poesía';
-  const genero3 = 'Romance';
-  const genero4 = 'Romance';*/
+
 
   const [generosRandom] = useState(elegirGenerosAleatorios());
 
   useEffect(() => {
+
+    var carVal = obtenerMejoresLibros(books, 18);
+    setCarrVal(carVal);
 
     var car1 = books.filter((elemento) => {
       if (elemento.genero === generosRandom[0])
@@ -168,6 +173,7 @@ const handleCapituloClick = () => {
       {seguirEscuchando.length > 0 &&
         <CarruselSE title={'Seguir Escuchando'} libros={seguirEscuchando}/>
       }
+      <Carrusel title={'Mejores Valorados'} libros={carrVal}/>
       <Carrusel title={generosRandom[0]} libros={carr1}/>
       <Carrusel title={generosRandom[1]} libros={carr2}/>
       <Carrusel title={generosRandom[2]} libros={carr3}/>
