@@ -567,7 +567,7 @@
   position: absolute;
   margin-left: 130%;
   margin-top: 50px;
-  width: 50%;
+  width: auto;
   border: 3px solid black;
   white-space: nowrap;
   background-color: beige;
@@ -585,4 +585,8 @@
   text-decoration: none;
   color: #000000;
   border: 1px solid black;
+}
+
+.marcapaginas-titulo {
+  margin-right: 3px;
 }
