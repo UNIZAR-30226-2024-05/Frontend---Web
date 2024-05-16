@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './ListaAmigosSidebar.css';
 import foto1 from '../../images/1.png';
 
-const ListaAmigosSidebar = ({amigos}) => {
+const ListaAmigosSidebar = ({amigos, setSidebar}) => {
 
         const navigate = useNavigate();
         
@@ -105,6 +105,7 @@ const ListaAmigosSidebar = ({amigos}) => {
               }
               else{
                 navigate(`/libro?id=${id_audiolibro}`);
+                setSidebar(false);
               }
         };
 

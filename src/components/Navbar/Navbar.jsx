@@ -228,7 +228,7 @@ function Navbar() {
                                     <p>Loading...</p>
                                 </div>
                                 ) : (
-                                    <ListaAmigosSidebar amigos={amigos} />
+                                    <ListaAmigosSidebar amigos={amigos} setSidebar={setSidebar}/>
                                 )}
                         </div>
                     </div>
