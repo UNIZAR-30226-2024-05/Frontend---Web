@@ -100,14 +100,18 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
           }
         };
       
-        // Agregar el evento 'ended' al elemento <audio>
-        audioElem.current.addEventListener('ended', handleChapterEnd);
+        const audioElement = audioElem.current;
+        if(audioElement){
+            // Agregar el evento 'ended' al elemento <audio>
+            audioElem.current.addEventListener('ended', handleChapterEnd);
       
-        // Limpiar el evento al desmontar el componente
-        return () => {
-          audioElem.current.removeEventListener('ended', handleChapterEnd);
-        };
+            // Limpiar el evento al desmontar el componente
+            return () => {
+                audioElem.current.removeEventListener('ended', handleChapterEnd);
+            };
+        }
       }, [currentSong, capitulos]);
+
 
     const checkWidth = (e) => {
         if (!isNaN(audioElem.current.duration)) {
