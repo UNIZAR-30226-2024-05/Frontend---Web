@@ -27,7 +27,7 @@ const ListaAmigos = ({usuarios, setUsuarios}) => {
     const [busqueda, setBusqueda] = useState('');
 
     useEffect(() => {
-        setListaUsuarios(listaUsuarios);
+        setListaUsuarios(usuarios);
         console.log('useEffect usuarios')
         console.log(usuarios);
         console.log(listaUsuarios);
