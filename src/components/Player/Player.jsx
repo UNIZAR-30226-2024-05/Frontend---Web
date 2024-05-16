@@ -11,7 +11,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
 
     useEffect(() => {
-        setCambiarIcono(true);
+        setCambiarIcono(!cambiarIcono);
     }, [currentSong])
 
     const PlayPause = () => {
