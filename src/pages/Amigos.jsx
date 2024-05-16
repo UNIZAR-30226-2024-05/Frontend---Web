@@ -55,50 +55,39 @@ const Amigos = () => {
       if (socket) {
         const handlePeticionReceived = (data) => {
           console.log('Evento recibido:', data);
-          console.log(data.user_id);
           setUsuarios((prevUsuarios) => {
-              console.log('Usuarios antes de la actualización:', prevUsuarios);
-              const updatedUsuarios = prevUsuarios.map((user) => {
-                  if (user.id === data.user_id) {
-                      return { ...user, estado: 2 };
-                  }
-                  return user;
-              });
-              console.log('Usuarios después de la actualización:', updatedUsuarios);
-              return updatedUsuarios;
-          });
+            return prevUsuarios.map((user) => {
+                if (user.user_id === data.user_id) {
+                    return { ...user, estado: 3 };
+                }
+                return user;
+            });
+        });
       };
 
       const handlePeticionAccepted = (data) => {
           console.log('Evento recibido:', data);
-          console.log(data.user_id);
           setUsuarios((prevUsuarios) => {
-              console.log('Usuarios antes de la actualización:', prevUsuarios);
-              const updatedUsuarios = prevUsuarios.map((user) => {  
-                  if (user.id === data.user_id) {
-                      return { ...user, estado: 0 };
-                  }
-                  return user;
-              });
-              console.log('Usuarios después de la actualización:', updatedUsuarios);
-              return updatedUsuarios;
-          });
+            return prevUsuarios.map((user) => {
+                if (user.user_id === data.user_id) {
+                    return { ...user, estado: 0 };
+                }
+                return user;
+            });
+        });
       };
 
       const handlePeticionRejected = (data) => {
           console.log('Evento recibido:', data);
           console.log(data.user_id);
           setUsuarios((prevUsuarios) => {
-              console.log('Usuarios antes de la actualización:', prevUsuarios);
-              const updatedUsuarios = prevUsuarios.map((user) => {
-                  if (user.id === data.user_id) {
-                      return { ...user, estado: 1 };
-                  }
-                  return user;
-              });
-              console.log('Usuarios después de la actualización:', updatedUsuarios);
-              return updatedUsuarios;
-          });
+            return prevUsuarios.map((user) => {
+                if (user.user_id === data.user_id) {
+                    return { ...user, estado: 1 };
+                }
+                return user;
+            });
+        });
       };
 
           socket.on('peticionReceived', handlePeticionReceived);
