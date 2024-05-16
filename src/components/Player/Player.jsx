@@ -70,7 +70,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         return () => {
             clearInterval(intervalId);
         };
-    }, []);
+    }, [isplaying]);
 
 
 
