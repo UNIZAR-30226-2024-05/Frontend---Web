@@ -1,6 +1,7 @@
 import { Play, Pause, ChevronDoubleLeft, ChevronDoubleRight, CakeOutline } from "heroicons-react"
 import { SpeakerWaveIcon } from "@heroicons/react/24/outline"
 import { useState, useRef, useContext, useEffect } from 'react';
+import axios from "../../api/axios";
 import "./Player.css"
 
 const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos, jumpToTime}) => {
