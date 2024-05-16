@@ -128,7 +128,6 @@ const ListaAmigosSidebar = ({amigos}) => {
                         onChange={handleChangeBusqueda}
                         />
                 </div>
-                
                 <div className='lista'>
                     {listaShow.map((amigo, index) => (
                         <div className='amigo' key={index}>
