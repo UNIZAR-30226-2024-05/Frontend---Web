@@ -599,8 +599,8 @@ const Libro = () => {
         });
         const time = timeStringToSeconds(marcapaginas.fecha);
         console.log(marcapaginas);
-        console.log(cap_marca.numero);
-        handleCapituloClick(capitulos, portada, cap_marca.numero - 1, time);
+        console.log(cap_marca[0].numero);
+        handleCapituloClick(capitulos, portada, cap_marca[0].numero - 1, time);
     }
 
     const handleReproducirUltimoMomento = () => {
@@ -608,8 +608,8 @@ const Libro = () => {
             return cap.id === ultimaActividad.capitulo;
         });
         const time = timeStringToSeconds(ultimaActividad.fecha);
-        console.log(ult_cap.numero);
-        handleCapituloClick(capitulos, portada, ult_cap.numero - 1, time);
+        console.log(ult_cap[0].numero);
+        handleCapituloClick(capitulos, portada, ult_cap[0].numero - 1, time);
     }
 
     return (
