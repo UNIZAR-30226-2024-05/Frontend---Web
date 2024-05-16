@@ -43,7 +43,7 @@ const Home = () => {
   const genero3 = 'Romance';
   const genero4 = 'Romance';*/
 
-  const generosRandom = elegirGenerosAleatorios();
+  const generosRandom = useState(elegirGenerosAleatorios());
 
   useEffect(() => {
 
@@ -162,7 +162,7 @@ const elegirGenerosAleatorios = () => {
           ) : null}
         </>
       )}
-      {seguirEscuchando.length === 0 ? null :
+      {seguirEscuchando.length > 0 &&
         <CarruselSE title={'Seguir Escuchando'} libros={seguirEscuchando}/>
       }
       <Carrusel title={generosRandom[0]} libros={carr1}/>
