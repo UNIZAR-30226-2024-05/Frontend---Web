@@ -81,6 +81,8 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
             withCredentials: true
         }).then(response=>{
             console.log(response.data);
+            setNuevoMarcapaginas('');
+            setCrearMarcapaginas(false);
         }).catch(error=>{
             console.log(error);
         })

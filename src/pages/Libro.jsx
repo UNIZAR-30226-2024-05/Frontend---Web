@@ -598,8 +598,6 @@ const Libro = () => {
             return cap.id === marcapaginas.capitulo;
         });
         const time = timeStringToSeconds(marcapaginas.fecha);
-        console.log(marcapaginas);
-        console.log(cap_marca[0].numero);
         handleCapituloClick(capitulos, portada, cap_marca[0].numero - 1, time);
     }
 
@@ -608,7 +606,6 @@ const Libro = () => {
             return cap.id === ultimaActividad.capitulo;
         });
         const time = timeStringToSeconds(ultimaActividad.fecha);
-        console.log(ult_cap[0].numero);
         handleCapituloClick(capitulos, portada, ult_cap[0].numero - 1, time);
     }
 
