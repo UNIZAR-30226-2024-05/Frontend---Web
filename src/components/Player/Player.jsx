@@ -69,7 +69,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
 
     const URL_CREAR = 'marcapaginas/create'
-    async function handleNuevoMarcapaginas(){
+    async function handleClickSubmitMarcapaginas(){
         const capitulo = currentSong.id;
         const tiempo = audioElem.current.currentTime;
         await axios.post(URL_ULTIMA,
