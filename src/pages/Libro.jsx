@@ -555,6 +555,7 @@ const Libro = () => {
     const [mostrarMarcapaginas, setMostrarMarcapaginas] = useState(false);
 
     const handleEliminarMarcapaginas = async (id_marcapaginas) => {
+        console.log(id_marcapaginas);
         try {
             const respuesta = await axios.post(
                 '/marcapaginas/delete',
