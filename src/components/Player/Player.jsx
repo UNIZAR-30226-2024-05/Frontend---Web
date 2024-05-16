@@ -106,7 +106,9 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
       
             // Limpiar el evento al desmontar el componente
             return () => {
-                audioElem.current.removeEventListener('ended', handleChapterEnd);
+                if (audioElem.current){
+                    audioElem.current.removeEventListener('ended', handleChapterEnd);
+                }
             };
         }
       }, [currentSong, capitulos, audioElem]);
