@@ -25,7 +25,10 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
     const URL_ULTIMA = '/marcapaginas/listening';
     async function ultimaActividad(){
         const capitulo = currentSong.id;
-        const tiempo = audioElem.current.currentTime;
+        const horas = parseInt(audioElem.current.currentTime / 3600);
+        const minutos = parseInt((audioElem.current.currentTime - horas * 3600) / 60);
+        const segundos = parseInt(audioElem.current.currentTime - horas * 3600 - minutos * 60);
+        const tiempo = `${horas}:${minutos}:${segundos}`;
         console.log(capitulo);
         console.log(tiempo);
         await axios.post(URL_ULTIMA,
