@@ -7,13 +7,6 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     const clickRef = useRef();
 
-    const [cambiarIcono, setCambiarIcono] = useState(false);
-
-
-    useEffect(() => {
-        setCambiarIcono(true);
-    }, [currentSong])
-
     const PlayPause = () => {
         setisplaying(!isplaying);
     }
@@ -23,6 +16,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         const offset = e.nativeEvent.offsetX;
 
         const divprogress = offset / width * 100;
+        console.log(audioElem.current.currentTime);
         audioElem.current.currentTime = divprogress / 100 * currentSong.length;
         console.log(width);
         console.log(offset);
