@@ -19,7 +19,7 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
         const aux = divprogress / 100;
         const aux2 = aux * currentSong.length;
         jumpToTime(aux2);
-        audioElem.current.currentTime = divprogress / 100 * currentSong.length;
+        //audioElem.current.currentTime = divprogress / 100 * currentSong.length;
         console.log(width);
         console.log(offset);
         console.log(divprogress);
