@@ -599,6 +599,7 @@ const Libro = () => {
             return cap.id === marcapaginas.capitulo;
         });
         const time = timeStringToSeconds(marcapaginas.fecha);
+        console.log(marcapaginas);
         handleCapituloClick(capitulos, portada, cap_marca[0].numero - 1, time);
     }
 
