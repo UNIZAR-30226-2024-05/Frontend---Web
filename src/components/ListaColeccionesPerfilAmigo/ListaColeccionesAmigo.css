@@ -1,7 +1,7 @@
 .contenedor-lista-amigo {
     /* Estilos para el contenedor de la lista */
     text-align: center;
-    padding: 40px 100px;
+    padding: 20px 30px;
     max-width: 100% !important;
 }
 
@@ -18,9 +18,9 @@
     border-radius: 20px;
     display: grid;
     grid-template-columns: 80% 20%;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
-    width: 22vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 100%;
     align-self: center;
 }
 

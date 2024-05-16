@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 80px;
+    min-height: calc(100vh - 80px);
     height: auto;
     background: linear-gradient(#7f9894, #acd1cb);
 }
@@ -28,7 +29,8 @@
 .amigo-somos-amigos {
     margin-top: 2vh;
     width: 15vh;
-    height: 5vh;
+    min-height: 5vh;
+    height: auto;
     font-size: 1.2rem;
     background-color: #0fa7b2;
     border-radius: 10px;
@@ -53,12 +55,12 @@
 
 .amigo-colecciones-y-actividad {
     display: flex;
-    margin-top: 10%;
+    margin-top: 5vh;
     justify-content: center;
 }
 
 .amigo-colecciones {
-    width: 60%; 
+    width: 80%; 
 }
 
 .colecciones-usuario {
@@ -67,7 +69,7 @@
 
 .amigo-ultima-actividad {
     width: 40%; 
-    margin-left: 10%;
+    margin-left: 4vw;
     flex-direction: column;
     justify-content: flex-start;
 }
