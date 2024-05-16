@@ -4,7 +4,7 @@ import { useState, useRef, useContext, useEffect } from 'react';
 import axios from "../../api/axios";
 import "./Player.css"
 
-const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos, jumpToTime}) => {
+const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCurrentSong, capitulos}) => {
 
     const clickRef = useRef();
 
@@ -12,13 +12,14 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
 
     const PlayPause = () => {
         if (!isplaying) {
-            // Iniciar intervalo de posteo cada 5 segundos
-            const id = setInterval(postFunction, 5000);
+            // Iniciar intervalo de posteo cada 10 segundos
+            const id = setInterval(postFunction, 10000);
             setIntervalId(id);
         } else {
             // Detener intervalo al pausar la reproducción
             clearInterval(intervalId);
         }
+        ultimaActividad();
         setisplaying(!isplaying);
     };
 
@@ -54,6 +55,26 @@ const Player = ({audioElem, isplaying, setisplaying, currentSong, portada, setCu
             clearInterval(intervalId);
         };
     }, []);
+
+    useEffect(() => {
+        const handleChapterEnd = () => {
+          const index = capitulos.findIndex(x => x.nombre === currentSong.nombre); 
+          if (index < capitulos.length - 1) {
+            setCurrentSong(capitulos[index + 1]);
+          } else {
+            console.log("Has llegado al final del último capítulo");
+            clearInterval(intervalId);
+          }
+        };
+      
+        // Agregar el evento 'ended' al elemento <audio>
+        audioElem.current.addEventListener('ended', handleChapterEnd);
+      
+        // Limpiar el evento al desmontar el componente
+        return () => {
+          audioElem.current.removeEventListener('ended', handleChapterEnd);
+        };
+      }, [currentSong, capitulos]);
 
     const checkWidth = (e) => {
         if (!isNaN(audioElem.current.duration)) {
