@@ -19,6 +19,7 @@ import buho from "../../images/fotos-perfil/buho.jpg"
 import perezoso from "../../images/fotos-perfil/perezoso.jpg"
 import doraemon from "../../images/fotos-perfil/doraemon.jpg"
 import pikachu from "../../images/fotos-perfil/pikachu.jpg"
+import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 
 import foto1 from '../../images/1.png';
 
@@ -48,7 +49,7 @@ function Navbar() {
             if (error.response && error.response.status === 401) { 
                 console.log('No autorizado');
                 if (username !== null){
-                    handleCerrarSesion();
+                    <ErrorNoSesion />
                 }
             }
         })

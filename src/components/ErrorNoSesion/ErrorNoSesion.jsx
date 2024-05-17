@@ -8,7 +8,6 @@ const ErrorNoSesion = () => {
     }, []);
 
     const handleCerrarSesion = async (event) => {
-        event.preventDefault();
         const URL_LOGOUT = '/users/logout';
 
         try {
