@@ -1,9 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Cookie from "js-cookie";
+import axios from "../../api/axios";
 
 const ErrorNoSesion = () => {
-    const navigate = useNavigate();
 
     React.useEffect(() => {
         handleCerrarSesion(); // Redirige automáticamente al montar el componente
