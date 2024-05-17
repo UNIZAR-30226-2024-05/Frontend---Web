@@ -49,7 +49,7 @@ function Navbar() {
             if (error.response && error.response.status === 401) { 
                 console.log('No autorizado');
                 if (username !== null){
-                    <ErrorNoSesion />
+                    errorNoCookie();
                 }
             }
         })
@@ -118,6 +118,26 @@ function Navbar() {
     const handleCerrarSesion = async (event) => {
         event.preventDefault();
     
+        try {
+            const respuesta = await axios.post(URL_LOGOUT, null, {withCredentials: true});
+            console.log(JSON.stringify(respuesta?.data));
+            // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
+            setAuth({});
+            window.location.href = '/login'; // Redirige a la página de inicio de sesión
+        } catch (err) {
+            if (!err.response) {
+                console.log('No hay respuesta del servidor');
+            } else if (err.response.status === 401) {
+                console.log('No hay sesión iniciada');
+            } else {
+                console.log('Fallo en el logout');
+            }
+            setAuth({});
+            window.location.href = '/login'; 
+        }
+    };
+
+    const errorNoCookie = async (event) => {
         try {
             const respuesta = await axios.post(URL_LOGOUT, null, {withCredentials: true});
             console.log(JSON.stringify(respuesta?.data));
