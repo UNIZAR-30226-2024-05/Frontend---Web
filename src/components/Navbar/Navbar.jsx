@@ -131,6 +131,7 @@ function Navbar() {
                 console.log('Fallo en el logout');
             }
             setAuth({});
+            window.location.href = '/login'; 
         }
     };
 
