@@ -47,8 +47,8 @@ function Navbar() {
             setLoading(false);
             if (error.response && error.response.status === 401) { 
                 console.log('No autorizado');
-                if (!username){
-                    handleCerrarSesion;
+                if (username){
+                    handleCerrarSesion();
                 }
             }
         })
