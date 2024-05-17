@@ -8,6 +8,7 @@ import './Navbar.css';
 import { IconContext } from 'react-icons';
 import logo from '../../images/logo.png';
 import AuthContext from '../../context/AuthProvider';
+import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 import ListaAmigosSidebar from '../ListaAmigosSidebar/ListaAmigosSidebar';
 import vaca from '../../images/fotos-perfil/vaca.jpg';
 import perro from "../../images/fotos-perfil/perro.jpg"
@@ -19,7 +20,6 @@ import buho from "../../images/fotos-perfil/buho.jpg"
 import perezoso from "../../images/fotos-perfil/perezoso.jpg"
 import doraemon from "../../images/fotos-perfil/doraemon.jpg"
 import pikachu from "../../images/fotos-perfil/pikachu.jpg"
-import ErrorNoSesion from '../ErrorNoSesion/ErrorNoSesion';
 
 import foto1 from '../../images/1.png';
 
@@ -48,9 +48,7 @@ function Navbar() {
             setLoading(false);
             if (error.response && error.response.status === 401) { 
                 console.log('No autorizado');
-                if (username !== null){
-                    errorNoCookie();
-                }
+                return <ErrorNoSesion/>
             }
         })
     }
@@ -133,27 +131,6 @@ function Navbar() {
                 console.log('Fallo en el logout');
             }
             setAuth({});
-            window.location.href = '/login'; 
-        }
-    };
-
-    const errorNoCookie = async (event) => {
-        try {
-            const respuesta = await axios.post(URL_LOGOUT, null, {withCredentials: true});
-            console.log(JSON.stringify(respuesta?.data));
-            // Si la solicitud de cierre de sesión fue exitosa, redirige al usuario a la página de inicio u otra página
-            setAuth({});
-            window.location.href = '/login'; // Redirige a la página de inicio de sesión
-        } catch (err) {
-            if (!err.response) {
-                console.log('No hay respuesta del servidor');
-            } else if (err.response.status === 401) {
-                console.log('No hay sesión iniciada');
-            } else {
-                console.log('Fallo en el logout');
-            }
-            setAuth({});
-            window.location.href = '/login'; 
         }
     };
 
