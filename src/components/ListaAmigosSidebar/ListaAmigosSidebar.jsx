@@ -136,13 +136,13 @@ const ListaAmigosSidebar = ({amigos, setSidebar}) => {
                                 onMouseLeave={handleMouseLeaveName}>
                                     {amigo.username}   
                                 </div>
-                                
+                                {amigo.ultimo !== null &&
                                 <img 
                                 className='ultima-lectura'
                                 src={amigo.ultimo.img} /* FALTA LA PORTADA DE LA ULTIMA */
                                 onClick={() => handleIrUltimaLectura(amigo.ultimo.id_audiolibro)}
                                 onMouseEnter={(event) => handleMouseEnterUltimaLectura(event, 'Ultima Lectura')} /* CAMBIAR CUANDO TENGA LA CONSULTA */
-                                onMouseLeave={handleMouseLeaveUltimaLectura} />
+                                onMouseLeave={handleMouseLeaveUltimaLectura} />}
                             </div>
                         </div>
                     ))}
